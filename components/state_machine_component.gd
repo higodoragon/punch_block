@@ -7,12 +7,14 @@ var current_array : Array = []
 var current_index : int = 0
 var sticky_call : String = ""
 var delay : int = 0
+signal state_changed(array: Array, index: int)
 
 func set_state( array : Array, index : int = 0 ):
 	sticky_call = ""
 	delay = 0
 	current_array = array
 	current_index = index
+	state_changed.emit(array, index)
 
 func _physics_process(delta: float) -> void:
 	if sticky_call != "":

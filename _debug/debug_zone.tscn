@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bisav6x43dh51"]
+[gd_scene load_steps=8 format=3 uid="uid://bisav6x43dh51"]
 
 [ext_resource type="Script" uid="uid://dmv62xko6sdrj" path="res://_debug/debug_zone.gd" id="1_yhf0q"]
 [ext_resource type="PackedScene" uid="uid://mdes4hst2fpb" path="res://entities/info/player.tscn" id="2_2a4e8"]
 [ext_resource type="PackedScene" uid="uid://bi3bfn71jwawv" path="res://entities/info/player_start.tscn" id="3_5dsji"]
 [ext_resource type="PackedScene" uid="uid://b4d3dgctiwcc3" path="res://entities/enemy/sniper.tscn" id="4_axqn0"]
+[ext_resource type="Script" uid="uid://c8icyievd76v6" path="res://_debug/debug_enemy_label.gd" id="5_jtp45"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_2a4e8"]
 size = Vector2(100, 100)
@@ -37,3 +38,11 @@ transform = Transform3D(0.759351, -0.56309, 0.326061, 0, 0.501108, 0.865385, -0.
 
 [node name="Sniper" parent="Node3D" instance=ExtResource("4_axqn0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.770441, 0.505187, -29.1425)
+
+[node name="Label3D" type="Label3D" parent="Node3D/Sniper" node_paths=PackedStringArray("enemy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.56369, 0)
+billboard = 2
+text = "LABEL"
+font_size = 64
+script = ExtResource("5_jtp45")
+enemy = NodePath("..")
