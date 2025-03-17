@@ -75,7 +75,9 @@ var block_did_a_parry : bool = false
 var block_press_old : bool = false
 var block_press : bool = false
 var block_active : bool = false
+var block_super_active : bool = false
 var parry_active : bool = false
+var did_parry : bool = false 
 var parrycombo_amount : int = 0
 var parrycombo_time : int = 0
 
@@ -84,14 +86,11 @@ const parry_frametime = 15
 func on_parry_frametime():
 	return block_time < parry_frametime
 
-func do_parry( attack : Attack ):
+func do_parry():
 	# PARRY!
 	global.freezeframe += 10
 	var parry_audio = global.audio_play_at( global.sfx_player_parry, self.global_position )
 	parry_audio.pitch_scale += parrycombo_amount * 0.05
-
-	# removes knockback from any attack
-	attack.knockback_power = 0
 
 	# kills attack delay, you can counter attack imediatly
 	punch_delay = 0
@@ -111,19 +110,27 @@ func do_block():
 	if ( not block_press_old and block_press ) and punch_delay <= 0 and not block_active and not parry_active:
 		block_active = true
 		parry_active = true
+		block_super_active = true
 
 	if ( block_press_old and not block_press ):
 		block_active = false
 	
 	if not on_parry_frametime():
 		parry_active = false
-	
+
 	if block_active or parry_active:
 		block_time += 1
 	else:
 		block_time = 0
+	
+	if block_super_active and not block_active and not parry_active:
+		if not did_parry:
+			punch_delay = 60
+		
 		block_amount = 0
-			
+		did_parry = false
+		block_super_active = false
+	
 	if parrycombo_time > 0:
 		parrycombo_time -= 1
 	else:
@@ -137,17 +144,18 @@ func do_block_damage( attack : Attack ):
 	var angle_diff_raw = angle_from_view - angle_from_attack
 	var angle_diff = atan2( sin( angle_diff_raw ), cos( angle_diff_raw ) ) / PI
 	var on_block_angle : bool = abs( angle_diff ) < 0.5
-	var did_a_parry : bool = false
 
 	if on_block_angle and ( block_active or parry_active ):
 		if on_parry_frametime():
-			did_a_parry = true
-			do_parry( attack )
-			
+			do_parry()
+			did_parry = true
+
+		# removes damage and knockback from any attack
+		attack.knockback_power = 0					
 		attack.damage = 0
 		do_block_steal( attack )
 	
-	if not did_a_parry:
+	if not did_parry:
 		# calculate diference
 		attack.ignore_blocking = true
 		health.do_damage( attack )
