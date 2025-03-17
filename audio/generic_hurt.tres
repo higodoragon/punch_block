@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AudioSettings" load_steps=3 format=3 uid="uid://b31v74qpxb8c3"]
+
+[ext_resource type="Script" uid="uid://d1cihyw7tq44v" path="res://components/audio_settings.gd" id="1_0mdl2"]
+[ext_resource type="AudioStream" uid="uid://l6e14ctncb2m" path="res://audio/placeholders/8bit_damage.ogg" id="2_cc5aa"]
+
+[resource]
+script = ExtResource("1_0mdl2")
+stream = ExtResource("2_cc5aa")
+channel = 0
+limit = 1
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://d1cihyw7tq44v"

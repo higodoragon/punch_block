@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="FuncGodotFGDFile" load_steps=11 format=3 uid="uid://bjh5ibcguq5nc"]
+
+[ext_resource type="Resource" uid="uid://b2r6r6v6ukisp" path="res://entities/worldspawn_fgd.tres" id="1_evoip"]
+[ext_resource type="Resource" uid="uid://ct4thwqqjw5ry" path="res://entities/baseclass_fgd.tres" id="1_riqbq"]
+[ext_resource type="Resource" uid="uid://dkji6tolsdrm2" path="res://entities/func/detail_fgd.tres" id="2_xvkhw"]
+[ext_resource type="Resource" uid="uid://dtwb58bdnqxko" path="res://entities/func/detail_illusionary_fgd.tres" id="3_no5ut"]
+[ext_resource type="Resource" uid="uid://cmudvfyl7l5jn" path="res://entities/func/geo_fgd.tres" id="4_iclcv"]
+[ext_resource type="Resource" uid="uid://cuc6n2xbug0ju" path="res://entities/func/illusionary_fgd.tres" id="5_me624"]
+[ext_resource type="Resource" uid="uid://dl3gb60enq8xu" path="res://entities/info/player_start_fgd.tres" id="6_l8h4y"]
+[ext_resource type="Resource" uid="uid://d02ykb5640ryh" path="res://entities/enemy/goon_fgd.tres" id="7_2i4ns"]
+[ext_resource type="Script" uid="uid://dlm1k5yau374n" path="res://addons/func_godot/src/fgd/func_godot_fgd_file.gd" id="7_l8h4y"]
+[ext_resource type="Resource" uid="uid://bd6vfe5okdimf" path="res://entities/enemy/quilin_fgd.tres" id="9_0ufcv"]
+
+[resource]
+script = ExtResource("7_l8h4y")
+export_file = false
+target_map_editor = 1
+fgd_name = "FuncGodot"
+base_fgd_files = Array[Resource]([])
+entity_definitions = Array[Resource]([ExtResource("1_riqbq"), ExtResource("1_evoip"), ExtResource("2_xvkhw"), ExtResource("3_no5ut"), ExtResource("4_iclcv"), ExtResource("5_me624"), ExtResource("6_l8h4y"), ExtResource("7_2i4ns"), ExtResource("9_0ufcv")])

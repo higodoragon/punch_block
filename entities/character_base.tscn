@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctpoqub80fah0"]
+
+[ext_resource type="Script" uid="uid://88pbfyfqnxlk" path="res://entities/character_base.gd" id="1_jt5lh"]
+
+[node name="CharacterBase" type="CharacterBody3D"]
+editor_description = "A basic character for our fps"
+collision_layer = 2
+collision_mask = 3
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+floor_constant_speed = true
+floor_snap_length = 0.0
+script = ExtResource("1_jt5lh")

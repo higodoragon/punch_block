@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AudioSettings" load_steps=3 format=3 uid="uid://dhw5r5jb3malg"]
+
+[ext_resource type="Script" uid="uid://d1cihyw7tq44v" path="res://components/audio_settings.gd" id="1_m4ca2"]
+[ext_resource type="AudioStream" uid="uid://c3vdgnpyc1t8c" path="res://audio/placeholders/drg_jump.ogg" id="2_x80go"]
+
+[resource]
+script = ExtResource("1_m4ca2")
+stream = ExtResource("2_x80go")
+channel = 0
+limit = 5
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://d1cihyw7tq44v"

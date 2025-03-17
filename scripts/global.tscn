@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3jyiof1ueqcm"]
+
+[ext_resource type="Script" uid="uid://b0fmjkm4tkt7d" path="res://scripts/global.gd" id="1_bux5h"]
+[ext_resource type="PackedScene" uid="uid://ddemxbua6ylaj" path="res://components/audio_manager_component.tscn" id="2_lqipe"]
+
+[node name="Global" type="Node"]
+script = ExtResource("1_bux5h")
+
+[node name="AudioManagerComponent" parent="." instance=ExtResource("2_lqipe")]
+
+[node name="StageContainer" type="Node3D" parent="."]

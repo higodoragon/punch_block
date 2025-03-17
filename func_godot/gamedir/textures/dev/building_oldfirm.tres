@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://func_godot/gamedir/textures/dev/building_oldfirm.png" id="1_lsygk"]
+
+[resource]
+albedo_texture = ExtResource("1_lsygk")
+metallic_specular = 0.0
+texture_filter = 2

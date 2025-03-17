@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cw3titx8tb2mv"]
+
+[ext_resource type="Script" uid="uid://c1el125gga3tw" path="res://entities/item/item_health.gd" id="1_b1qo4"]
+[ext_resource type="PackedScene" uid="uid://1c2yklmymlri" path="res://components/pickup_component.tscn" id="1_tbl61"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tbl61"]
+load_path = "res://.godot/imported/foods.png-8bf47b68ed707e67ec35865df08be7e9.ctex"
+
+[node name="Health" type="Node3D"]
+script = ExtResource("1_b1qo4")
+
+[node name="PickupComponent" parent="." instance=ExtResource("1_tbl61")]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+centered = false
+offset = Vector2(-8, 0)
+pixel_size = 0.125
+billboard = 2
+texture_filter = 0
+texture = SubResource("CompressedTexture2D_tbl61")
+hframes = 3
+frame = 1

@@ -1,0 +1,63 @@
+[gd_scene load_steps=11 format=3 uid="uid://c17t8jv6ljq3k"]
+
+[ext_resource type="Script" uid="uid://cpmiws4fu01ys" path="res://entities/enemy/quilin.gd" id="1_gabge"]
+[ext_resource type="Texture2D" uid="uid://cj4c3ykn2ton4" path="res://assets/goon.png" id="2_otsnb"]
+[ext_resource type="PackedScene" uid="uid://ccvm8eicw8t4d" path="res://components/common_physics_component.tscn" id="3_070q2"]
+[ext_resource type="PackedScene" uid="uid://cdbvouq7r8gic" path="res://components/ai_component.tscn" id="3_otsnb"]
+[ext_resource type="PackedScene" uid="uid://ddemxbua6ylaj" path="res://components/audio_manager_component.tscn" id="4_hid43"]
+[ext_resource type="PackedScene" uid="uid://bkmxotoqgn5rn" path="res://components/state_machine_component.tscn" id="5_xiami"]
+[ext_resource type="PackedScene" uid="uid://bmn8km3ip46h6" path="res://components/health_component.tscn" id="6_1lxin"]
+[ext_resource type="PackedScene" uid="uid://lm36snfl5obu" path="res://components/hitbox_component.tscn" id="7_ctuxw"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ailji"]
+height = 2.1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mppgj"]
+height = 3.0
+radius = 1.5
+
+[node name="Quilin" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 7
+floor_constant_speed = true
+floor_snap_length = 0.0
+script = ExtResource("1_gabge")
+projectile_knockback = 45
+speed = 0.75
+gravity = 0.2
+infight_group = 2
+metadata/_custom_type_script = "uid://88pbfyfqnxlk"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 0)
+shape = SubResource("CylinderShape3D_ailji")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+centered = false
+offset = Vector2(-8, 0)
+pixel_size = 0.125
+billboard = 2
+texture_filter = 0
+texture = ExtResource("2_otsnb")
+hframes = 8
+
+[node name="AIComponent" parent="." instance=ExtResource("3_otsnb")]
+melee_damage = 0.0
+melee_knockback = 0.0
+
+[node name="CommonPhysicsComponent" parent="." instance=ExtResource("3_070q2")]
+
+[node name="AudioManagerComponent" parent="." instance=ExtResource("4_hid43")]
+
+[node name="StateMachineComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("5_xiami")]
+sprite = NodePath("../Sprite3D")
+
+[node name="HealthComponent" parent="." instance=ExtResource("6_1lxin")]
+max_health = 2.0
+knockback_multiplier = 8.0
+
+[node name="HitboxComponent" parent="." instance=ExtResource("7_ctuxw")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("CylinderShape3D_mppgj")

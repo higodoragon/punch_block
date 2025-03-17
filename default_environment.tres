@@ -1,0 +1,63 @@
+[gd_resource type="Environment" load_steps=5 format=3 uid="uid://bbpibdciq47ca"]
+
+[sub_resource type="Shader" id="Shader_48he2"]
+code = "shader_type sky;
+
+uniform sampler2D ground_sample : filter_nearest_mipmap, source_color;
+uniform vec3 ground_position = vec3( 0.0 );
+uniform float ground_scale = 1.0;
+
+// https://godotshaders.com/shader/rotate-texture/
+vec2 rotate(vec2 uv, vec2 pivot, float angle)
+{
+	return uv * mat2( vec2( sin(angle), -cos(angle) ), vec2( cos(angle), sin(angle) ) );
+}
+
+void sky() {
+	vec3 set = vec3( 0, 0, 0 );
+	
+	if ( EYEDIR.y < -0.0 && POSITION.y > ground_position.y )
+	{
+		// https://godotshaders.com/shader/sky-flat-ground-texture/
+		
+		ivec2 ground_real_size = textureSize( ground_sample, 0 );
+		float ground_ratio = float( ground_real_size.x ) / float( ground_real_size.y );
+		vec2 ground_size = vec2( ground_scale * ground_ratio, ground_scale );
+
+		vec3 cam = POSITION - ground_position;
+		vec2 euv = EYEDIR.xz / abs( EYEDIR.y );
+		vec2 cuv = -cam.xz / cam.y;
+		float camDist = length(cam);
+		float absy = abs( normalize( cam ).y );
+		vec2 tuv = ( euv - cuv ) * camDist * absy;
+
+		tuv = rotate( tuv, vec2( 0 ), PI );
+		tuv /= ground_size;
+
+		COLOR = texture( ground_sample, tuv ).rgb;
+	}
+	else
+	{
+		COLOR = vec3( 0, 0, 0 );
+	}
+}"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_b31q1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hcf0u"]
+shader = SubResource("Shader_48he2")
+shader_parameter/ground_sample = SubResource("CompressedTexture2D_b31q1")
+shader_parameter/ground_position = Vector3(0, 0, 0)
+shader_parameter/ground_scale = 1.0
+
+[sub_resource type="Sky" id="Sky_u4eud"]
+sky_material = SubResource("ShaderMaterial_hcf0u")
+radiance_size = 0
+
+[resource]
+background_mode = 1
+background_color = Color(0.5, 0.5, 0.5, 1)
+sky = SubResource("Sky_u4eud")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+reflected_light_source = 1

@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://4ltf35eaj48d"]
+
+[ext_resource type="Texture2D" uid="uid://bimqx2yl8imjd" path="res://assets/projectile.png" id="1_hhwor"]
+[ext_resource type="Script" uid="uid://dc8hrgluv2t6d" path="res://entities/projectile.gd" id="1_kxi4n"]
+[ext_resource type="PackedScene" uid="uid://ddemxbua6ylaj" path="res://components/audio_manager_component.tscn" id="3_27it7"]
+[ext_resource type="Script" uid="uid://bcnyim8n3lsil" path="res://components/state_machine_component.gd" id="3_jnjrb"]
+
+[node name="Projectile" type="Node3D"]
+script = ExtResource("1_kxi4n")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+pixel_size = 0.125
+billboard = 1
+texture_filter = 0
+texture = ExtResource("1_hhwor")
+hframes = 7
+
+[node name="AudioManagerComponent" parent="." instance=ExtResource("3_27it7")]
+
+[node name="StateMachineComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("3_jnjrb")
+sprite = NodePath("../Sprite3D")
+metadata/_custom_type_script = "uid://bcnyim8n3lsil"

@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccvm8eicw8t4d"]
+
+[ext_resource type="Script" uid="uid://ceu4v0br10erh" path="res://components/common_physics_component.gd" id="1_x5dr4"]
+
+[node name="CommonPhysicsComponent" type="Node"]
+script = ExtResource("1_x5dr4")
+
+[node name="StepCast" type="ShapeCast3D" parent="."]
+visible = false
+enabled = false
+target_position = Vector3(0, 0, 0)
+
+[node name="StepRay" type="RayCast3D" parent="."]
+visible = false
+enabled = false

@@ -1,0 +1,33 @@
+extends Node3D
+class_name AudioManagerComponent
+
+func create( audio_player, audio_settings : AudioSettings ):
+	var same_amount = 0
+	for p in get_children():
+		if p.stream == audio_settings.stream:
+			same_amount += 1
+		if same_amount >= audio_settings.limit:
+			p.queue_free()
+
+	audio_player.stream = audio_settings.stream
+	audio_player.volume_db = audio_settings.volume
+	audio_player.pitch_scale = audio_settings.pitch_scale
+	audio_player.pitch_scale += randf_range( -audio_settings.pitch_randomness, audio_settings.pitch_randomness )
+	audio_player.pitch_scale = max( audio_player.pitch_scale, 0.05 )
+	audio_player.finished.connect( audio_player.queue_free )
+	audio_player.attenuation_filter_cutoff_hz = 10000
+	add_child( audio_player )
+
+	return audio_player
+
+func play( sound_settings : AudioSettings ) -> AudioStreamPlayer3D:
+	var audio_player = create( AudioStreamPlayer3D.new(), sound_settings )
+	if audio_player != null:
+		audio_player.play()
+	return audio_player
+
+func play_interface( sound_settings : AudioSettings ) -> AudioStreamPlayer:
+	var audio_player = create( AudioStreamPlayer.new(), sound_settings )
+	if audio_player != null:
+		audio_player.play()
+	return audio_player

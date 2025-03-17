@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://d34f1c1c0o1hm"]
+
+[ext_resource type="Texture2D" uid="uid://bb6d4x5ehh28p" path="res://func_godot/gamedir/textures/dev/gold1.png" id="1_emsed"]
+
+[resource]
+albedo_texture = ExtResource("1_emsed")
+metallic_specular = 0.0
+texture_filter = 2
