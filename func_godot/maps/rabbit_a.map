@@ -5,6 +5,7 @@
 "mapversion" "220"
 "wad" ""
 "classname" "worldspawn"
+"_tb_def" "builtin:FuncGodot.fgd"
 // brush 0
 {
 ( 96 -320 -48 ) ( 96 -319 -48 ) ( 96 -320 -47 ) dev/gray1_32x [ 0 -1 0 0 ] [ 0 0 -1 8 ] 270 2 2
@@ -102,12 +103,6 @@
 }
 // entity 2
 {
-"classname" "enemy_turret"
-"origin" "120 -360 32"
-"angle" "90"
-}
-// entity 3
-{
 "classname" "func_detail"
 // brush 0
 {
@@ -137,19 +132,7 @@
 ( -384 -288 32 ) ( -384 -288 33 ) ( -384 -287 32 ) dev/gold_32x [ 0 -1 0 -64 ] [ 0 0 -1 0 ] 0 2 2
 }
 }
-// entity 4
-{
-"classname" "enemy_turret"
-"origin" "-24 -360 32"
-"angle" "90"
-}
-// entity 5
-{
-"classname" "enemy_turret"
-"origin" "-184 -376 32"
-"angle" "90"
-}
-// entity 6
+// entity 3
 {
 "classname" "func_detail"
 // brush 0
@@ -180,7 +163,7 @@
 ( -480 -320 64 ) ( -480 -320 65 ) ( -480 -319 64 ) dev/gray1_32x [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 2 2
 }
 }
-// entity 7
+// entity 4
 {
 "classname" "func_geo"
 // brush 0
@@ -202,7 +185,7 @@
 ( 1024 -512 64 ) ( 1024 -512 65 ) ( 1024 -511 64 ) dev/gray1_32x [ 0 0 -1.0000000000000002 0 ] [ 0 -1.0000000000000002 0 0 ] 270 2 2
 }
 }
-// entity 8
+// entity 5
 {
 "classname" "func_detail"
 // brush 0
@@ -215,7 +198,7 @@
 ( -512 -352 48 ) ( -512 -352 49 ) ( -512 -351 48 ) dev/gray2_diag [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 2 2
 }
 }
-// entity 9
+// entity 6
 {
 "classname" "func_detail"
 // brush 0
@@ -227,7 +210,7 @@
 ( -384 -64 64 ) ( -320 0 64 ) ( -320 0 -48 ) dev/gold_32x [ 1 0 0 0 ] [ 0 0 -1 0 ] 90 2 2
 }
 }
-// entity 10
+// entity 7
 {
 "classname" "func_detail"
 // brush 0
@@ -239,7 +222,7 @@
 ( 192 0 64 ) ( 192 -64 -48 ) ( 192 -64 64 ) dev/gold_32x [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 2 2
 }
 }
-// entity 11
+// entity 8
 {
 "classname" "func_detail"
 // brush 0
@@ -324,7 +307,7 @@
 ( -416 128 160 ) ( -416 128 161 ) ( -416 129 160 ) dev/stone_12 [ 0 1.0000000000000002 0 -39 ] [ 0 0 -1.0000000000000002 32 ] 270 2 2
 }
 }
-// entity 12
+// entity 9
 {
 "classname" "func_detail"
 // brush 0
@@ -364,7 +347,7 @@
 ( 768 -512 128 ) ( 768 -512 129 ) ( 768 -511 128 ) dev/gray1_32x [ 0 0 -1.0000000000000002 -8 ] [ -6.123233995736767e-17 -1.0000000000000002 0 0 ] 90 2 2
 }
 }
-// entity 13
+// entity 10
 {
 "classname" "func_detail"
 // brush 0
@@ -404,19 +387,24 @@
 ( 800 -256 128 ) ( 800 -256 129 ) ( 800 -255 128 ) dev/gray1_32x [ 0 0 -1.0000000000000002 -8 ] [ 0 -1.0000000000000002 0 0 ] 270 2 2
 }
 }
-// entity 14
+// entity 11
 {
 "classname" "enemy_turret"
 "origin" "920 -456 32"
 }
-// entity 15
+// entity 12
 {
 "classname" "enemy_turret"
 "origin" "888 -392 32"
 }
-// entity 16
+// entity 13
 {
 "classname" "info_player_start"
 "origin" "-56 -56 -48"
 "angle" "270"
+}
+// entity 14
+{
+"classname" "enemy_sniper"
+"origin" "-224 -464 32"
 }
