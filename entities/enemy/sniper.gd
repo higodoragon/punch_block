@@ -11,7 +11,7 @@ class_name EnemySniper
 @onready var laser: Laser = $Laser
 
 @export_group('Sniper-Specific Settings')
-@export_range(1, 100) var damage: int = 0
+@export_range(1, 100) var damage: int = 5
 @export var knockback: float = 100.0
 @export var backup_distance: float = 12.0
 @export var stun_time: float = 40.0
