@@ -36,9 +36,6 @@ func do_damage( attack : Attack ):
 	if iframes > 0:
 		return
 
-	if attack.is_parry and global.check( parent, "state" ) and global.check( parent, "state_stun" ):
-		parent.state.set_state( parent.state_stun )
-
 	elif global.check( parent, "state" ) and global.check( parent, "state_pain" ):
 		parent.state.set_state( parent.state_pain )
 	
