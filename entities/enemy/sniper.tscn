@@ -16,6 +16,8 @@ height = 2.89209
 radius = 0.897461
 
 [node name="Sniper" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 7
 script = ExtResource("1_gl24o")
 metadata/_custom_type_script = "uid://88pbfyfqnxlk"
 
