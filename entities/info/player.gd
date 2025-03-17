@@ -78,6 +78,7 @@ var block_press : bool = false
 var block_input : bool = false
 var block_active : bool = false
 var parry_active : bool = false
+var block_buffer : bool = false
 var did_parry : bool = false 
 var parrycombo_amount : int = 0
 var parrycombo_time : int = 0
@@ -108,9 +109,12 @@ func do_block():
 	block_press_old = block_press
 	block_press = Input.is_action_pressed("action_block")
 
-	if ( not block_press_old and block_press ) and action_delay <= 0 and not block_active and not block_input:
-		block_input = true
+	if ( not block_press_old and block_press ):
+		block_buffer = true
+	
+	if block_buffer and action_delay <= 0 and not block_active and not block_input:
 		block_active = true
+		block_input = true
 
 	if not block_press:
 		block_input = false
@@ -125,6 +129,7 @@ func do_block():
 		did_parry = false
 		block_active = false
 		block_input = false
+		block_buffer = false
 
 	if block_active:
 		block_time += 1
