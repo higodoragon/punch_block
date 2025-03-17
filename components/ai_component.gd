@@ -1,4 +1,5 @@
 extends Node
+class_name AIComponent
 
 @onready var parent : Node3D = get_parent()
 
