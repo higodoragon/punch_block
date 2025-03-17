@@ -7,7 +7,7 @@ enum INFIGHT_GROUP
 	QUILIN,
 }
 
-enum BLOCKABLE_TYPE
+enum POWERUP_TYPES
 {
 	NONE,
 	HYPER_DAMAGE,
@@ -31,8 +31,7 @@ var knockback_power : float
 var knockback_position : Vector3
 var agressor : Node3D
 var infight_group : INFIGHT_GROUP = INFIGHT_GROUP.NONE
-var blockable_type : BLOCKABLE_TYPE = BLOCKABLE_TYPE.NONE
+var powerup_type : POWERUP_TYPES = POWERUP_TYPES.NONE
+var parry_reaction : bool = false
 var ignore_blocking : bool = false
-var is_parry : bool = false
-var is_block : bool = false
 var is_silent : bool = false

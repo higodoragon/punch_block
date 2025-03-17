@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="FuncGodotFGDModelPointClass" load_steps=4 format=3 uid="uid://dtorbkdf5ovnx"]
+
+[ext_resource type="Resource" uid="uid://ct4thwqqjw5ry" path="res://entities/baseclass_fgd.tres" id="1_cre8w"]
+[ext_resource type="PackedScene" uid="uid://b4d3dgctiwcc3" path="res://entities/enemy/sniper.tscn" id="2_cre8w"]
+[ext_resource type="Script" uid="uid://cjsxe506teagi" path="res://addons/func_godot/src/fgd/func_godot_fgd_model_point_class.gd" id="3_tx7ba"]
+
+[resource]
+script = ExtResource("3_tx7ba")
+target_map_editor = 1
+models_sub_folder = ""
+scale_expression = ""
+generate_size_property = false
+generate_gd_ignore_file = false
+scene_file = ExtResource("2_cre8w")
+apply_rotation_on_map_build = true
+apply_scale_on_map_build = true
+classname = "enemy_sniper"
+description = "shoots hitscan bullets from afar with a short delay for a sniper"
+func_godot_internal = false
+base_classes = Array[Resource]([ExtResource("1_cre8w")])
+class_properties = {}
+class_property_descriptions = {}
+auto_apply_to_matching_node_properties = false
+meta_properties = {
+"color": Color(1, 0, 0.666667, 1)
+}
+node_class = ""
+name_property = ""
+metadata/_custom_type_script = "uid://cjsxe506teagi"

@@ -54,6 +54,7 @@ func generic_melee():
 		attack.knockback_power = melee_knockback
 		attack.knockback_position = parent.global_position
 		attack.agressor = parent
+		attack.parry_reaction = true
 		target.health.do_damage( attack )
 
 func start_ai():
