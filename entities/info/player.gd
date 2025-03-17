@@ -155,11 +155,6 @@ func do_block_damage( attack : Attack ):
 	block_amount += 1
 
 func do_block_steal( attack : Attack ):
-	#match attack.blockable_type:
-	#	Attack.BLOCKABLE_TYPE.NONE:
-	#		pass
-	#	Attack.BLOCKABLE_TYPE.GOON:
-	#		pass
 	pass
 
 const punch_time_delay : int = 0
