@@ -67,6 +67,7 @@ func _process( delta : float ):
 func view_direction() -> Vector3:
 	return global.rotation_to_direction( Vector3( camera.rotation.x, global_rotation.y, 0 ) )
 
+var action_delay : int = 0
 
 var block_time : int = 0
 var block_amount : int = 0 
@@ -74,8 +75,8 @@ var block_did_a_parry : bool = false
 
 var block_press_old : bool = false
 var block_press : bool = false
+var block_input : bool = false
 var block_active : bool = false
-var block_super_active : bool = false
 var parry_active : bool = false
 var did_parry : bool = false 
 var parrycombo_amount : int = 0
@@ -93,43 +94,40 @@ func do_parry():
 	parry_audio.pitch_scale += parrycombo_amount * 0.05
 
 	# kills attack delay, you can counter attack imediatly
-	punch_delay = 0
+	action_delay = 0
 			
 	# dumb combo mechanic just for funs,
 	# probably breaks if you keep going hehe
 	parrycombo_time = 240
 	parrycombo_amount += 1
 
-	block_active = false
 	block_time = parry_frametime - 10
-
+	block_input = false
+	
 func do_block():
-	block_press_old = block_active
+	block_press_old = block_press
 	block_press = Input.is_action_pressed("action_block")
 
-	if ( not block_press_old and block_press ) and punch_delay <= 0 and not block_active and not parry_active:
+	if ( not block_press_old and block_press ) and action_delay <= 0 and not block_active and not block_input:
+		block_input = true
 		block_active = true
-		parry_active = true
-		block_super_active = true
 
-	if ( block_press_old and not block_press ):
-		block_active = false
+	if not block_press:
+		block_input = false
 	
-	if not on_parry_frametime():
-		parry_active = false
-
-	if block_active or parry_active:
-		block_time += 1
-	else:
-		block_time = 0
+	parry_active = on_parry_frametime() and block_active
 	
-	if block_super_active and not block_active and not parry_active:
+	if block_active and not block_input and not on_parry_frametime():
 		if not did_parry:
-			punch_delay = 60
-		
+			action_delay = 30
 		block_amount = 0
+		block_time = 0
 		did_parry = false
-		block_super_active = false
+		block_active = false
+		block_input = false
+
+	if block_active:
+		block_time += 1
 	
 	if parrycombo_time > 0:
 		parrycombo_time -= 1
@@ -145,7 +143,7 @@ func do_block_damage( attack : Attack ):
 	var angle_diff = atan2( sin( angle_diff_raw ), cos( angle_diff_raw ) ) / PI
 	var on_block_angle : bool = abs( angle_diff ) < 0.5
 
-	if on_block_angle and ( block_active or parry_active ):
+	if on_block_angle and block_active:
 		if on_parry_frametime():
 			do_parry()
 			did_parry = true
@@ -173,12 +171,10 @@ const punch_animation_hit := punch_time_recovery
 
 var punch_buffer := false
 var punch_animation : int = 0
-var punch_delay : int = 0
-var punch_block_delay : int = 0
 
 func do_punch():
 	hud_crosshair.rotation_degrees = 0
-	hud_punch.text = str( punch_delay )
+	hud_punch.text = str( action_delay )
 	
 	var hitscan_results = combat.hitscan( self, global_position, view_direction(), 4, true, false )
 	var enemies_position_average := Vector3.ZERO
@@ -189,9 +185,9 @@ func do_punch():
 	if Input.is_action_just_pressed("action_punch"):
 		punch_buffer = true
 
-	if punch_buffer and punch_delay <= 0 and not ( block_active or parry_active ):
+	if punch_buffer and action_delay <= 0 and not block_active:
 		punch_animation = punch_animation_start
-		punch_delay = punch_animation_start
+		action_delay = punch_animation_start
 		punch_buffer = false
 
 	# TODO: punch animation
@@ -236,8 +232,8 @@ func do_punch():
 	if punch_animation > 0:
 		punch_animation -= 1	
 
-	if punch_delay > 0:
-		punch_delay -= 1
+	if action_delay > 0:
+		action_delay -= 1
 
 func do_die( killer = null ):
 	if killer != null:
