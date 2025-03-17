@@ -72,8 +72,10 @@ func do_attack():
 	if ai.target:
 		var attack := Attack.new()
 		attack.agressor = self
+		attack.inflictor = null
 		attack.damage = projectile_damage
 		attack.knockback_power = projectile_knockback
+		attack.parry_reaction = true
 		combat.fire_projectile( self, global_position, ai.target_direction(), projectile_velocity, attack )
 		ai.attack_delay = randi_range( 60, 120 )
 

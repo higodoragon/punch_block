@@ -33,8 +33,8 @@ var state_melee := [
 	{ goto = state_active },
 ]
 
-var state_pain := [
-	{ delay = 10, frame = 6 },
+var state_stun := [
+	{ delay = 60, frame = 6 },
 	{ goto = state_active },
 ]
 
@@ -58,6 +58,9 @@ func do_melee():
 	if ai.target:
 		ai.generic_melee()
 		ai.melee_delay = 60
+
+func do_parry_reaction( inflictor : Node3D ):
+	state.set_state( state_stun )
 
 func _physics_process( delta : float ):
 	physics.common_physics( delta )

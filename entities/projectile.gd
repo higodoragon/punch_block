@@ -3,6 +3,7 @@ class_name Projectile
 
 @onready var state := $StateMachineComponent
 @onready var audio := $AudioManagerComponent
+@onready var sprite := $Sprite3D
 
 var attack : Attack
 var velocity : Vector3
@@ -20,10 +21,10 @@ var state_hit : Array = [
 	{ destroy = true },
 ]
 
-var state_hit_hard : Array = [
-	{ delay = 4, frame = 4 },
-	{ delay = 4, frame = 5 },
-	{ delay = 4, frame = 6 },
+var state_hit_parry : Array = [
+	{ delay = 4, frame = 1 },
+	{ delay = 4, frame = 2 },
+	{ delay = 4, frame = 3 },
 	{ destroy = true },
 ]
 
@@ -54,7 +55,7 @@ func _physics_process( delta: float ) -> void:
 	if lifetime > 0:
 		lifetime -= 1
 	else:
-		action_hit()
+		do_hit()
 		return
 
 	position += velocity * delta
@@ -62,14 +63,16 @@ func _physics_process( delta: float ) -> void:
 
 	var result = get_world_3d().direct_space_state.intersect_shape( shape_query, 1 )
 	if result:
+		do_hit()
+		
 		var collided = result[0].collider
 		if combat.object_is_hitbox( collided ):
 			var victim = collided.parent
 			attack.knockback_position = victim.global_position + -self.velocity
 			victim.health.do_damage( attack )
-		
-		action_hit()
-		return
 
-func action_hit():
-		state.set_state( state_hit )
+func do_hit():
+	state.set_state( state_hit )
+
+func do_parry_reaction( attacker : Node3D ):
+	queue_free()

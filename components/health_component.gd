@@ -40,14 +40,10 @@ func do_damage( attack : Attack ):
 		parent.state.set_state( parent.state_pain )
 	
 	if not attack.is_silent and global.check( parent, "audio" ):
-		if attack.damage > 0:
-			if global.check( parent, "sfx_hurt" ):
-				parent.audio.play( parent.sfx_hurt )
-			else:
-				parent.audio.play( global.sfx_generic_hurt )
+		if global.check( parent, "sfx_hurt" ):
+			parent.audio.play( parent.sfx_hurt )
 		else:
-			# TODO: BLOCK SFX
-			pass
+			parent.audio.play( global.sfx_generic_hurt )
 
 	health -= attack.damage
 	

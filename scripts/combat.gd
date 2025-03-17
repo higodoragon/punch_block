@@ -82,7 +82,9 @@ func fire_projectile( agressor : Node3D, position : Vector3, direction : Vector3
 	projectile.attack_owner = agressor
 	
 	attack.agressor = agressor
-	if "infight_group" in agressor:
+	attack.inflictor = projectile
+	
+	if global.check( agressor, "infight_group" ):
 		attack.infight_group = agressor.infight_group
 	
 	global.stage.add_child( projectile )

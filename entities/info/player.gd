@@ -146,24 +146,29 @@ func do_block_damage( attack : Attack ):
 	var angle_from_view = rotation.y
 	var angle_diff_raw = angle_from_view - angle_from_attack
 	var angle_diff = atan2( sin( angle_diff_raw ), cos( angle_diff_raw ) ) / PI
-	var on_block_angle : bool = abs( angle_diff ) < 0.5
 
-	if on_block_angle and block_active:
-		if on_parry_frametime():
-			do_parry()
+	var on_block_angle : bool = abs( angle_diff ) < 0.25
+	if on_block_angle:
+		if on_parry_frametime() and block_active:
 			did_parry = true
-
-		# removes damage and knockback from any attack
-		attack.knockback_power = 0					
-		attack.damage = 0
-		do_block_steal( attack )
+			do_parry()
+		
+		elif block_active:
+			block_amount += 1
 	
-	if not did_parry:
-		# calculate diference
+	if did_parry or block_amount > 0:
+		if attack.parry_reaction and did_parry:
+			if attack.inflictor != null and global.check( attack.inflictor, "do_parry_reaction" ):
+				attack.inflictor.do_parry_reaction( self )
+		
+			elif attack.agressor != null and global.check( attack.agressor, "do_parry_reaction" ):
+				attack.agressor.do_parry_reaction( self )
+		
+		do_block_steal( attack )
+	else:
+		# attack like normal
 		attack.ignore_blocking = true
 		health.do_damage( attack )
-
-	block_amount += 1
 
 func do_block_steal( attack : Attack ):
 	pass
@@ -207,6 +212,7 @@ func do_punch():
 			if is_punching:
 				var attack = Attack.new()
 				attack.agressor = self
+				attack.inflictor = null
 				attack.damage = 1
 				attack.knockback_power = 5
 				attack.knockback_position = position

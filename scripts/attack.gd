@@ -30,6 +30,7 @@ var damage : int
 var knockback_power : float
 var knockback_position : Vector3
 var agressor : Node3D
+var inflictor : Node3D
 var infight_group : INFIGHT_GROUP = INFIGHT_GROUP.NONE
 var powerup_type : POWERUP_TYPES = POWERUP_TYPES.NONE
 var parry_reaction : bool = false
