@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://bisav6x43dh51"]
+
+[ext_resource type="Script" uid="uid://dmv62xko6sdrj" path="res://_debug/debug_zone.gd" id="1_yhf0q"]
+[ext_resource type="PackedScene" uid="uid://mdes4hst2fpb" path="res://entities/info/player.tscn" id="2_2a4e8"]
+[ext_resource type="PackedScene" uid="uid://bi3bfn71jwawv" path="res://entities/info/player_start.tscn" id="3_5dsji"]
+[ext_resource type="PackedScene" uid="uid://b4d3dgctiwcc3" path="res://entities/enemy/sniper.tscn" id="4_axqn0"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2a4e8"]
+size = Vector2(100, 100)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_5dsji"]
+data = PackedVector3Array(50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0, -50, 50, 0, -50)
+
+[node name="DebugZone" type="Node" node_paths=PackedStringArray("stage")]
+script = ExtResource("1_yhf0q")
+stage = NodePath("Node3D")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+mesh = SubResource("PlaneMesh_2a4e8")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_5dsji")
+
+[node name="Player" parent="Node3D" instance=ExtResource("2_2a4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.866312, 0)
+
+[node name="PlayerStart" parent="Node3D" instance=ExtResource("3_5dsji")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.866312, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D"]
+transform = Transform3D(0.759351, -0.56309, 0.326061, 0, 0.501108, 0.865385, -0.650681, -0.657131, 0.380516, 0, 5.04955, 0)
+
+[node name="Sniper" parent="." instance=ExtResource("4_axqn0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.770441, 0.505187, -29.1425)
