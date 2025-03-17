@@ -73,8 +73,9 @@ func _physics_process( delta : float ):
 
 	target = global.player
 	
-	if global.check( target, "health" ) and target.health.dead:
-		target = null
+	if target != null:
+		if global.check( target, "health" ) and target.health.dead:
+			target = null
 	
 	if attack_delay > 0:
 		attack_delay -= 1
