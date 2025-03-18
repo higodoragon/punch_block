@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FuncGodotFGDFile" load_steps=13 format=3 uid="uid://bjh5ibcguq5nc"]
+[gd_resource type="Resource" script_class="FuncGodotFGDFile" load_steps=14 format=3 uid="uid://bjh5ibcguq5nc"]
 
 [ext_resource type="Resource" uid="uid://b2r6r6v6ukisp" path="res://entities/worldspawn_fgd.tres" id="1_evoip"]
 [ext_resource type="Resource" uid="uid://ct4thwqqjw5ry" path="res://entities/baseclass_fgd.tres" id="1_riqbq"]
@@ -12,6 +12,7 @@
 [ext_resource type="Resource" uid="uid://bd6vfe5okdimf" path="res://entities/enemy/quilin_fgd.tres" id="9_0ufcv"]
 [ext_resource type="Resource" uid="uid://dtorbkdf5ovnx" path="res://entities/enemy/sniper_fgd.tres" id="10_m8jfg"]
 [ext_resource type="Resource" uid="uid://b4vxcyuvi75cc" path="res://entities/enemy/marine_fgd.tres" id="11_rejpt"]
+[ext_resource type="Resource" uid="uid://b5f7x7h221r8r" path="res://entities/enemy/brute_fgd.tres" id="12_saqd5"]
 
 [resource]
 script = ExtResource("7_l8h4y")
@@ -19,4 +20,4 @@ export_file = false
 target_map_editor = 1
 fgd_name = "FuncGodot"
 base_fgd_files = Array[Resource]([])
-entity_definitions = Array[Resource]([ExtResource("1_riqbq"), ExtResource("1_evoip"), ExtResource("2_xvkhw"), ExtResource("3_no5ut"), ExtResource("4_iclcv"), ExtResource("5_me624"), ExtResource("6_l8h4y"), ExtResource("7_2i4ns"), ExtResource("9_0ufcv"), ExtResource("10_m8jfg"), ExtResource("11_rejpt")])
+entity_definitions = Array[Resource]([ExtResource("1_riqbq"), ExtResource("1_evoip"), ExtResource("2_xvkhw"), ExtResource("3_no5ut"), ExtResource("4_iclcv"), ExtResource("5_me624"), ExtResource("6_l8h4y"), ExtResource("7_2i4ns"), ExtResource("9_0ufcv"), ExtResource("10_m8jfg"), ExtResource("11_rejpt"), ExtResource("12_saqd5")])

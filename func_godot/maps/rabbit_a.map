@@ -405,6 +405,6 @@
 }
 // entity 14
 {
-"classname" "enemy_marine"
-"origin" "-32 -368 32"
+"classname" "enemy_brute"
+"origin" "-128 -352 32"
 }
