@@ -42,7 +42,19 @@ texture = ExtResource("2_rwklv")
 hframes = 8
 
 [node name="AIComponent" parent="." instance=ExtResource("6_pniho")]
-melee_activation_range = 4.0
+melee_activation_range = 6.0
+melee_delay_amount = 10
+melee_delay_randomness = 10
+attack_range = 0.0
+attack_activation_range = 0.0
+attack_damage = 0.0
+attack_knockback = 0.0
+attack_speed = 0.0
+attack_delay_amount = 0
+attack_delay_randomness = 0
+walk_angle_randomness = 0.0
+walk_delay_amount = 0
+walk_delay_randomness = 0
 
 [node name="CommonPhysicsComponent" parent="." instance=ExtResource("6_m8kop")]
 

@@ -3,19 +3,77 @@ class_name AIComponent
 
 @onready var parent : Node3D = get_parent()
 
+@export var melee_range : float = 3.5
+@export var melee_activation_range : float = 3.5
+@export var melee_damage : float = 1
+@export var melee_knockback : float = 25
+@export var melee_delay_amount : int = 0
+@export var melee_delay_randomness : int = 0
+
+@export var attack_range : float = 200
+@export var attack_activation_range : float = 200
+@export var attack_damage : float = 1
+@export var attack_knockback : float = 25
+@export var attack_speed : float = 25
+@export var attack_delay_amount : int = 30
+@export var attack_delay_randomness : int = 30
+
+@export var walk_angle_randomness : float = 0.25
+@export var walk_backup_range : float  = 0
+@export var walk_delay_amount : int = 30
+@export var walk_delay_randomness : int = 30
+
 var wakeup_delay : int = 60
 var attack_delay : int = 60
 var melee_delay : int = 60
+var walk_delay : int
 var walk_angle : float
-var walk_angle_time : int
-
-@export var melee_range : float = 3.5
-@export var melee_activation_range : float = 3.5
-@export var melee_damage : float = 2
-@export var melee_knockback : float = 25
-@export var walk_angle_randomness = 0
-
 var target : Node
+
+func _physics_process( delta : float ):
+	if wakeup_delay > 0:
+		wakeup_delay -= 1
+		return
+
+	target = global.player
+	
+	if target != null:
+		if global.check( target, "health" ) and target.health.dead:
+			target = null
+	
+	if parent.state.current_array == parent.state_active:
+		# count down generic delays
+		
+		if walk_delay > 0:
+			walk_delay -= 1
+		
+		if attack_delay > 0:
+			attack_delay -= 1
+
+		if melee_delay > 0:
+			melee_delay -= 1
+
+func start_ai():
+	# has to do it after the enemies start up
+	wakeup_delay = randf_range( 0, 60 )
+
+	# important mechanic
+	if global.check( parent, "sprite" ):
+		parent.sprite.scale *= randf_range( 0.9, 1.1 )
+	
+	parent.state.set_state( parent.state_active )
+
+func generic_walk_direction() -> Vector3:
+	if walk_delay <= 0:
+		walk_angle = target_angle()
+		if target_distance() > walk_backup_range:
+			walk_angle += randf_range( -PI * walk_angle_randomness, PI * walk_angle_randomness )
+		else:
+			walk_angle += PI
+		
+		walk_delay = walk_delay_amount + randi_range( 0, walk_delay_randomness )
+	
+	return global.angle_to_direction( walk_angle ) * Vector3( 1, 0, 1 )
 
 func target_direction() -> Vector3:
 	if target:
@@ -36,8 +94,20 @@ func in_melee_range():
 func in_melee_activation_range():
 	return target_distance() < melee_activation_range
 
-func should_attack():
-	if attack_delay <= 0 and global.check( parent, "state_attack" ):
+func in_attack_range():
+	return target_distance() < attack_range
+
+func in_attack_activation_range():
+	return target_distance() < attack_activation_range
+
+func set_melee_delay():
+	melee_delay = melee_delay_amount + randi_range( 0, melee_delay_randomness )
+
+func set_attack_delay():
+	attack_delay = attack_delay_amount + randi_range( 0, attack_delay_randomness )
+
+func check_and_set_attack_states():
+	if attack_delay <= 0 and in_attack_activation_range() and global.check( parent, "state_attack" ):
 		parent.state.set_state( parent.state_attack )
 		return true
 
@@ -57,34 +127,4 @@ func generic_melee():
 		attack.inflictor = null
 		attack.parry_reaction = true
 		target.health.do_damage( attack )
-
-func start_ai():
-	# has to do it after the enemies start up
-	wakeup_delay = randf_range( 0, 60 )
-	attack_delay = randf_range( 10, 20 )
-
-	# important mechanic
-	if global.check( parent, "sprite" ):
-		parent.sprite.scale *= randf_range( 0.9, 1.1 )
-	
-	parent.state.set_state( parent.state_active )
-
-func _physics_process( delta : float ):
-	if wakeup_delay > 0:
-		wakeup_delay -= 1
-		return
-
-	target = global.player
-	
-	if target != null:
-		if global.check( target, "health" ) and target.health.dead:
-			target = null
-	
-	if attack_delay > 0:
-		attack_delay -= 1
-
-	if melee_delay > 0:
-		melee_delay -= 1
-		
-	if walk_angle_time > 0:
-		walk_angle_time -= 1
+		set_melee_delay()

@@ -26,7 +26,7 @@ enum POWERUP_TYPES
 	# the only way to deal damage to the final boss?
 }
 
-var damage : int
+var damage : float
 var knockback_power : float
 var knockback_position : Vector3
 var agressor : Node3D

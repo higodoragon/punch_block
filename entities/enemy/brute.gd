@@ -132,5 +132,5 @@ func hit(hit_dmg: float, hit_knock: float):
 		atk.agressor = self
 		atk.knockback_power = hit_knock
 		atk.damage = hit_dmg
-		combat.hitscan_bullet(self, global_position, ai.target_direction(), atk)
+		combat.hitscan_bullet( self, global_position, ai.target_direction(), atk )
 		ai.attack_delay = 100

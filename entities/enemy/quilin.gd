@@ -47,26 +47,14 @@ var state_pain := [
 func _ready() -> void:
 	ai.start_ai()
 
-func do_move():
-	if ai.walk_angle_time <= 0:
-		ai.walk_angle = ai.target_angle()
-		if ai.target_distance() > backup_distance:
-			ai.walk_angle += randf_range( -PI * 0.25, PI * 0.25 )
-		else:
-			ai.walk_angle += PI
-		ai.walk_angle_time = randi_range( 30, 60 )
-	
-	var walk : Vector3 = global.angle_to_direction( ai.walk_angle ) * Vector3( 1, 0, 1 )
-	velocity += walk * speed
-
 func do_active():
 	if ai.target:
-		do_move();
-		ai.should_attack()
+		velocity += ai.generic_walk_direction() * speed
+		ai.check_and_set_attack_states()
 
 func do_attack_active():
 	if ai.target:
-		do_move();
+		velocity += ai.generic_walk_direction() * speed
 
 func do_attack():
 	if ai.target:
@@ -77,7 +65,7 @@ func do_attack():
 		attack.knockback_power = projectile_knockback
 		attack.parry_reaction = true
 		combat.fire_projectile( self, global_position, ai.target_direction(), projectile_velocity, attack )
-		ai.attack_delay = randi_range( 60, 120 )
+		ai.set_attack_delay()
 
 func _physics_process( delta : float ):
 	physics.common_physics( delta )

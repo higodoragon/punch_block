@@ -7,8 +7,9 @@ func object_is_hitbox( node : Node ):
 	return ( node.collision_layer & 16 != 0 )
 
 func hitscan( agressor : Node3D, position : Vector3, direction : Vector3, distance : float, do_penetrate_hitboxes : bool = false, do_penetrate_world : bool = false ):
-	position.y += 1.75
-
+	if global.check( agressor, "view_height" ):
+			position.y += agressor.view_height
+	
 	var space_state = global.stage.get_world_3d().direct_space_state
 	var query = PhysicsRayQueryParameters3D.new()
 	query.collide_with_areas = true
@@ -43,7 +44,7 @@ func hitscan( agressor : Node3D, position : Vector3, direction : Vector3, distan
 			if not do_penetrate_world:
 				break
 		else:
-			print( "combat.hitscan: ops..." )
+			print( "hitscan: found something not reconised..." )
 			break
 			
 	return hitscan_results

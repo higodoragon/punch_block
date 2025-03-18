@@ -43,21 +43,17 @@ func _ready() -> void:
 
 func do_active():
 	if ai.target:
-		var angle = ai.target_angle()
-		var walk : Vector3 = global.angle_to_direction( angle ) * Vector3( 1, 0, 1 )
-		velocity += walk * speed
-
-		ai.should_attack()
+		velocity += ai.generic_walk_direction() * speed
+		ai.check_and_set_attack_states()
 
 func do_melee_active():
 	if ai.target:
-		var walk : Vector3 = ai.target_direction() * Vector3( 1, 0, 1 )
-		velocity += walk * ( speed * 2 )
+		velocity += ai.generic_walk_direction() * ( speed * 1.5 )
 
 func do_melee():
 	if ai.target:
 		ai.generic_melee()
-		ai.melee_delay = 60
+		ai.set_melee_delay()
 
 func do_parry_reaction( inflictor : Node3D ):
 	state.set_state( state_stun )

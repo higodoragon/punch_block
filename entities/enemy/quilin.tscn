@@ -42,8 +42,17 @@ texture = ExtResource("2_otsnb")
 hframes = 8
 
 [node name="AIComponent" parent="." instance=ExtResource("3_otsnb")]
+melee_range = 0.0
+melee_activation_range = 0.0
 melee_damage = 0.0
 melee_knockback = 0.0
+attack_knockback = 45.0
+attack_speed = 20.0
+attack_delay_amount = 60
+attack_delay_randomness = 60
+walk_backup_range = 10.0
+walk_delay_amount = 10
+walk_delay_randomness = 60
 
 [node name="CommonPhysicsComponent" parent="." instance=ExtResource("3_070q2")]
 

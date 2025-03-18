@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="AudioSettings" load_steps=3 format=3 uid="uid://dg513k0c5f4ah"]
 
 [ext_resource type="Script" uid="uid://d1cihyw7tq44v" path="res://components/audio_settings.gd" id="1_tedfd"]
-[ext_resource type="AudioStream" uid="uid://cvsbllpbggl4j" path="res://audio/beep.wav" id="2_vo2k5"]
+[ext_resource type="AudioStream" uid="uid://cvsbllpbggl4j" path="res://audio/placeholders/beep.wav" id="2_vo2k5"]
 
 [resource]
 script = ExtResource("1_tedfd")

@@ -113,7 +113,7 @@ func do_attack():
 	# for col in res:
 	# 	# print('col: %s' % col)
 	# 	print('col parent: %s' % col.collider.get_parent())
-	combat.hitscan_bullet(self, global_position, ai.target_direction(), attack)
+	combat.hitscan_bullet( self, global_position, ai.target_direction(), attack )
 	ai.attack_delay = 100
 
 
