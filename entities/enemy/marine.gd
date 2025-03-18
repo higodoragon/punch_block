@@ -1,130 +1,75 @@
 extends CharacterBase
-class_name EnemyMarine
 
-@onready var health: HealthComponent = $HealthComponent
-@onready var hitbox: HitboxComponent = $HitboxComponent
-@onready var sprite: Sprite3D = $Sprite3D
-@onready var physics: CommonPhysicsComponent = $CommonPhysicsComponent
-@onready var ai: AIComponent = $AIComponent
-@onready var state: StateMachineComponent = $StateMachineComponent
-@onready var parent: Node3D = get_parent()
+@onready var health := $HealthComponent
+@onready var hitbox := $HitboxComponent
+@onready var physics := $CommonPhysicsComponent
+@onready var state := $StateMachineComponent
+@onready var ai := $AIComponent
+@onready var audio := $AudioManagerComponent
+@onready var sprite := $Sprite3D
 
-@export_group('Marine-Specific Settings')
-@export_range(1, 100) var damage: int = 1
-@export var knockback: float = 100.0
-@export var backup_distance: float = 8.0
-@export var stun_time: float = (100.0 / 3)
-@export var weapon_range: float = 50.0
+@export var projectile_damage = 3.5
+@export var projectile_knockback = 40
+@export var projectile_velocity = 20
+
+@export var backup_distance = 10
 
 var sfx_footstep = global.sfx_generic_footsteps
 
-# =====
-# STATES
-# =====
+var state_idle := [
+	{ sticky_call = "do_searth" },
+	{ delay = 1, frame = 0 },
+	{ goto = state_active }
+]
 
-# GENERIC
-# -----
+var state_active := [
+	{ sticky_call = "do_active" },
+	{ delay = 15, frame = 1 },
+	{ delay = 15, frame = 2 },
+	{ loop = true }
+]
+
+var state_attack := [
+	{ sticky_call = "do_attack_active" },
+	{ delay = 20, frame = 3 },
+	{ delay = 1, frame = 4 },
+	{ sticky_call = "" },
+	{ call = "do_attack" },
+	{ delay = 20, frame = 5 },
+	{ call = "do_attack" },
+	{ delay = 20, frame = 5 },
+	{ call = "do_attack" },
+	{ delay = 20, frame = 5 },
+	{ goto = state_active },
+]
 
 var state_pain := [
-	{'delay': stun_time, 'frame': 6},
-	{'goto': state_active}
+	{ delay = 10, frame = 6 },
+	{ goto = state_active },
 ]
 
-const state_idle := [
-	{'sticky_call': 'do_searth'},
-	{'delay': 1, 'frame': 0},
-	{'goto': 'state_active'}
-]
-
-# mandatory
-const state_active := [
-	{sticky_call = "do_active"},
-	{delay = 15, frame = 1},
-	{delay = 15, frame = 2},
-	{loop = true}
-]
-
-# mandatory
-const state_attack := [
-	{sticky_call = "do_attack_active"},
-	{delay = 20, frame = 3},
-	{delay = 1, frame = 4},
-	{sticky_call = ""},
-	{call = "do_attack"},
-	{delay = 20, frame = 5},
-	{delay = 1, frame = 4},
-	{call = "do_attack"},
-	{delay = 20, frame = 5},
-	{delay = 1, frame = 4},
-	{call = "do_attack"},
-	{delay = 20, frame = 5},
-	{delay = 1, frame = 4},
-	{goto = state_active},
-]
-
-# =====
-# BUILT-INS
-# =====
-
-func _ready():
+func _ready() -> void:
 	ai.start_ai()
-
-
-func _physics_process(delta):
-	physics.common_physics(delta)
-
-
-# =====
-#
-# =====
-
-
-# =====
-# STATE ACTIONS
-# =====
-
-
-func do_move():
-	if ai.walk_angle_time <= 0:
-		ai.walk_angle = ai.target_angle()
-		if ai.target_distance() > backup_distance:
-			ai.walk_angle += randf_range(-PI * 0.25, PI * 0.25)
-		else:
-			ai.walk_angle += PI
-		ai.walk_angle_time = randi_range(30, 60)
-	
-	var walk: Vector3 = global.angle_to_direction(ai.walk_angle) * Vector3(1, 0, 1)
-	velocity += walk * speed
-
 
 func do_active():
 	if ai.target:
-		do_move()
-		ai.should_attack()
-		# sniper_should_attack()
-
-
-func do_attack():
-	var attack := Attack.new()
-	attack.agressor = self
-	attack.damage = damage
-	attack.knockback_power = knockback
-	# combat.fire_projectile(self, global_position, ai.target_direction(), projectile_velocity, attack)
-	# for col in res:
-	# 	# print('col: %s' % col)
-	# 	print('col parent: %s' % col.collider.get_parent())
-	combat.hitscan_bullet( self, global_position, ai.target_direction(), attack )
-	ai.attack_delay = 100
-
+		velocity += ai.generic_walk_direction() * speed
+		ai.check_and_set_attack_states()
 
 func do_attack_active():
 	if ai.target:
-		do_move();
+		velocity += ai.generic_walk_direction() * speed
 
+func do_attack():
+	if ai.target:
+		var attack := Attack.new()
+		attack.agressor = self
+		attack.inflictor = null
+		attack.damage = projectile_damage
+		attack.knockback_power = projectile_knockback
+		attack.parry_reaction = true
+		combat.hitscan_bullet( self, global_position, ai.target_direction(), attack )
+		ai.set_attack_delay()
 
-func do_flee():
-	do_active()
-
-
-func do_aim():
-	pass
+func _physics_process( delta : float ):
+	physics.common_physics( delta )
