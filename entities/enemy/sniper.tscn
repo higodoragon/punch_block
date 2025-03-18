@@ -1,12 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://b4d3dgctiwcc3"]
+[gd_scene load_steps=14 format=3 uid="uid://b4d3dgctiwcc3"]
 
 [ext_resource type="Script" uid="uid://1i3wvbvc2lct" path="res://entities/enemy/sniper.gd" id="1_gl24o"]
+[ext_resource type="Resource" uid="uid://dg513k0c5f4ah" path="res://entities/enemy/audio_settings_sniper_beep.tres" id="2_cqhd5"]
 [ext_resource type="Texture2D" uid="uid://djh2pmes24m5b" path="res://assets/sniper.png" id="2_k4ue4"]
 [ext_resource type="PackedScene" uid="uid://bmn8km3ip46h6" path="res://components/health_component.tscn" id="3_wgxjb"]
 [ext_resource type="PackedScene" uid="uid://bkmxotoqgn5rn" path="res://components/state_machine_component.tscn" id="4_gl24o"]
 [ext_resource type="PackedScene" uid="uid://lm36snfl5obu" path="res://components/hitbox_component.tscn" id="4_j8i2r"]
 [ext_resource type="PackedScene" uid="uid://ccvm8eicw8t4d" path="res://components/common_physics_component.tscn" id="5_20ct0"]
 [ext_resource type="PackedScene" uid="uid://cdbvouq7r8gic" path="res://components/ai_component.tscn" id="6_j8d0c"]
+[ext_resource type="PackedScene" uid="uid://ddemxbua6ylaj" path="res://components/audio_manager_component.tscn" id="8_cqhd5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jooqj"]
 shading_mode = 0
@@ -27,6 +29,9 @@ radius = 0.897461
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_gl24o")
+damage = 1
+time_to_fire = 6.0
+beep = ExtResource("2_cqhd5")
 speed = 0.25
 metadata/_custom_type_script = "uid://88pbfyfqnxlk"
 
@@ -61,6 +66,9 @@ sprite = NodePath("../Sprite3D")
 [node name="CommonPhysicsComponent" parent="." instance=ExtResource("5_20ct0")]
 
 [node name="AIComponent" parent="." instance=ExtResource("6_j8d0c")]
+
+[node name="AudioManagerComponent" parent="." instance=ExtResource("8_cqhd5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14035, 0)
 
 [node name="HitboxComponent" parent="." instance=ExtResource("4_j8i2r")]
 

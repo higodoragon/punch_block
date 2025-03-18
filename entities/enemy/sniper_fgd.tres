@@ -22,7 +22,8 @@ class_properties = {}
 class_property_descriptions = {}
 auto_apply_to_matching_node_properties = false
 meta_properties = {
-"color": Color(1, 0, 0.666667, 1)
+"color": Color(1, 0, 0.666667, 1),
+"model": "\"enemy_sniper.glb\""
 }
 node_class = ""
 name_property = ""
