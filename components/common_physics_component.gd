@@ -2,7 +2,7 @@ extends Node
 class_name CommonPhysicsComponent
 
 @onready var parent : CharacterBody3D = get_parent()
-@onready var collision = parent.find_child("CollisionShape3D")
+@onready var collision : CollisionShape3D = parent.find_child("CollisionShape3D")
 @onready var step_cast : ShapeCast3D = $StepCast
 @onready var step_ray : RayCast3D = $StepRay
 

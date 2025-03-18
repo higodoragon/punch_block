@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="FuncGodotFGDModelPointClass" load_steps=4 format=3 uid="uid://b5f7x7h221r8r"]
 
 [ext_resource type="Resource" uid="uid://ct4thwqqjw5ry" path="res://entities/baseclass_fgd.tres" id="1_atr6j"]
-[ext_resource type="PackedScene" uid="uid://bh1qcramhhi6d" path="res://entities/enemy/brute.tscn" id="2_atr6j"]
+[ext_resource type="PackedScene" uid="uid://bh1qcramhhi6d" path="res://entities/enemy/brute/brute.tscn" id="2_atr6j"]
 [ext_resource type="Script" uid="uid://cjsxe506teagi" path="res://addons/func_godot/src/fgd/func_godot_fgd_model_point_class.gd" id="3_p7etx"]
 
 [resource]

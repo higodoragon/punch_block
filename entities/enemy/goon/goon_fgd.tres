@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://ct4thwqqjw5ry" path="res://entities/baseclass_fgd.tres" id="1_2b3lm"]
 [ext_resource type="Script" uid="uid://cjsxe506teagi" path="res://addons/func_godot/src/fgd/func_godot_fgd_model_point_class.gd" id="1_2wsyu"]
-[ext_resource type="PackedScene" uid="uid://bdjuloaag0nxb" path="res://entities/enemy/goon.tscn" id="1_3qq1s"]
+[ext_resource type="PackedScene" uid="uid://bdjuloaag0nxb" path="res://entities/enemy/goon/goon.tscn" id="1_3qq1s"]
 
 [resource]
 script = ExtResource("1_2wsyu")

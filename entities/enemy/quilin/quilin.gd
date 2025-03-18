@@ -1,18 +1,12 @@
 extends CharacterBase
 
-@onready var health := $HealthComponent
-@onready var hitbox := $HitboxComponent
-@onready var physics := $CommonPhysicsComponent
-@onready var state := $StateMachineComponent
-@onready var ai := $AIComponent
-@onready var audio := $AudioManagerComponent
-@onready var sprite := $Sprite3D
-
-@export var projectile_damage = 3.5
-@export var projectile_knockback = 40
-@export var projectile_velocity = 20
-
-@export var backup_distance = 10
+@onready var health : HealthComponent = $HealthComponent
+@onready var hitbox : HitboxComponent = $HitboxComponent
+@onready var physics : CommonPhysicsComponent = $CommonPhysicsComponent
+@onready var state : StateMachineComponent = $StateMachineComponent
+@onready var ai : AIComponent = $AIComponent
+@onready var audio : AudioManagerComponent = $AudioManagerComponent
+@onready var sprite : Sprite3D = $Sprite3D
 
 var sfx_footstep = global.sfx_generic_footsteps
 
@@ -61,10 +55,10 @@ func do_attack():
 		var attack := Attack.new()
 		attack.agressor = self
 		attack.inflictor = null
-		attack.damage = projectile_damage
-		attack.knockback_power = projectile_knockback
+		attack.damage = ai.attack_damage
+		attack.knockback_power = ai.attack_knockback
 		attack.parry_reaction = true
-		combat.fire_projectile( self, global_position, ai.target_direction(), projectile_velocity, attack )
+		combat.fire_projectile( self, global_position, ai.target_direction(), ai.attack_speed, attack )
 		ai.set_attack_delay()
 
 func _physics_process( delta : float ):

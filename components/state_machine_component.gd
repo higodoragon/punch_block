@@ -6,6 +6,7 @@ class_name StateMachineComponent
 var current_array : Array = []
 var current_index : int = 0
 var sticky_call : String = ""
+var sticky_call_active : bool = false
 var delay : int = 0
 signal state_changed(array: Array, index: int)
 
@@ -60,6 +61,8 @@ func _physics_process(delta: float) -> void:
 			parent.call( current.call )
 			
 		if "sticky_call" in current and current.sticky_call in parent:
+			# sticky_call_active is for the AI component
+			sticky_call_active = current.sticky_call.ends_with( "_active" )
 			sticky_call = current.sticky_call
 
 		if "goto" in current:

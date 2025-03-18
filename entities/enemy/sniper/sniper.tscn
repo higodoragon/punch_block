@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=3 uid="uid://b4d3dgctiwcc3"]
 
-[ext_resource type="Script" uid="uid://1i3wvbvc2lct" path="res://entities/enemy/sniper.gd" id="1_gl24o"]
+[ext_resource type="Script" uid="uid://1i3wvbvc2lct" path="res://entities/enemy/sniper/sniper.gd" id="1_gl24o"]
 [ext_resource type="Texture2D" uid="uid://djh2pmes24m5b" path="res://assets/sniper.png" id="2_k4ue4"]
-[ext_resource type="PackedScene" uid="uid://bmn8km3ip46h6" path="res://components/health_component.tscn" id="3_wgxjb"]
+[ext_resource type="PackedScene" uid="uid://d16mvtftr8jl7" path="res://components/health_component.tscn" id="3_wgxjb"]
 [ext_resource type="PackedScene" uid="uid://bkmxotoqgn5rn" path="res://components/state_machine_component.tscn" id="4_gl24o"]
 [ext_resource type="PackedScene" uid="uid://lm36snfl5obu" path="res://components/hitbox_component.tscn" id="4_j8i2r"]
 [ext_resource type="PackedScene" uid="uid://ccvm8eicw8t4d" path="res://components/common_physics_component.tscn" id="5_20ct0"]

@@ -1,16 +1,15 @@
 extends CharacterBase
-class_name EnemySniper
 
-@onready var health: HealthComponent = $HealthComponent
-@onready var hitbox: HitboxComponent = $HitboxComponent
-@onready var sprite: Sprite3D = $Sprite3D
-@onready var physics: CommonPhysicsComponent = $CommonPhysicsComponent
-@onready var ai: AIComponent = $AIComponent
-@onready var state: StateMachineComponent = $StateMachineComponent
-@onready var parent: Node3D = get_parent()
+@onready var health : HealthComponent = $HealthComponent
+@onready var hitbox : HitboxComponent = $HitboxComponent
+@onready var physics : CommonPhysicsComponent = $CommonPhysicsComponent
+@onready var state : StateMachineComponent = $StateMachineComponent
+@onready var ai : AIComponent = $AIComponent
+@onready var audio : AudioManagerComponent = $AudioManagerComponent
+@onready var sprite : Sprite3D = $Sprite3D
+
 @onready var laser_head = $LaserHead
 @onready var laser_material = $LaserHead/LaserMesh.get_active_material( 0 )
-@onready var audio: AudioManagerComponent = $AudioManagerComponent
 
 var sfx_footstep = global.sfx_generic_footsteps
 

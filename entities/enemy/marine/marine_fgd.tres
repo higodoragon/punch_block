@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="FuncGodotFGDModelPointClass" load_steps=4 format=3 uid="uid://b4vxcyuvi75cc"]
 
 [ext_resource type="Resource" uid="uid://ct4thwqqjw5ry" path="res://entities/baseclass_fgd.tres" id="1_trfql"]
-[ext_resource type="PackedScene" uid="uid://bwl13piokv8qi" path="res://entities/enemy/marine.tscn" id="2_trfql"]
+[ext_resource type="PackedScene" uid="uid://bwl13piokv8qi" path="res://entities/enemy/marine/marine.tscn" id="2_trfql"]
 [ext_resource type="Script" uid="uid://cjsxe506teagi" path="res://addons/func_godot/src/fgd/func_godot_fgd_model_point_class.gd" id="3_xv0m4"]
 
 [resource]

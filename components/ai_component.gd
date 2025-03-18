@@ -20,8 +20,8 @@ class_name AIComponent
 
 @export var walk_angle_randomness : float = 0.25
 @export var walk_backup_range : float  = 0
-@export var walk_delay_amount : int = 30
-@export var walk_delay_randomness : int = 30
+@export var walk_delay_amount : int = 10
+@export var walk_delay_randomness : int = 60
 
 var wakeup_delay : int = 60
 var attack_delay : int = 60
@@ -41,7 +41,7 @@ func _physics_process( delta : float ):
 		if global.check( target, "health" ) and target.health.dead:
 			target = null
 	
-	if parent.state.current_array == parent.state_active:
+	if parent.state.sticky_call_active:
 		# count down generic delays
 		
 		if walk_delay > 0:

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="FuncGodotFGDModelPointClass" load_steps=4 format=3 uid="uid://bd6vfe5okdimf"]
 
 [ext_resource type="Resource" uid="uid://ct4thwqqjw5ry" path="res://entities/baseclass_fgd.tres" id="1_xkyg6"]
-[ext_resource type="PackedScene" uid="uid://c17t8jv6ljq3k" path="res://entities/enemy/quilin.tscn" id="2_xkyg6"]
+[ext_resource type="PackedScene" uid="uid://c17t8jv6ljq3k" path="res://entities/enemy/quilin/quilin.tscn" id="2_xkyg6"]
 [ext_resource type="Script" uid="uid://cjsxe506teagi" path="res://addons/func_godot/src/fgd/func_godot_fgd_model_point_class.gd" id="3_oonma"]
 
 [resource]

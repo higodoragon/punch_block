@@ -1,9 +1,9 @@
 extends Node3D
 class_name Projectile
 
-@onready var state := $StateMachineComponent
-@onready var audio := $AudioManagerComponent
-@onready var sprite := $Sprite3D
+@onready var state : StateMachineComponent = $StateMachineComponent
+@onready var audio : AudioManagerComponent = $AudioManagerComponent
+@onready var sprite : Sprite3D = $Sprite3D
 
 var attack : Attack
 var velocity : Vector3

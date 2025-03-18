@@ -1,12 +1,12 @@
 extends CharacterBase
 
-@onready var health := $HealthComponent
-@onready var hitbox := $HitboxComponent
-@onready var physics := $CommonPhysicsComponent
-@onready var state := $StateMachineComponent
-@onready var ai := $AIComponent
-@onready var audio := $AudioManagerComponent
-@onready var sprite := $Sprite3D
+@onready var health : HealthComponent = $HealthComponent
+@onready var hitbox : HitboxComponent = $HitboxComponent
+@onready var physics : CommonPhysicsComponent = $CommonPhysicsComponent
+@onready var state : StateMachineComponent = $StateMachineComponent
+@onready var ai : AIComponent = $AIComponent
+@onready var audio : AudioManagerComponent = $AudioManagerComponent
+@onready var sprite : Sprite3D = $Sprite3D
 
 var sfx_footstep = global.sfx_generic_footsteps
 

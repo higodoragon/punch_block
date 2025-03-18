@@ -1,12 +1,12 @@
 class_name Player extends CharacterBase
 
-@onready var health := $HealthComponent
-@onready var hitbox := $HitboxComponent
-@onready var physics := $CommonPhysicsComponent
-@onready var audio := $AudioManagerComponent
+@onready var health : HealthComponent = $HealthComponent
+@onready var hitbox : HitboxComponent = $HitboxComponent
+@onready var physics : CommonPhysicsComponent = $CommonPhysicsComponent
+@onready var audio : AudioManagerComponent = $AudioManagerComponent
 
-@onready var camera := $Camera3D
-@onready var collision := $CollisionShape3D
+@onready var camera : Camera3D = $Camera3D
+@onready var collision : CollisionShape3D = $CollisionShape3D
 @onready var hud_health : Label = $HUD/Control/HealthText
 @onready var hud_block : Label = $HUD/Control/BlockText
 @onready var hud_punch : Label = $HUD/Control/PunchText

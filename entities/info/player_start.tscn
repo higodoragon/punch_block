@@ -1,18 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bi3bfn71jwawv"]
+[gd_scene load_steps=2 format=3 uid="uid://bi3bfn71jwawv"]
 
 [ext_resource type="Script" uid="uid://b43vn0oarfx4c" path="res://entities/info/player_start.gd" id="1_v55uh"]
-[ext_resource type="Texture2D" uid="uid://c8q7ptorm5agv" path="res://assets/enemies/spirits.png" id="2_8777l"]
 
 [node name="PlayerStart" type="Node3D"]
 script = ExtResource("1_v55uh")
-
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
-pixel_size = 0.125
-billboard = 1
-shaded = true
-double_sided = false
-texture_filter = 0
-texture = ExtResource("2_8777l")
-hframes = 3
-vframes = 3

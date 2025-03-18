@@ -1,7 +1,7 @@
 extends Node
 
-@onready var audio := $AudioManagerComponent
-@onready var stage_container :=  $StageContainer
+@onready var audio : AudioManagerComponent = $AudioManagerComponent
+@onready var stage_container : Node3D = $StageContainer
 
 var stage : Node3D
 var stage_path : String
