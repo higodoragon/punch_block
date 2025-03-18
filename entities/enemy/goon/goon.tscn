@@ -24,7 +24,6 @@ floor_snap_length = 0.0
 script = ExtResource("1_m8kop")
 speed = 0.5
 friction = 0.95
-footstep_frequency = 300
 infight_group = 1
 metadata/_custom_type_script = "uid://88pbfyfqnxlk"
 

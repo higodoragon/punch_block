@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://clmvpqa4b7ga3"
+path="res://.godot/imported/test_marine.map-1bd11b5c74fdcd6e6335c5b97d754cc1.tres"
+
+[deps]
+
+source_file="res://func_godot/maps/test_marine.map"
+dest_files=["res://.godot/imported/test_marine.map-1bd11b5c74fdcd6e6335c5b97d754cc1.tres"]
+
+[params]
+

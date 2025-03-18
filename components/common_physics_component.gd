@@ -96,7 +96,7 @@ func common_physics( delta ):
 
 	if global.check( parent, "audio" ) and global.check( parent, "sfx_footstep" ):
 		if is_on_ground():
-			footstep_amount += ( parent.velocity * Vector3( 1, 0, 1 ) ).distance_to( Vector3.ZERO )
+			footstep_amount += ( ( parent.velocity * Vector3( 1, 0, 1 ) ) * delta ).distance_to( Vector3.ZERO )
 		
 		if on_ground and not on_ground_prev and air_time_old > 5:
 			parent.audio.play( parent.sfx_footstep )
