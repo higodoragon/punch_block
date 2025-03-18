@@ -31,6 +31,7 @@ var sfx_footstep = global.sfx_generic_footsteps
 @onready var animation_tree: AnimationTree = %AnimationTree
 var anim_punches = ['PunchL', 'PunchR']
 var anim_punches_idx = 0
+var dead = false
 
 # BLOCK vars
 var action_delay: int = 0
@@ -267,6 +268,7 @@ func do_punch():
 	punch_active = is_punching
 
 func do_die(killer = null):
+	dead = true
 	if killer != null:
 		target = killer
 
