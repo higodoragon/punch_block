@@ -1,61 +1,101 @@
 class_name Player extends CharacterBase
 
-@onready var health : HealthComponent = $HealthComponent
-@onready var hitbox : HitboxComponent = $HitboxComponent
-@onready var physics : CommonPhysicsComponent = $CommonPhysicsComponent
-@onready var audio : AudioManagerComponent = $AudioManagerComponent
+@onready var health: HealthComponent = $HealthComponent
+@onready var hitbox: HitboxComponent = $HitboxComponent
+@onready var physics: CommonPhysicsComponent = $CommonPhysicsComponent
+@onready var audio: AudioManagerComponent = $AudioManagerComponent
 
-@onready var camera : Camera3D = $Camera3D
-@onready var collision : CollisionShape3D = $CollisionShape3D
-@onready var hud_health : Label = $HUD/Control/HealthText
-@onready var hud_block : Label = $HUD/Control/BlockText
-@onready var hud_punch : Label = $HUD/Control/PunchText
-@onready var hud_crosshair : TextureRect = $HUD/Control/Crosshair
+@onready var camera: Camera3D = $Camera3D
+@onready var collision: CollisionShape3D = $CollisionShape3D
+@onready var hud_health: Label = $HUD/Control/HealthText
+@onready var hud_block: Label = $HUD/Control/BlockText
+@onready var hud_punch: Label = $HUD/Control/PunchText
+@onready var hud_crosshair: TextureRect = $HUD/Control/Crosshair
+
 
 @export var mouse_sensitivity: float = 3
-@export var jump_power : float = 10
-@export var jump_buffer_base : int = 15
-var jump_buffer_time : int = 0
-@export var jump_cayote_base : int = 20
-var jump_cayote_time : int = 0
-var view_step_offset : float = 0
-@export var view_step_smooth : float = 20
+@export var jump_power: float = 10
+@export var jump_buffer_base: int = 15
+var jump_buffer_time: int = 0
+@export var jump_cayote_base: int = 20
+var jump_cayote_time: int = 0
+var view_step_offset: float = 0
+@export var view_step_smooth: float = 20
 
-var target : Node3D
+var target: Node3D
 var sfx_footstep = global.sfx_generic_footsteps
 
-func _ready():
-	global.set_mouse_mode( Input.MOUSE_MODE_CAPTURED )
+# ANIMATION vars
+@onready var arms_viewmodel: Node3D = %arms
+@onready var animation_player: AnimationPlayer = arms_viewmodel.find_child('AnimationPlayer')
+@onready var animation_tree: AnimationTree = %AnimationTree
+var anim_punches = ['PunchL', 'PunchR']
+var anim_punches_idx = 0
 
-func _input( event: InputEvent ) -> void:
+# BLOCK vars
+var action_delay: int = 0
+
+var block_time: int = 0
+var block_amount: int = 0
+var block_did_a_parry: bool = false
+
+var block_press_old: bool = false
+var block_press: bool = false
+var block_input: bool = false
+var block_active: bool = false
+var parry_active: bool = false
+var block_buffer: bool = false
+var did_parry: bool = false
+var parrycombo_amount: int = 0
+var parrycombo_time: int = 0
+
+const parry_frametime = 15
+
+# PUNCH vars
+const punch_time_delay: int = 0
+const punch_time_recovery: int = 20
+
+const punch_animation_start := punch_time_delay + punch_time_recovery
+const punch_animation_hit := punch_time_recovery
+
+var punch_buffer := false
+var punch_animation: int = 0
+var punch_active := false
+var is_punching = false
+
+
+func _ready():
+	global.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+func _input(event: InputEvent) -> void:
 	if health.dead:
 		return
 
 	if event is InputEventMouseMotion:
 		if not Input.mouse_mode == Input.MOUSE_MODE_CAPTURED: return
-		var mouse_look : Vector2 = -event.relative * mouse_sensitivity * 0.1
+		var mouse_look: Vector2 = - event.relative * mouse_sensitivity * 0.1
 		rotation_degrees.y += mouse_look.x
 		camera.rotation_degrees.x += mouse_look.y
 		# godot bugs visuals when rotation.x is 90 degres
-		camera.rotation_degrees.x = clampf( camera.rotation_degrees.x, -89.9, 89.9 )
+		camera.rotation_degrees.x = clampf(camera.rotation_degrees.x, -89.9, 89.9)
 
-func _process( delta : float ):
+func _process(delta: float):
 	# stair smoothing
-	view_step_offset = lerp( view_step_offset, 0.0, delta * 20 )
-	camera.position.y = max( view_height + view_step_offset, -1 ) 
+	view_step_offset = lerp(view_step_offset, 0.0, delta * 20)
+	camera.position.y = max(view_height + view_step_offset, -1)
 	
 	# death animation
 	if health.dead:
 		if view_height > 0.25:
-			view_height = max( view_height - ( delta * 1.5 ), 0.25 )
+			view_height = max(view_height - (delta * 1.5), 0.25)
 
 		if target != null:
-			var look_rotation : Vector3 = global.look_at_return( self, target.global_position )
+			var look_rotation: Vector3 = global.look_at_return(self, target.global_position)
 			
-			camera.rotation.x = lerp_angle( camera.rotation.x, look_rotation.x, delta * 8 )
-			rotation.y = lerp_angle( rotation.y, look_rotation.y, delta * 8 )
+			camera.rotation.x = lerp_angle(camera.rotation.x, look_rotation.x, delta * 8)
+			rotation.y = lerp_angle(rotation.y, look_rotation.y, delta * 8)
 	
-	hud_health.text = str( int( health.health / health.max_health * 100 ), "%" )
+	hud_health.text = str(int(health.health / health.max_health * 100), "%")
 
 	if parry_active:
 		hud_block.text = "SUPER BLOCK"
@@ -65,25 +105,8 @@ func _process( delta : float ):
 		hud_block.text = ""
 
 func view_direction() -> Vector3:
-	return global.rotation_to_direction( Vector3( camera.rotation.x, global_rotation.y, 0 ) )
+	return global.rotation_to_direction(Vector3(camera.rotation.x, global_rotation.y, 0))
 
-var action_delay : int = 0
-
-var block_time : int = 0
-var block_amount : int = 0 
-var block_did_a_parry : bool = false
-
-var block_press_old : bool = false
-var block_press : bool = false
-var block_input : bool = false
-var block_active : bool = false
-var parry_active : bool = false
-var block_buffer : bool = false
-var did_parry : bool = false 
-var parrycombo_amount : int = 0
-var parrycombo_time : int = 0
-
-const parry_frametime = 15
 
 func on_parry_frametime():
 	return block_time < parry_frametime
@@ -91,7 +114,7 @@ func on_parry_frametime():
 func do_parry():
 	# PARRY!
 	global.freezeframe += 10
-	var parry_audio = global.audio_play_at( global.sfx_player_parry, self.global_position )
+	var parry_audio = global.audio_play_at(global.sfx_player_parry, self.global_position)
 	parry_audio.pitch_scale += parrycombo_amount * 0.05
 
 	# kills attack delay, you can counter attack imediatly
@@ -109,7 +132,7 @@ func do_block():
 	block_press_old = block_press
 	block_press = Input.is_action_pressed("action_block")
 
-	if ( not block_press_old and block_press ):
+	if (not block_press_old and block_press):
 		block_buffer = true
 	
 	if block_buffer and action_delay <= 0 and not block_active and not block_input:
@@ -140,14 +163,14 @@ func do_block():
 		parrycombo_time = 0
 		parrycombo_amount = 0
 
-func do_block_damage( attack : Attack ):
+func do_block_damage(attack: Attack):
 	var diff = global_position - attack.knockback_position
-	var angle_from_attack = atan2( diff.x, diff.z )
+	var angle_from_attack = atan2(diff.x, diff.z)
 	var angle_from_view = rotation.y
 	var angle_diff_raw = angle_from_view - angle_from_attack
-	var angle_diff = atan2( sin( angle_diff_raw ), cos( angle_diff_raw ) ) / PI
+	var angle_diff = atan2(sin(angle_diff_raw), cos(angle_diff_raw)) / PI
 
-	var on_block_angle : bool = abs( angle_diff ) < 0.25
+	var on_block_angle: bool = abs(angle_diff) < 0.25
 	if on_block_angle:
 		if on_parry_frametime() and block_active:
 			did_parry = true
@@ -158,42 +181,36 @@ func do_block_damage( attack : Attack ):
 	
 	if did_parry or block_amount > 0:
 		if attack.parry_reaction and did_parry:
-			if attack.inflictor != null and global.check( attack.inflictor, "do_parry_reaction" ):
-				attack.inflictor.do_parry_reaction( self )
+			if attack.inflictor != null and global.check(attack.inflictor, "do_parry_reaction"):
+				attack.inflictor.do_parry_reaction(self)
 		
-			elif attack.agressor != null and global.check( attack.agressor, "do_parry_reaction" ):
-				attack.agressor.do_parry_reaction( self )
+			elif attack.agressor != null and global.check(attack.agressor, "do_parry_reaction"):
+				attack.agressor.do_parry_reaction(self)
 		
-		do_block_steal( attack )
+		do_block_steal(attack)
 	else:
 		# attack like normal
 		attack.ignore_blocking = true
-		health.do_damage( attack )
+		health.do_damage(attack)
 
-func do_block_steal( attack : Attack ):
+func do_block_steal(attack: Attack):
 	pass
 
-const punch_time_delay : int = 0
-const punch_time_recovery : int = 20
-
-const punch_animation_start := punch_time_delay + punch_time_recovery
-const punch_animation_hit := punch_time_recovery
-
-var punch_buffer := false
-var punch_animation : int = 0
 
 func do_punch():
 	hud_crosshair.rotation_degrees = 0
-	hud_punch.text = str( action_delay )
+	hud_punch.text = str(action_delay)
 	
-	var hitscan_results = combat.hitscan( self, global_position, view_direction(), 4, true, false )
+	var hitscan_results = combat.hitscan(self, global_position, view_direction(), 4, true, false)
 	var enemies_position_average := Vector3.ZERO
 	var enemies_hit := 0
 	var did_hit_world = false
-	var is_punching = false
+	# var is_punching = false
 
 	if Input.is_action_just_pressed("action_punch"):
 		punch_buffer = true
+		choose_punch_anim()
+
 
 	if punch_buffer and action_delay <= 0 and not block_active:
 		punch_animation = punch_animation_start
@@ -203,10 +220,11 @@ func do_punch():
 	# TODO: punch animation
 	is_punching = punch_animation == punch_animation_hit
 
+
 	for result in hitscan_results:
 		var collider = result.collider
 
-		if combat.object_is_hitbox( collider ):
+		if combat.object_is_hitbox(collider):
 			var victim = collider.parent
 			
 			if is_punching:
@@ -217,7 +235,7 @@ func do_punch():
 				attack.knockback_power = 5
 				attack.knockback_position = position
 				attack.is_silent = true
-				victim.health.do_damage( attack )
+				victim.health.do_damage(attack)
 			
 			enemies_position_average += victim.global_position
 			enemies_hit += 1
@@ -231,7 +249,7 @@ func do_punch():
 
 	if is_punching:
 		if enemies_hit > 0:
-			global.audio_play_at( global.sfx_generic_hurt, enemies_position_average )
+			global.audio_play_at(global.sfx_generic_hurt, enemies_position_average)
 		
 		elif did_hit_world:
 			# TODO: world hit effect
@@ -241,12 +259,14 @@ func do_punch():
 		hud_crosshair.rotation_degrees = 45
 
 	if punch_animation > 0:
-		punch_animation -= 1	
+		punch_animation -= 1
 
 	if action_delay > 0:
 		action_delay -= 1
 
-func do_die( killer = null ):
+	punch_active = is_punching
+
+func do_die(killer = null):
 	if killer != null:
 		target = killer
 
@@ -259,14 +279,14 @@ func do_move():
 		jump_cayote_time = jump_cayote_base
 	
 	if jump_buffer_time and jump_cayote_time:
-		audio.play( global.sfx_player_jump )
+		audio.play(global.sfx_player_jump)
 		velocity.y = jump_power
 		jump_cayote_time = 0
 		jump_buffer_time = 0
 
 	# horizotal movement
-	var input_dir : Vector2 = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
-	var direction : Vector3 = ( transform.basis * Vector3( input_dir.x, 0, input_dir.y ) ).normalized()
+	var input_dir: Vector2 = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
+	var direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
 	velocity.x += direction.x * speed
 	velocity.z += direction.z * speed
@@ -279,11 +299,22 @@ func do_move():
 
 func _physics_process(delta: float) -> void:
 	if health.dead:
-		physics.common_physics( delta )
+		physics.common_physics(delta)
 		return
 
 	do_punch()
 	do_block()
 	do_move()
 
-	physics.common_physics( delta )
+	physics.common_physics(delta)
+
+## DELETE ME
+func play_anim(what: String):
+	# assert(what in arms.animations, 'player.gd: %s is not a valid animation' % what)
+	# arms.animation_player.play(arms.animations[what])
+	animation_player.play(what)
+
+func choose_punch_anim():
+	anim_punches_idx = wrapi(anim_punches_idx + 1, 0, anim_punches.size())
+	print(anim_punches_idx)
+	animation_tree.set('parameters/Punch/blend_position', anim_punches_idx)

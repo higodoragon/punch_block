@@ -1,11 +1,86 @@
-[gd_scene load_steps=11 format=3 uid="uid://mdes4hst2fpb"]
+[gd_scene load_steps=28 format=3 uid="uid://mdes4hst2fpb"]
 
 [ext_resource type="Script" uid="uid://ylp6vydxbh2w" path="res://entities/info/player.gd" id="1_merdl"]
-[ext_resource type="PackedScene" uid="uid://bmn8km3ip46h6" path="res://components/health_component.tscn" id="2_quc4t"]
+[ext_resource type="PackedScene" uid="uid://d16mvtftr8jl7" path="res://components/health_component.tscn" id="2_quc4t"]
+[ext_resource type="PackedScene" uid="uid://crqe2dumssey" path="res://assets/raw/arms.blend" id="3_2hcst"]
 [ext_resource type="Texture2D" uid="uid://ctatlt4v5fyf8" path="res://assets/crosshair.png" id="3_otayu"]
 [ext_resource type="PackedScene" uid="uid://lm36snfl5obu" path="res://components/hitbox_component.tscn" id="3_ug0ox"]
 [ext_resource type="PackedScene" uid="uid://ddemxbua6ylaj" path="res://components/audio_manager_component.tscn" id="4_ug0ox"]
 [ext_resource type="PackedScene" uid="uid://ccvm8eicw8t4d" path="res://components/common_physics_component.tscn" id="5_quc4t"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w3576"]
+animation = &"Block"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o6ig1"]
+animation = &"FistsUp"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vndai"]
+animation = &"Parry"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hn42q"]
+animation = &"Point"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tdjdb"]
+animation = &"PunchL"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3544y"]
+animation = &"PunchR"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_2hcst"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_tdjdb")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_3544y")
+blend_point_1/pos = 1.0
+snap = 0.5
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vndai"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tdjdb"]
+advance_mode = 2
+advance_expression = "parry_active"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3544y"]
+advance_mode = 2
+advance_expression = "block_active"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ovxsc"]
+advance_mode = 2
+advance_expression = "false"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dt56t"]
+advance_mode = 2
+advance_expression = "!block_active"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p22qk"]
+advance_mode = 2
+advance_expression = "!parry_active"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_x73ai"]
+xfade_time = 0.25
+advance_mode = 2
+advance_expression = "is_punching"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0smle"]
+xfade_time = 0.1
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_yfdjf"]
+states/Block/node = SubResource("AnimationNodeAnimation_w3576")
+states/Block/position = Vector2(469, 193)
+states/End/position = Vector2(940, 100)
+states/FistsUp/node = SubResource("AnimationNodeAnimation_o6ig1")
+states/FistsUp/position = Vector2(422, 65)
+states/Parry/node = SubResource("AnimationNodeAnimation_vndai")
+states/Parry/position = Vector2(452, -52)
+states/Point/node = SubResource("AnimationNodeAnimation_hn42q")
+states/Point/position = Vector2(678, 2)
+states/Punch/node = SubResource("AnimationNodeBlendSpace1D_2hcst")
+states/Punch/position = Vector2(748, 152)
+states/Start/position = Vector2(209, 100)
+transitions = ["Start", "FistsUp", SubResource("AnimationNodeStateMachineTransition_vndai"), "FistsUp", "Parry", SubResource("AnimationNodeStateMachineTransition_tdjdb"), "FistsUp", "Block", SubResource("AnimationNodeStateMachineTransition_3544y"), "FistsUp", "Point", SubResource("AnimationNodeStateMachineTransition_ovxsc"), "Block", "FistsUp", SubResource("AnimationNodeStateMachineTransition_dt56t"), "Parry", "FistsUp", SubResource("AnimationNodeStateMachineTransition_p22qk"), "FistsUp", "Punch", SubResource("AnimationNodeStateMachineTransition_x73ai"), "Punch", "FistsUp", SubResource("AnimationNodeStateMachineTransition_0smle")]
+graph_offset = Vector2(49, -106)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_merdl"]
 height = 2.1
@@ -32,6 +107,14 @@ script = ExtResource("1_merdl")
 speed = 1.5
 metadata/_custom_type_script = "uid://88pbfyfqnxlk"
 
+[node name="AnimationTree" type="AnimationTree" parent="."]
+unique_name_in_owner = true
+root_node = NodePath("%arms")
+tree_root = SubResource("AnimationNodeStateMachine_yfdjf")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../Camera3D/arms/AnimationPlayer")
+parameters/Punch/blend_position = -0.0028708
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 0)
 shape = SubResource("CylinderShape3D_merdl")
@@ -40,6 +123,46 @@ shape = SubResource("CylinderShape3D_merdl")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
 current = true
 fov = 90.0
+
+[node name="arms" parent="Camera3D" instance=ExtResource("3_2hcst")]
+unique_name_in_owner = true
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.494629, -0.650644)
+
+[node name="Skeleton3D" parent="Camera3D/arms/Armature" index="0"]
+bones/0/position = Vector3(1, 0, 0)
+bones/1/rotation = Quaternion(0.359809, -0.189555, -0.724269, 0.556814)
+bones/2/rotation = Quaternion(0.0837456, 0.0187146, 0.00974344, 0.996264)
+bones/3/rotation = Quaternion(0.674349, 0.190047, 0.525882, 0.48227)
+bones/4/rotation = Quaternion(-0.0860831, 0.692462, -0.0600445, 0.713779)
+bones/5/position = Vector3(0.159395, 0.493136, 0.0030901)
+bones/5/rotation = Quaternion(-0.800785, -0.0013334, -5.2176e-05, 0.59895)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(-0.817308, -0.0074438, 0.00527114, 0.576129)
+bones/7/position = Vector3(-0.00945306, 0.47449, -0.0383472)
+bones/7/rotation = Quaternion(-0.800785, -0.00133324, -5.23212e-05, 0.59895)
+bones/8/rotation = Quaternion(-0.816, 0.00842449, -0.00589975, 0.57796)
+bones/9/position = Vector3(-0.158569, 0.47127, -0.0457485)
+bones/9/rotation = Quaternion(-0.800785, -0.00133321, -5.25221e-05, 0.59895)
+bones/10/rotation = Quaternion(-0.815717, -0.00320107, 0.0023028, 0.578438)
+bones/11/rotation = Quaternion(-0.116763, 0.0322697, 0.14224, 0.982391)
+bones/12/rotation = Quaternion(-0.10221, -0.0295874, -0.109372, 0.988289)
+bones/13/rotation = Quaternion(-0.103908, 0.165096, -0.224127, 0.954837)
+bones/15/rotation = Quaternion(0.34512, 0.1965, 0.700034, 0.593491)
+bones/16/rotation = Quaternion(0.0987023, -0.0356466, 0.0419643, 0.993593)
+bones/17/rotation = Quaternion(0.674694, -0.193379, -0.523879, 0.482642)
+bones/18/rotation = Quaternion(-0.0989534, -0.477657, 0.0349839, 0.872255)
+bones/19/position = Vector3(-0.159395, 0.493136, 0.00309002)
+bones/19/rotation = Quaternion(-0.800785, 0.00133337, 5.21811e-05, 0.59895)
+bones/20/rotation = Quaternion(-0.817308, 0.00744379, -0.00527115, 0.576129)
+bones/21/position = Vector3(0.00945329, 0.47449, -0.0383476)
+bones/21/rotation = Quaternion(-0.800785, 0.00133324, 5.23035e-05, 0.59895)
+bones/22/rotation = Quaternion(-0.816, -0.00842446, 0.00589979, 0.57796)
+bones/23/position = Vector3(0.158569, 0.471269, -0.0457488)
+bones/23/rotation = Quaternion(-0.800785, 0.00133321, 5.24622e-05, 0.59895)
+bones/24/rotation = Quaternion(-0.815717, 0.00320109, -0.0023028, 0.578438)
+bones/25/rotation = Quaternion(-0.116763, -0.0322698, -0.14224, 0.982391)
+bones/26/rotation = Quaternion(-0.10221, 0.0295874, 0.109372, 0.988289)
+bones/27/rotation = Quaternion(-0.103908, -0.165096, 0.224127, 0.954837)
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -132,3 +255,5 @@ iframes_amount = 15
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxComponent"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 0)
 shape = SubResource("CylinderShape3D_tdjdb")
+
+[editable path="Camera3D/arms"]
