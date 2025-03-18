@@ -22,9 +22,7 @@ collision_mask = 7
 floor_constant_speed = true
 floor_snap_length = 0.0
 script = ExtResource("1_q1iuu")
-charge_speed = 16.0
 speed = 0.5
-footstep_frequency = 560
 metadata/_custom_type_script = "uid://88pbfyfqnxlk"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -41,7 +39,16 @@ texture = ExtResource("2_q1iuu")
 hframes = 8
 
 [node name="AIComponent" parent="." instance=ExtResource("3_0ifsd")]
-melee_activation_range = 4.0
+melee_range = 3.0
+melee_activation_range = 3.0
+melee_damage = 2.0
+melee_knockback = 50.0
+melee_delay_amount = 60
+melee_delay_randomness = 30
+attack_damage = 4.0
+attack_knockback = 100.0
+attack_delay_amount = 240
+attack_delay_randomness = 60
 
 [node name="CommonPhysicsComponent" parent="." instance=ExtResource("4_u5a1y")]
 
@@ -49,7 +56,7 @@ melee_activation_range = 4.0
 sprite = NodePath("../Sprite3D")
 
 [node name="HealthComponent" parent="." instance=ExtResource("7_4r2rf")]
-max_health = 7.0
+max_health = 8.0
 knockback_multiplier = 0.1
 
 [node name="AudioManagerComponent" parent="." instance=ExtResource("5_7lx1j")]

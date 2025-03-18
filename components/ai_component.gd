@@ -60,6 +60,9 @@ func start_ai():
 	# important mechanic
 	if global.check( parent, "sprite" ):
 		parent.sprite.scale *= randf_range( 0.9, 1.1 )
+		
+		if randf_range( 1, 0 ) < 0.01:
+			parent.sprite.flip_h = true
 	
 	parent.state.set_state( parent.state_active )
 
@@ -76,10 +79,7 @@ func generic_walk_direction() -> Vector3:
 	return global.angle_to_direction( walk_angle ) * Vector3( 1, 0, 1 )
 
 func target_direction() -> Vector3:
-	if target:
-		return parent.global_position.direction_to( target.global_position )
-	
-	return Vector3( 1, 0, 0 )
+	return parent.global_position.direction_to( target.global_position )
 
 func target_distance() -> float:
 	return parent.global_position.distance_to( target.global_position )

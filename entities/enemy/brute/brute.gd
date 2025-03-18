@@ -1,135 +1,105 @@
 extends CharacterBase
+class_name EnemyBrute
 
-@onready var health : HealthComponent = $HealthComponent
-@onready var hitbox : HitboxComponent = $HitboxComponent
-@onready var physics : CommonPhysicsComponent = $CommonPhysicsComponent
-@onready var state : StateMachineComponent = $StateMachineComponent
-@onready var ai : AIComponent = $AIComponent
-@onready var audio : AudioManagerComponent = $AudioManagerComponent
-@onready var sprite : Sprite3D = $Sprite3D
+@onready var health := $HealthComponent
+@onready var hitbox := $HitboxComponent
+@onready var physics := $CommonPhysicsComponent
+@onready var state := $StateMachineComponent
+@onready var ai := $AIComponent
+@onready var audio := $AudioManagerComponent
+@onready var sprite := $Sprite3D
 
 var sfx_footstep = global.sfx_generic_footsteps
-
-@export_range(1.0, 20.0) var charge_speed := 4.0
-@export_range(1.0, 1000.0) var knockback: float = 80.0
-@export_range(1.0, 1000.0) var charge_knockback: float = 400.0
-@export_range(1.0, 50.0) var damage: float = 2.0
-@export_range(1.0, 50.0) var charge_damage: float = 4.0
-@export_range(1.0, 50.0, 0.1, 'suffix:m') var max_charge_distance: float = 10.0
-@export_range(1.0, 50.0, 0.5) var charge_cooldown: float = 5.0
-var _current_charge_cooldown := 0.0
-
+var real_friction : float
 
 var state_idle := [
 	{sticky_call = "do_searth"},
 	{delay = 1, frame = 0},
-	{goto = state_active}
+	{goto = state_active},
 ]
 
 var state_active := [
 	{sticky_call = "do_active"},
 	{delay = 15, frame = 1},
-	{delay = 15, frame = 2},
-	{loop = true}
+	{loop = true},
 ]
 
-var state_charge := [
-	{sticky_call = "do_charge"},
-	{delay = 15, frame = 6},
-	{delay = 15, frame = 5},
-	{loop = true}
+var state_attack_charge := [
+	{sticky_call = "do_attack_sticky"},
+	{delay = 30, frame = 6},
+	{loop = true},
+]
+
+var state_attack_hit := [
+	{delay = 20, frame = 5},
+	{goto = state_active},
+]
+
+var state_attack := [
+	{delay = 30, frame = 6},
+	{goto = state_attack_charge},
 ]
 
 var state_melee := [
-	{sticky_call = "do_melee_active"},
 	{delay = 20, frame = 3},
 	{delay = 1, frame = 4},
-	{sticky_call = ""},
 	{call = "do_melee"},
 	{delay = 20, frame = 5},
 	{goto = state_active},
 ]
 
 var state_stun := [
-	{delay = 120, frame = 6},
+	{delay = 240, frame = 6},
 	{goto = state_active},
 ]
 
 func _ready() -> void:
+	real_friction = friction
 	ai.start_ai()
 
 func do_active():
 	if ai.target:
-		do_move_toward()
+		velocity += ai.generic_walk_direction() * speed
+		ai.check_and_set_attack_states()
 
-		if should_charge():
-			do_charge()
-
-
-## approach the target to get within charging distance
-func do_move_toward():
-		var angle = ai.target_angle()
-		var walk: Vector3 = global.angle_to_direction(angle) * Vector3(1, 0, 1)
-		velocity += walk * speed
-
-
-# func do_melee_active():
-# 	if ai.target:
-# 		do_charge()
-		# var walk: Vector3 = ai.target_direction() * Vector3(1, 0, 1)
-		# velocity += walk * (speed * 2)
+func do_melee_active():
+	if ai.target:
+		velocity += ai.generic_walk_direction() * ( speed * 1.5 )
 
 func do_melee():
-	if ai.target and ai.in_melee_range():
-		hit(damage, knockback)
+	if ai.target:
+		hit( ai.melee_damage, ai.melee_knockback )
+		ai.set_melee_delay()
 
+func do_attack_sticky():
+	if ai.target:
+		if ai.in_melee_range():
+			hit( ai.attack_damage, ai.attack_knockback )
+			state.set_state( state_attack_hit )
+			# sets both to avoid them activating melee
+			# right after hitting the player
+			ai.set_attack_delay()
+			ai.set_melee_delay()
+			# sets friction back to the original value
+			friction = real_friction
+		else:
+			velocity.x =+ ai.target_direction().x * 48
+			velocity.z =+ ai.target_direction().z * 48
+			friction = 0.5
+	else:
+		friction = real_friction
+		state.set_state( state_active )
 
-func do_parry_reaction(inflictor: Node3D):
+func hit( hit_damage: float, hit_knockback: float ):
+	var attack = Attack.new()
+	attack.agressor = self
+	attack.damage = hit_damage
+	attack.knockback_power = hit_knockback
+	attack.knockback_position = global_position
+	ai.target.health.do_damage( attack )
+
+func do_parry_reaction( inflictor: Node3D ):
 	state.set_state(state_stun)
 
-func _physics_process(delta: float):
-	physics.common_physics(delta)
-	_current_charge_cooldown -= delta
-
-func do_charge():
-	state.set_state(state_charge)
-	print('CHARGING')
-	if ai.target and should_charge():
-		if ai.in_melee_activation_range():
-			hit(charge_damage, charge_knockback)
-		global_position = global_position.move_toward(ai.target.global_position, charge_speed * get_physics_process_delta_time())
-	else:
-		state.set_state(state_active)
-		do_active()
-
-var attack_delay = 100
-var melee_delay = 100
-
-func should_attack():
-	# if attack_delay <= 0 and global.check( parent, "state_attack" ):
-	# 	state.set_state( state_attack )
-	# 	return true
-	if melee_delay <= 0 and ai.in_melee_activation_range() and global.check(self, "state_melee"):
-		state.set_state(state_melee)
-		return true
-
-func should_charge():
-	# if attack_delay <= 0 and global.check( parent, "state_attack" ):
-	# 	state.set_state( state_attack )
-	# 	return true
-	# if melee_delay <= 0 and ai.target and global_position:
-	# 	return true
-	if _current_charge_cooldown <= 0.0 and (global_position.distance_to(ai.target.global_position) < max_charge_distance):
-		return true
-
-
-func hit(hit_dmg: float, hit_knock: float):
-	if ai.target and ai.in_melee_range():
-		_current_charge_cooldown = charge_cooldown
-		
-		var atk = Attack.new()
-		atk.agressor = self
-		atk.knockback_power = hit_knock
-		atk.damage = hit_dmg
-		combat.hitscan_bullet( self, global_position, ai.target_direction(), atk )
-		ai.attack_delay = 100
+func _physics_process( delta: float ):
+	physics.common_physics( delta )

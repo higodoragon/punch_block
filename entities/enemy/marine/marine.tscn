@@ -20,6 +20,7 @@ radius = 0.897461
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_v0otw")
+speed = 0.75
 friction = 0.95
 metadata/_custom_type_script = "uid://88pbfyfqnxlk"
 

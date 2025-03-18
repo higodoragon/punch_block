@@ -4,7 +4,7 @@ class_name CharacterBase extends CharacterBody3D
 @export var friction : float = 0.9
 @export var gravity : float = 0.55
 @export var view_height : float = 1.75
-@export var footstep_frequency : int = 280
+@export var footstep_frequency : float = 4.5
 @export var infight_group : Attack.INFIGHT_GROUP
 
 var step_height_up : float = 1.1

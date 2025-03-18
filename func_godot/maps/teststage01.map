@@ -1125,10 +1125,30 @@
 }
 // entity 14
 {
-"classname" "enemy_marine"
-"origin" "-560 -432 0"
+"classname" "enemy_goon"
+"origin" "-304 -144 0"
 }
 // entity 15
+{
+"classname" "enemy_brute"
+"origin" "-944 -64 160"
+}
+// entity 16
+{
+"classname" "enemy_marine"
+"origin" "-688 -848 0"
+}
+// entity 17
+{
+"classname" "enemy_quilin"
+"origin" "-736 -624 0"
+}
+// entity 18
+{
+"classname" "enemy_sniper"
+"origin" "-272 -896 64"
+}
+// entity 19
 {
 "classname" "func_group"
 "_tb_type" "_tb_layer"

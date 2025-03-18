@@ -34,7 +34,7 @@ var state_melee := [
 ]
 
 var state_stun := [
-	{ delay = 60, frame = 6 },
+	{ delay = 20, frame = 6 },
 	{ goto = state_active },
 ]
 

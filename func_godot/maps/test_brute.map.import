@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://c32hke5yhg5em"
+path="res://.godot/imported/test_brute.map-e7fb7c6e256ef703627aa614cbf59c6d.tres"
+
+[deps]
+
+source_file="res://func_godot/maps/test_brute.map"
+dest_files=["res://.godot/imported/test_brute.map-e7fb7c6e256ef703627aa614cbf59c6d.tres"]
+
+[params]
+
