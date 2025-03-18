@@ -24,6 +24,7 @@ boot_splash/use_filter=false
 
 global="*res://scripts/global.tscn"
 combat="*res://scripts/combat.gd"
+Console="*res://addons/console/console.gd"
 
 [display]
 
@@ -32,7 +33,7 @@ window/vsync/vsync_mode=0
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/func_godot/plugin.cfg")
+enabled=PackedStringArray("res://addons/console/plugin.cfg", "res://addons/func_godot/plugin.cfg")
 
 [file_customization]
 

@@ -1,13 +1,13 @@
 program:
 - implement audio / levels if given them
-DONE - audio component system ( manages audio nodes for objects and the root node )
-DONEISH - punch/block system ( main mechanic you should had made it by now dummy )
-	DONE . block shield ( can block some kinds of attacks but not forever :3 )
-	. block power ( if you block a enemy of certein kind you gain a special attack next punch )
-	. power items ( get a special power for free! )
+DONE / - audio component system ( manages audio nodes for objects and the root node )
+DONE / - punch/block system ( main mechanic you should had made it by now dummy )
+ONWORK / . block shield ( can block some kinds of attacks but not forever :3 )
+. block power ( if you block a enemy of certein kind you gain a special attack next punch )
+. power items ( get a special power for free! )
 - punch animations
-- enemy AI component ( stores some generic ai information and functions )
-- programer art enemies ( just a slosh with shitty animations to have something to work with )
+DONE / - enemy AI component ( stores some generic ai information and functions )
+ONWORK / - programer art enemies ( just a slosh with shitty animations to have something to work with )
 - add gibbing animation
 - program the eletric goat quilin thing ( projectile, steal for AOE damage )
 - program a brute enemy ( actual denger )
@@ -19,7 +19,7 @@ DONEISH - punch/block system ( main mechanic you should had made it by now dummy
 - program a cyberdemon enemy ( ignorable dengerous enemy )
 - redesign goon ( make them work better with other enemies )
 - set up a "spawn scene" in func-godot
-- level design debugging + build for tetrisk
+PARTIAL / - level design debugging + build for tetrisk
 
 draw if programing tasks are finished:
 
@@ -27,3 +27,8 @@ draw if programing tasks are finished:
 - finish punch animation graphic
 - make city enviroment textures!!!
 - UI
+
+higo - today:
+	- implement footstep audio
+	- make block shield system
+	- make powerup system

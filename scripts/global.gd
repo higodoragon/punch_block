@@ -34,6 +34,7 @@ func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	stage_container.process_mode = Node.PROCESS_MODE_PAUSABLE
 	process_cmdargs()
+	console_defs()
 
 func _process( _delta: float ) -> void:
 	pause_process()
@@ -43,8 +44,19 @@ func _physics_process(delta: float) -> void:
 		freezeframe -= 1
 
 func _input( event: InputEvent ):
-	pause_input( event )
+	if focus_failed and event is InputEventMouseButton and event.button_index == 1:
+		focus_try = true
+	
+	console_is_visible_old = console_is_visible
+	console_is_visible = Console.is_visible()
+	
+	if console_is_visible != console_is_visible_old:
+		mouse_update()
 
+	if pause_pressed() and not console_is_visible:
+		pause_active = not pause_active
+		mouse_update()
+	
 	if Input.is_action_just_pressed( "debug_togglefullscreen" ):
 		if DisplayServer.window_get_mode() != DisplayServer.WINDOW_MODE_FULLSCREEN:
 			DisplayServer.window_set_mode( DisplayServer.WINDOW_MODE_FULLSCREEN )
@@ -55,6 +67,38 @@ func _input( event: InputEvent ):
 	if Input.is_action_just_pressed( "debug_reloadstage" ):
 		reload_stage()
 		return
+
+func console_defs():
+	Console.add_command("map", console_map, ["map name"] )
+	Console.add_command("reload", reload_stage )
+	
+func console_map( map_name : String ):
+	if map_name == "list":
+		console_map_list()
+		return
+	
+	var map_file := "res://func_godot/maps/%s.map" % map_name
+	if ResourceLoader.exists( map_file ):
+		Console.print_line("changing to map file \"%s\"" % map_file )
+		load_stage( map_file )
+	else:
+		Console.print_line("map file \"%s\" doesn't exist!" % map_file )
+
+func console_map_list():
+	const map_dir_path = "res://func_godot/maps"
+	var map_dir := DirAccess.open( map_dir_path )
+	if map_dir != null:
+		Console.print_line( "showing map list from: \"%s\"" % map_dir_path )
+		
+		map_dir.list_dir_begin()
+		for file: String in map_dir.get_files():
+			if not str( file ).ends_with(".map"):
+				continue
+			Console.print_line( " - %s" % file )
+
+	else:
+		Console.print_line( "coudn't open map directiory \"%s\"" % map_dir_path )
+	pass
 
 func process_cmdargs():
 	var raw_args = OS.get_cmdline_user_args()
@@ -128,6 +172,9 @@ func mouse_update():
 	set_mouse_mode( get_mouse_sugested_state() )
 
 func get_mouse_sugested_state() -> int:
+	if Console.is_visible():
+		return Input.MOUSE_MODE_VISIBLE
+
 	if pause_active:
 		return Input.MOUSE_MODE_VISIBLE
 
@@ -135,20 +182,18 @@ func get_mouse_sugested_state() -> int:
 		return Input.MOUSE_MODE_CAPTURED
 
 	return Input.MOUSE_MODE_VISIBLE
-		
+
 func pause_pressed():
 	return Input.is_action_just_pressed( "ui_mainmenu" ) or ( OS.get_name() != "Web" and Input.is_action_just_pressed( "ui_cancel" ) )
 
-func pause_input( event : InputEvent ):
-	if focus_failed and event is InputEventMouseButton and event.button_index == 1:
-		focus_try = true
-	
-	if pause_pressed():
-		pause_active = not pause_active
-		mouse_update()
+var console_is_visible_old := false
+var console_is_visible := false
 			
 func pause_process():
 	focus_failed = Input.mouse_mode != mouse_mode
+
+	if focus_failed:
+		print( "FOCUS FAILED" )
 
 	if focus_try:
 		if focus_failed:
@@ -156,7 +201,7 @@ func pause_process():
 		else:
 			focus_try = false
 
-	if focus_failed or pause_active or freezeframe > 0:
+	if focus_failed or pause_active or Console.is_visible() or freezeframe > 0:
 		get_tree().paused = true
 	else:
 		get_tree().paused = false
