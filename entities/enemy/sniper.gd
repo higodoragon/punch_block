@@ -9,6 +9,9 @@ class_name EnemySniper
 @onready var state: StateMachineComponent = $StateMachineComponent
 @onready var parent: Node3D = get_parent()
 @onready var laser_head : Node3D = $LaserHead
+@onready var laser_mat = $LaserHead/LaserMesh.get_active_material(0)
+@onready var audio: AudioManagerComponent = $AudioManagerComponent
+
 
 @export_group('Sniper-Specific Settings')
 @export_range(1, 100) var damage: int = 5
@@ -17,6 +20,9 @@ class_name EnemySniper
 @export var stun_time: float = 40.0
 @export var projectile_velocity := 10.0
 @export var weapon_range: float = 100.0
+@export var time_to_fire: float = 10.0
+@onready var _time_to_fire_cooldown: float = time_to_fire
+@export var beep: AudioSettings
 
 var sfx_footstep = global.sfx_generic_footsteps
 var last_known_pos: Vector3
@@ -41,11 +47,19 @@ const state_active := [
 
 const state_attack := [
 	{ sticky_call = "" },
-	{ delay = 60, frame = 4 },
+	{ delay = 10, frame = 4 },
 	{ call = "do_attack" },
 	{ delay = 20, frame = 5 },
 	{ delay = 1, frame = 4 },
 	{ goto = state_active },
+]
+
+const state_about_to_attack := [
+	{ sticky_call = "" },
+	{ delay = 0, frame = 0 },
+	{ call = "do_about_to_attack" },
+	{ loop = false },
+	# { goto = state_attack },
 ]
 
 func _ready():
@@ -56,6 +70,8 @@ func _physics_process(delta):
 
 func _process( delta ):
 	if ai.target:
+		_time_to_fire_cooldown -= delta
+	
 		var target_position : Vector3 = ai.target.global_position
 		
 		if ai.target == global.player:
@@ -100,13 +116,32 @@ func do_move():
 func do_active():
 	if ai.target:
 		do_move()
-		ai.should_attack()
+		if _time_to_fire_cooldown <= 1.0:
+			# FIXME this is getting called twice and i don't know why
+			print('?')
+			state.set_state(state_about_to_attack)
+		# ai.should_attack()
 
 func do_attack():
-	if ai.target:
-		var attack := Attack.new()
-		attack.agressor = self
-		attack.damage = damage
-		attack.knockback_power = knockback
-		combat.hitscan_bullet( self, global_position, ai.target_direction(), attack )
-		ai.attack_delay = 100
+	if ai.target and _time_to_fire_cooldown <= 0.0:
+		attack()
+
+func do_about_to_attack():
+	# FIXME this is getting called twice and i don't know why
+	print('!')
+	laser_mat.albedo_color = Color.WHITE
+	for i in range(3):
+		global.audio_play_at(beep, global_position)
+		await get_tree().create_timer(0.3333).timeout
+	state.set_state(state_attack)
+
+
+func attack():
+	_time_to_fire_cooldown = time_to_fire
+	var attack := Attack.new()
+	attack.agressor = self
+	attack.damage = damage
+	attack.knockback_power = knockback
+	combat.hitscan_bullet( self, global_position, ai.target_direction(), attack )
+	# ai.attack_delay = 100
+	laser_mat.albedo_color =  Color.RED
