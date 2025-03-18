@@ -55,7 +55,7 @@ func _process( delta : float ):
 			camera.rotation.x = lerp_angle( camera.rotation.x, look_rotation.x, delta * 8 )
 			rotation.y = lerp_angle( rotation.y, look_rotation.y, delta * 8 )
 	
-	hud_health.text = str( health.health )
+	hud_health.text = str( int( health.health / health.max_health * 100 ), "%" )
 
 	if parry_active:
 		hud_block.text = "SUPER BLOCK"
