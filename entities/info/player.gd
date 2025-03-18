@@ -210,7 +210,6 @@ func do_punch():
 
 	if Input.is_action_just_pressed("action_punch"):
 		punch_buffer = true
-		choose_punch_anim()
 
 
 	if punch_buffer and action_delay <= 0 and not block_active:
@@ -315,8 +314,3 @@ func play_anim(what: String):
 	# assert(what in arms.animations, 'player.gd: %s is not a valid animation' % what)
 	# arms.animation_player.play(arms.animations[what])
 	animation_player.play(what)
-
-func choose_punch_anim():
-	anim_punches_idx = wrapi(anim_punches_idx + 1, 0, anim_punches.size())
-	print(anim_punches_idx)
-	animation_tree.set('parameters/Punch/blend_position', anim_punches_idx)
