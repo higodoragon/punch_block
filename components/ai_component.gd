@@ -37,9 +37,8 @@ func _physics_process( delta : float ):
 
 	target = global.player
 	
-	if target != null:
-		if global.check( target, "health" ) and target.health.dead:
-			target = null
+	if target != null and global.check( target, "health" ) and target.health.dead:
+		target = null
 	
 	if parent.state.sticky_call_active:
 		# count down generic delays
@@ -127,4 +126,3 @@ func generic_melee():
 		attack.inflictor = null
 		attack.parry_reaction = true
 		target.health.do_damage( attack )
-		set_melee_delay()

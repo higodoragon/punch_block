@@ -24,12 +24,13 @@ var freezeframe : int = 0
 
 #
 # preload sounds
-const sfx_generic_hurt = preload( "res://audio/generic_hurt.tres" )
-const sfx_generic_pickup = preload( "res://audio/generic_pickup.tres" )
-const sfx_player_jump = preload( "res://audio/player_jumping.tres" )
-const sfx_player_parry = preload( "res://audio/player_parry.tres" )
-const sfx_generic_footsteps = preload( "res://audio/player_steps_test.tres" )
-const sfx_sniper_beep = preload("res://audio/sniper_attack_beep.tres" )
+const sfx_generic_hurt              = preload( "res://audio/generic_hurt.tres" )
+const sfx_generic_pickup            = preload( "res://audio/generic_pickup.tres" )
+const sfx_generic_footsteps         = preload( "res://audio/generic_footsteps.tres" )
+const sfx_player_jump               = preload( "res://audio/player_jumping.tres" )
+const sfx_player_parry              = preload( "res://audio/player_parry.tres" )
+const sfx_player_footsteps_concrete = preload( "res://audio/player_footsteps_concrete.tres" )
+const sfx_sniper_beep               = preload( "res://audio/sniper_attack_beep.tres" )
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS

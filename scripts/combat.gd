@@ -60,8 +60,6 @@ func hitscan_bullet( agressor : Node3D, position : Vector3, direction : Vector3,
 
 	attack.agressor = agressor
 
-	# print( hit_object.get_name(), " / ", hit_object.collision_layer )
-
 	if object_is_hitbox( hit_object ):
 		var hitbox = hit_object
 		attack.knockback_position = position

@@ -10,12 +10,12 @@ func create( audio_player, audio_settings : AudioSettings ):
 			p.queue_free()
 
 	audio_player.stream = audio_settings.stream
-	audio_player.volume_db = audio_settings.volume
+	audio_player.volume_db = audio_settings.volume_db
 	audio_player.pitch_scale = audio_settings.pitch_scale
 	audio_player.pitch_scale += randf_range( -audio_settings.pitch_randomness, audio_settings.pitch_randomness )
 	audio_player.pitch_scale = max( audio_player.pitch_scale, 0.05 )
 	audio_player.finished.connect( audio_player.queue_free )
-	audio_player.attenuation_filter_cutoff_hz = 10000
+	audio_player.attenuation_filter_cutoff_hz = 20500
 	add_child( audio_player )
 
 	return audio_player

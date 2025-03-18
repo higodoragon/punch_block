@@ -8,6 +8,7 @@ script = ExtResource("1_0mdl2")
 stream = ExtResource("2_cc5aa")
 channel = 0
 limit = 1
+volume_db = -16.0
 pitch_scale = 1.0
 pitch_randomness = 0.0
 metadata/_custom_type_script = "uid://d1cihyw7tq44v"

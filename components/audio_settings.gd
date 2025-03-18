@@ -9,7 +9,7 @@ enum CHANNELS {
 
 @export var stream : AudioStream
 @export var channel : CHANNELS = CHANNELS.NONE
-@export_range( 0, 10 ) var limit : int = 5
-@export_range( 0.0, 4.0, .01 ) var volume : float = 1.0
-@export_range( 0.0, 4.0, .01 ) var pitch_scale : float = 1.0
-@export_range( 0.0, 4.0, .01 ) var pitch_randomness : float = 0.0
+@export var limit : int = 5
+@export var volume_db : float = 1.0
+@export var pitch_scale : float = 1.0
+@export var pitch_randomness : float = 0.0
