@@ -1125,7 +1125,7 @@
 }
 // entity 14
 {
-"classname" "enemy_sniper"
+"classname" "enemy_goon"
 "origin" "-560 -416 0"
 }
 // entity 15
