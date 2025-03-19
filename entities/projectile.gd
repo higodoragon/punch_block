@@ -74,5 +74,5 @@ func _physics_process( delta: float ) -> void:
 func do_hit():
 	state.set_state( state_hit )
 
-func do_parry_reaction( attacker : Node3D ):
+func do_block_reaction( attacker : Node3D, is_parry : bool ):
 	queue_free()

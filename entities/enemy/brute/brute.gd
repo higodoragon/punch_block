@@ -99,7 +99,7 @@ func hit( hit_damage: float, hit_knockback: float ):
 	ai.target.health.do_damage( attack )
 	ai.target.velocity.y = 20
 
-func do_parry_reaction( inflictor: Node3D ):
+func do_block_reaction( inflictor: Node3D, is_parry : bool ):
 	state.set_state(state_stun)
 
 func _physics_process( delta: float ):

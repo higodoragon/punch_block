@@ -60,9 +60,13 @@ func do_melee():
 		ai.generic_melee()
 		ai.set_melee_delay()
 
-func do_parry_reaction( inflictor : Node3D ):
+func do_block_reaction( inflictor : Node3D, is_parry : bool ):
+	var radious = 10
+	if is_parry:
+		radious = 30
+	
 	for e in global.enemy_list:
-		if e != null and self.global_position.distance_to( e.global_position ) < 10:
+		if e != null and self.global_position.distance_to( e.global_position ) < radious:
 			e.state.set_state( state_stun )
 
 func _physics_process( delta : float ):

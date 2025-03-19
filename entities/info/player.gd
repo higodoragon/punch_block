@@ -212,11 +212,11 @@ func do_block_damage( attack: Attack ):
 		global.freezeframe = 10
 			
 		if attack.parry_reaction:
-			if attack.inflictor != null and global.check(attack.inflictor, "do_parry_reaction"):
-				attack.inflictor.do_parry_reaction(self)
+			if attack.inflictor != null and global.check(attack.inflictor, "do_block_reaction"):
+				attack.inflictor.do_block_reaction( self, did_parry )
 		
-			elif attack.agressor != null and global.check(attack.agressor, "do_parry_reaction"):
-				attack.agressor.do_parry_reaction(self)
+			elif attack.agressor != null and global.check(attack.agressor, "do_block_reaction"):
+				attack.agressor.do_block_reaction( self, did_parry )
 		
 		do_block_steal(attack)
 	else:
