@@ -1,0 +1,82 @@
+[gd_scene load_steps=8 format=3 uid="uid://b6c46f6vhwb5h"]
+
+[ext_resource type="PackedScene" uid="uid://c2ljy8qpiifd1" path="res://ui/ui_credit_line.tscn" id="1_xj48c"]
+[ext_resource type="Script" uid="uid://cnjojs6jy863w" path="res://ui/res_credit_line.gd" id="2_twxsf"]
+
+[sub_resource type="Resource" id="Resource_oniet"]
+script = ExtResource("2_twxsf")
+who = "rabbit | [hare.itch.io](hare.itch.io)"
+what = "- programming
+- level design"
+metadata/_custom_type_script = "uid://cnjojs6jy863w"
+
+[sub_resource type="Resource" id="Resource_twxsf"]
+script = ExtResource("2_twxsf")
+who = "tetrisk"
+what = "- level design"
+metadata/_custom_type_script = "uid://cnjojs6jy863w"
+
+[sub_resource type="Resource" id="Resource_gtscw"]
+script = ExtResource("2_twxsf")
+who = "Hawk Loewen"
+what = "- sound design
+- sound effects"
+metadata/_custom_type_script = "uid://cnjojs6jy863w"
+
+[sub_resource type="Resource" id="Resource_cle1y"]
+script = ExtResource("2_twxsf")
+who = "higodoragon | [https://higodoragon.itch.io/](https://higodoragon.itch.io/)"
+what = "- programming
+- art"
+metadata/_custom_type_script = "uid://cnjojs6jy863w"
+
+[sub_resource type="Resource" id="Resource_0m41h"]
+script = ExtResource("2_twxsf")
+who = "dateddelvings"
+what = "- music"
+metadata/_custom_type_script = "uid://cnjojs6jy863w"
+
+[node name="Credit" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "CREDIT"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CreditLine1" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_xj48c")]
+layout_mode = 2
+line = SubResource("Resource_oniet")
+
+[node name="CreditLine2" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_xj48c")]
+layout_mode = 2
+line = SubResource("Resource_twxsf")
+
+[node name="CreditLine3" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_xj48c")]
+layout_mode = 2
+line = SubResource("Resource_gtscw")
+
+[node name="CreditLine4" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_xj48c")]
+layout_mode = 2
+line = SubResource("Resource_cle1y")
+
+[node name="CreditLine5" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_xj48c")]
+layout_mode = 2
+line = SubResource("Resource_0m41h")

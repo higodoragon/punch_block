@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://kuihh32grx47"]
+[gd_scene load_steps=5 format=3 uid="uid://kuihh32grx47"]
 
 [ext_resource type="Script" uid="uid://7t8vjqd014oy" path="res://ui/ui_menu.gd" id="1_dbm7c"]
 [ext_resource type="PackedScene" uid="uid://biu0ul0q5l7yf" path="res://ui/ui_settings_container.tscn" id="2_al22y"]
+[ext_resource type="PackedScene" uid="uid://b6c46f6vhwb5h" path="res://ui/ui_credit.tscn" id="3_rux4g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rux4g"]
+bg_color = Color(0.12885, 0.268489, 0.381818, 1)
 
 [node name="Menu" type="Control"]
 process_mode = 3
@@ -13,61 +17,76 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dbm7c")
 
-[node name="Columns" type="HBoxContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rux4g")
 
-[node name="Filler01" type="Control" parent="Columns"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 128
+theme_override_constants/margin_right = 128
+
+[node name="Columns" type="HBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="CenterDiv" type="VBoxContainer" parent="PanelContainer/MarginContainer/Columns"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="SettingsContainer" parent="Columns" instance=ExtResource("2_al22y")]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="Columns"]
+[node name="Center" type="PanelContainer" parent="PanelContainer/MarginContainer/Columns/CenterDiv"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="Columns/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/Columns/CenterDiv/Center"]
+layout_mode = 2
+
+[node name="MENU" type="MarginContainer" parent="PanelContainer/MarginContainer/Columns/CenterDiv/Center/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="BoxContainer" type="BoxContainer" parent="Columns/PanelContainer/MarginContainer"]
+[node name="BoxContainer" type="BoxContainer" parent="PanelContainer/MarginContainer/Columns/CenterDiv/Center/VBoxContainer/MENU"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 vertical = true
 
-[node name="Label" type="Label" parent="Columns/PanelContainer/MarginContainer/BoxContainer"]
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/Columns/CenterDiv/Center/VBoxContainer/MENU/BoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "MENU"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="Columns/PanelContainer/MarginContainer/BoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/Columns/CenterDiv/Center/VBoxContainer/MENU/BoxContainer"]
 layout_mode = 2
 
-[node name="ButtonResume" type="Button" parent="Columns/PanelContainer/MarginContainer/BoxContainer"]
+[node name="ButtonResume" type="Button" parent="PanelContainer/MarginContainer/Columns/CenterDiv/Center/VBoxContainer/MENU/BoxContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 text = "Resume Game"
 
-[node name="PanelContainer" type="PanelContainer" parent="Columns/PanelContainer/MarginContainer/BoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/Columns/CenterDiv/Center/VBoxContainer/MENU/BoxContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Columns/PanelContainer/MarginContainer/BoxContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/Columns/CenterDiv/Center/VBoxContainer/MENU/BoxContainer/PanelContainer"]
 layout_mode = 2
 
-[node name="Filler02" type="Control" parent="Columns"]
+[node name="SettingsContainer" parent="PanelContainer/MarginContainer/Columns/CenterDiv" instance=ExtResource("2_al22y")]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_vertical = 8
+
+[node name="Credit" parent="PanelContainer/MarginContainer/Columns" instance=ExtResource("3_rux4g")]
+layout_mode = 2
+size_flags_stretch_ratio = 0.8
