@@ -53,6 +53,8 @@ func _physics_process( delta : float ):
 			melee_delay -= 1
 
 func start_ai():
+	global.enemy_list.append( parent )
+	
 	# has to do it after the enemies start up
 	wakeup_delay = randf_range( 0, 60 )
 

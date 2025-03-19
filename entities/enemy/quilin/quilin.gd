@@ -33,6 +33,11 @@ var state_attack := [
 	{ goto = state_active },
 ]
 
+var state_stun := [
+	{ delay = 240, frame = 7 },
+	{ goto = state_active },
+]
+
 var state_pain := [
 	{ delay = 10, frame = 6 },
 	{ goto = state_active },

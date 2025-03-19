@@ -34,6 +34,11 @@ var state_melee := [
 ]
 
 var state_stun := [
+	{ delay = 240, frame = 7 },
+	{ goto = state_active },
+]
+
+var state_pain := [
 	{ delay = 20, frame = 6 },
 	{ goto = state_active },
 ]
@@ -56,7 +61,9 @@ func do_melee():
 		ai.set_melee_delay()
 
 func do_parry_reaction( inflictor : Node3D ):
-	state.set_state( state_stun )
+	for e in global.enemy_list:
+		if e != null and self.global_position.distance_to( e.global_position ) < 10:
+			e.state.set_state( state_stun )
 
 func _physics_process( delta : float ):
 	physics.common_physics( delta )

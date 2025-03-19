@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://c17t8jv6ljq3k"]
 
 [ext_resource type="Script" uid="uid://cpmiws4fu01ys" path="res://entities/enemy/quilin/quilin.gd" id="1_gabge"]
-[ext_resource type="Texture2D" uid="uid://cj4c3ykn2ton4" path="res://assets/goon.png" id="2_otsnb"]
+[ext_resource type="Texture2D" uid="uid://dbhalxnx74jlt" path="res://assets/quilin.png" id="2_4w4sd"]
 [ext_resource type="PackedScene" uid="uid://ccvm8eicw8t4d" path="res://components/common_physics_component.tscn" id="3_070q2"]
 [ext_resource type="PackedScene" uid="uid://cdbvouq7r8gic" path="res://components/ai_component.tscn" id="3_otsnb"]
 [ext_resource type="PackedScene" uid="uid://ddemxbua6ylaj" path="res://components/audio_manager_component.tscn" id="4_hid43"]
@@ -37,8 +37,8 @@ offset = Vector2(-8, 0)
 pixel_size = 0.125
 billboard = 2
 texture_filter = 0
-texture = ExtResource("2_otsnb")
-hframes = 8
+texture = ExtResource("2_4w4sd")
+hframes = 9
 
 [node name="AIComponent" parent="." instance=ExtResource("3_otsnb")]
 melee_range = 0.0
