@@ -8,6 +8,7 @@
 - [x] volume
 - music volume
 - rebinding / remapping
+- credit(s)
 
 # rebinding / remapping
 
