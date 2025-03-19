@@ -1,0 +1,115 @@
+[gd_scene load_steps=3 format=3 uid="uid://kuihh32grx47"]
+
+[ext_resource type="Script" uid="uid://7t8vjqd014oy" path="res://ui/ui_menu.gd" id="1_dbm7c"]
+[ext_resource type="PackedScene" uid="uid://cq6c3h4y6skc3" path="res://ui/ui_setting_slider.tscn" id="2_al22y"]
+
+[node name="Menu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dbm7c")
+
+[node name="Columns" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Filler01" type="Control" parent="Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelContainer2" type="PanelContainer" parent="Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Columns/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Columns/PanelContainer2/MarginContainer"]
+layout_mode = 2
+
+[node name="SliderSens" parent="Columns/PanelContainer2/MarginContainer/VBoxContainer" instance=ExtResource("2_al22y")]
+unique_name_in_owner = true
+layout_mode = 2
+title = "Mouse Sensitivity"
+display = "%.2f"
+
+[node name="LabelTitle" parent="Columns/PanelContainer2/MarginContainer/VBoxContainer/SliderSens" index="0"]
+text = "Mouse Sensitivity"
+
+[node name="HSlider" parent="Columns/PanelContainer2/MarginContainer/VBoxContainer/SliderSens" index="1"]
+min_value = 0.1
+max_value = 10.0
+step = 0.01
+value = 0.1
+
+[node name="LabelValue" parent="Columns/PanelContainer2/MarginContainer/VBoxContainer/SliderSens" index="2"]
+text = "0.10"
+
+[node name="SliderVol" parent="Columns/PanelContainer2/MarginContainer/VBoxContainer" instance=ExtResource("2_al22y")]
+unique_name_in_owner = true
+layout_mode = 2
+title = "Volume"
+
+[node name="LabelTitle" parent="Columns/PanelContainer2/MarginContainer/VBoxContainer/SliderVol" index="0"]
+text = "Volume"
+
+[node name="HSlider" parent="Columns/PanelContainer2/MarginContainer/VBoxContainer/SliderVol" index="1"]
+max_value = 10.0
+step = 0.01
+
+[node name="PanelContainer" type="PanelContainer" parent="Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Columns/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="BoxContainer" type="BoxContainer" parent="Columns/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+vertical = true
+
+[node name="Label" type="Label" parent="Columns/PanelContainer/MarginContainer/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "MENU"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Columns/PanelContainer/MarginContainer/BoxContainer"]
+layout_mode = 2
+
+[node name="ButtonResume" type="Button" parent="Columns/PanelContainer/MarginContainer/BoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Resume Game"
+
+[node name="PanelContainer" type="PanelContainer" parent="Columns/PanelContainer/MarginContainer/BoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Columns/PanelContainer/MarginContainer/BoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Filler02" type="Control" parent="Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[editable path="Columns/PanelContainer2/MarginContainer/VBoxContainer/SliderSens"]
+[editable path="Columns/PanelContainer2/MarginContainer/VBoxContainer/SliderVol"]

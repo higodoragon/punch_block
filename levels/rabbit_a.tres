@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Level" load_steps=2 format=3 uid="uid://bwhcilmq5ldwb"]
+
+[ext_resource type="Script" uid="uid://c584v8jufsvu6" path="res://levels/level.gd" id="1_ynjq3"]
+
+[resource]
+script = ExtResource("1_ynjq3")
+map = "uid://dym1j8bkt7otb"
+title = "Hollows"
+metadata/_custom_type_script = "uid://c584v8jufsvu6"

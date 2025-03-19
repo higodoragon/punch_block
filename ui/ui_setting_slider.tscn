@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cq6c3h4y6skc3"]
+
+[ext_resource type="Script" uid="uid://btroue2aj8oij" path="res://ui/ui_setting_slider.gd" id="1_qfxhi"]
+
+[node name="UiSettingSlider" type="BoxContainer"]
+vertical = true
+script = ExtResource("1_qfxhi")
+
+[node name="LabelTitle" type="Label" parent="."]
+layout_mode = 2
+text = "PUT SOMETHING HERE"
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 2
+
+[node name="LabelValue" type="Label" parent="."]
+layout_mode = 2
+text = "123.456"

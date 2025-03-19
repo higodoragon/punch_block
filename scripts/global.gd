@@ -12,9 +12,14 @@ var player : CharacterBase
 var player_position : Vector3 = Vector3.ZERO
 var player_rotation : Vector3 = Vector3.ZERO
 var mouse_mode : int = Input.MOUSE_MODE_CAPTURED
+@export var mouse_sensitivity: float = 3
+
 
 var player_active : bool = false
-var pause_active : bool = false 
+var pause_active : bool = false:
+	set(val):
+		pause_active = val
+		paused.emit(val)
 var focus_try : bool = false
 var focus_failed : bool = false
 
@@ -23,6 +28,8 @@ var cheats : bool = false
 var freezeframe : int = 0
 
 var enemy_list : Array = []
+
+signal paused(way: bool)
 
 #
 # preload sounds

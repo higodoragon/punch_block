@@ -23,6 +23,7 @@ boot_splash/use_filter=false
 [autoload]
 
 global="*res://scripts/global.tscn"
+Settings="*res://scripts/settings.gd"
 combat="*res://scripts/combat.gd"
 Console="*res://addons/console/console.gd"
 

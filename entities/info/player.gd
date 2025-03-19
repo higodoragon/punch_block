@@ -13,7 +13,6 @@ class_name Player extends CharacterBase
 @onready var hud_crosshair: TextureRect = $HUD/Control/Crosshair
 
 
-@export var mouse_sensitivity: float = 3
 @export var jump_power: float = 10
 @export var jump_buffer_base: int = 15
 var jump_buffer_time: int = 0
@@ -83,7 +82,7 @@ func _input(event: InputEvent) -> void:
 
 	if event is InputEventMouseMotion:
 		if not Input.mouse_mode == Input.MOUSE_MODE_CAPTURED: return
-		var mouse_look: Vector2 = - event.relative * mouse_sensitivity * 0.1
+		var mouse_look: Vector2 = - event.relative * global.mouse_sensitivity * 0.1
 		rotation_degrees.y += mouse_look.x
 		camera.rotation_degrees.x += mouse_look.y
 		# godot bugs visuals when rotation.x is 90 degres

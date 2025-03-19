@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://mdes4hst2fpb"]
+[gd_scene load_steps=13 format=3 uid="uid://mdes4hst2fpb"]
 
 [ext_resource type="Script" uid="uid://ylp6vydxbh2w" path="res://entities/info/player.gd" id="1_merdl"]
 [ext_resource type="PackedScene" uid="uid://d16mvtftr8jl7" path="res://components/health_component.tscn" id="2_quc4t"]
 [ext_resource type="PackedScene" uid="uid://crqe2dumssey" path="res://assets/raw/viewmodel.blend" id="3_2hcst"]
 [ext_resource type="Texture2D" uid="uid://ctatlt4v5fyf8" path="res://assets/crosshair.png" id="3_otayu"]
 [ext_resource type="PackedScene" uid="uid://lm36snfl5obu" path="res://components/hitbox_component.tscn" id="3_ug0ox"]
+[ext_resource type="PackedScene" uid="uid://kuihh32grx47" path="res://ui/ui_menu.tscn" id="4_3544y"]
 [ext_resource type="PackedScene" uid="uid://ddemxbua6ylaj" path="res://components/audio_manager_component.tscn" id="4_ug0ox"]
 [ext_resource type="PackedScene" uid="uid://ccvm8eicw8t4d" path="res://components/common_physics_component.tscn" id="5_quc4t"]
 
@@ -132,6 +133,8 @@ grow_horizontal = 2
 grow_vertical = 0
 label_settings = SubResource("LabelSettings_ug0ox")
 horizontal_alignment = 1
+
+[node name="Menu" parent="HUD" instance=ExtResource("4_3544y")]
 
 [node name="CommonPhysicsComponent" parent="." instance=ExtResource("5_quc4t")]
 
