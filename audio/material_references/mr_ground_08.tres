@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MaterialTextureReference" load_steps=3 format=3 uid="uid://dk2qlg88r0pxn"]
+
+[ext_resource type="Material" path="res://func_godot/gamedir/textures/dev/ground_08.tres" id="1_qk2un"]
+[ext_resource type="Script" path="res://scripts/material_texture.gd" id="2_s8ei6"]
+
+[resource]
+script = ExtResource("2_s8ei6")
+material_file = ExtResource("1_qk2un")
+meterial_kind = 2
