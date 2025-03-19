@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://biu0ul0q5l7yf"]
+
+[ext_resource type="Script" uid="uid://ci346kdxy05q6" path="res://ui/ui_settings_container.gd" id="1_6vd1n"]
+[ext_resource type="PackedScene" uid="uid://cq6c3h4y6skc3" path="res://ui/ui_setting_slider.tscn" id="1_fq340"]
+
+[node name="SettingsContainer" type="PanelContainer"]
+size_flags_horizontal = 3
+script = ExtResource("1_6vd1n")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="SliderSens" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_fq340")]
+unique_name_in_owner = true
+layout_mode = 2
+title = "Mouse Sensitivity"
+display = "%.2f"
+
+[node name="LabelTitle" parent="MarginContainer/VBoxContainer/SliderSens" index="0"]
+text = "Mouse Sensitivity"
+
+[node name="HSlider" parent="MarginContainer/VBoxContainer/SliderSens" index="1"]
+min_value = 0.1
+max_value = 10.0
+step = 0.01
+value = 0.1
+
+[node name="LabelValue" parent="MarginContainer/VBoxContainer/SliderSens" index="2"]
+text = "0.10"
+
+[node name="SliderVol" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_fq340")]
+unique_name_in_owner = true
+layout_mode = 2
+title = "Volume"
+
+[node name="LabelTitle" parent="MarginContainer/VBoxContainer/SliderVol" index="0"]
+text = "Volume"
+
+[node name="HSlider" parent="MarginContainer/VBoxContainer/SliderVol" index="1"]
+max_value = 10.0
+step = 0.01
+
+[editable path="MarginContainer/VBoxContainer/SliderSens"]
+[editable path="MarginContainer/VBoxContainer/SliderVol"]
