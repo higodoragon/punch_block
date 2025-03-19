@@ -1135,20 +1135,35 @@
 }
 // entity 16
 {
-"classname" "enemy_marine"
-"origin" "-688 -848 0"
-}
-// entity 17
-{
 "classname" "enemy_quilin"
 "origin" "-736 -624 0"
 }
-// entity 18
+// entity 17
 {
 "classname" "enemy_sniper"
 "origin" "-272 -896 64"
 }
+// entity 18
+{
+"classname" "enemy_quilin"
+"origin" "-752 -752 0"
+}
 // entity 19
+{
+"classname" "enemy_quilin"
+"origin" "-704 -848 0"
+}
+// entity 20
+{
+"classname" "enemy_quilin"
+"origin" "-880 -736 0"
+}
+// entity 21
+{
+"classname" "enemy_quilin"
+"origin" "-656 -496 0"
+}
+// entity 22
 {
 "classname" "func_group"
 "_tb_type" "_tb_layer"

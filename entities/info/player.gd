@@ -23,15 +23,11 @@ var view_step_offset: float = 0
 @export var view_step_smooth: float = 20
 
 var target: Node3D
-var sfx_footstep = global.sfx_generic_footsteps
+var sfx_footstep = global.sfx_player_footsteps_concrete
 
 # ANIMATION vars
-@onready var arms_viewmodel: Node3D = %arms
-@onready var animation_player: AnimationPlayer = arms_viewmodel.find_child('AnimationPlayer')
-@onready var animation_tree: AnimationTree = %AnimationTree
-var anim_punches = ['PunchL', 'PunchR']
-var anim_punches_idx = 0
-var dead = false
+@onready var viewmodel: Node3D = $Camera3D/Viewmodel
+@onready var viewmodel_animation: AnimationPlayer = viewmodel.find_child('AnimationPlayer')
 
 # BLOCK vars
 var action_delay: int = 0
@@ -53,21 +49,34 @@ var parrycombo_time: int = 0
 const parry_frametime = 15
 
 # PUNCH vars
-const punch_time_delay: int = 0
-const punch_time_recovery: int = 20
+const punch_time_delay : int = 8
+const punch_time_recovery : int = 28
+var punch_should_be_right : bool = true
 
 const punch_animation_start := punch_time_delay + punch_time_recovery
 const punch_animation_hit := punch_time_recovery
 
 var punch_buffer := false
 var punch_animation: int = 0
-var punch_active := false
-var is_punching = false
-
 
 func _ready():
-	global.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	global.mouse_update()
+	# animation stuff
+	viewmodel_animation.animation_finished.connect( viewmodel_finished_animation )
+	viewmodel_play_animation("idle")
 
+func viewmodel_finished_animation( animation_name : String ):
+	if animation_name == "die":
+		return
+	
+	if animation_name == "hold_on" or animation_name == "hold_block":
+		return
+
+	if animation_name == "idle":
+		return
+	
+	viewmodel_play_animation( "idle" )
+	
 func _input(event: InputEvent) -> void:
 	if health.dead:
 		return
@@ -105,30 +114,16 @@ func _process(delta: float):
 	else:
 		hud_block.text = ""
 
+func viewmodel_play_animation( animation : StringName ):
+	viewmodel_animation.stop()
+	viewmodel_animation.play( animation )
+
 func view_direction() -> Vector3:
 	return global.rotation_to_direction(Vector3(camera.rotation.x, global_rotation.y, 0))
-
 
 func on_parry_frametime():
 	return block_time < parry_frametime
 
-func do_parry():
-	# PARRY!
-	global.freezeframe += 10
-	var parry_audio = global.audio_play_at(global.sfx_player_parry, self.global_position)
-	parry_audio.pitch_scale += parrycombo_amount * 0.05
-
-	# kills attack delay, you can counter attack imediatly
-	action_delay = 0
-			
-	# dumb combo mechanic just for funs,
-	# probably breaks if you keep going hehe
-	parrycombo_time = 240
-	parrycombo_amount += 1
-
-	block_time = parry_frametime - 10
-	block_input = false
-	
 func do_block():
 	block_press_old = block_press
 	block_press = Input.is_action_pressed("action_block")
@@ -137,6 +132,8 @@ func do_block():
 		block_buffer = true
 	
 	if block_buffer and action_delay <= 0 and not block_active and not block_input:
+		viewmodel_animation.stop()
+		viewmodel_play_animation("hold_on")
 		block_active = true
 		block_input = true
 
@@ -147,7 +144,10 @@ func do_block():
 	
 	if block_active and not block_input and not on_parry_frametime():
 		if not did_parry:
+			viewmodel_animation.stop()
+			viewmodel_play_animation("hold_off")
 			action_delay = 30
+
 		block_amount = 0
 		block_time = 0
 		did_parry = false
@@ -164,24 +164,55 @@ func do_block():
 		parrycombo_time = 0
 		parrycombo_amount = 0
 
-func do_block_damage(attack: Attack):
+func do_block_damage( attack: Attack ):
+	#var inflictor : Node3D
+	#if attack.inflictor != null:
+	#	inflictor = attack.inflictor
+	#else:
+	#	inflictor = attack.agressor
+	#var diff = global_position - inflictor.global_position
 	var diff = global_position - attack.knockback_position
 	var angle_from_attack = atan2(diff.x, diff.z)
 	var angle_from_view = rotation.y
 	var angle_diff_raw = angle_from_view - angle_from_attack
-	var angle_diff = atan2(sin(angle_diff_raw), cos(angle_diff_raw)) / PI
+	var angle_diff = atan2(sin( angle_diff_raw ), cos( angle_diff_raw )) / PI
 
-	var on_block_angle: bool = abs(angle_diff) < 0.25
-	if on_block_angle:
-		if on_parry_frametime() and block_active:
-			did_parry = true
-			do_parry()
-		
-		elif block_active:
-			block_amount += 1
+	var on_block_angle: bool = abs( angle_diff ) < 0.45
 	
-	if did_parry or block_amount > 0:
-		if attack.parry_reaction and did_parry:
+	if block_active and on_block_angle:
+		if on_parry_frametime():
+			# kills attack delay, you can counter attack imediatly
+			action_delay = 0
+
+			# dumb combo mechanic just for funs,
+			# probably breaks if you keep going hehe
+			parrycombo_time = 240
+			parrycombo_amount += 1
+
+			block_time = parry_frametime - 10
+			did_parry = true
+
+			var parry_audio = global.audio_play_at( global.sfx_player_parry, self.global_position )
+			parry_audio.pitch_scale += parrycombo_amount * 0.05
+
+			viewmodel_play_animation( "hold_parry" )
+		else:
+			# reset parry combo if you just blocked
+			parrycombo_time = 0
+			parrycombo_amount = 0
+			
+			global.audio_play_at( global.sfx_player_block, self.global_position )
+
+			# the parry / super block animation was so fun
+			# i made it the normal block ( instafun ) :3
+			viewmodel_play_animation( "hold_block" )
+
+		block_amount += 1
+
+		# juicy freeze frame		
+		global.freezeframe = 10
+			
+		if attack.parry_reaction:
 			if attack.inflictor != null and global.check(attack.inflictor, "do_parry_reaction"):
 				attack.inflictor.do_parry_reaction(self)
 		
@@ -197,7 +228,6 @@ func do_block_damage(attack: Attack):
 func do_block_steal(attack: Attack):
 	pass
 
-
 func do_punch():
 	hud_crosshair.rotation_degrees = 0
 	hud_punch.text = str(action_delay)
@@ -206,20 +236,24 @@ func do_punch():
 	var enemies_position_average := Vector3.ZERO
 	var enemies_hit := 0
 	var did_hit_world = false
-	# var is_punching = false
 
 	if Input.is_action_just_pressed("action_punch"):
 		punch_buffer = true
 
-
 	if punch_buffer and action_delay <= 0 and not block_active:
+		punch_should_be_right = not punch_should_be_right
+		
+		if punch_should_be_right:
+			viewmodel_play_animation( "punch_right" )
+		else:
+			viewmodel_play_animation( "punch_left" )
+		
 		punch_animation = punch_animation_start
 		action_delay = punch_animation_start
 		punch_buffer = false
 
 	# TODO: punch animation
-	is_punching = punch_animation == punch_animation_hit
-
+	var is_punching = punch_animation == punch_animation_hit
 
 	for result in hitscan_results:
 		var collider = result.collider
@@ -264,10 +298,8 @@ func do_punch():
 	if action_delay > 0:
 		action_delay -= 1
 
-	punch_active = is_punching
-
 func do_die(killer = null):
-	dead = true
+	viewmodel_play_animation("die")
 	if killer != null:
 		target = killer
 
@@ -308,9 +340,3 @@ func _physics_process(delta: float) -> void:
 	do_move()
 
 	physics.common_physics(delta)
-
-## DELETE ME
-func play_anim(what: String):
-	# assert(what in arms.animations, 'player.gd: %s is not a valid animation' % what)
-	# arms.animation_player.play(arms.animations[what])
-	animation_player.play(what)

@@ -97,6 +97,7 @@ func hit( hit_damage: float, hit_knockback: float ):
 	attack.knockback_power = hit_knockback
 	attack.knockback_position = global_position
 	ai.target.health.do_damage( attack )
+	ai.target.velocity.y = 20
 
 func do_parry_reaction( inflictor: Node3D ):
 	state.set_state(state_stun)

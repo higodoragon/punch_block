@@ -29,6 +29,7 @@ const sfx_generic_pickup            = preload( "res://audio/generic_pickup.tres"
 const sfx_generic_footsteps         = preload( "res://audio/generic_footsteps.tres" )
 const sfx_player_jump               = preload( "res://audio/player_jumping.tres" )
 const sfx_player_parry              = preload( "res://audio/player_parry.tres" )
+const sfx_player_block              = preload( "res://audio/player_block.tres" )
 const sfx_player_footsteps_concrete = preload( "res://audio/player_footsteps_concrete.tres" )
 const sfx_sniper_beep               = preload( "res://audio/sniper_attack_beep.tres" )
 
