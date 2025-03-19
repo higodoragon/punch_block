@@ -30,11 +30,12 @@ Console="*res://addons/console/console.gd"
 [display]
 
 window/subwindows/embed_subwindows=false
+window/stretch/mode="canvas_items"
 window/vsync/vsync_mode=0
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/console/plugin.cfg", "res://addons/func_godot/plugin.cfg")
+enabled=PackedStringArray("res://addons/console/plugin.cfg", "res://addons/func_godot/plugin.cfg", "res://addons/markdownlabel/plugin.cfg")
 
 [file_customization]
 
@@ -47,6 +48,10 @@ folder_colors={
 "res://func_godot/": "blue",
 "res://scripts/": "purple"
 }
+
+[gui]
+
+theme/custom="uid://wpa81rx6vq18"
 
 [importer_defaults]
 
