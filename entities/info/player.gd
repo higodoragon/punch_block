@@ -132,7 +132,6 @@ func do_block():
 		block_buffer = true
 	
 	if block_buffer and action_delay <= 0 and not block_active and not block_input:
-		viewmodel_animation.stop()
 		viewmodel_play_animation("hold_on")
 		block_active = true
 		block_input = true
