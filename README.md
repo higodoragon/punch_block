@@ -1,8 +1,8 @@
 # Punch Block
 
-made for [Furry Game Jam #1](https://itch.io/jam/furries)
-
-[source code](https://github.com/higodoragon/punch_block)
+- made for [Furry Game Jam #1](https://itch.io/jam/furries)
+- theme: **BLOCKED**
+- [source code](https://github.com/higodoragon/punch_block)
 
 this is a game where u play as furry guy and u block other furry guys
 

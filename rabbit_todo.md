@@ -3,12 +3,13 @@
 # ui
 
 - resume
-- bindings
 - [x] mouse sens
 - [x] volume
 - music volume
 - rebinding / remapping
-- credit(s)
+- [x] credit(s)
+- maps
+  - [ ] rabbit_a
 
 # rebinding / remapping
 
