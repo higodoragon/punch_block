@@ -1130,7 +1130,7 @@
 }
 // entity 15
 {
-"classname" "enemy_brute"
+"classname" "enemy_goon"
 "origin" "-944 -64 160"
 }
 // entity 16
@@ -1140,7 +1140,7 @@
 }
 // entity 17
 {
-"classname" "enemy_sniper"
+"classname" "enemy_goon"
 "origin" "-272 -896 64"
 }
 // entity 18

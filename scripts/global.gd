@@ -22,6 +22,8 @@ var cheats : bool = false
 
 var freezeframe : int = 0
 
+var enemy_list : Array = []
+
 #
 # preload sounds
 const sfx_generic_hurt              = preload( "res://audio/generic_hurt.tres" )
@@ -145,6 +147,8 @@ func _load_stage_real():
 	# load new level
 	if stage != null:
 		stage.free()
+	
+	enemy_list.clear()
 	
 	stage = FuncGodotMap.new()
 	stage.global_map_file = stage_path
