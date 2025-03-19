@@ -1,0 +1,10 @@
+- add action bar ( depletes when over-using shield or standing around )
+- recovers on killing enemy or parrying ( parry incrisses deminishes on over-use )
+- door / func_godot trigger and target system
+- implement audio / levels if given them
+- make brute sprites
+- redo the marine
+- make marine sprites
+- add gibbing animation
+- 2nd pass new viewmodel
+- make textures!!!

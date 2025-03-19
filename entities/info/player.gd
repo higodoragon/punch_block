@@ -7,10 +7,11 @@ class_name Player extends CharacterBase
 
 @onready var camera: Camera3D = $Camera3D
 @onready var collision: CollisionShape3D = $CollisionShape3D
-@onready var hud_health: Label = $HUD/Control/HealthText
-@onready var hud_block: Label = $HUD/Control/BlockText
-@onready var hud_punch: Label = $HUD/Control/PunchText
 @onready var hud_crosshair: TextureRect = $HUD/Control/Crosshair
+@onready var hud_health: Label = $HUD/Control/HealthLabel
+@onready var hud_power: Label = $HUD/Control/PowerLabel
+@onready var hud_debug_block: Label = $HUD/Control/BlockStateLabel
+@onready var hud_debug_action: Label = $HUD/Control/ActionDelayLabel
 
 
 @export var jump_power: float = 10
@@ -100,18 +101,20 @@ func _process(delta: float):
 
 		if target != null:
 			var look_rotation: Vector3 = global.look_at_return(self, target.global_position)
-			
 			camera.rotation.x = lerp_angle(camera.rotation.x, look_rotation.x, delta * 8)
 			rotation.y = lerp_angle(rotation.y, look_rotation.y, delta * 8)
-	
+
+	# HUD DISPLAY
 	hud_health.text = str(int(health.health / health.max_health * 100), "%")
 
 	if parry_active:
-		hud_block.text = "SUPER BLOCK"
+		hud_debug_block.text = "SUPER BLOCK"
 	elif block_active:
-		hud_block.text = "Blocking"
+		hud_debug_block.text = "Blocking"
 	else:
-		hud_block.text = ""
+		hud_debug_block.text = ""
+
+	hud_debug_action.text = str(action_delay)
 
 func viewmodel_play_animation( animation : StringName ):
 	viewmodel_animation.stop()
@@ -228,7 +231,6 @@ func do_block_steal(attack: Attack):
 
 func do_punch():
 	hud_crosshair.rotation_degrees = 0
-	hud_punch.text = str(action_delay)
 	
 	var hitscan_results = combat.hitscan(self, global_position, view_direction(), 4, true, false)
 	var enemies_position_average := Vector3.ZERO
