@@ -29,6 +29,21 @@ var melee_delay : int = 60
 var walk_delay : int
 var walk_angle : float
 var target : Node
+var sleeping : bool = true
+
+func line_of_sight_hitscan_result():
+	if target:
+		var space_state = parent.get_world_3d().direct_space_state
+		var query = PhysicsRayQueryParameters3D.new()
+		query.collide_with_areas = false
+		query.collide_with_bodies = true
+		query.from = parent.global_position + Vector3( 0, parent.view_height, 0 )
+		query.to = target.global_position + Vector3( 0, parent.view_height, 0 )
+		query.collision_mask = 1
+		
+		return space_state.intersect_ray( query )
+	else:
+		return null
 
 func _physics_process( delta : float ):
 	if wakeup_delay > 0:
@@ -36,9 +51,17 @@ func _physics_process( delta : float ):
 		return
 
 	target = global.player
-	
+
 	if target != null and global.check( target, "health" ) and target.health.dead:
 		target = null
+
+	if sleeping:
+		var lfs_result = line_of_sight_hitscan_result()
+		if not lfs_result:
+			# idle until you find player
+			sleeping = false
+			parent.state.set_state( parent.state_active )
+		return
 	
 	if parent.state.sticky_call_active:
 		# count down generic delays
@@ -65,7 +88,9 @@ func start_ai():
 		if randf_range( 1, 0 ) < 0.01:
 			parent.sprite.flip_h = true
 	
-	parent.state.set_state( parent.state_active )
+	# idle until you find player
+	sleeping = true
+	parent.state.set_state( parent.state_idle )
 
 func generic_walk_direction() -> Vector3:
 	if walk_delay <= 0:

@@ -63,13 +63,21 @@ func _physics_process( delta: float ) -> void:
 
 	var result = get_world_3d().direct_space_state.intersect_shape( shape_query, 1 )
 	if result:
-		do_hit()
 		
 		var collided = result[0].collider
 		if combat.object_is_hitbox( collided ):
 			var victim = collided.parent
+
+			var is_close_enough = attack.agressor != null and attack.agressor.global_position.distance_to( victim.global_position ) < 4
+			if is_close_enough and attack.infight_group == victim.infight_group and victim.infight_group != 0:
+				#ignore members of the same species
+				return
+
+			do_hit()
 			attack.knockback_position = victim.global_position + -self.velocity
 			victim.health.do_damage( attack )
+		else:
+			do_hit()
 
 func do_hit():
 	state.set_state( state_hit )

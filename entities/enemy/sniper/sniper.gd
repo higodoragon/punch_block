@@ -13,15 +13,9 @@ extends CharacterBase
 
 var sfx_footstep = global.sfx_generic_footsteps
 
-#var state_pain := [
-#	{ delay = stun_time, frame = 6 },
-#	{ goto = state_active }
-#]
-
 const state_idle := [
-	{ sticky_call = "do_searth" },
 	{ delay = 1, frame = 0 },
-	{ goto = state_active }
+	{ loop = true }
 ]
 
 const state_active := [
@@ -42,6 +36,11 @@ const state_attack_real := [
 	{ goto = state_active },
 ]
 
+var state_stun := [
+	{ delay = 240, frame = 7 },
+	{ goto = state_active },
+]
+
 func _ready():
 	view_height = 1
 	ai.start_ai()
@@ -52,7 +51,7 @@ func _physics_process(delta):
 func _process( delta ):
 	# lazer animation and tracking
 	if ai.target:
-		var result = sniper_hitscan_result()
+		var result = ai.line_of_sight_hitscan_result()
 		var hit_position := Vector3.ZERO
 				
 		if not result.is_empty():
@@ -67,21 +66,6 @@ func _process( delta ):
 		laser_head.show()
 	else:
 		laser_head.hide()
-
-func sniper_hitscan_result():
-	if ai.target:
-		var space_state = get_world_3d().direct_space_state
-		var query = PhysicsRayQueryParameters3D.new()
-		query.collide_with_areas = false
-		query.collide_with_bodies = true
-		query.from = global_position + Vector3( 0, view_height, 0 )
-		query.to = ai.target.global_position + Vector3( 0, view_height, 0 )
-		query.collision_mask = 1
-		
-		return space_state.intersect_ray( query )
-	else:
-		return null
-
 
 func do_active():
 	if ai.target:
@@ -98,7 +82,7 @@ func do_attack():
 
 func do_attack_real():
 	if ai.target:
-		laser_material.albedo_color =  Color.RED
+		laser_material.albedo_color = Color8( 255, 23, 105 )
 		var attack := Attack.new()
 		attack.agressor = self
 		attack.damage = ai.attack_damage

@@ -49,7 +49,7 @@ pixel_size = 0.125
 billboard = 2
 texture_filter = 0
 texture = ExtResource("2_k4ue4")
-hframes = 8
+hframes = 9
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_wgxjb")]
 max_health = 4.0

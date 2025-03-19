@@ -11,9 +11,8 @@ extends CharacterBase
 var sfx_footstep = global.sfx_generic_footsteps
 
 var state_idle := [
-	{ sticky_call = "do_searth" },
 	{ delay = 1, frame = 0 },
-	{ goto = state_active }
+	{ loop = true }
 ]
 
 var state_active := [

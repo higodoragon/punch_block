@@ -13,9 +13,8 @@ var sfx_footstep = global.sfx_generic_footsteps
 var real_friction : float
 
 var state_idle := [
-	{sticky_call = "do_searth"},
-	{delay = 1, frame = 0},
-	{goto = state_active},
+	{ delay = 1, frame = 0 },
+	{ loop = true }
 ]
 
 var state_active := [
