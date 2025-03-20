@@ -85,6 +85,9 @@ func _input( event: InputEvent ):
 	if Input.is_action_just_pressed( "debug_reloadstage" ):
 		reload_stage()
 		return
+	
+	if player:
+		player.do_input_handiling()
 
 func console_defs():
 	Console.add_command("map", console_map, ["map name"] )

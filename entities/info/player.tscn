@@ -123,6 +123,7 @@ horizontal_alignment = 1
 vertical_alignment = 2
 
 [node name="BlockStateLabel" type="Label" parent="Interface/HUD"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -139,6 +140,7 @@ label_settings = SubResource("LabelSettings_ug0ox")
 horizontal_alignment = 1
 
 [node name="ActionDelayLabel" type="Label" parent="Interface/HUD"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
