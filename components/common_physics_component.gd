@@ -8,14 +8,14 @@ class_name CommonPhysicsComponent
 @onready var mat_sfx_ray: RayCast3D = $MatSfxRay
 
 @export_group('Material SFX')
-@export var fs_concrete: AudioSettings
-@export var fs_grass: AudioSettings
-@export var fs_gravel: AudioSettings
-@export var fs_water: AudioSettings
-@export var landing_concrete: AudioSettings
-@export var landing_grass: AudioSettings
-@export var landing_gravel: AudioSettings
-@export var landing_water: AudioSettings
+@export var fs_concrete: AudioSettings = preload('res://audio/fs_concrete.tres')
+@export var fs_grass: AudioSettings = preload('res://audio/fs_grass.tres')
+@export var fs_gravel: AudioSettings = preload('res://audio/fs_gravel.tres')
+@export var fs_water: AudioSettings = preload('res://audio/fs_water.tres')
+@export var landing_concrete: AudioSettings = preload('res://audio/land_concrete.tres')
+@export var landing_grass: AudioSettings = preload('res://audio/land_grass.tres')
+@export var landing_gravel: AudioSettings = preload('res://audio/land_gravel.tres')
+@export var landing_water: AudioSettings = preload('res://audio/land_water.tres')
 
 var on_ground_prev: bool = true
 var on_ground: bool = true

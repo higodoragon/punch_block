@@ -1,25 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://ccvm8eicw8t4d"]
+[gd_scene load_steps=2 format=3 uid="uid://ccvm8eicw8t4d"]
 
 [ext_resource type="Script" uid="uid://ceu4v0br10erh" path="res://components/common_physics_component.gd" id="1_x5dr4"]
-[ext_resource type="Resource" uid="uid://b4vc07t2qtljq" path="res://audio/fs_concrete.tres" id="2_s7jij"]
-[ext_resource type="Resource" uid="uid://bpoeh3kmuk8d" path="res://audio/fs_grass.tres" id="3_xuf0k"]
-[ext_resource type="Resource" uid="uid://bse2swf8l0rvq" path="res://audio/fs_gravel.tres" id="4_ejh66"]
-[ext_resource type="Resource" uid="uid://moif0gd3lb0v" path="res://audio/fs_water.tres" id="5_bk2hb"]
-[ext_resource type="Resource" uid="uid://ds8k07xwjcipv" path="res://audio/land_concrete.tres" id="6_4j0jr"]
-[ext_resource type="Resource" uid="uid://lk3r4axqokfd" path="res://audio/land_grass.tres" id="7_gcimt"]
-[ext_resource type="Resource" uid="uid://c8ucjfilgec2b" path="res://audio/land_gravel.tres" id="8_tq5lc"]
-[ext_resource type="Resource" uid="uid://hf5u8stsfyrm" path="res://audio/land_water.tres" id="9_yhv58"]
 
 [node name="CommonPhysicsComponent" type="Node"]
 script = ExtResource("1_x5dr4")
-fs_concrete = ExtResource("2_s7jij")
-fs_grass = ExtResource("3_xuf0k")
-fs_gravel = ExtResource("4_ejh66")
-fs_water = ExtResource("5_bk2hb")
-landing_concrete = ExtResource("6_4j0jr")
-landing_grass = ExtResource("7_gcimt")
-landing_gravel = ExtResource("8_tq5lc")
-landing_water = ExtResource("9_yhv58")
 
 [node name="StepCast" type="ShapeCast3D" parent="."]
 visible = false
