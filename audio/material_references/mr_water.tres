@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="MaterialTextureReference" load_steps=3 format=3 uid="uid://bp1lmbfdea0au"]
 
 [ext_resource type="Material" path="res://func_godot/gamedir/textures/dev/water.tres" id="1_r4aq2"]
-[ext_resource type="Script" path="res://scripts/material_texture.gd" id="2_ve2wo"]
+[ext_resource type="Script" uid="uid://dyp8q68chjbt3" path="res://scripts/material_texture.gd" id="2_ve2wo"]
 
 [resource]
 script = ExtResource("2_ve2wo")
 material_file = ExtResource("1_r4aq2")
-meterial_kind = 3
+material_kind = 3

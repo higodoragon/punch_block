@@ -18,4 +18,8 @@ mono_crash.*.json
 
 # Krita
 *.*~
+# Blender
 *.blend1
+# rabbit debugging
+/_debug/
+
