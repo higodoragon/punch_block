@@ -28,11 +28,11 @@ var sfx_footstep = global.sfx_player_footsteps_concrete
 # ANIMATION vars
 @onready var viewmodel: Node3D = $ViewmodelHead
 @onready var viewmodel_animation: AnimationPlayer = $ViewmodelHead/Viewmodel/AnimationPlayer
+@onready var bracelet: MeshInstance3D = $ViewmodelHead/Viewmodel/Armature/Skeleton3D/Cylinder
+@onready var bracelet_material: StandardMaterial3D
 
 var power_max: int = 60 * 8
 var power: int = power_max
-@export var bracelet: MeshInstance3D
-@onready var bracelet_material: StandardMaterial3D
 
 # BLOCK vars
 var action_delay: int = 0
@@ -369,3 +369,4 @@ func _physics_process(delta: float) -> void:
 
 func ring_flash(way: bool):
 	bracelet_material.emission_enabled = way
+	bracelet_material.shading_mode = BaseMaterial3D.SHADING_MODE_PER_VERTEX if way else BaseMaterial3D.SHADING_MODE_UNSHADED

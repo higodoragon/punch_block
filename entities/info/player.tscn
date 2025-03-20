@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://mdes4hst2fpb"]
+[gd_scene load_steps=14 format=3 uid="uid://mdes4hst2fpb"]
 
 [ext_resource type="Script" uid="uid://ylp6vydxbh2w" path="res://entities/info/player.gd" id="1_merdl"]
+[ext_resource type="Script" uid="uid://cqqvcgk466eih" path="res://entities/info/low_fps_stop_motion.gd" id="2_2hcst"]
 [ext_resource type="PackedScene" uid="uid://c0gxf5yuqfqlx" path="res://assets/raw/viewmodel_higo.blend" id="2_3544y"]
 [ext_resource type="PackedScene" uid="uid://d16mvtftr8jl7" path="res://components/health_component.tscn" id="2_quc4t"]
 [ext_resource type="Texture2D" uid="uid://ctatlt4v5fyf8" path="res://assets/crosshair.png" id="3_otayu"]
@@ -26,14 +27,17 @@ outline_color = Color(0, 0, 0, 1)
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_tdjdb"]
 height = 2.1
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("bracelet")]
+[node name="Player" type="CharacterBody3D"]
 collision_layer = 4
 collision_mask = 11
 floor_constant_speed = true
 script = ExtResource("1_merdl")
-bracelet = NodePath("ViewmodelHead/Viewmodel/Armature/Skeleton3D/Cylinder")
 speed = 1.5
 metadata/_custom_type_script = "uid://88pbfyfqnxlk"
+
+[node name="LowFpsStopMotion" type="Node" parent="." node_paths=PackedStringArray("model")]
+script = ExtResource("2_2hcst")
+model = NodePath("../ViewmodelHead/Viewmodel")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 0)
