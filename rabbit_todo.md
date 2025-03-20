@@ -2,12 +2,12 @@
 
 # ui
 
-- [ ] resume button
+- [x] resume button
 - [x] mouse sens
 - [x] volume
 - music volume
 - rebinding / remapping
-- [ ] level select
+- [x] level select
 - [x] credit(s)
 - maps
   - [ ] rabbit_a

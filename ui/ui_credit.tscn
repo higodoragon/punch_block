@@ -54,7 +54,7 @@ theme_override_constants/separation = 12
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 24
 text = "CREDIT"
 horizontal_alignment = 1
 
