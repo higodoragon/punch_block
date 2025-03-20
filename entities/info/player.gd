@@ -26,8 +26,8 @@ var target: Node3D
 var sfx_footstep = global.sfx_player_footsteps_concrete
 
 # ANIMATION vars
-@onready var viewmodel: Node3D = $Camera3D/Viewmodel
-@onready var viewmodel_animation: AnimationPlayer = viewmodel.find_child('AnimationPlayer')
+@onready var viewmodel : Node3D = $ViewmodelHead
+@onready var viewmodel_animation : AnimationPlayer = $ViewmodelHead/Viewmodel/AnimationPlayer
 
 # BLOCK vars
 var action_delay: int = 0
@@ -65,6 +65,11 @@ func _ready():
 	viewmodel_animation.animation_finished.connect( viewmodel_finished_animation )
 	viewmodel_play_animation("idle")
 
+func viewmodel_move_to_camera():
+	viewmodel.global_position = camera.global_position
+	viewmodel.global_rotation = camera.global_rotation
+	pass
+	
 func viewmodel_finished_animation( animation_name : String ):
 	if animation_name == "die":
 		return
@@ -115,6 +120,7 @@ func _process(delta: float):
 		hud_debug_block.text = ""
 
 	hud_debug_action.text = str(action_delay)
+	viewmodel_move_to_camera()
 
 func viewmodel_play_animation( animation : StringName ):
 	viewmodel_animation.stop()

@@ -38,16 +38,18 @@ metadata/_custom_type_script = "uid://88pbfyfqnxlk"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 0)
 shape = SubResource("CylinderShape3D_merdl")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="ViewmodelHead" type="Node3D" parent="."]
 process_mode = 3
-process_priority = 4
-process_physics_priority = 4
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+top_level = true
+
+[node name="Viewmodel" parent="ViewmodelHead" instance=ExtResource("2_3544y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -0.5)
+
+[node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
 current = true
 fov = 90.0
-
-[node name="Viewmodel" parent="Camera3D" instance=ExtResource("2_3544y")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, -0.25, -0.1)
 
 [node name="Interface" type="CanvasLayer" parent="."]
 
@@ -162,4 +164,4 @@ iframes_amount = 15
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 0)
 shape = SubResource("CylinderShape3D_tdjdb")
 
-[editable path="Camera3D/Viewmodel"]
+[editable path="ViewmodelHead/Viewmodel"]

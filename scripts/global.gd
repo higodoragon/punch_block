@@ -54,6 +54,7 @@ func _process( _delta: float ) -> void:
 	# HUD DISPLAY
 	if player != null:
 		player.hud.visible = not pause_active
+		player.viewmodel_move_to_camera()
 
 func _physics_process(delta: float) -> void:
 	if freezeframe > 0:
