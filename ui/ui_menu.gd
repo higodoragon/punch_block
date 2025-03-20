@@ -17,6 +17,8 @@ func _ready():
 	# master volume
 	settings_container.slider_vol.value_changed.connect(_set_volume.bind(Settings.bus_master_idx))
 	settings_container.slider_vol.slider.value = db_to_linear(AudioServer.get_bus_volume_db(Settings.bus_master_idx))
+	# resume button
+	btn_resume.pressed.connect(_on_resumed)
 
 
 func _pause_toggled(way: bool):
@@ -38,3 +40,8 @@ func _set_mouse_sens(val: float):
 func _if_dirty():
 	Settings.save_cfg()
 	_dirty = false
+
+
+func _on_resumed():
+	global.pause_active = false
+	global.mouse_update()

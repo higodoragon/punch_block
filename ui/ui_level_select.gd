@@ -20,3 +20,4 @@ func _ready():
 
 func load_level(mapname: String):
 	global.load_stage(mapname)
+	global.pause_active = false

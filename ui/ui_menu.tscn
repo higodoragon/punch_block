@@ -78,7 +78,6 @@ layout_mode = 2
 
 [node name="ButtonResume" type="Button" parent="PanelContainer/MarginContainer/Columns/CenterDiv/Center/VBoxContainer/MENU/BoxContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 text = "Resume Game"
 
