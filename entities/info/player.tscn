@@ -164,5 +164,3 @@ iframes_amount = 15
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxComponent"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 0)
 shape = SubResource("CylinderShape3D_tdjdb")
-
-[editable path="ViewmodelHead/Viewmodel"]

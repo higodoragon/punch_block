@@ -17,6 +17,9 @@
 - maps
   - [ ] rabbit_a
 - [x] ring flash on super block
+- redo arms
+  - mesh
+  - squash and stretch
 
 # rebinding / remapping
 
