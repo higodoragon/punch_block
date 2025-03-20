@@ -29,8 +29,9 @@ var sfx_footstep = global.sfx_player_footsteps_concrete
 @onready var viewmodel: Node3D = $ViewmodelHead
 @onready var viewmodel_animation: AnimationPlayer = $ViewmodelHead/Viewmodel/AnimationPlayer
 
-var power_max: int = 60 * 8
-var power: int = power_max
+const magic_max : int = 120 * 60
+var magic : int = magic_max
+
 @export var bracelet: MeshInstance3D
 @onready var bracelet_material: StandardMaterial3D
 
@@ -46,7 +47,7 @@ var block_press: bool = false
 var block_input: bool = false
 var block_active: bool = false
 var parry_active: bool = false
-var block_buffer: bool = false
+var block_buffer: int = 0
 var did_parry: bool = false
 var parrycombo_amount: int = 0
 var parrycombo_time: int = 0
@@ -54,14 +55,14 @@ var parrycombo_time: int = 0
 const parry_frametime = 15
 
 # PUNCH vars
-const punch_time_delay: int = 8
-const punch_time_recovery: int = 28
+const punch_time_delay: int = 10
+const punch_time_recovery: int = 30
 var punch_should_be_right: bool = true
 
 const punch_animation_start := punch_time_delay + punch_time_recovery
 const punch_animation_hit := punch_time_recovery
 
-var punch_buffer := false
+var punch_buffer : int = 0
 var punch_animation: int = 0
 
 func _ready():
@@ -123,9 +124,9 @@ func _process(delta: float):
 
 	# HUD DISPLAY
 	hud_health.text = str(int(health.health / health.max_health * 100), "%")
-	hud_power.text = str(int(power / power_max * 100), "%")
+	hud_power.text = str( int( float( magic ) / float( magic_max ) * 100 ), "%")
 	
-	ring_flash(parry_active)
+	ring_flash( parry_active )
 
 	if parry_active:
 		hud_debug_block.text = "SUPER BLOCK"
@@ -147,24 +148,34 @@ func view_direction() -> Vector3:
 func on_parry_frametime():
 	return block_time < parry_frametime
 
-func do_block():
-	block_press_old = block_press
-	block_press = Input.is_action_pressed("action_block")
+func refill_power( time : float ):
+	magic = min( time * 120 + magic, magic_max )
 
-	if (not block_press_old and block_press):
-		block_buffer = true
-	
-	if block_buffer and action_delay <= 0 and not block_active and not block_input:
+func do_input_handiling():
+	if Input.is_action_pressed("action_block"):
+		block_buffer = 20
+
+	if Input.is_action_just_pressed("action_punch"):
+		punch_buffer = 20
+
+	if block_buffer > 0:
+		block_buffer -= 1
+
+	if punch_buffer > 0:
+		punch_buffer -= 1
+
+func do_block():
+	if magic > 0 and block_buffer > 0 and action_delay <= 0 and not block_active and not block_input:
 		viewmodel_play_animation("hold_on")
 		block_active = true
 		block_input = true
 
-	if not block_press:
+	if not Input.is_action_pressed("action_block"):
 		block_input = false
 	
 	parry_active = on_parry_frametime() and block_active
 	
-	if block_active and not block_input and not on_parry_frametime():
+	if ( block_active and magic <= 0 ) or ( block_active and not block_input and not on_parry_frametime() ):
 		if not did_parry:
 			viewmodel_animation.stop()
 			viewmodel_play_animation("hold_off")
@@ -175,7 +186,7 @@ func do_block():
 		did_parry = false
 		block_active = false
 		block_input = false
-		block_buffer = false
+		block_buffer = 0
 
 	if block_active:
 		block_time += 1
@@ -186,17 +197,14 @@ func do_block():
 		parrycombo_time = 0
 		parrycombo_amount = 0
 
-	if power > 0:
-		power -= 1
-
+	if magic > 0:
+		if block_input and not on_parry_frametime():
+			magic -= 24
+		else:
+			magic -= 1
 
 func do_block_damage(attack: Attack):
-	#var inflictor : Node3D
-	#if attack.inflictor != null:
-	#	inflictor = attack.inflictor
-	#else:
-	#	inflictor = attack.agressor
-	#var diff = global_position - inflictor.global_position
+
 	var diff = global_position - attack.knockback_position
 	var angle_from_attack = atan2(diff.x, diff.z)
 	var angle_from_view = rotation.y
@@ -210,6 +218,9 @@ func do_block_damage(attack: Attack):
 			# kills attack delay, you can counter attack imediatly
 			action_delay = 0
 
+			# punch with the other hand
+			punch_should_be_right = false
+
 			# dumb combo mechanic just for funs,
 			# probably breaks if you keep going hehe
 			parrycombo_time = 240
@@ -218,9 +229,11 @@ func do_block_damage(attack: Attack):
 			block_time = parry_frametime - 10
 			did_parry = true
 
-			var parry_audio = global.audio_play_at(global.sfx_player_parry, self.global_position)
+			var parry_audio = global.audio_play_at( global.sfx_player_parry, self.global_position )
 			parry_audio.pitch_scale += parrycombo_amount * 0.05
 
+			block_input = false
+			
 			viewmodel_play_animation("hold_parry")
 		else:
 			# reset parry combo if you just blocked
@@ -245,14 +258,15 @@ func do_block_damage(attack: Attack):
 			elif attack.agressor != null and global.check(attack.agressor, "do_block_reaction"):
 				attack.agressor.do_block_reaction(self, did_parry)
 		
-		do_block_steal(attack)
+		var victim_result = AttackResult.new()
+		victim_result.was_blocked = true
+		victim_result.was_parried = on_parry_frametime()
+		return victim_result
 	else:
 		# attack like normal
 		attack.ignore_blocking = true
-		health.do_damage(attack)
-
-func do_block_steal(attack: Attack):
-	pass
+		health.do_damage( attack )
+		return null
 
 func do_punch():
 	hud_crosshair.rotation_degrees = 0
@@ -262,20 +276,17 @@ func do_punch():
 	var enemies_hit := 0
 	var did_hit_world = false
 
-	if Input.is_action_just_pressed("action_punch"):
-		punch_buffer = true
-
-	if punch_buffer and action_delay <= 0 and not block_active:
-		punch_should_be_right = not punch_should_be_right
-		
+	if punch_buffer > 0 and action_delay <= 0 and not block_active:
 		if punch_should_be_right:
 			viewmodel_play_animation("punch_right")
 		else:
 			viewmodel_play_animation("punch_left")
+
+		punch_should_be_right = not punch_should_be_right
 		
 		punch_animation = punch_animation_start
 		action_delay = punch_animation_start
-		punch_buffer = false
+		punch_buffer = 0
 
 	# TODO: punch animation
 	var is_punching = punch_animation == punch_animation_hit
@@ -294,8 +305,11 @@ func do_punch():
 				attack.knockback_power = 5
 				attack.knockback_position = position
 				attack.is_silent = true
-				victim.health.do_damage(attack)
-			
+				var attack_result = victim.health.do_damage(attack)
+				if attack_result.did_kill:
+					refill_power( 15 )
+					continue
+				
 			enemies_position_average += victim.global_position
 			enemies_hit += 1
 			continue
@@ -367,5 +381,5 @@ func _physics_process(delta: float) -> void:
 	physics.common_physics(delta)
 
 
-func ring_flash(way: bool):
+func ring_flash( way: bool ):
 	bracelet_material.emission_enabled = way
