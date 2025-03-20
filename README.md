@@ -16,6 +16,11 @@ this is a game where u play as furry guy and u block other furry guys
 | rabbit, [hare.itch.io](hare.itch.io)                                                                    | programming, level design, 3d modelling |
 | dateddelvings, [https://www.youtube.com/@dateddelvings1695](https://www.youtube.com/@dateddelvings1695) | music                                   |
 
+### assets
+
+- https://opengameart.org/content/free-urban-textures-buildings-apartments-shop-fronts
+- https://opengameart.org/content/urban-jungle
+
 ## tools
 
 | tool        | purpose                        |
