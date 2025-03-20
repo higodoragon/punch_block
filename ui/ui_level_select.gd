@@ -14,7 +14,9 @@ func _ready():
 		inst.button.pressed.connect(load_level.bind(level.map))
 		print(level.title)
 		print(inst)
-		inst.label.text = '%02d - %s' % [idx + 1, level.title]
+		print(level.author)
+		inst.label_author.text = 'by %s' % level.author
+		inst.label_title.text = '%02d - %s' % [idx + 1, level.title]
 		idx += 1
 
 

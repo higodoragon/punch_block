@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_rcsn7")
-map = null
+map = ""
 title = "Factory"
+author = "tetrisk"
 metadata/_custom_type_script = "uid://c584v8jufsvu6"

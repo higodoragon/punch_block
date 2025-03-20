@@ -15,7 +15,23 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="."]
+[node name="BoxContainer" type="BoxContainer" parent="Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LabelTitle" type="Label" parent="Button/BoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 text = "level name"
+
+[node name="LabelAuthor" type="Label" parent="Button/BoxContainer"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.607843)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "level author"
