@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Level" load_steps=2 format=3 uid="uid://crvjl0v8hbfbe"]
+
+[ext_resource type="Script" uid="uid://c584v8jufsvu6" path="res://levels/level.gd" id="1_rcsn7"]
+
+[resource]
+script = ExtResource("1_rcsn7")
+map = null
+title = "Factory"
+metadata/_custom_type_script = "uid://c584v8jufsvu6"

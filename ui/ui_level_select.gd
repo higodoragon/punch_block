@@ -11,7 +11,12 @@ func _ready():
 	for level in levels:
 		var inst = preview_scene.instantiate() as UiLevelPreview
 		box.add_child(inst)
+		inst.button.pressed.connect(load_level.bind(level.map))
 		print(level.title)
 		print(inst)
 		inst.label.text = '%02d - %s' % [idx + 1, level.title]
 		idx += 1
+
+
+func load_level(mapname: String):
+	global.load_stage(mapname)
