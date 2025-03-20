@@ -26,11 +26,12 @@ outline_color = Color(0, 0, 0, 1)
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_tdjdb"]
 height = 2.1
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("bracelet")]
 collision_layer = 4
 collision_mask = 11
 floor_constant_speed = true
 script = ExtResource("1_merdl")
+bracelet = NodePath("ViewmodelHead/Viewmodel/Armature/Skeleton3D/Cylinder")
 speed = 1.5
 metadata/_custom_type_script = "uid://88pbfyfqnxlk"
 

@@ -7,7 +7,7 @@ class_name Player extends CharacterBase
 
 @onready var camera: Camera3D = $Camera3D
 @onready var collision: CollisionShape3D = $CollisionShape3D
-@onready var hud : Control = $Interface/HUD
+@onready var hud: Control = $Interface/HUD
 @onready var hud_crosshair: TextureRect = $Interface/HUD/Crosshair
 @onready var hud_health: Label = $Interface/HUD/HealthLabel
 @onready var hud_power: Label = $Interface/HUD/PowerLabel
@@ -26,8 +26,10 @@ var target: Node3D
 var sfx_footstep = global.sfx_player_footsteps_concrete
 
 # ANIMATION vars
-@onready var viewmodel : Node3D = $ViewmodelHead
-@onready var viewmodel_animation : AnimationPlayer = $ViewmodelHead/Viewmodel/AnimationPlayer
+@onready var viewmodel: Node3D = $ViewmodelHead
+@onready var viewmodel_animation: AnimationPlayer = $ViewmodelHead/Viewmodel/AnimationPlayer
+@export var bracelet: MeshInstance3D
+@onready var bracelet_material: StandardMaterial3D
 
 # BLOCK vars
 var action_delay: int = 0
@@ -49,9 +51,9 @@ var parrycombo_time: int = 0
 const parry_frametime = 15
 
 # PUNCH vars
-const punch_time_delay : int = 8
-const punch_time_recovery : int = 28
-var punch_should_be_right : bool = true
+const punch_time_delay: int = 8
+const punch_time_recovery: int = 28
+var punch_should_be_right: bool = true
 
 const punch_animation_start := punch_time_delay + punch_time_recovery
 const punch_animation_hit := punch_time_recovery
@@ -62,15 +64,22 @@ var punch_animation: int = 0
 func _ready():
 	global.mouse_update()
 	# animation stuff
-	viewmodel_animation.animation_finished.connect( viewmodel_finished_animation )
+	viewmodel_animation.animation_finished.connect(viewmodel_finished_animation)
 	viewmodel_play_animation("idle")
+	
+	# i'm ugly and i'm proud
+	bracelet_material = bracelet.get_active_material(0)
+	bracelet.mesh.surface_set_material(0, bracelet_material.duplicate())
+	bracelet_material = bracelet.get_active_material(0)
+	bracelet_material.emission = Color.WHITE
+
 
 func viewmodel_move_to_camera():
 	viewmodel.global_position = camera.global_position
 	viewmodel.global_rotation = camera.global_rotation
 	pass
 	
-func viewmodel_finished_animation( animation_name : String ):
+func viewmodel_finished_animation(animation_name: String):
 	if animation_name == "die":
 		return
 	
@@ -80,7 +89,7 @@ func viewmodel_finished_animation( animation_name : String ):
 	if animation_name == "idle":
 		return
 	
-	viewmodel_play_animation( "idle" )
+	viewmodel_play_animation("idle")
 	
 func _input(event: InputEvent) -> void:
 	if health.dead:
@@ -107,10 +116,12 @@ func _process(delta: float):
 		if target != null:
 			var look_rotation: Vector3 = global.look_at_return(self, target.global_position)
 			camera.rotation.x = lerp_angle(camera.rotation.x, look_rotation.x, delta * 8)
-			rotation.y = lerp_angle( rotation.y, look_rotation.y, delta * 8 )
+			rotation.y = lerp_angle(rotation.y, look_rotation.y, delta * 8)
 
 	# HUD DISPLAY
 	hud_health.text = str(int(health.health / health.max_health * 100), "%")
+
+	ring_flash(parry_active)
 
 	if parry_active:
 		hud_debug_block.text = "SUPER BLOCK"
@@ -122,9 +133,9 @@ func _process(delta: float):
 	hud_debug_action.text = str(action_delay)
 	viewmodel_move_to_camera()
 
-func viewmodel_play_animation( animation : StringName ):
+func viewmodel_play_animation(animation: StringName):
 	viewmodel_animation.stop()
-	viewmodel_animation.play( animation )
+	viewmodel_animation.play(animation)
 
 func view_direction() -> Vector3:
 	return global.rotation_to_direction(Vector3(camera.rotation.x, global_rotation.y, 0))
@@ -171,7 +182,7 @@ func do_block():
 		parrycombo_time = 0
 		parrycombo_amount = 0
 
-func do_block_damage( attack: Attack ):
+func do_block_damage(attack: Attack):
 	#var inflictor : Node3D
 	#if attack.inflictor != null:
 	#	inflictor = attack.inflictor
@@ -182,9 +193,9 @@ func do_block_damage( attack: Attack ):
 	var angle_from_attack = atan2(diff.x, diff.z)
 	var angle_from_view = rotation.y
 	var angle_diff_raw = angle_from_view - angle_from_attack
-	var angle_diff = atan2(sin( angle_diff_raw ), cos( angle_diff_raw )) / PI
+	var angle_diff = atan2(sin(angle_diff_raw), cos(angle_diff_raw)) / PI
 
-	var on_block_angle: bool = abs( angle_diff ) < 0.45
+	var on_block_angle: bool = abs(angle_diff) < 0.45
 	
 	if block_active and on_block_angle:
 		if on_parry_frametime():
@@ -199,20 +210,20 @@ func do_block_damage( attack: Attack ):
 			block_time = parry_frametime - 10
 			did_parry = true
 
-			var parry_audio = global.audio_play_at( global.sfx_player_parry, self.global_position )
+			var parry_audio = global.audio_play_at(global.sfx_player_parry, self.global_position)
 			parry_audio.pitch_scale += parrycombo_amount * 0.05
 
-			viewmodel_play_animation( "hold_parry" )
+			viewmodel_play_animation("hold_parry")
 		else:
 			# reset parry combo if you just blocked
 			parrycombo_time = 0
 			parrycombo_amount = 0
 			
-			global.audio_play_at( global.sfx_player_block, self.global_position )
+			global.audio_play_at(global.sfx_player_block, self.global_position)
 
 			# the parry / super block animation was so fun
 			# i made it the normal block ( instafun ) :3
-			viewmodel_play_animation( "hold_block" )
+			viewmodel_play_animation("hold_block")
 
 		block_amount += 1
 
@@ -221,10 +232,10 @@ func do_block_damage( attack: Attack ):
 			
 		if attack.parry_reaction:
 			if attack.inflictor != null and global.check(attack.inflictor, "do_block_reaction"):
-				attack.inflictor.do_block_reaction( self, did_parry )
+				attack.inflictor.do_block_reaction(self, did_parry)
 		
 			elif attack.agressor != null and global.check(attack.agressor, "do_block_reaction"):
-				attack.agressor.do_block_reaction( self, did_parry )
+				attack.agressor.do_block_reaction(self, did_parry)
 		
 		do_block_steal(attack)
 	else:
@@ -250,9 +261,9 @@ func do_punch():
 		punch_should_be_right = not punch_should_be_right
 		
 		if punch_should_be_right:
-			viewmodel_play_animation( "punch_right" )
+			viewmodel_play_animation("punch_right")
 		else:
-			viewmodel_play_animation( "punch_left" )
+			viewmodel_play_animation("punch_left")
 		
 		punch_animation = punch_animation_start
 		action_delay = punch_animation_start
@@ -346,3 +357,7 @@ func _physics_process(delta: float) -> void:
 	do_move()
 
 	physics.common_physics(delta)
+
+
+func ring_flash(way: bool):
+	bracelet_material.emission_enabled = way
