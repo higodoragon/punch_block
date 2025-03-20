@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dng1ysmoxmd10"]
+
+[ext_resource type="Texture2D" uid="uid://1be4tc06j34y" path="res://assets/raw/viewmodel_texture.png" id="1_i07vl"]
+
+[resource]
+depth_draw_mode = 1
+shading_mode = 0
+specular_mode = 2
+disable_ambient_light = true
+disable_fog = true
+albedo_texture = ExtResource("1_i07vl")
+texture_filter = 0

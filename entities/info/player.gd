@@ -28,12 +28,11 @@ var sfx_footstep = global.sfx_player_footsteps_concrete
 # ANIMATION vars
 @onready var viewmodel: Node3D = $ViewmodelHead
 @onready var viewmodel_animation: AnimationPlayer = $ViewmodelHead/Viewmodel/AnimationPlayer
-
-const magic_max : int = 120 * 60
-var magic : int = magic_max
-
-@export var bracelet: MeshInstance3D
+@onready var bracelet: MeshInstance3D = $ViewmodelHead/Viewmodel/Armature/Skeleton3D/Cylinder
 @onready var bracelet_material: StandardMaterial3D
+
+const magic_max: int = 120 * 60
+var magic: int = magic_max
 
 # BLOCK vars
 var action_delay: int = 0
@@ -62,7 +61,7 @@ var punch_should_be_right: bool = true
 const punch_animation_start := punch_time_delay + punch_time_recovery
 const punch_animation_hit := punch_time_recovery
 
-var punch_buffer : int = 0
+var punch_buffer: int = 0
 var punch_animation: int = 0
 
 func _ready():
@@ -124,9 +123,9 @@ func _process(delta: float):
 
 	# HUD DISPLAY
 	hud_health.text = str(int(health.health / health.max_health * 100), "%")
-	hud_power.text = str( int( float( magic ) / float( magic_max ) * 100 ), "%")
+	hud_power.text = str(int(float(magic) / float(magic_max) * 100), "%")
 	
-	ring_flash( parry_active )
+	ring_flash(parry_active)
 
 	if parry_active:
 		hud_debug_block.text = "SUPER BLOCK"
@@ -148,8 +147,8 @@ func view_direction() -> Vector3:
 func on_parry_frametime():
 	return block_time < parry_frametime
 
-func refill_power( time : float ):
-	magic = min( time * 120 + magic, magic_max )
+func refill_power(time: float):
+	magic = min(time * 120 + magic, magic_max)
 
 func do_input_handiling():
 	if Input.is_action_pressed("action_block"):
@@ -175,7 +174,7 @@ func do_block():
 	
 	parry_active = on_parry_frametime() and block_active
 	
-	if ( block_active and magic <= 0 ) or ( block_active and not block_input and not on_parry_frametime() ):
+	if (block_active and magic <= 0) or (block_active and not block_input and not on_parry_frametime()):
 		if not did_parry:
 			viewmodel_animation.stop()
 			viewmodel_play_animation("hold_off")
@@ -204,7 +203,6 @@ func do_block():
 			magic -= 1
 
 func do_block_damage(attack: Attack):
-
 	var diff = global_position - attack.knockback_position
 	var angle_from_attack = atan2(diff.x, diff.z)
 	var angle_from_view = rotation.y
@@ -229,7 +227,7 @@ func do_block_damage(attack: Attack):
 			block_time = parry_frametime - 10
 			did_parry = true
 
-			var parry_audio = global.audio_play_at( global.sfx_player_parry, self.global_position )
+			var parry_audio = global.audio_play_at(global.sfx_player_parry, self.global_position)
 			parry_audio.pitch_scale += parrycombo_amount * 0.05
 
 			block_input = false
@@ -265,7 +263,7 @@ func do_block_damage(attack: Attack):
 	else:
 		# attack like normal
 		attack.ignore_blocking = true
-		health.do_damage( attack )
+		health.do_damage(attack)
 		return null
 
 func do_punch():
@@ -307,7 +305,7 @@ func do_punch():
 				attack.is_silent = true
 				var attack_result = victim.health.do_damage(attack)
 				if attack_result.did_kill:
-					refill_power( 15 )
+					refill_power(15)
 					continue
 				
 			enemies_position_average += victim.global_position
@@ -381,5 +379,6 @@ func _physics_process(delta: float) -> void:
 	physics.common_physics(delta)
 
 
-func ring_flash( way: bool ):
+func ring_flash(way: bool):
 	bracelet_material.emission_enabled = way
+	bracelet_material.shading_mode = BaseMaterial3D.SHADING_MODE_PER_VERTEX if way else BaseMaterial3D.SHADING_MODE_UNSHADED
