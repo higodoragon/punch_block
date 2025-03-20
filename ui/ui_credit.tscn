@@ -7,7 +7,8 @@
 script = ExtResource("2_twxsf")
 who = "rabbit | [hare.itch.io](hare.itch.io)"
 what = "- programming
-- level design"
+- level design
+- 3d modelling"
 metadata/_custom_type_script = "uid://cnjojs6jy863w"
 
 [sub_resource type="Resource" id="Resource_twxsf"]
@@ -27,7 +28,8 @@ metadata/_custom_type_script = "uid://cnjojs6jy863w"
 script = ExtResource("2_twxsf")
 who = "higodoragon | [https://higodoragon.itch.io/](https://higodoragon.itch.io/)"
 what = "- programming
-- art"
+- art
+- 3d modelling"
 metadata/_custom_type_script = "uid://cnjojs6jy863w"
 
 [sub_resource type="Resource" id="Resource_0m41h"]
