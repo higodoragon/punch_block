@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3o24jefh4qw0"]
+[gd_scene load_steps=6 format=3 uid="uid://b3o24jefh4qw0"]
 
 [ext_resource type="Script" uid="uid://broc85g2nodsr" path="res://ui/ui_level_select.gd" id="1_1s8qe"]
 [ext_resource type="Script" uid="uid://c584v8jufsvu6" path="res://levels/level.gd" id="2_pj2og"]
-[ext_resource type="Resource" uid="uid://bwhcilmq5ldwb" path="res://levels/rabbit_a.tres" id="3_xm0ba"]
+[ext_resource type="Resource" uid="uid://c2sjin2shyn6k" path="res://levels/rabbit_b.tres" id="4_a4ujf"]
 [ext_resource type="PackedScene" uid="uid://daheefd8hu4c4" path="res://ui/ui_level_preview.tscn" id="4_xm0ba"]
+
+[sub_resource type="Resource" id="Resource_pj2og"]
+script = ExtResource("2_pj2og")
+map = "uid://dym1j8bkt7otb"
+title = "Hollows"
+metadata/_custom_type_script = "uid://c584v8jufsvu6"
 
 [node name="UiLevelSelect" type="Control"]
 layout_mode = 3
@@ -15,23 +21,22 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_1s8qe")
-levels = Array[ExtResource("2_pj2og")]([ExtResource("3_xm0ba")])
+levels = Array[ExtResource("2_pj2og")]([SubResource("Resource_pj2og"), ExtResource("4_a4ujf")])
 preview_scene = ExtResource("4_xm0ba")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 8
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "LEVEL SELECT"
-
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 16)
-layout_mode = 2
 
 [node name="Box" type="VBoxContainer" parent="VBoxContainer"]
 unique_name_in_owner = true

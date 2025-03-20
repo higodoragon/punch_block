@@ -1,4 +1,4 @@
-extends Node
+extends Control
 class_name UiLevelSelect
 
 @export var levels: Array[Level]
@@ -11,5 +11,7 @@ func _ready():
 	for level in levels:
 		var inst = preview_scene.instantiate() as UiLevelPreview
 		box.add_child(inst)
+		print(level.title)
+		print(inst)
 		inst.label.text = '%02d - %s' % [idx + 1, level.title]
 		idx += 1

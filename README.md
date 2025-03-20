@@ -15,3 +15,12 @@ this is a game where u play as furry guy and u block other furry guys
 | Hawk Loewen, hawksmusic                                                   | sound design, sound effects |
 | rabbit, [hare.itch.io](hare.itch.io)                                      | programming, level design   |
 | dateddelvings                                                             | music                       |
+
+## tools
+
+| tool        | purpose                        |
+| ----------- | ------------------------------ |
+| Godot 4.4   | game engine                    |
+| TrenchBroom | level design                   |
+| Blender 4.4 | view model (first person arms) |
+| Aseprite    | sprites                        |
