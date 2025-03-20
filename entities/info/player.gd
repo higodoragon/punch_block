@@ -29,6 +29,9 @@ var sfx_footstep = global.sfx_player_footsteps_concrete
 @onready var viewmodel : Node3D = $ViewmodelHead
 @onready var viewmodel_animation : AnimationPlayer = $ViewmodelHead/Viewmodel/AnimationPlayer
 
+var power_max : int = 60 * 8
+var power : int = power_max
+
 # BLOCK vars
 var action_delay: int = 0
 
@@ -110,8 +113,9 @@ func _process(delta: float):
 			rotation.y = lerp_angle( rotation.y, look_rotation.y, delta * 8 )
 
 	# HUD DISPLAY
-	hud_health.text = str(int(health.health / health.max_health * 100), "%")
-
+	hud_health.text = str(int( health.health / health.max_health * 100 ), "%")
+	hud_power.text = str(int( power / power_max * 100 ), "%")
+	
 	if parry_active:
 		hud_debug_block.text = "SUPER BLOCK"
 	elif block_active:
@@ -170,6 +174,9 @@ func do_block():
 	else:
 		parrycombo_time = 0
 		parrycombo_amount = 0
+		
+	if power > 0:
+		power -= 1
 
 func do_block_damage( attack: Attack ):
 	#var inflictor : Node3D
