@@ -9,6 +9,10 @@
 - rebinding / remapping
 - [x] level select
 - [x] credit(s)
+- material-sounds
+  - footsteps (fs)
+  - landing
+  - jumping (generic)
 - maps
   - [ ] rabbit_a
 
