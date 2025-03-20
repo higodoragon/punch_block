@@ -16,10 +16,12 @@
   - jumping (generic)
 - maps
   - [ ] rabbit_a
+  - [ ] rabbit_b
 - [x] ring flash on super block
-- redo arms
-  - mesh
-  - squash and stretch
+- [x] redo arms
+  - [x] mesh
+  - [x] squash and stretch
+  - [x] low-fps stop motion
 
 # rebinding / remapping
 
