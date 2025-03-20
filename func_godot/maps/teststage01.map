@@ -1189,19 +1189,9 @@
 // entity 14
 {
 "classname" "enemy_quilin"
-"origin" "272 -624 0"
-}
-// entity 15
-{
-"classname" "enemy_quilin"
 "origin" "272 -528 0"
 }
-// entity 16
-{
-"classname" "enemy_quilin"
-"origin" "272 -432 0"
-}
-// entity 17
+// entity 15
 {
 "classname" "func_group"
 "_tb_type" "_tb_layer"

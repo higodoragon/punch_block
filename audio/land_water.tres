@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="AudioSettings" load_steps=7 format=3 uid="uid://hf5u8stsfyrm"]
 
 [ext_resource type="Script" uid="uid://d1cihyw7tq44v" path="res://components/audio_settings.gd" id="1_jymha"]
-[ext_resource type="AudioStream" uid="uid://40tt78yov1uo" path="res://audio/player/lands/FGJ_PC_Foley_Land_Water_01.wav" id="2_7blce"]
-[ext_resource type="AudioStream" uid="uid://vrgwhorp4f10" path="res://audio/player/lands/FGJ_PC_Foley_Land_Water_02.wav" id="3_a22m4"]
-[ext_resource type="AudioStream" uid="uid://bpf0kdkodpl0y" path="res://audio/player/lands/FGJ_PC_Foley_Land_Water_03.wav" id="4_f5a3y"]
-[ext_resource type="AudioStream" uid="uid://ch6uwvu2aue1h" path="res://audio/player/lands/FGJ_PC_Foley_Land_Water_04.wav" id="5_f7v6o"]
+[ext_resource type="AudioStream" uid="uid://40tt78yov1uo" path="res://audio/player/lands/water_01.wav" id="2_7blce"]
+[ext_resource type="AudioStream" uid="uid://vrgwhorp4f10" path="res://audio/player/lands/water_02.wav" id="3_a22m4"]
+[ext_resource type="AudioStream" uid="uid://bpf0kdkodpl0y" path="res://audio/player/lands/water_03.wav" id="4_f5a3y"]
+[ext_resource type="AudioStream" uid="uid://ch6uwvu2aue1h" path="res://audio/player/lands/water_04.wav" id="5_f7v6o"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wdetk"]
 streams_count = 4

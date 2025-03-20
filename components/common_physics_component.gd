@@ -5,7 +5,6 @@ class_name CommonPhysicsComponent
 @onready var collision: CollisionShape3D = parent.find_child("CollisionShape3D")
 @onready var step_cast: ShapeCast3D = $StepCast
 @onready var step_ray: RayCast3D = $StepRay
-@onready var mat_sfx_ray: RayCast3D = $MatSfxRay
 
 @export_group('Material SFX')
 @export var fs_concrete: AudioSettings = preload('res://audio/fs_concrete.tres')
@@ -25,6 +24,7 @@ var ground_time: int = 0
 var air_time: int = 0
 var ground_time_old: int = 0
 var air_time_old: int = 0
+var velocity_old: Vector3
 
 var footstep_amount = 0
 
@@ -36,13 +36,12 @@ enum MATSFX {
 
 func _ready():
 	await get_parent().ready
-	mat_sfx_ray.reparent(get_parent())
-
 
 func is_on_ground():
 	return on_ground_force or parent.is_on_floor()
 
 func snap_to_stair(delta: float):
+	
 	var global_position_pre: Vector3 = parent.global_position
 	step_cast.shape = collision.shape
 	step_cast.global_position = parent.global_position
@@ -80,12 +79,12 @@ func snap_to_stair(delta: float):
 	step_ray.force_raycast_update()
 	var step_angle = step_ray.get_collision_normal().angle_to(Vector3.UP)
 
-	# avoids climping slopes too steep
+	# avoids climbing slopes too steep
 	if step_angle > parent.floor_max_angle:
 		return
 	
 	# avoids snaping to the same floor
-	if abs(step_height) < 0.01:
+	if abs( step_height ) < 0.01:
 		return
 
 	# known issues:
@@ -116,19 +115,24 @@ func common_physics(delta):
 	#
 	# footstep audio
 
-	if global.check(parent, "audio"): # and global.check(parent, "sfx_footstep"):
+	if global.check(parent, "audio"):
 		if is_on_ground():
-			footstep_amount += ((parent.velocity * Vector3(1, 0, 1)) * delta).distance_to(Vector3.ZERO)
+			footstep_amount += (( parent.velocity * Vector3(1, 0, 1)) * delta).distance_to( Vector3.ZERO )
 		
-		if on_ground and not on_ground_prev and air_time_old > 5:
-			# landing??
-			# parent.audio.play( parent.sfx_footstep )
-			play_material_sound(MATSFX.LANDING)
-			footstep_amount = 0
+		if on_ground and not on_ground_prev:
+			# yes it's landing
+			if velocity_old.y < -15:
+				play_material_sound(MATSFX.LANDING)
+				footstep_amount = 0
+	
+			elif velocity_old.y < -5:
+				play_material_sound(MATSFX.FOOTSTEPS)
+				footstep_amount = 0
+			else:
+				pass
 
 		if footstep_amount > parent.footstep_frequency:
-			footstep_amount = fmod(footstep_amount, parent.footstep_frequency)
-			# parent.audio.play(parent.sfx_footstep)
+			footstep_amount = fmod( footstep_amount, parent.footstep_frequency )
 			play_material_sound(MATSFX.FOOTSTEPS)
 
 	# gravity
@@ -137,6 +141,8 @@ func common_physics(delta):
 	# friction
 	parent.velocity.x *= parent.friction
 	parent.velocity.z *= parent.friction
+
+	velocity_old = parent.velocity
 	
 	snap_to_stair(delta)
 	parent.move_and_slide()
@@ -155,46 +161,48 @@ func common_physics(delta):
 ## And a child mesh instance
 ## which has multiple Surfaces in its Mesh resource
 func play_material_sound(foley_type: int):
-	mat_sfx_ray.force_raycast_update()
+
+	var global_position_pre: Vector3 = parent.global_position
+	step_cast.shape = collision.shape
+	step_cast.global_position = parent.global_position + Vector3( 0, 1, 0 )
+	step_cast.target_position = Vector3( 0, -2, 0 )
+	step_cast.force_shapecast_update()
+	var col = step_cast.get_collider(0)
+
+	if col == null:
+		return
 	
-	var col = mat_sfx_ray.get_collider()
-	
-	if col and col is StaticBody3D:
-		col = col as StaticBody3D
-		printt(col)
+	var child_mesh: MeshInstance3D = col.get_child(0) # 0 is always the mesh instance
+	var relevant_material: StandardMaterial3D
 
-		var child_mesh: MeshInstance3D = col.get_child(0) # 0 is always the mesh instance
-		var relevant_material: StandardMaterial3D
-
-		# simple
-		relevant_material = child_mesh.get_active_material(0)
+	# simple
+	relevant_material = child_mesh.get_active_material(0)
 		
-		# complex
-		# for surf in child_mesh.mesh.get_surface_count():
-		# 	child_mesh.get_active_material(0)
+	# complex
+	# for surf in child_mesh.mesh.get_surface_count():
+	# 	child_mesh.get_active_material(0)
 		
-		
-		var ref = get_ref_from_mat(relevant_material)
-		var sound_set = []
+	var ref = get_ref_from_mat( relevant_material )
+	var sound_set = []
 
-		if not ref:
-			sound_set = [fs_concrete, landing_concrete]
-		else:
-			match ref.material_kind:
-				ref.MATERIAL_KIND.CONCRETE:
-					sound_set = [fs_concrete, landing_concrete]
-				ref.MATERIAL_KIND.GRASS:
-					sound_set = [fs_grass, landing_grass]
-				ref.MATERIAL_KIND.GRAVEL:
-					sound_set = [fs_gravel, landing_gravel]
-				ref.MATERIAL_KIND.WATER:
-					sound_set = [fs_water, landing_water]
+	if not ref:
+		sound_set = [fs_concrete, landing_concrete]
+	else:
+		match ref.material_kind:
+			ref.MATERIAL_KIND.CONCRETE:
+				sound_set = [fs_concrete, landing_concrete]
+			ref.MATERIAL_KIND.GRASS:
+				sound_set = [fs_grass, landing_grass]
+			ref.MATERIAL_KIND.GRAVEL:
+				sound_set = [fs_gravel, landing_gravel]
+			ref.MATERIAL_KIND.WATER:
+				sound_set = [fs_water, landing_water]
 
-		match foley_type:
-			MATSFX.FOOTSTEPS:
-				parent.audio.play(sound_set[0])
-			MATSFX.LANDING:
-				parent.audio.play(sound_set[1])
+	match foley_type:
+		MATSFX.FOOTSTEPS:
+			parent.audio.play(sound_set[0])
+		MATSFX.LANDING:
+			parent.audio.play(sound_set[1])
 
 
 ## find the MaterialTextureReference that is linked to the StandardMaterial3D

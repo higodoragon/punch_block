@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="AudioSettings" load_steps=7 format=3 uid="uid://ds8k07xwjcipv"]
 
 [ext_resource type="Script" uid="uid://d1cihyw7tq44v" path="res://components/audio_settings.gd" id="1_wdetk"]
-[ext_resource type="AudioStream" uid="uid://bt5v1x6ife26p" path="res://audio/player/lands/FGJ_PC_Foley_Land_Concrete_01.wav" id="2_yb0vx"]
-[ext_resource type="AudioStream" uid="uid://dwi3ykhhcg151" path="res://audio/player/lands/FGJ_PC_Foley_Land_Concrete_02.wav" id="3_wbm4e"]
-[ext_resource type="AudioStream" uid="uid://mek1jx0huluj" path="res://audio/player/lands/FGJ_PC_Foley_Land_Concrete_03.wav" id="4_783pr"]
-[ext_resource type="AudioStream" uid="uid://b8vxon03ncw5r" path="res://audio/player/lands/FGJ_PC_Foley_Land_Concrete_04.wav" id="5_kph85"]
+[ext_resource type="AudioStream" uid="uid://bt5v1x6ife26p" path="res://audio/player/lands/concrete_01.wav" id="2_yb0vx"]
+[ext_resource type="AudioStream" uid="uid://dwi3ykhhcg151" path="res://audio/player/lands/concrete_02.wav" id="3_wbm4e"]
+[ext_resource type="AudioStream" uid="uid://mek1jx0huluj" path="res://audio/player/lands/concrete_03.wav" id="4_783pr"]
+[ext_resource type="AudioStream" uid="uid://b8vxon03ncw5r" path="res://audio/player/lands/concrete_04.wav" id="5_kph85"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wdetk"]
 streams_count = 4

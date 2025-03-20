@@ -9,7 +9,6 @@ class_name EnemyBrute
 @onready var audio := $AudioManagerComponent
 @onready var sprite := $Sprite3D
 
-var sfx_footstep = global.sfx_generic_footsteps
 var real_friction : float
 
 var state_idle := [

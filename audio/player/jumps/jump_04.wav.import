@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://34ueqxsahh0g"
-path="res://.godot/imported/FGJ_PC_Foley_Jump_04.wav-3d5e2a0e59882585c4e12a364406ad30.sample"
+path="res://.godot/imported/jump_04.wav-23550cf2ef9f44bca380742330d12968.sample"
 
 [deps]
 
-source_file="res://audio/player/jumps/FGJ_PC_Foley_Jump_04.wav"
-dest_files=["res://.godot/imported/FGJ_PC_Foley_Jump_04.wav-3d5e2a0e59882585c4e12a364406ad30.sample"]
+source_file="res://audio/player/jumps/jump_04.wav"
+dest_files=["res://.godot/imported/jump_04.wav-23550cf2ef9f44bca380742330d12968.sample"]
 
 [params]
 

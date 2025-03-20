@@ -11,8 +11,6 @@ extends CharacterBase
 @onready var laser_head = $LaserHead
 @onready var laser_material = $LaserHead/LaserMesh.get_active_material( 0 )
 
-var sfx_footstep = global.sfx_generic_footsteps
-
 const state_idle := [
 	{ delay = 1, frame = 0 },
 	{ loop = true }

@@ -8,8 +8,6 @@ extends CharacterBase
 @onready var audio : AudioManagerComponent = $AudioManagerComponent
 @onready var sprite : Sprite3D = $Sprite3D
 
-var sfx_footstep = global.sfx_generic_footsteps
-
 var state_idle := [
 	{ delay = 1, frame = 0 },
 	{ loop = true }

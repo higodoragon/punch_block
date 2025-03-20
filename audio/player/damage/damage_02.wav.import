@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dj5jusabm61up"
-path="res://.godot/imported/FGJ_PC_SFX_Damage_02.wav-dbd98b0059c59260cee18630f1d652a1.sample"
+path="res://.godot/imported/damage_02.wav-ac31e8f108c60b692e3ae13a5974d344.sample"
 
 [deps]
 
-source_file="res://audio/player/damage/FGJ_PC_SFX_Damage_02.wav"
-dest_files=["res://.godot/imported/FGJ_PC_SFX_Damage_02.wav-dbd98b0059c59260cee18630f1d652a1.sample"]
+source_file="res://audio/player/damage/damage_02.wav"
+dest_files=["res://.godot/imported/damage_02.wav-ac31e8f108c60b692e3ae13a5974d344.sample"]
 
 [params]
 
