@@ -8,6 +8,7 @@ script = ExtResource("1_m4ca2")
 stream = ExtResource("2_x80go")
 channel = 0
 limit = 5
+volume_db = 1.0
 pitch_scale = 1.0
 pitch_randomness = 0.0
 metadata/_custom_type_script = "uid://d1cihyw7tq44v"

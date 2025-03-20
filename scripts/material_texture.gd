@@ -7,5 +7,5 @@ enum MATERIAL_KIND {
 	WATER,
 }
 
-@export var material_file : StandardMaterial3D
-@export var meterial_kind : MATERIAL_KIND = MATERIAL_KIND.CONCRETE
+@export var material_file: StandardMaterial3D
+@export var material_kind: MATERIAL_KIND = MATERIAL_KIND.CONCRETE

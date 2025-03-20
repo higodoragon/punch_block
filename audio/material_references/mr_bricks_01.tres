@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="MaterialTextureReference" load_steps=2 format=3 uid="uid://c3vjlhvlrhj73"]
 
-[ext_resource type="Script" path="res://scripts/material_texture.gd" id="1_0x76g"]
+[ext_resource type="Script" uid="uid://dyp8q68chjbt3" path="res://scripts/material_texture.gd" id="1_0x76g"]
 
 [resource]
 script = ExtResource("1_0x76g")
-meterial_kind = 0
+material_kind = 0

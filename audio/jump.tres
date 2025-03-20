@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="AudioSettings" load_steps=7 format=3 uid="uid://1vre6trfwi8c"]
+
+[ext_resource type="Script" uid="uid://d1cihyw7tq44v" path="res://components/audio_settings.gd" id="1_a61no"]
+[ext_resource type="AudioStream" uid="uid://3eh4d13bdp5y" path="res://audio/player/jumps/FGJ_PC_Foley_Jump_01.wav" id="2_kg8ge"]
+[ext_resource type="AudioStream" uid="uid://bwnuj8i00pkms" path="res://audio/player/jumps/FGJ_PC_Foley_Jump_02.wav" id="3_xxoer"]
+[ext_resource type="AudioStream" uid="uid://bnqc6x65hk87f" path="res://audio/player/jumps/FGJ_PC_Foley_Jump_03.wav" id="4_82qyf"]
+[ext_resource type="AudioStream" uid="uid://34ueqxsahh0g" path="res://audio/player/jumps/FGJ_PC_Foley_Jump_04.wav" id="5_tcea2"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cpc81"]
+streams_count = 4
+stream_0/stream = ExtResource("2_kg8ge")
+stream_1/stream = ExtResource("3_xxoer")
+stream_2/stream = ExtResource("4_82qyf")
+stream_3/stream = ExtResource("5_tcea2")
+
+[resource]
+script = ExtResource("1_a61no")
+stream = SubResource("AudioStreamRandomizer_cpc81")
+channel = 0
+limit = 5
+volume_db = 1.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://d1cihyw7tq44v"

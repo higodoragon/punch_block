@@ -47,6 +47,7 @@ func _ready():
 	stage_container.process_mode = Node.PROCESS_MODE_PAUSABLE
 	process_cmdargs()
 	console_defs()
+	MaterialReferences.compile_material_references()
 
 func _process( _delta: float ) -> void:
 	pause_process()
