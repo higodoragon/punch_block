@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="MaterialTextureReference" load_steps=2 format=3 uid="uid://c3vjlhvlrhj73"]
+[gd_resource type="Resource" script_class="MaterialTextureReference" load_steps=3 format=3 uid="uid://c3vjlhvlrhj73"]
 
 [ext_resource type="Script" uid="uid://dyp8q68chjbt3" path="res://scripts/material_texture.gd" id="1_0x76g"]
+[ext_resource type="Material" path="res://func_godot/gamedir/textures/dev/bricks_01.tres" id="1_5dq7c"]
 
 [resource]
 script = ExtResource("1_0x76g")
+material_file = ExtResource("1_5dq7c")
 material_kind = 0
