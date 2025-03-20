@@ -14,7 +14,6 @@ class_name Player extends CharacterBase
 @onready var hud_debug_block: Label = $Interface/HUD/BlockStateLabel
 @onready var hud_debug_action: Label = $Interface/HUD/ActionDelayLabel
 
-
 @export var jump_power: float = 10
 @export var jump_buffer_base: int = 15
 var jump_buffer_time: int = 0
