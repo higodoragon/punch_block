@@ -34,6 +34,10 @@ var sfx_footstep = global.sfx_player_footsteps_concrete
 const magic_max: int = 120 * 60
 var magic: int = magic_max
 
+
+var power_max: int = 60 * 8
+var power: int = power_max
+
 # BLOCK vars
 var action_delay: int = 0
 
