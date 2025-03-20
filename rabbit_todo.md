@@ -16,7 +16,7 @@
   - jumping (generic)
 - maps
   - [ ] rabbit_a
-- ring flash on super block
+- [x] ring flash on super block
 
 # rebinding / remapping
 
