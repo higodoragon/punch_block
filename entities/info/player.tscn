@@ -99,7 +99,7 @@ label_settings = SubResource("LabelSettings_otayu")
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="PowerLebel" type="Label" parent="Interface/HUD"]
+[node name="PowerLabel" type="Label" parent="Interface/HUD"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5

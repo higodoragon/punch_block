@@ -28,6 +28,9 @@ var sfx_footstep = global.sfx_player_footsteps_concrete
 # ANIMATION vars
 @onready var viewmodel: Node3D = $ViewmodelHead
 @onready var viewmodel_animation: AnimationPlayer = $ViewmodelHead/Viewmodel/AnimationPlayer
+
+var power_max: int = 60 * 8
+var power: int = power_max
 @export var bracelet: MeshInstance3D
 @onready var bracelet_material: StandardMaterial3D
 
@@ -120,7 +123,8 @@ func _process(delta: float):
 
 	# HUD DISPLAY
 	hud_health.text = str(int(health.health / health.max_health * 100), "%")
-
+	hud_power.text = str(int(power / power_max * 100), "%")
+	
 	ring_flash(parry_active)
 
 	if parry_active:
@@ -181,6 +185,10 @@ func do_block():
 	else:
 		parrycombo_time = 0
 		parrycombo_amount = 0
+
+	if power > 0:
+		power -= 1
+
 
 func do_block_damage(attack: Attack):
 	#var inflictor : Node3D
