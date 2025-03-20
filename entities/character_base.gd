@@ -9,3 +9,5 @@ class_name CharacterBase extends CharacterBody3D
 
 var step_height_up : float = 1.1
 var step_height_down : float = 1.1
+
+var func_godot_properties : Dictionary

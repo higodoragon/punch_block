@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://func_godot/gamedir/textures/dev/building_03.jpg" id="1_3l63s"]
+
+[resource]
+albedo_texture = ExtResource("1_3l63s")
+metallic_specular = 0.0
+texture_filter = 2

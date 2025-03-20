@@ -46,8 +46,9 @@ folder_colors={
 "res://components/": "green",
 "res://entities/": "teal",
 "res://func_godot/": "blue",
-"res://scripts/": "purple",
-"res://ui/": "green"
+"res://levels/": "purple",
+"res://scripts/": "pink",
+"res://ui/": "red"
 }
 
 [gui]
