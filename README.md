@@ -10,6 +10,8 @@ this is a game where u play as furry guy and u block other furry guys
 
 ## credit
 
+### custom-made stuff
+
 | who                                                                                                     | what                                    |
 | ------------------------------------------------------------------------------------------------------- | --------------------------------------- |
 | higodoragon, [https://higodoragon.itch.io/](https://higodoragon.itch.io/)                               | programming, art, 3d modelling          |
@@ -20,8 +22,14 @@ this is a game where u play as furry guy and u block other furry guys
 
 ### assets
 
+textures
+
 - https://opengameart.org/content/free-urban-textures-buildings-apartments-shop-fronts
 - https://opengameart.org/content/urban-jungle
+
+font
+
+- https://int10h.org/oldschool-pc-fonts/fontlist/font?ibm_bios-2y
 
 ## tools
 
