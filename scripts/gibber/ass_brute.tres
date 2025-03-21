@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="GibSpriteAssoc" load_steps=3 format=3 uid="uid://bk26vfc8insw2"]
+
+[ext_resource type="Script" uid="uid://5ydf4o0lmhtg" path="res://scripts/gibber/gib_sprite_assoc.gd" id="1_w6cgb"]
+[ext_resource type="Texture2D" uid="uid://bhkrdrd3g3dnk" path="res://assets/brute.png" id="2_8qc4u"]
+
+[resource]
+script = ExtResource("1_w6cgb")
+texture = ExtResource("2_8qc4u")
+head_rect = Rect2(326, 7, 20, 15)
+y_adjustment = 1.2
+metadata/_custom_type_script = "uid://5ydf4o0lmhtg"

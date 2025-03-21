@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="GibSpriteAssocAll" load_steps=7 format=3 uid="uid://bbld2c7hmnamk"]
+
+[ext_resource type="Script" uid="uid://5ydf4o0lmhtg" path="res://scripts/gibber/gib_sprite_assoc.gd" id="1_r0dsi"]
+[ext_resource type="Script" uid="uid://bffslkb6i7xg" path="res://scripts/gibber/gib_sprice_assoc_all.gd" id="2_ojn0s"]
+[ext_resource type="Resource" uid="uid://bk26vfc8insw2" path="res://scripts/gibber/ass_brute.tres" id="2_xgbho"]
+[ext_resource type="Resource" uid="uid://dulagupa4hylp" path="res://scripts/gibber/ass_goon.tres" id="3_wmn55"]
+[ext_resource type="Resource" uid="uid://288jdnycnsdr" path="res://scripts/gibber/ass_sniper.tres" id="4_3ggb7"]
+[ext_resource type="Resource" uid="uid://fktqbekadcng" path="res://scripts/gibber/ass_quilin.tres" id="5_nex1h"]
+
+[resource]
+script = ExtResource("2_ojn0s")
+all = Array[ExtResource("1_r0dsi")]([ExtResource("2_xgbho"), ExtResource("3_wmn55"), ExtResource("4_3ggb7"), ExtResource("5_nex1h")])
+metadata/_custom_type_script = "uid://bffslkb6i7xg"

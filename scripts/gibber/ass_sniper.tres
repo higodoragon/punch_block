@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="GibSpriteAssoc" load_steps=3 format=3 uid="uid://288jdnycnsdr"]
+
+[ext_resource type="Script" uid="uid://5ydf4o0lmhtg" path="res://scripts/gibber/gib_sprite_assoc.gd" id="1_223q5"]
+[ext_resource type="Texture2D" uid="uid://djh2pmes24m5b" path="res://assets/sniper.png" id="2_223q5"]
+
+[resource]
+script = ExtResource("1_223q5")
+texture = ExtResource("2_223q5")
+head_rect = Rect2(130, 8, 13, 16)
+y_adjustment = 1.2
+metadata/_custom_type_script = "uid://5ydf4o0lmhtg"

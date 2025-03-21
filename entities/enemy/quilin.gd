@@ -1,4 +1,5 @@
 extends CharacterBase
+class_name EnemyQuilin
 
 @onready var health : HealthComponent = $HealthComponent
 @onready var hitbox : HitboxComponent = $HitboxComponent

@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://b67bnw5kuoqpy"]
+
+[ext_resource type="PlaneMesh" uid="uid://kwdwt1u2nb8x" path="res://scripts/gibber/mesh_particle_plane.tres" id="1_cibcf"]
+
+[sub_resource type="Curve" id="Curve_cibcf"]
+_data = [Vector2(0.748711, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_2duyb"]
+curve = SubResource("Curve_cibcf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2duyb"]
+direction = Vector3(0, 1, 0)
+spread = 90.0
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+scale_curve = SubResource("CurveTexture_2duyb")
+color = Color(1, 0.0901961, 0.411765, 1)
+
+[node name="ParticlesBloodExplosion" type="GPUParticles3D"]
+emitting = false
+amount = 32
+one_shot = true
+explosiveness = 0.9
+process_material = SubResource("ParticleProcessMaterial_2duyb")
+draw_pass_1 = ExtResource("1_cibcf")

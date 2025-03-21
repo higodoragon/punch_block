@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjlyeqn3cfb51"]
+
+[ext_resource type="PlaneMesh" uid="uid://kwdwt1u2nb8x" path="res://scripts/gibber/mesh_particle_plane.tres" id="1_j0072"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j0072"]
+
+[node name="ParticlesBloodDrip" type="GPUParticles3D"]
+process_material = SubResource("ParticleProcessMaterial_j0072")
+draw_pass_1 = ExtResource("1_j0072")
