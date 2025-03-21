@@ -34,22 +34,39 @@ var stun_time : int = 0
 var stun_active : bool = false
 var stun_is_pain : bool = false
 
-func line_of_sight_hitscan_result():
-	if target:
-		var space_state = parent.get_world_3d().direct_space_state
-		var query = PhysicsRayQueryParameters3D.new()
-		query.collide_with_areas = false
-		query.collide_with_bodies = true
-		query.from = parent.global_position + Vector3( 0, parent.view_height, 0 )
-		query.to = target.global_position + Vector3( 0, parent.view_height, 0 )
-		query.collision_mask = 1
+func line_of_sight_result( from : Vector3, to : Vector3 ):
+	var space_state = parent.get_world_3d().direct_space_state
+	var query = PhysicsRayQueryParameters3D.new()
+	query.collide_with_areas = false
+	query.collide_with_bodies = true
+	query.from = from + Vector3( 0, parent.view_height, 0 )
+	query.to = to + Vector3( 0, parent.view_height, 0 )
+	query.collision_mask = 1
 		
-		return space_state.intersect_ray( query )
+	return space_state.intersect_ray( query )
+
+func target_line_of_sight_result():
+	if target:
+		return line_of_sight_result( parent.global_position, target.global_position )
 	else:
 		return null
 
 func _physics_process( delta : float ):
-	target = global.player
+	if target != null and global.check( target, "health" ) and target.health.dead:
+		target = null
+
+	if target == null:
+		if parent.state.current_array == parent.state_active:
+			parent.state.set_state( parent.state_idle )
+		
+		# searth for the player
+		if global.player != null and not global.player.health.dead:
+			var lfs_result = line_of_sight_result( parent.global_position, global.player.global_position )
+			if not lfs_result:
+				# idle until you find the player
+				target = global.player
+				parent.state.set_state( parent.state_active )
+		return
 
 	if stun_time > 0:
 		stun_time -= 1
@@ -59,17 +76,6 @@ func _physics_process( delta : float ):
 			stun_active = false
 			parent.state.set_state( parent.state_active )
 			return
-
-	if target != null and global.check( target, "health" ) and target.health.dead:
-		target = null
-
-	if sleeping:
-		var lfs_result = line_of_sight_hitscan_result()
-		if not lfs_result:
-			# idle until you find player
-			sleeping = false
-			parent.state.set_state( parent.state_active )
-		return
 	
 	if parent.state.sticky_call_active:
 		# count down generic delays
@@ -86,18 +92,16 @@ func _physics_process( delta : float ):
 func start_ai():
 	global.enemy_list.append( parent )
 	
-	# has to do it after the enemies start up
-	wakeup_delay = randf_range( 0, 60 )
-
-	# important mechanic
+	# important mechanics
 	if global.check( parent, "sprite" ):
+		
 		parent.sprite.scale *= randf_range( 0.9, 1.1 )
 		
 		if randf_range( 1, 0 ) < 0.01:
 			parent.sprite.flip_h = true
 	
 	# idle until you find player
-	sleeping = true
+	target = null
 	parent.state.set_state( parent.state_idle )
 
 func generic_walk_direction() -> Vector3:

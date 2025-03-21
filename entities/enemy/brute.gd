@@ -12,46 +12,46 @@ class_name EnemyBrute
 var real_friction : float
 
 var state_idle := [
-	{ delay = 1, frame = 0 },
-	{ loop = true }
+	{ delay = -1, frame = 0 },
 ]
 
 var state_active := [
 	{sticky_call = "do_active"},
-	{delay = 15, frame = 1},
-	{loop = true},
-]
-
-var state_attack_charge := [
-	{sticky_call = "do_attack_sticky"},
-	{delay = 30, frame = 6},
+	{ delay = 30, frame = 1 },
+	{ delay = 30, frame = 2 },
 	{loop = true},
 ]
 
 var state_attack_hit := [
-	{delay = 20, frame = 5},
+	{delay = 20, frame = 7},
 	{goto = state_active},
 ]
 
+var state_attack_charge := [
+	{sticky_call = "do_attack_sticky"},
+	{delay = 10, frame = 4},
+	{delay = 10, frame = 5},
+	{loop = true},
+]
+
 var state_attack := [
-	{delay = 30, frame = 6},
+	{delay = 30, frame = 3},
 	{goto = state_attack_charge},
 ]
 
 var state_melee := [
-	{delay = 20, frame = 3},
-	{delay = 1, frame = 4},
+	{delay = 20, frame = 6},
 	{call = "do_melee"},
-	{delay = 20, frame = 5},
+	{delay = 20, frame = 7},
 	{goto = state_active},
 ]
 
 var state_stun := [
-	{ delay = -1, frame = 7 },
+	{ delay = -1, frame = 9 },
 ]
 
 var state_pain := [
-	{ delay = -1, frame = 6 },
+	{ delay = -1, frame = 8 },
 ]
 
 func _ready() -> void:

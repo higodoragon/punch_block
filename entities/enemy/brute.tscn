@@ -23,7 +23,7 @@ floor_constant_speed = true
 floor_snap_length = 0.0
 script = ExtResource("1_q1iuu")
 speed = 0.5
-stun_time = 60
+gravity = 0.75
 pain_time = -1
 metadata/_custom_type_script = "uid://88pbfyfqnxlk"
 
@@ -38,11 +38,11 @@ pixel_size = 0.125
 billboard = 2
 texture_filter = 0
 texture = ExtResource("2_q1iuu")
-hframes = 8
+hframes = 11
 
 [node name="AIComponent" parent="." instance=ExtResource("3_0ifsd")]
-melee_range = 3.0
-melee_activation_range = 3.0
+melee_range = 5.0
+melee_activation_range = 5.0
 melee_damage = 2.0
 melee_knockback = 50.0
 melee_delay_amount = 60

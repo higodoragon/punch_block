@@ -9,8 +9,7 @@ extends CharacterBase
 @onready var sprite : Sprite3D = $Sprite3D
 
 var state_idle := [
-	{ delay = 1, frame = 0 },
-	{ loop = true }
+	{ delay = -1, frame = 0 },
 ]
 
 var state_active := [
@@ -60,16 +59,12 @@ func do_block_reaction( inflictor : Node3D, is_parry : bool ):
 	if is_parry:
 		radious = 20
 		
-	var old_target = ai.target
 	for e in global.enemy_list:
 		if e == null:
 			continue
 
-		ai.target = e
-		if not ai.line_of_sight_hitscan_result():
-			global.stun( ai.target )
-	
-	ai.target = old_target
+		if not ai.line_of_sight_result( global_position, e.global_position ):
+			global.stun( e )
 
 func _physics_process( delta : float ):
 	physics.common_physics( delta )

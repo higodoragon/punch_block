@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://d61p7dm1mrty"]
+[gd_scene load_steps=2 format=3 uid="uid://mfoceb44supt"]
 
-[ext_resource type="Script" uid="uid://ww6ixfofv0vw" path="res://entities/spawnclass.gd" id="1_2tvac"]
+[sub_resource type="GDScript" id="GDScript_6ws0g"]
+script/source = "extends Node3D
+var spawnthing : Node3D
+"
 
 [node name="SpawnClass" type="Node3D"]
-script = ExtResource("1_2tvac")
+script = SubResource("GDScript_6ws0g")

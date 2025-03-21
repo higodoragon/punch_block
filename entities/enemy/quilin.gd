@@ -9,8 +9,7 @@ extends CharacterBase
 @onready var sprite : Sprite3D = $Sprite3D
 
 var state_idle := [
-	{ delay = 1, frame = 0 },
-	{ loop = true }
+	{ delay = -1, frame = 0 },
 ]
 
 var state_active := [

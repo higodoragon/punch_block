@@ -11,9 +11,8 @@ extends CharacterBase
 @onready var laser_head = $LaserHead
 @onready var laser_material = $LaserHead/LaserMesh.get_active_material( 0 )
 
-const state_idle := [
-	{ delay = 1, frame = 0 },
-	{ loop = true }
+var state_idle := [
+	{ delay = -1, frame = 0 },
 ]
 
 const state_active := [
@@ -52,7 +51,7 @@ func _physics_process(delta):
 func _process( delta ):
 	# lazer animation and tracking
 	if ai.target:
-		var result = ai.line_of_sight_hitscan_result()
+		var result = ai.target_line_of_sight_result()
 		var hit_position := Vector3.ZERO
 				
 		if not result.is_empty():
