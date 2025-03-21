@@ -1231,14 +1231,18 @@
 // entity 20
 {
 "classname" "enemy_sniper"
-"origin" "224 -312 0"
+"origin" "400 -304 0"
 "target" "BABABUYE_COUNT"
+"targetname" "SUPER_BABABUYE"
+"flags" "4"
 }
 // entity 21
 {
 "classname" "enemy_sniper"
-"origin" "240 -664 0"
+"origin" "416 -656 0"
 "target" "BABABUYE_COUNT"
+"targetname" "SUPER_BABABUYE"
+"flags" "4"
 }
 // entity 22
 {
@@ -1246,9 +1250,29 @@
 "origin" "120 -224 64"
 "target" "BABABUYE"
 "targetname" "BABABUYE_COUNT"
-"total" "2"
+"total" "3"
 }
 // entity 23
+{
+"classname" "enemy_sniper"
+"origin" "176 -896 0"
+"target" "BABABUYE_COUNT"
+}
+// entity 24
+{
+"classname" "trigger_once"
+"target" "SUPER_BABABUYE"
+// brush 0
+{
+( 456 -632 0 ) ( 456 -631 0 ) ( 456 -632 1 ) special/clip [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 2 2
+( 456 -632 0 ) ( 456 -632 1 ) ( 457 -632 0 ) special/clip [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 2 2
+( 456 -632 0 ) ( 457 -632 0 ) ( 456 -631 0 ) special/clip [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 2 2
+( 544 -352 112 ) ( 544 -351 112 ) ( 545 -352 112 ) special/clip [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 2 2
+( 544 -352 8 ) ( 545 -352 8 ) ( 544 -352 9 ) special/clip [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 2 2
+( 624 -352 8 ) ( 624 -352 9 ) ( 624 -351 8 ) special/clip [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 2 2
+}
+}
+// entity 25
 {
 "classname" "func_group"
 "_tb_type" "_tb_layer"

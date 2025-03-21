@@ -14,7 +14,6 @@ description = "adds up activations, triggers when the amount is met"
 func_godot_internal = false
 base_classes = Array[Resource]([ExtResource("1_fhwar")])
 class_properties = {
-"message": "",
 "total": 0.0
 }
 class_property_descriptions = {}

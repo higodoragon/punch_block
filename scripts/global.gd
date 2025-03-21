@@ -63,6 +63,12 @@ func _physics_process(delta: float) -> void:
 	if freezeframe > 0:
 		freezeframe -= 1
 
+	if message_time > 0:
+		message_time -= 1
+
+	if message_time <= 0 and player != null:
+		player.hud_message.text = ""
+
 func _input( event: InputEvent ):
 	if focus_failed and event is InputEventMouseButton and event.button_index == 1:
 		focus_try = true
@@ -206,13 +212,18 @@ func funcgodot_common_defs( node : Node, properties : Dictionary ):
 	
 	if not properties.target.is_empty():
 		node.activate_targetname = properties.target
+	
+	if global.check( node, "message" ):
+		node.message = properties.message
 
-var set_message_time = 0
+var message_time = 0
 
 func message_player( message : String, time : int = 120 ):
 	print( "message to the player: ", message )
 	if player:
 		player.hud_message.text = str( "[center]", message, "[/center]" )
+
+	message_time = time
 
 func load_stage( path : StringName ):
 	stage_path = path

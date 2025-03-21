@@ -11,6 +11,7 @@ base_classes = Array[Resource]([])
 class_properties = {
 "angle": 0.0,
 "flags": [["On Escape", 1, 0], ["Not On Escape", 2, 0], ["Spawn On Activation", 4, 0], ["Don't move, No Knockback", 8, 0]],
+"message": "",
 "scale": 0.0,
 "target": "",
 "targetname": ""
