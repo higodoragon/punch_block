@@ -22,10 +22,12 @@ func get_correct_assoc(enemy: CharacterBase):
 
 
 func spawn_gibs(enemy: CharacterBase, killer):
+	var killer_pos: Vector3 = killer.global_position if killer else enemy.global_position
+
 	# decapitated head
 	var head_inst := phys_sprite_scene.instantiate() as PhysSprite
 	head_inst.assoc = get_correct_assoc(enemy)
-	head_inst.killer_vector = killer.global_position
+	head_inst.killer_vector = killer_pos
 	global.stage.add_child(head_inst)
 	head_inst._sprite.region_enabled = true
 	head_inst.global_position = enemy.global_position
