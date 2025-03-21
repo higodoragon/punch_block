@@ -145,6 +145,9 @@ func set_attack_delay():
 	attack_delay = attack_delay_amount + randi_range( 0, attack_delay_randomness )
 
 func check_and_set_attack_states():
+	if target_line_of_sight_result():
+		return false
+	
 	if attack_delay <= 0 and in_attack_activation_range() and global.check( parent, "state_attack" ):
 		parent.state.set_state( parent.state_attack )
 		return true
