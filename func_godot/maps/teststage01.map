@@ -1262,6 +1262,16 @@
 }
 // entity 26
 {
+"classname" "enemy_marine"
+"origin" "488 -200 0"
+}
+// entity 27
+{
+"classname" "enemy_marine"
+"origin" "512 -712 0"
+}
+// entity 28
+{
 "classname" "func_group"
 "_tb_type" "_tb_layer"
 "_tb_name" "old"

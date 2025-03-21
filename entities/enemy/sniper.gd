@@ -15,22 +15,28 @@ var state_idle := [
 	{ delay = -1, frame = 0 },
 ]
 
-const state_active := [
+var state_active := [
 	{ sticky_call = "do_active" },
 	{ delay = 15, frame = 1 },
 	{ delay = 15, frame = 2 },
 	{ loop = true }
 ]
 
-const state_attack := [
-	{ delay = 10, frame = 4 },
-	{ call = "do_attack" },
-]
-
-const state_attack_real := [
+var state_attack_real := [
 	{ call = "do_attack_real" },
 	{ delay = 20, frame = 5 },
 	{ goto = state_active },
+]
+
+var state_attack := [
+	{ delay = 10, frame = 4 },
+	{ call = "do_beep" },
+	{ delay = 20, frame = 4 },
+	{ call = "do_beep" },
+	{ delay = 20, frame = 4 },
+	{ call = "do_beep" },
+	{ delay = 20, frame = 4 },
+	{ goto = state_attack_real },
 ]
 
 var state_stun := [
@@ -76,12 +82,9 @@ func do_active():
 		velocity += ai.generic_walk_direction() * speed
 		ai.check_and_set_attack_states()
 
-func do_attack():
+func do_beep():
 	if ai.target:
-		for i in range( 3 ):
-			audio.play( global.sfx_sniper_beep )
-			await get_tree().create_timer( 0.3333 ).timeout
-		state.set_state( state_attack_real )
+		audio.play( global.sfx_sniper_beep )
 
 func do_attack_real():
 	if ai.target:

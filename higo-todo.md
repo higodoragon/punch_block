@@ -5,6 +5,7 @@
 [DONE] - fix brute charge ( self disable entity collision, push anything that isn't the player up )
 [RABBIT] - add gibbing animation
 [DONE] - make brute sprites
+- triggers, counters
 - redo the marine ( sniper clone )
 - redesing the marine: sniper that can walk fast, shoots 3 shots
 - make marine sprites
