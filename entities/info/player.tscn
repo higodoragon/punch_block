@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://mdes4hst2fpb"]
+[gd_scene load_steps=30 format=3 uid="uid://mdes4hst2fpb"]
 
 [ext_resource type="Script" uid="uid://ylp6vydxbh2w" path="res://entities/info/player.gd" id="1_merdl"]
 [ext_resource type="PackedScene" uid="uid://c0gxf5yuqfqlx" path="res://assets/raw/viewmodel_higo.blend" id="2_3544y"]
@@ -6,9 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://ctatlt4v5fyf8" path="res://assets/crosshair.png" id="3_otayu"]
 [ext_resource type="PackedScene" uid="uid://lm36snfl5obu" path="res://components/hitbox_component.tscn" id="3_ug0ox"]
 [ext_resource type="Script" uid="uid://dbap0gqox0ty1" path="res://addons/markdownlabel/markdownlabel.gd" id="4_0smle"]
+[ext_resource type="PackedScene" uid="uid://jqb8joeyqwd7" path="res://ui/ui_portrait.tscn" id="4_gcvfo"]
+[ext_resource type="PackedScene" uid="uid://bfra4wer7rye8" path="res://ui/ui_hud_bar.tscn" id="4_ion2h"]
 [ext_resource type="PackedScene" uid="uid://ddemxbua6ylaj" path="res://components/audio_manager_component.tscn" id="4_ug0ox"]
 [ext_resource type="Script" uid="uid://dcx7crs23nf4" path="res://addons/markdownlabel/header_formats/h1_format.gd" id="5_ion2h"]
 [ext_resource type="PackedScene" uid="uid://ccvm8eicw8t4d" path="res://components/common_physics_component.tscn" id="5_quc4t"]
+[ext_resource type="Script" uid="uid://bfywh64wdf4dl" path="res://entities/info/stat_tracking.gd" id="5_vtr80"]
 [ext_resource type="Script" uid="uid://d0sin64i4v3op" path="res://addons/markdownlabel/header_formats/h2_format.gd" id="6_vtr80"]
 [ext_resource type="Script" uid="uid://dlok0dv1tq2bf" path="res://addons/markdownlabel/header_formats/h3_format.gd" id="7_gcvfo"]
 [ext_resource type="Script" uid="uid://bayuh2vafablg" path="res://addons/markdownlabel/header_formats/h4_format.gd" id="8_y5jtf"]
@@ -23,6 +26,12 @@ default_font_size = 64
 
 [sub_resource type="Theme" id="Theme_ion2h"]
 default_font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gcvfo"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vtr80"]
+bg_color = Color(1, 1, 0, 1)
 
 [sub_resource type="Resource" id="Resource_2i1rc"]
 resource_local_to_scene = true
@@ -143,6 +152,7 @@ pivot_offset = Vector2(2.5, 2.5)
 texture = ExtResource("3_otayu")
 
 [node name="HealthLabel" type="Label" parent="Interface/HUD"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -161,6 +171,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PowerLabel" type="Label" parent="Interface/HUD"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -179,6 +190,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BlockStateLabel" type="Label" parent="Interface/HUD"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -196,6 +208,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ActionDelayLabel" type="Label" parent="Interface/HUD"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -211,6 +224,46 @@ grow_vertical = 0
 theme = SubResource("Theme_ion2h")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Interface/HUD"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -385.0
+offset_top = -141.0
+offset_right = 385.0
+offset_bottom = -47.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Interface/HUD/VBoxContainer"]
+layout_mode = 2
+
+[node name="HudBarHP" parent="Interface/HUD/VBoxContainer/HBoxContainer" instance=ExtResource("4_ion2h")]
+layout_mode = 2
+stylebox = SubResource("StyleBoxFlat_gcvfo")
+title = "HP"
+
+[node name="Portrait" parent="Interface/HUD/VBoxContainer/HBoxContainer" node_paths=PackedStringArray("player") instance=ExtResource("4_gcvfo")]
+layout_mode = 2
+size_flags_horizontal = 6
+player = NodePath("../../../../..")
+
+[node name="HudBarMP" parent="Interface/HUD/VBoxContainer/HBoxContainer" instance=ExtResource("4_ion2h")]
+layout_mode = 2
+stylebox = SubResource("StyleBoxFlat_vtr80")
+title = "MP"
+
+[node name="StatTracking" type="Node" parent="Interface/HUD/VBoxContainer" node_paths=PackedStringArray("player", "health", "health_bar", "magic_bar")]
+script = ExtResource("5_vtr80")
+player = NodePath("../../../..")
+health = NodePath("../../../../HealthComponent")
+health_bar = NodePath("../HBoxContainer/HudBarHP")
+magic_bar = NodePath("../HBoxContainer/HudBarMP")
 
 [node name="Messages" type="RichTextLabel" parent="Interface/HUD"]
 layout_mode = 1

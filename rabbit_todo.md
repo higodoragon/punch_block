@@ -17,7 +17,7 @@
 
 - [ ] content warnings (cartoon pixelated blood, gore, and violence)
 - [ ] "Submissions should include a 1-minute video showcasing gameplay."
-- [ ] get final music OGGs from dated (see design gDoc)
+- [ ] get final music OGGs from Dated (see design gDoc)
   - i converted from WAV to OGG using ffmpeg
 - [ ] assign each level a song
 - [ ] get final versions of levels
@@ -26,6 +26,10 @@
 - [ ] clean up README (desc, game title, etc)
 - [ ] convert README.md to HTML for itch
 - [ ] make sure materials are grouped properly in each map (water in a fountain should be a separate func_detail than the concrete of the fountain)
+- [ ] health and magic -> progress bars
+- [ ] implement portrait
+- [ ] layed overcharge bar for magic
+- [ ] implement new footsteps from Hawk
 
 ### big tasks
 

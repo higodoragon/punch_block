@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://jqb8joeyqwd7"]
+
+[ext_resource type="Script" uid="uid://cbu8g6xlju3ph" path="res://ui/ui_portrait.gd" id="1_5rp7q"]
+[ext_resource type="Texture2D" uid="uid://co7k02laocjqc" path="res://assets/kobold_faces.png" id="2_8b707"]
+
+[node name="Portrait" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_5rp7q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(2, 2)
+texture = ExtResource("2_8b707")
+hframes = 5

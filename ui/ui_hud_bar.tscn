@@ -1,0 +1,96 @@
+[gd_scene load_steps=9 format=3 uid="uid://bfra4wer7rye8"]
+
+[ext_resource type="Script" uid="uid://cl0tnj0cpqvp7" path="res://ui/ui_hud_bar.gd" id="1_w6e0u"]
+
+[sub_resource type="Gradient" id="Gradient_1d3fj"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gnex2"]
+gradient = SubResource("Gradient_1d3fj")
+width = 128
+height = 8
+
+[sub_resource type="Gradient" id="Gradient_dnkvb"]
+resource_local_to_scene = true
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.336237, 0.40254, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ls7u3"]
+resource_local_to_scene = true
+gradient = SubResource("Gradient_dnkvb")
+width = 128
+height = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w6e0u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rfya"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_w6e0u"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[node name="HudBar" type="Control"]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -82.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_w6e0u")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 50.0
+allow_greater = true
+allow_lesser = true
+fill_mode = 6
+stretch_margin_left = 16
+stretch_margin_top = 64
+stretch_margin_right = 16
+stretch_margin_bottom = 64
+texture_under = SubResource("GradientTexture2D_gnex2")
+texture_progress = SubResource("GradientTexture2D_ls7u3")
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 8)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_w6e0u")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1rfya")
+step = 1.0
+allow_greater = true
+show_percentage = false
+
+[node name="Label" type="Label" parent="HBoxContainer/ProgressBar"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 24.0
+offset_top = -8.0
+offset_right = 96.0
+offset_bottom = 8.0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "STAT NAME"
+label_settings = SubResource("LabelSettings_w6e0u")

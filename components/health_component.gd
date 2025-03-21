@@ -4,12 +4,17 @@ class_name HealthComponent
 @onready var parent : Node3D = get_parent()
 
 @export var max_health : float = 10
-var health : float
+var health : float:
+	set(val):
+		health = val
+		health_updated.emit(health)
+
 @export var iframes_amount : int = 0
 var iframes : int = 0
 @export var knockback_multiplier : float = 1
 
 var dead : bool = false
+signal health_updated(val)
 
 func _ready():
 	health = max_health

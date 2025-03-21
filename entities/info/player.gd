@@ -34,7 +34,12 @@ var sfx_footstep = global.sfx_player_footsteps_concrete
 
 var magic_max: int = 60 * 60
 var magic_super_max: int = magic_max * 2
-var magic: int = magic_max
+var magic: int = magic_max:
+	set(val):
+		magic = val
+		magic_updated.emit(magic)
+
+signal magic_updated(val)
 
 var power_max: int = 60 * 4
 var power: int = power_max
