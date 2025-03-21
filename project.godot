@@ -22,10 +22,10 @@ boot_splash/use_filter=false
 
 [autoload]
 
+Settings="*res://scripts/settings.gd"
 global="*res://scripts/global.tscn"
 combat="*res://scripts/combat.gd"
 Console="*res://addons/console/console.gd"
-Settings="*res://scripts/settings.gd"
 
 [display]
 
@@ -53,7 +53,7 @@ folder_colors={
 
 [gui]
 
-theme/custom="uid://wpa81rx6vq18"
+theme/custom="uid://6tmn5s4u30k0"
 
 [importer_defaults]
 

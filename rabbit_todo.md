@@ -1,19 +1,33 @@
 # RABBIT
 
+- [x] music (how?)
+  - how = node in global scene
+- get final music OGGs from dated
+- list tools
+  - dated (music)
+  - hawk (sfx)
+- help with uploading
+- gore, gibs
+  - blood particle spray
+  - head phys sprite
+- add all levels to level select
+- enemy spawn fx
+- goon AOE stun effect
+
 # ui
 
 - [x] resume button
 - [x] mouse sens
 - [x] volume
-- music volume
-- rebinding / remapping
+- music volume slider
+- NO - rebinding / remapping
 - [x] level select
 - [x] credit(s)
-- material-sounds
+- [x] material-sounds
   - [x] working on player
-  - footsteps (fs)
-  - landing
-  - jumping (generic)
+  - [x] footsteps (fs)
+  - [x] landing
+  - [x] jumping (generic)
 - maps
   - [ ] rabbit_a
   - [ ] rabbit_b

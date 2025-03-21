@@ -22,12 +22,14 @@ func create( audio_player, audio_settings : AudioSettings ):
 
 func play( sound_settings : AudioSettings ) -> AudioStreamPlayer3D:
 	var audio_player = create( AudioStreamPlayer3D.new(), sound_settings )
+	audio_player.bus = 'Effects'
 	if audio_player != null:
 		audio_player.play()
 	return audio_player
 
 func play_interface( sound_settings : AudioSettings ) -> AudioStreamPlayer:
 	var audio_player = create( AudioStreamPlayer.new(), sound_settings )
+	audio_player.bus = 'Effects'
 	if audio_player != null:
 		audio_player.play()
 	return audio_player

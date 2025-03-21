@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c20rv6dvmqg07"]
+
+[ext_resource type="AudioStream" uid="uid://dwd0clyq12k28" path="res://audio/music/Industrial Justice (Demo 2).ogg" id="1_6fpv8"]
+[ext_resource type="Script" uid="uid://c627l0bn8xbud" path="res://music_handler.gd" id="1_qwqkq"]
+
+[node name="MusicHandler" type="Node"]
+script = ExtResource("1_qwqkq")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_6fpv8")
+autoplay = true
+bus = &"Music"
+parameters/looping = true

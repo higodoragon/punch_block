@@ -12,7 +12,9 @@ text = "PUT SOMETHING HERE"
 
 [node name="HSlider" type="HSlider" parent="."]
 layout_mode = 2
+max_value = 10.0
+step = 0.01
 
 [node name="LabelValue" type="Label" parent="."]
 layout_mode = 2
-text = "123.456"
+text = "OFF"
