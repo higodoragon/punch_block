@@ -49,6 +49,7 @@ func spawn_gibs(enemy: CharacterBase, killer):
 		for _i in rand_gore_amount + 1:
 			var gore_inst := phys_sprite_scene.instantiate() as PhysSprite
 			global.stage.add_child(gore_inst)
+			gore_inst._despawn_timer.timeout.connect(gore_inst._despawn)
 			gore_inst.global_position = gore_pos
 			gore_inst._sprite.texture = gore_texture
 			gore_inst._sprite.region_enabled = false
