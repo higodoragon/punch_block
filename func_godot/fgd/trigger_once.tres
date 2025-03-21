@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://ct4thwqqjw5ry" path="res://func_godot/fgd/baseclass_fgd.tres" id="1_fi314"]
 [ext_resource type="Script" uid="uid://c3m0fvpjbr27w" path="res://addons/func_godot/src/fgd/func_godot_fgd_solid_class.gd" id="2_sr1ay"]
-[ext_resource type="Script" uid="uid://c15wng2n755bs" path="res://entities/trigger/once.gd" id="3_sr1ay"]
+[ext_resource type="Script" path="res://entities/trigger/once.gd" id="3_sr1ay"]
 
 [resource]
 script = ExtResource("2_sr1ay")
