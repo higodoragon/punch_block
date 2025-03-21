@@ -11,6 +11,7 @@ class_name Player extends CharacterBase
 @onready var hud_crosshair: TextureRect = $Interface/HUD/Crosshair
 @onready var hud_health: Label = $Interface/HUD/HealthLabel
 @onready var hud_power: Label = $Interface/HUD/PowerLabel
+@onready var hud_message: MarkdownLabel = $Interface/HUD/Messages
 @onready var hud_debug_block: Label = $Interface/HUD/BlockStateLabel
 @onready var hud_debug_action: Label = $Interface/HUD/ActionDelayLabel
 

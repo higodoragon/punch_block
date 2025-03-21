@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b0fmjkm4tkt7d" path="res://scripts/global.gd" id="1_bux5h"]
 [ext_resource type="PackedScene" uid="uid://ddemxbua6ylaj" path="res://components/audio_manager_component.tscn" id="2_lqipe"]
 [ext_resource type="PackedScene" uid="uid://kuihh32grx47" path="res://ui/ui_menu.tscn" id="3_bvdm8"]
-[ext_resource type="PackedScene" uid="uid://c20rv6dvmqg07" path="res://scripts/music_handler.tscn" id="3_mkksr"]
+[ext_resource type="PackedScene" path="res://scripts/music_handler.tscn" id="3_mkksr"]
 [ext_resource type="Script" uid="uid://clbp4u2c1w0s7" path="res://scripts/gib_handler.gd" id="4_i7w57"]
 [ext_resource type="Resource" uid="uid://bbld2c7hmnamk" path="res://scripts/gibber/gib_sprite_assoc_all.tres" id="5_p31br"]
 

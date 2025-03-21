@@ -195,6 +195,24 @@ func targetname_activate( targetname, activator ):
 		if "do_target_activate" in node:
 			node.do_target_activate( activator )
 
+func funcgodot_common_defs( node : Node, properties : Dictionary ):
+	if not global.on_escape_check( properties ):
+		node.queue_free()
+		return
+
+	if not properties.targetname.is_empty():
+		global.targetname_add( properties.targetname, node )
+		node.targetname = properties.targetname
+	
+	if not properties.target.is_empty():
+		node.activate_targetname = properties.target
+
+var set_message_time = 0
+
+func message_player( message : String, time : int = 120 ):
+	print( "message to the player: ", message )
+	if player:
+		player.hud_message.text = str( "[center]", message, "[/center]" )
 
 func load_stage( path : StringName ):
 	stage_path = path

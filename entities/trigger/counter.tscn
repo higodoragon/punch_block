@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cb175er74iwtu"]
+
+[ext_resource type="Script" uid="uid://ikdeqgvsutuv" path="res://entities/trigger/counter.gd" id="1_yovd1"]
+
+[node name="Counter" type="Node3D"]
+script = ExtResource("1_yovd1")

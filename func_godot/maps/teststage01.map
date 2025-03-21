@@ -1179,12 +1179,6 @@
 }
 // entity 14
 {
-"classname" "enemy_brute"
-"origin" "272 -528 0"
-"target" "BABABUYE"
-}
-// entity 15
-{
 "classname" "func_door"
 "movepos" "0.0 4 0.0"
 "flags" "0"
@@ -1200,28 +1194,28 @@
 ( 32 -32 16 ) ( 32 -32 17 ) ( 32 -31 16 ) dev/metal_02 [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 2 2
 }
 }
-// entity 16
+// entity 15
 {
 "classname" "enemy_quilin"
 "origin" "176 -640 0"
 "flags" "5"
 "targetname" "BABABUYE"
 }
-// entity 17
+// entity 16
 {
 "classname" "enemy_quilin"
 "origin" "176 -528 8"
 "flags" "5"
 "targetname" "BABABUYE"
 }
-// entity 18
+// entity 17
 {
 "classname" "enemy_quilin"
 "origin" "176 -432 0"
 "flags" "5"
 "targetname" "BABABUYE"
 }
-// entity 19
+// entity 18
 {
 "classname" "enemy_quilin"
 "origin" "128 -80 0"
@@ -1229,48 +1223,32 @@
 "targetname" "BABABUYE"
 "target" "COOLDOOR"
 }
-// entity 20
+// entity 19
 {
 "classname" "enemy_brute"
 "origin" "-32 -80 0"
 }
+// entity 20
+{
+"classname" "enemy_sniper"
+"origin" "224 -312 0"
+"target" "BABABUYE_COUNT"
+}
 // entity 21
 {
-"classname" "enemy_goon"
-"origin" "264 -464 0"
+"classname" "enemy_sniper"
+"origin" "240 -664 0"
+"target" "BABABUYE_COUNT"
 }
 // entity 22
 {
-"classname" "enemy_goon"
-"origin" "208 -336 0"
+"classname" "trigger_counter"
+"origin" "120 -224 64"
+"target" "BABABUYE"
+"targetname" "BABABUYE_COUNT"
+"total" "2"
 }
 // entity 23
-{
-"classname" "enemy_goon"
-"origin" "144 -376 0"
-}
-// entity 24
-{
-"classname" "enemy_goon"
-"origin" "248 -392 0"
-}
-// entity 25
-{
-"classname" "enemy_brute"
-"origin" "288 -880 0"
-"target" "BABABUYE"
-}
-// entity 26
-{
-"classname" "enemy_marine"
-"origin" "488 -200 0"
-}
-// entity 27
-{
-"classname" "enemy_marine"
-"origin" "512 -712 0"
-}
-// entity 28
 {
 "classname" "func_group"
 "_tb_type" "_tb_layer"

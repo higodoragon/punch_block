@@ -13,5 +13,5 @@
 - implement audio / levels if given them
 
 [DONE] - redesing the sniper: weak / one hit kill, stays stationary, treat like turret
-??? - blood explosion animation
+[RABBIT] - blood explosion animation
 ??? - 3nd pass new viewmodel
