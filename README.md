@@ -1,3 +1,5 @@
+## ⚠ content warnings for: cartoonish pixelated blood, gore, and violence ⚠
+
 # Punch Block
 
 - made for [Furry Game Jam #1](https://itch.io/jam/furries)
