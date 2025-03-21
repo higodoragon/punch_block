@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://j5rg3c5n4u3v"
+path="res://.godot/imported/rabbit_tutorial.map-c884696beef9e3d733563e68af35c112.tres"
+
+[deps]
+
+source_file="res://func_godot/maps/rabbit_tutorial.map"
+dest_files=["res://.godot/imported/rabbit_tutorial.map-c884696beef9e3d733563e68af35c112.tres"]
+
+[params]
+
