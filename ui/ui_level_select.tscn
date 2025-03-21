@@ -1,14 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://b3o24jefh4qw0"]
+[gd_scene load_steps=3 format=3 uid="uid://b3o24jefh4qw0"]
 
 [ext_resource type="Script" uid="uid://broc85g2nodsr" path="res://ui/ui_level_select.gd" id="1_1s8qe"]
-[ext_resource type="Script" uid="uid://c584v8jufsvu6" path="res://levels/level.gd" id="2_pj2og"]
-[ext_resource type="Resource" uid="uid://bwhcilmq5ldwb" path="res://levels/lvl_rabbit_a.tres" id="3_a4ujf"]
-[ext_resource type="Resource" uid="uid://40s7uopd5a5c" path="res://levels/lvl_rabbit_tutorial.tres" id="3_iv5tm"]
-[ext_resource type="Resource" uid="uid://c2sjin2shyn6k" path="res://levels/lvl_rabbit_b.tres" id="4_a4ujf"]
 [ext_resource type="PackedScene" uid="uid://daheefd8hu4c4" path="res://ui/ui_level_preview.tscn" id="4_xm0ba"]
-[ext_resource type="Resource" uid="uid://de3uq40d4ganq" path="res://levels/lvl_tetrisk_a.tres" id="5_5dirr"]
-[ext_resource type="Resource" uid="uid://crvjl0v8hbfbe" path="res://levels/lvl_tetrisk_b.tres" id="6_iv5tm"]
-[ext_resource type="Resource" uid="uid://dsxytp1aujnh" path="res://levels/lvl_higo_a.tres" id="7_iocpx"]
 
 [node name="UiLevelSelect" type="Control"]
 layout_mode = 3
@@ -20,7 +13,6 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_1s8qe")
-levels = Array[ExtResource("2_pj2og")]([ExtResource("3_iv5tm"), ExtResource("3_a4ujf"), ExtResource("4_a4ujf"), ExtResource("5_5dirr"), ExtResource("6_iv5tm"), ExtResource("7_iocpx")])
 preview_scene = ExtResource("4_xm0ba")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]

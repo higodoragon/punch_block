@@ -1,14 +1,13 @@
 extends Control
 class_name UiLevelSelect
 
-@export var levels: Array[Level]
 @export var preview_scene: PackedScene
 @onready var box: BoxContainer = %Box
 
 func _ready():
 	# populate list of levels
 	var idx := 0
-	for level in levels:
+	for level in global.level_order:
 		var inst = preview_scene.instantiate() as UiLevelPreview
 		box.add_child(inst)
 		inst.button.pressed.connect(load_level.bind(level))
