@@ -1,19 +1,22 @@
 # RABBIT
 
+- music (how?)
+- help with uploading
+
 # ui
 
 - [x] resume button
 - [x] mouse sens
 - [x] volume
-- music volume
-- rebinding / remapping
+- music volume slider
+- NO - rebinding / remapping
 - [x] level select
 - [x] credit(s)
-- material-sounds
+- [x] material-sounds
   - [x] working on player
-  - footsteps (fs)
-  - landing
-  - jumping (generic)
+  - [x] footsteps (fs)
+  - [x] landing
+  - [x] jumping (generic)
 - maps
   - [ ] rabbit_a
   - [ ] rabbit_b
