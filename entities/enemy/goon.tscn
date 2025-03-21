@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://bdjuloaag0nxb"]
 
-[ext_resource type="Script" uid="uid://c4dgnrh28cjn8" path="res://entities/enemy/goon/goon.gd" id="1_m8kop"]
+[ext_resource type="Script" uid="uid://c4dgnrh28cjn8" path="res://entities/enemy/goon.gd" id="1_m8kop"]
 [ext_resource type="Texture2D" uid="uid://cj4c3ykn2ton4" path="res://assets/goon.png" id="2_rwklv"]
 [ext_resource type="PackedScene" uid="uid://lm36snfl5obu" path="res://components/hitbox_component.tscn" id="3_pniho"]
 [ext_resource type="PackedScene" uid="uid://ddemxbua6ylaj" path="res://components/audio_manager_component.tscn" id="3_rwklv"]

@@ -30,6 +30,9 @@ var walk_delay : int
 var walk_angle : float
 var target : Node
 var sleeping : bool = true
+var stun_time : int = 0
+var stun_active : bool = false
+var stun_is_pain : bool = false
 
 func line_of_sight_hitscan_result():
 	if target:
@@ -46,11 +49,16 @@ func line_of_sight_hitscan_result():
 		return null
 
 func _physics_process( delta : float ):
-	if wakeup_delay > 0:
-		wakeup_delay -= 1
-		return
-
 	target = global.player
+
+	if stun_time > 0:
+		stun_time -= 1
+		return
+	else:
+		if stun_active:
+			stun_active = false
+			parent.state.set_state( parent.state_active )
+			return
 
 	if target != null and global.check( target, "health" ) and target.health.dead:
 		target = null

@@ -92,7 +92,8 @@ func _input( event: InputEvent ):
 func console_defs():
 	Console.add_command("map", console_map, ["map name"] )
 	Console.add_command("reload", reload_stage )
-	
+	Console.add_command("print_targetnames", targetname_print )
+	Console.add_command("escape", on_escape_toggle )
 func console_map( map_name : String ):
 	if map_name == "list":
 		console_map_list()
@@ -151,6 +152,48 @@ func process_cmdargs():
 #
 # stage loading
 
+var targets : Dictionary
+
+var on_escape = false
+
+func on_escape_check( propeties : Dictionary ):
+	if propeties.flags & 1 and on_escape:
+		return true
+
+	if propeties.flags & 2 and on_escape:
+		return false
+	
+	return true
+
+func on_escape_toggle():
+	print("now escaping")
+	on_escape = not on_escape
+
+func targetname_print():
+	print( "printing all targetnames" )
+	for tn in targets:
+		print( tn )
+
+func targetname_add( targetname, node ):
+	if not targetname in targets:
+		targets[ targetname ] = TargetGroup.new()
+
+	targets[ targetname ].group.append( node )
+
+func targetname_activate( targetname, activator ):
+	print( targetname, " is being activated" )
+	if not targetname in targets:
+		print( "empty/invalid targetname called" )
+		return
+		
+	for node in targets[ targetname ].group:
+		if node == null:
+			continue
+
+		if "do_target_activate" in node:
+			node.do_target_activate( activator )
+
+
 func load_stage( path : StringName ):
 	stage_path = path
 	_load_stage_real.call_deferred()
@@ -165,6 +208,7 @@ func _load_stage_real():
 		stage.free()
 	
 	enemy_list.clear()
+	targets.clear()
 	
 	stage = FuncGodotMap.new()
 	stage.global_map_file = stage_path
@@ -242,11 +286,48 @@ func set_mouse_mode( mode : int ):
 func kill( victim : Node, killer : Node = null ):
 	if check( victim, "health" ):
 		victim.health.dead = true
+
+	if check( victim, "activate_targetname" ) and not victim.activate_targetname.is_empty():
+		targetname_activate( victim.activate_targetname, killer )
 	
 	if check( victim, "do_die" ):
 		victim.do_die( killer )
 	else:
 		victim.queue_free()
+
+func stun( victim : Node, time : int = -1, is_pain : bool = false ):
+
+	if victim == null:
+		return
+	
+	if not global.check( victim, "ai" ):
+		return
+	
+	if not global.check( victim, "state" ):
+		return
+
+	if is_pain and victim.pain_time < 0:
+		return
+
+	if not is_pain and victim.stun_time < 0:
+		return
+
+	if is_pain:
+		victim.state.set_state( victim.state_pain )
+	else:
+		victim.state.set_state( victim.state_stun )
+
+	if time < 0:
+		if is_pain:
+			victim.ai.stun_time = victim.pain_time
+		else:
+			victim.ai.stun_time = victim.stun_time
+	else:
+		victim.ai.stun_time = time
+
+	victim.ai.stun_active = true
+	victim.ai.stun_is_pain = is_pain
+
 
 func rotation_to_direction( global_rotation : Vector3 ) -> Vector3:
 	var direction : Vector3 = Vector3.ZERO

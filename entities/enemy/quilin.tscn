@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://c17t8jv6ljq3k"]
 
-[ext_resource type="Script" uid="uid://cpmiws4fu01ys" path="res://entities/enemy/quilin/quilin.gd" id="1_gabge"]
+[ext_resource type="Script" uid="uid://cpmiws4fu01ys" path="res://entities/enemy/quilin.gd" id="1_gabge"]
 [ext_resource type="Texture2D" uid="uid://dbhalxnx74jlt" path="res://assets/quilin.png" id="2_4w4sd"]
 [ext_resource type="PackedScene" uid="uid://ccvm8eicw8t4d" path="res://components/common_physics_component.tscn" id="3_070q2"]
 [ext_resource type="PackedScene" uid="uid://cdbvouq7r8gic" path="res://components/ai_component.tscn" id="3_otsnb"]
@@ -25,6 +25,7 @@ script = ExtResource("1_gabge")
 speed = 0.75
 gravity = 0.2
 infight_group = 2
+pain_time = 20
 metadata/_custom_type_script = "uid://88pbfyfqnxlk"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

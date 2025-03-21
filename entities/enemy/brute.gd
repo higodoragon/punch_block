@@ -47,8 +47,11 @@ var state_melee := [
 ]
 
 var state_stun := [
-	{delay = 240, frame = 6},
-	{goto = state_active},
+	{ delay = -1, frame = 7 },
+]
+
+var state_pain := [
+	{ delay = -1, frame = 6 },
 ]
 
 func _ready() -> void:

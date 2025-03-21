@@ -20,24 +20,22 @@ var state_active := [
 	{ loop = true }
 ]
 
-var state_melee := [
-	{ sticky_call = "do_melee_active" },
+var state_attack := [
+	{ sticky_call = "do_attack_active" },
 	{ delay = 20, frame = 3 },
 	{ delay = 1, frame = 4 },
 	{ sticky_call = "" },
-	{ call = "do_melee" },
+	{ call = "do_attack" },
 	{ delay = 20, frame = 5 },
 	{ goto = state_active },
 ]
 
 var state_stun := [
-	{ delay = 240, frame = 7 },
-	{ goto = state_active },
+	{ delay = -1, frame = 7 },
 ]
 
 var state_pain := [
-	{ delay = 20, frame = 6 },
-	{ goto = state_active },
+	{ delay = -1, frame = 6 },
 ]
 
 func _ready() -> void:
@@ -48,23 +46,20 @@ func do_active():
 		velocity += ai.generic_walk_direction() * speed
 		ai.check_and_set_attack_states()
 
-func do_melee_active():
+func do_attack_active():
 	if ai.target:
-		velocity += ai.generic_walk_direction() * ( speed * 1.5 )
+		velocity += ai.generic_walk_direction() * speed
 
-func do_melee():
+func do_attack():
 	if ai.target:
-		ai.generic_melee()
-		ai.set_melee_delay()
-
-func do_block_reaction( inflictor : Node3D, is_parry : bool ):
-	var radious = 10
-	if is_parry:
-		radious = 30
-	
-	for e in global.enemy_list:
-		if e != null and self.global_position.distance_to( e.global_position ) < radious:
-			e.state.set_state( state_stun )
+		var attack := Attack.new()
+		attack.agressor = self
+		attack.inflictor = null
+		attack.damage = ai.attack_damage
+		attack.knockback_power = ai.attack_knockback
+		attack.parry_reaction = true
+		combat.fire_projectile( self, global_position, ai.target_direction(), ai.attack_speed, attack )
+		ai.set_attack_delay()
 
 func _physics_process( delta : float ):
 	physics.common_physics( delta )

@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://bh1qcramhhi6d"]
 
-[ext_resource type="Script" uid="uid://c1ctyn7i666i4" path="res://entities/enemy/brute/brute.gd" id="1_q1iuu"]
+[ext_resource type="Script" uid="uid://c1ctyn7i666i4" path="res://entities/enemy/brute.gd" id="1_q1iuu"]
 [ext_resource type="Texture2D" uid="uid://bhkrdrd3g3dnk" path="res://assets/brute.png" id="2_q1iuu"]
 [ext_resource type="PackedScene" uid="uid://cdbvouq7r8gic" path="res://components/ai_component.tscn" id="3_0ifsd"]
 [ext_resource type="PackedScene" uid="uid://ccvm8eicw8t4d" path="res://components/common_physics_component.tscn" id="4_u5a1y"]
@@ -23,6 +23,8 @@ floor_constant_speed = true
 floor_snap_length = 0.0
 script = ExtResource("1_q1iuu")
 speed = 0.5
+stun_time = 60
+pain_time = -1
 metadata/_custom_type_script = "uid://88pbfyfqnxlk"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

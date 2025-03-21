@@ -35,8 +35,8 @@ func do_damage( attack : Attack ) -> AttackResult:
 	if iframes > 0:
 		return null
 
-	elif global.check( parent, "state" ) and global.check( parent, "state_pain" ):
-		parent.state.set_state( parent.state_pain )
+	if global.check( parent, "ai" ) and parent.ai.stun_time <= 0 and global.check( parent, "state" ):
+		global.stun( parent, -1, true )
 	
 	if not attack.is_silent and global.check( parent, "audio" ):
 		if global.check( parent, "sfx_hurt" ):

@@ -6,8 +6,37 @@ class_name CharacterBase extends CharacterBody3D
 @export var view_height : float = 1.75
 @export var footstep_frequency : float = 4.75
 @export var infight_group : Attack.INFIGHT_GROUP
+@export var stun_time : int = 120
+@export var pain_time : int = 30
 
 var step_height_up : float = 1.1
 var step_height_down : float = 1.1
 
-var func_godot_properties : Dictionary
+var targetname : String
+var activate_targetname : String
+var start_disabled : bool
+
+func enable_thing():
+		visible = true
+		process_mode = Node.PROCESS_MODE_INHERIT
+
+func _func_godot_apply_properties( properties : Dictionary ):
+	if not global.on_escape_check( properties ):
+		queue_free()
+		return
+
+	if not properties.targetname.is_empty():
+		global.targetname_add( properties.targetname, self )
+		targetname = properties.targetname
+	
+	if not properties.target.is_empty():
+		activate_targetname = properties.target
+
+	if properties.flags & 4 != 0:
+		start_disabled = true
+		visible = false
+		process_mode = Node.PROCESS_MODE_DISABLED
+
+func do_target_activate( activator : Node3D ):
+	if start_disabled:
+		enable_thing()
