@@ -20,11 +20,14 @@ func _physics_process(delta: float) -> void:
 
 func do_damage( attack : Attack ) -> AttackResult:
 
+	var attack_result = AttackResult.new()
+
 	if parent is Player and not attack.ignore_blocking:
-		return parent.do_block_damage( attack )
+		return parent.do_block_damage( attack, attack_result )
 
 	if global.check( parent, "infight_group" ) and parent.infight_group != 0 and parent.infight_group == attack.infight_group:
-		return null
+		attack_result.was_ignored = true
+		return attack_result
 
 	if global.check( parent, "velocity" ):
 		var damage_push = attack.knockback_position.direction_to( parent.global_position )
@@ -33,7 +36,8 @@ func do_damage( attack : Attack ) -> AttackResult:
 		parent.velocity += damage_push
 
 	if iframes > 0:
-		return null
+		attack_result.was_ignored = true
+		return attack_result
 
 	if global.check( parent, "ai" ) and parent.ai.stun_time <= 0 and global.check( parent, "state" ):
 		global.stun( parent, -1, true )
@@ -47,14 +51,13 @@ func do_damage( attack : Attack ) -> AttackResult:
 	health -= attack.damage
 	
 	iframes = iframes_amount
-
-	var result = AttackResult.new()
 	
 	if health <= 0 and not dead:
-		result.did_kill = true
+		attack_result.did_kill = true
+		
 		if attack.agressor != null:
 			global.kill( parent, attack.agressor )
 		else:
 			global.kill( parent )
 	
-	return result
+	return attack_result

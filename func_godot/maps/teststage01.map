@@ -1179,7 +1179,7 @@
 }
 // entity 14
 {
-"classname" "enemy_sniper"
+"classname" "enemy_brute"
 "origin" "272 -528 0"
 "target" "BABABUYE"
 }
@@ -1236,12 +1236,31 @@
 }
 // entity 21
 {
-"classname" "enemy_sniper"
-"origin" "48 -528 96"
-"flags" "12"
-"targetname" "BABABUYE"
+"classname" "enemy_goon"
+"origin" "264 -464 0"
 }
 // entity 22
+{
+"classname" "enemy_goon"
+"origin" "208 -336 0"
+}
+// entity 23
+{
+"classname" "enemy_goon"
+"origin" "144 -376 0"
+}
+// entity 24
+{
+"classname" "enemy_goon"
+"origin" "248 -392 0"
+}
+// entity 25
+{
+"classname" "enemy_brute"
+"origin" "288 -880 0"
+"target" "BABABUYE"
+}
+// entity 26
 {
 "classname" "func_group"
 "_tb_type" "_tb_layer"

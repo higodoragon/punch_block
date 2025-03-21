@@ -10,10 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://lm36snfl5obu" path="res://components/hitbox_component.tscn" id="8_ryh87"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ailji"]
-height = 2.1
+height = 3.1
+radius = 1.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_mppgj"]
-height = 3.0
+height = 3.5
 radius = 1.5
 
 [node name="Brute" type="CharacterBody3D"]
@@ -28,7 +29,7 @@ pain_time = -1
 metadata/_custom_type_script = "uid://88pbfyfqnxlk"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55, 0)
 shape = SubResource("CylinderShape3D_ailji")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
@@ -66,5 +67,5 @@ knockback_multiplier = 0.1
 [node name="HitboxComponent" parent="." instance=ExtResource("8_ryh87")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxComponent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
 shape = SubResource("CylinderShape3D_mppgj")

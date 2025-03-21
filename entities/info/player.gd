@@ -206,7 +206,7 @@ func do_block():
 		elif magic > magic_max:
 			magic -= 1
 
-func do_block_damage(attack: Attack):
+func do_block_damage( attack: Attack, attack_result : AttackResult ):
 	var diff = global_position - attack.knockback_position
 	var angle_from_attack = atan2(diff.x, diff.z)
 	var angle_from_view = rotation.y
@@ -230,8 +230,14 @@ func do_block_damage(attack: Attack):
 
 			block_time = parry_frametime - 10
 			did_parry = true
+			
+			# parries spend 15 magic
+			if block_amount <= 0:
+				magic -= 60 * 5
+				magic = max( magic, 0 )
 
-			var parry_audio = global.audio_play_at(global.sfx_player_parry, self.global_position)
+			var parry_audio = audio.play( global.sfx_player_parry )
+			parry_audio.process_mode = Node.PROCESS_MODE_ALWAYS
 			parry_audio.pitch_scale += parrycombo_amount * 0.05
 
 			block_input = false
@@ -242,7 +248,8 @@ func do_block_damage(attack: Attack):
 			parrycombo_time = 0
 			parrycombo_amount = 0
 			
-			global.audio_play_at(global.sfx_player_block, self.global_position)
+			var block_audio = audio.play( global.sfx_player_block )
+			block_audio.process_mode = Node.PROCESS_MODE_ALWAYS
 
 			# the parry / super block animation was so fun
 			# i made it the normal block ( instafun ) :3
@@ -260,15 +267,14 @@ func do_block_damage(attack: Attack):
 			elif attack.agressor != null and global.check(attack.agressor, "do_block_reaction"):
 				attack.agressor.do_block_reaction(self, did_parry)
 		
-		var victim_result = AttackResult.new()
-		victim_result.was_blocked = true
-		victim_result.was_parried = on_parry_frametime()
-		return victim_result
+		attack_result.was_blocked = true
+		attack_result.was_parried = on_parry_frametime()
+		return attack_result
 	else:
 		# attack like normal
 		attack.ignore_blocking = true
 		health.do_damage(attack)
-		return null
+		return attack_result
 
 func do_punch():
 	hud_crosshair.rotation_degrees = 0
