@@ -3,6 +3,7 @@ extends Node
 @onready var audio : AudioManagerComponent = $AudioManagerComponent
 @onready var stage_container : Node3D = $StageContainer
 @onready var music_handler: MusicHandler = $MusicHandler
+@onready var gib_handler: GibHandler = $GibHandler
 
 var stage : Node3D
 var stage_path : String
@@ -287,6 +288,9 @@ func set_mouse_mode( mode : int ):
 func kill( victim : Node, killer : Node = null ):
 	if check( victim, "health" ):
 		victim.health.dead = true
+		if victim.name != 'Player':
+			gib_handler.spawn_gibs(victim, killer)
+
 
 	if check( victim, "activate_targetname" ) and not victim.activate_targetname.is_empty():
 		targetname_activate( victim.activate_targetname, killer )

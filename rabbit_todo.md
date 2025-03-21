@@ -2,23 +2,31 @@
 
 ## final steps
 
-- get final music OGGs from dated
-- get final versions of levels
-- add all levels to level select
-- help with uploading
+- [ ] get final music OGGs from dated (see design gDoc)
+  - i converted from WAV to OGG using ffmpeg
+- [ ] make sure music loops properly
+- [ ] assign each level a song
+- [ ] get final versions of levels
+- [ ] add all levels to level select
+- [ ] help with uploading
 
 ## other steps
 
-- list tools
+- maps
+  - [ ] rabbit_a
+  - [ ] rabbit_b
+- [ ] list tools
   - dated (music)
-  - hawk (sfx)
-- gore, gibs
+  - [x] hawk (sfx)
+- [x] gore, gibs
   - "do_damage on the health component"
-  - blood particle spray
-  - head phys sprite
-- enemy spawn fx
+  - [x] blood particle spray
+  - [x] head phys sprite
+  - [x] phys giblets
+- [ ] enemy spawn fx
   - "the code that handles activating enemies is on character base"
-- goon AOE stun effect
+- [ ] goon AOE stun effect
+- [ ] make sure materials are grouped properly in each map (water in a fountain should be a separate func_detail than the concrete of the fountain)
 
 - [x] music (how?)
   - how = node in global scene
@@ -38,9 +46,6 @@
   - [x] footsteps (fs)
   - [x] landing
   - [x] jumping (generic)
-- maps
-  - [ ] rabbit_a
-  - [ ] rabbit_b
 - [x] ring flash on super block
 - [x] redo arms
   - [x] mesh

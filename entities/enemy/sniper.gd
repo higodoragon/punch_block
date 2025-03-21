@@ -1,4 +1,5 @@
 extends CharacterBase
+class_name EnemySniper
 
 @onready var health : HealthComponent = $HealthComponent
 @onready var hitbox : HitboxComponent = $HitboxComponent

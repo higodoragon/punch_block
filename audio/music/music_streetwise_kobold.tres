@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MusicInfo" load_steps=3 format=3 uid="uid://c7w28o06deqqb"]
+
+[ext_resource type="Script" uid="uid://qsa11uqybhs4" path="res://audio/music/music_info.gd" id="1_dvfow"]
+[ext_resource type="AudioStream" uid="uid://dm4axjhd7fqq" path="res://audio/music/Streetwise Kobold.ogg" id="2_dvfow"]
+
+[resource]
+script = ExtResource("1_dvfow")
+stream = ExtResource("2_dvfow")
+title = "Streetwise Kobold"
+metadata/_custom_type_script = "uid://qsa11uqybhs4"

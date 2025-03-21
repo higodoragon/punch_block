@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c6ex8e3r8hslg"
+path="res://.godot/imported/Pull No Punches.ogg-08354849c2fc449d5123e57f44db36a2.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/music/Pull No Punches.ogg"
+dest_files=["res://.godot/imported/Pull No Punches.ogg-08354849c2fc449d5123e57f44db36a2.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
