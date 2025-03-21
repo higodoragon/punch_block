@@ -74,19 +74,10 @@ theme_override_font_sizes/font_size = 24
 text = "MENU"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/Columns/CenterDiv/Center/VBoxContainer/MENU/BoxContainer"]
-layout_mode = 2
-
 [node name="ButtonResume" type="Button" parent="PanelContainer/MarginContainer/Columns/CenterDiv/Center/VBoxContainer/MENU/BoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Resume Game"
-
-[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/Columns/CenterDiv/Center/VBoxContainer/MENU/BoxContainer"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/Columns/CenterDiv/Center/VBoxContainer/MENU/BoxContainer/PanelContainer"]
-layout_mode = 2
 
 [node name="SettingsContainer" parent="PanelContainer/MarginContainer/Columns/CenterDiv" instance=ExtResource("2_al22y")]
 unique_name_in_owner = true

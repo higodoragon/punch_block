@@ -14,9 +14,16 @@ func _ready():
 	# mouse sens
 	settings_container.slider_sens.value_changed.connect(_set_mouse_sens)
 	settings_container.slider_sens.slider.value = global.mouse_sensitivity
+
 	# master volume
-	settings_container.slider_vol.value_changed.connect(_set_volume.bind(Settings.bus_master_idx))
-	settings_container.slider_vol.slider.value = db_to_linear(AudioServer.get_bus_volume_db(Settings.bus_master_idx))
+	settings_container.slider_vol_master.value_changed.connect(_set_volume.bind(Settings.bus_master_idx))
+	settings_container.slider_vol_master.slider.value = db_to_linear(AudioServer.get_bus_volume_db(Settings.bus_master_idx))
+	# effects volume
+	settings_container.slider_vol_effects.value_changed.connect(_set_volume.bind(Settings.bus_effects_idx))
+	settings_container.slider_vol_effects.slider.value = db_to_linear(AudioServer.get_bus_volume_db(Settings.bus_effects_idx))
+	# music volume
+	settings_container.slider_vol_music.value_changed.connect(_set_volume.bind(Settings.bus_music_idx))
+	settings_container.slider_vol_music.slider.value = db_to_linear(AudioServer.get_bus_volume_db(Settings.bus_music_idx))
 	# resume button
 	btn_resume.pressed.connect(_on_resumed)
 
@@ -28,6 +35,8 @@ func _pause_toggled(way: bool):
 
 
 func _set_volume(val: float, bus: int):
+	var conv = linear_to_db(val)
+	printt(val, conv)
 	AudioServer.set_bus_volume_db(bus, linear_to_db(val))
 	_dirty = true
 

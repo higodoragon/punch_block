@@ -1,7 +1,13 @@
 # RABBIT
 
-- music (how?)
+- [x] music (how?)
+  - how = node in global scene
 - help with uploading
+- gore, gibs
+  - blood particle spray
+  - head phys sprite
+- add all levels to level select
+- enemy spawn fx
 
 # ui
 

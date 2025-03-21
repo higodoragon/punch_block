@@ -11,7 +11,7 @@ func _ready():
 	for level in levels:
 		var inst = preview_scene.instantiate() as UiLevelPreview
 		box.add_child(inst)
-		inst.button.pressed.connect(load_level.bind(level.map))
+		inst.button.pressed.connect(load_level.bind(level))
 		print(level.title)
 		print(inst)
 		print(level.author)
@@ -20,6 +20,9 @@ func _ready():
 		idx += 1
 
 
-func load_level(mapname: String):
-	global.load_stage(mapname)
+func load_level(level: Level):
+	if level.music:
+		global.music_handler.audio_stream_player.stream = level.music.stream
+		global.music_handler.audio_stream_player.play()
+	global.load_stage(level.map)
 	global.pause_active = false

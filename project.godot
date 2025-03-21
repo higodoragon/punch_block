@@ -22,10 +22,10 @@ boot_splash/use_filter=false
 
 [autoload]
 
+Settings="*res://scripts/settings.gd"
 global="*res://scripts/global.tscn"
 combat="*res://scripts/combat.gd"
 Console="*res://addons/console/console.gd"
-Settings="*res://scripts/settings.gd"
 
 [display]
 
