@@ -16,6 +16,10 @@ var _cfg = ConfigFile.new()
 
 
 func _ready():
+	# set default
+	AudioServer.set_bus_volume_linear(bus_master_idx, 0.5)
+	AudioServer.set_bus_volume_linear(bus_music_idx, 0.45)
+	AudioServer.set_bus_volume_linear(bus_effects_idx, 0.75)
 	load_cfg()
 
 
