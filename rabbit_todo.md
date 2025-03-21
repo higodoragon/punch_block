@@ -2,6 +2,7 @@
 
 - [x] music (how?)
   - how = node in global scene
+- [x] music display ("now playing:")
 - get final music OGGs from dated
 - list tools
   - dated (music)
