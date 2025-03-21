@@ -6,7 +6,7 @@ extends BoxContainer
 
 func _ready():
 	# hey you, don't question this. it works. shhh.
-	# global.music_player is null for some reason
+	# global.music_handler is null for some reason
 	# and i don't have time to fix that >_>
 	for child in global.get_children():
 		if child.name == 'MusicHandler':
