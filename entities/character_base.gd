@@ -37,6 +37,10 @@ func _func_godot_apply_properties( properties : Dictionary ):
 		visible = false
 		process_mode = Node.PROCESS_MODE_DISABLED
 
+	if properties.flags & 8 != 0:
+		speed = 0
+		friction = 0
+
 func do_target_activate( activator : Node3D ):
 	if start_disabled:
 		enable_thing()

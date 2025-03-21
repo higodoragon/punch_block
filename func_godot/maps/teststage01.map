@@ -1236,6 +1236,13 @@
 }
 // entity 21
 {
+"classname" "enemy_sniper"
+"origin" "48 -528 96"
+"flags" "12"
+"targetname" "BABABUYE"
+}
+// entity 22
+{
 "classname" "func_group"
 "_tb_type" "_tb_layer"
 "_tb_name" "old"

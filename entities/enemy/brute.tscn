@@ -41,8 +41,8 @@ texture = ExtResource("2_q1iuu")
 hframes = 11
 
 [node name="AIComponent" parent="." instance=ExtResource("3_0ifsd")]
-melee_range = 5.0
-melee_activation_range = 5.0
+melee_range = 6.0
+melee_activation_range = 4.5
 melee_damage = 2.0
 melee_knockback = 50.0
 melee_delay_amount = 60

@@ -69,12 +69,13 @@ func do_melee_active():
 
 func do_melee():
 	if ai.target:
-		hit( ai.melee_damage, ai.melee_knockback )
+		if ai.in_melee_range():
+			hit( ai.melee_damage, ai.melee_knockback )
 		ai.set_melee_delay()
 
 func do_attack_sticky():
 	if ai.target:
-		if ai.in_melee_range():
+		if ai.target_distance() < 2:
 			hit( ai.attack_damage, ai.attack_knockback )
 			state.set_state( state_attack_hit )
 			# sets both to avoid them activating melee

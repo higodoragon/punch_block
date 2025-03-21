@@ -10,7 +10,7 @@ func_godot_internal = false
 base_classes = Array[Resource]([])
 class_properties = {
 "angle": 0.0,
-"flags": [["On Escape", 1, 0], ["Not On Escape", 2, 0], ["Spawn On Activation", 4, 0]],
+"flags": [["On Escape", 1, 0], ["Not On Escape", 2, 0], ["Spawn On Activation", 4, 0], ["Don't move, No Knockback", 8, 0]],
 "scale": 0.0,
 "target": "",
 "targetname": ""

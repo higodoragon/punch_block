@@ -31,11 +31,11 @@ var sfx_footstep = global.sfx_player_footsteps_concrete
 @onready var bracelet: MeshInstance3D = $ViewmodelHead/Viewmodel/Armature/Skeleton3D/Cylinder
 @onready var bracelet_material: StandardMaterial3D
 
-const magic_max: int = 120 * 60
+const magic_max: int = 60 * 60
 var magic: int = magic_max
 
 
-var power_max: int = 60 * 8
+var power_max: int = 60 * 4
 var power: int = power_max
 
 # BLOCK vars
@@ -151,8 +151,8 @@ func view_direction() -> Vector3:
 func on_parry_frametime():
 	return block_time < parry_frametime
 
-func refill_power(time: float):
-	magic = min(time * 120 + magic, magic_max)
+func refill_power( time: float ):
+	magic += time * 60
 
 func do_input_handiling():
 	if Input.is_action_pressed("action_block"):
@@ -202,8 +202,8 @@ func do_block():
 
 	if magic > 0:
 		if block_input and not on_parry_frametime():
-			magic -= 24
-		else:
+			magic -= 6
+		elif magic > magic_max:
 			magic -= 1
 
 func do_block_damage(attack: Attack):
