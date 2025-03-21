@@ -1,33 +1,46 @@
 # RABBIT
 
-## final steps
+## remaining steps
 
+### small tasks
+
+- [ ] content warnings (cartoon pixelated blood, gore, and violence)
+- [ ] "Submissions should include a 1-minute video showcasing gameplay."
 - [ ] get final music OGGs from dated (see design gDoc)
   - i converted from WAV to OGG using ffmpeg
-- [ ] make sure music loops properly
 - [ ] assign each level a song
 - [ ] get final versions of levels
 - [ ] add all levels to level select
-- [ ] help with uploading
+- [ ] help with uploading to itch
+- [ ] clean up README (desc, game title, etc)
+- [ ] convert README.md to HTML for itch
+- [ ] make sure materials are grouped properly in each map (water in a fountain should be a separate func_detail than the concrete of the fountain)
 
-## other steps
+### big tasks
 
+- [ ] tutorial / tutorializing how to play
+  - controls
+  - how to block
+  - goon AOE group-stunning
 - maps
+  - [ ] rabbit_tutorial
   - [ ] rabbit_a
   - [ ] rabbit_b
-- [ ] list tools
-  - dated (music)
+- [ ] enemy spawn fx
+  - "the code that handles activating enemies is on character base"
+- [ ] goon AOE stun visual effect
+
+---
+
+- [x] make sure music loops properly
+- [x] list tools
+  - [x] dated (music)
   - [x] hawk (sfx)
 - [x] gore, gibs
   - "do_damage on the health component"
   - [x] blood particle spray
   - [x] head phys sprite
   - [x] phys giblets
-- [ ] enemy spawn fx
-  - "the code that handles activating enemies is on character base"
-- [ ] goon AOE stun effect
-- [ ] make sure materials are grouped properly in each map (water in a fountain should be a separate func_detail than the concrete of the fountain)
-
 - [x] music (how?)
   - how = node in global scene
 
