@@ -48,7 +48,6 @@ func load_cfg():
 	global.mouse_sensitivity = _cfg.get_value(SECTION_GENERIC, KEY_SENS, global.mouse_sensitivity)
 
 	# audio
-	# yes this is repetitive, don't rewrite it! it works! 
 	AudioServer.set_bus_volume_db(Settings.bus_master_idx, _cfg.get_value(SECTION_GENERIC, KEY_VOL, AudioServer.get_bus_volume_db(bus_master_idx)))
 	AudioServer.set_bus_volume_db(Settings.bus_effects_idx, _cfg.get_value(SECTION_GENERIC, KEY_VOL_EFFECTS, AudioServer.get_bus_volume_db(bus_effects_idx)))
 	AudioServer.set_bus_volume_db(Settings.bus_music_idx, _cfg.get_value(SECTION_GENERIC, KEY_VOL_MUSIC, AudioServer.get_bus_volume_db(bus_music_idx)))

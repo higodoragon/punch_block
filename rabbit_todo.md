@@ -2,12 +2,17 @@
 
 - [x] music (how?)
   - how = node in global scene
+- get final music OGGs from dated
+- list tools
+  - dated (music)
+  - hawk (sfx)
 - help with uploading
 - gore, gibs
   - blood particle spray
   - head phys sprite
 - add all levels to level select
 - enemy spawn fx
+- goon AOE stun effect
 
 # ui
 
