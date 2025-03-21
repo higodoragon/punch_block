@@ -2,6 +2,17 @@
 
 ## remaining steps
 
+### highest fuckin' priority
+
+- maps
+  - [ ] rabbit_tutorial
+  - [ ] rabbit_a
+  - [ ] rabbit_b
+- [ ] tutorial / tutorializing how to play
+  - controls
+  - how to block
+  - goon AOE group-stunning
+
 ### small tasks
 
 - [ ] content warnings (cartoon pixelated blood, gore, and violence)
@@ -18,14 +29,6 @@
 
 ### big tasks
 
-- [ ] tutorial / tutorializing how to play
-  - controls
-  - how to block
-  - goon AOE group-stunning
-- maps
-  - [ ] rabbit_tutorial
-  - [ ] rabbit_a
-  - [ ] rabbit_b
 - [ ] enemy spawn fx
   - "the code that handles activating enemies is on character base"
 - [ ] goon AOE stun visual effect

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Level" load_steps=3 format=3 uid="uid://40s7uopd5a5c"]
+
+[ext_resource type="Resource" uid="uid://c7w28o06deqqb" path="res://audio/music/music_streetwise_kobold.tres" id="1_qc3eu"]
+[ext_resource type="Script" uid="uid://c584v8jufsvu6" path="res://levels/level.gd" id="2_g8wkx"]
+
+[resource]
+script = ExtResource("2_g8wkx")
+map = "uid://j5rg3c5n4u3v"
+title = "Tutorial"
+author = "rabbit"
+music = ExtResource("1_qc3eu")
+metadata/_custom_type_script = "uid://c584v8jufsvu6"

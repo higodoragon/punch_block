@@ -30,9 +30,9 @@ func spawn_gibs(enemy: CharacterBase, killer):
 	#head_inst.killer_vector = killer_pos
 	global.stage.add_child(head_inst)
 	head_inst._sprite.region_enabled = true
-	head_inst.global_position = enemy.global_position
+	head_inst.global_position = enemy.global_position + Vector3(0, head_inst.assoc.y_adjustment, 0)
 
-	#body_entered.connect(_on_body_entered)
+	head_inst.body_entered.connect(head_inst._on_body_entered)
 	head_inst._despawn_timer.timeout.connect( head_inst._despawn )
 
 	head_inst._sprite.texture = head_inst.assoc.texture
@@ -49,6 +49,7 @@ func spawn_gibs(enemy: CharacterBase, killer):
 		for _i in rand_gore_amount + 1:
 			var gore_inst := phys_sprite_scene.instantiate() as PhysSprite
 			global.stage.add_child(gore_inst)
+			gore_inst._despawn_timer.timeout.connect(gore_inst._despawn)
 			gore_inst.global_position = gore_pos
 			gore_inst._sprite.texture = gore_texture
 			gore_inst._sprite.region_enabled = false

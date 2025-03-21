@@ -15,7 +15,7 @@ var player_position : Vector3 = Vector3.ZERO
 var player_rotation : Vector3 = Vector3.ZERO
 var mouse_mode : int = Input.MOUSE_MODE_CAPTURED
 @export var mouse_sensitivity: float = 3
-
+@export var level_order: Array[Level]
 
 var player_active : bool = false
 var pause_active : bool = false:

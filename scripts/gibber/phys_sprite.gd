@@ -6,7 +6,7 @@ class_name PhysSprite
 var assoc: GibSpriteAssoc
 var despawn_tween: Tween
 #var killer_vector: Vector3
-var velocity : Vector3
+var velocity: Vector3
 var move_away_from_force: float = 10.0
 const FADE_TIME := 2.0
 var _bounces := 1
@@ -41,6 +41,8 @@ func _despawn():
 	
 
 func _on_body_entered(_body):
+	printt('body entered', _body, _bounces)
+
 	if _bounces > 0:
 		_bounces -= 1
 		$ParticlesBloodExplosion.emitting = true
