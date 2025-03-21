@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="MusicInfo" load_steps=3 format=3 uid="uid://bb1iif5mvddh2"]
 
 [ext_resource type="Script" uid="uid://qsa11uqybhs4" path="res://audio/music/music_info.gd" id="1_4euwx"]
-[ext_resource type="AudioStream" uid="uid://b2pcxxd4tc3ai" path="res://audio/music/Pull No Punches (Demo 2).ogg" id="2_4euwx"]
+[ext_resource type="AudioStream" uid="uid://c6ex8e3r8hslg" path="res://audio/music/Pull No Punches.ogg" id="2_p1hb6"]
 
 [resource]
 script = ExtResource("1_4euwx")
-stream = ExtResource("2_4euwx")
+stream = ExtResource("2_p1hb6")
 title = "Pull No Punches"
 metadata/_custom_type_script = "uid://qsa11uqybhs4"

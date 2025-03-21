@@ -3,7 +3,9 @@
 ## final steps
 
 - [ ] get final music OGGs from dated (see design gDoc)
+  - i converted from WAV to OGG using ffmpeg
 - [ ] make sure music loops properly
+- [ ] assign each level a song
 - [ ] get final versions of levels
 - [ ] add all levels to level select
 - [ ] help with uploading
