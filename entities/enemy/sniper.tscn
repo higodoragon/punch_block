@@ -55,7 +55,7 @@ texture = ExtResource("2_k4ue4")
 hframes = 9
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_wgxjb")]
-max_health = 4.0
+max_health = 2.0
 knockback_multiplier = 0.0
 
 [node name="StateMachineComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("4_gl24o")]
