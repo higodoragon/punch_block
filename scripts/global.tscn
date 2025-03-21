@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b0fmjkm4tkt7d" path="res://scripts/global.gd" id="1_bux5h"]
 [ext_resource type="PackedScene" uid="uid://ddemxbua6ylaj" path="res://components/audio_manager_component.tscn" id="2_lqipe"]
 [ext_resource type="PackedScene" uid="uid://kuihh32grx47" path="res://ui/ui_menu.tscn" id="3_bvdm8"]
-[ext_resource type="PackedScene" uid="uid://c20rv6dvmqg07" path="res://music_handler.tscn" id="3_mkksr"]
+[ext_resource type="PackedScene" uid="uid://c20rv6dvmqg07" path="res://scripts/music_handler.tscn" id="3_mkksr"]
 
 [node name="Global" type="Node"]
 script = ExtResource("1_bux5h")

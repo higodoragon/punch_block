@@ -22,7 +22,6 @@ func _ready():
 
 func load_level(level: Level):
 	if level.music:
-		global.music_handler.audio_stream_player.stream = level.music.stream
-		global.music_handler.audio_stream_player.play()
+		global.music_handler.play_music(level.music)
 	global.load_stage(level.map)
 	global.pause_active = false

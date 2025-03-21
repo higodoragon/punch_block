@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_u16jq")
-map = ""
+map = "uid://1oircv1mvkeo"
 title = "Streets"
 author = "tetrisk"
 metadata/_custom_type_script = "uid://c584v8jufsvu6"

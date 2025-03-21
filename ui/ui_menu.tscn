@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://kuihh32grx47"]
+[gd_scene load_steps=7 format=3 uid="uid://kuihh32grx47"]
 
 [ext_resource type="Script" uid="uid://7t8vjqd014oy" path="res://ui/ui_menu.gd" id="1_dbm7c"]
 [ext_resource type="PackedScene" uid="uid://b3o24jefh4qw0" path="res://ui/ui_level_select.tscn" id="2_7enir"]
 [ext_resource type="PackedScene" uid="uid://biu0ul0q5l7yf" path="res://ui/ui_settings_container.tscn" id="2_al22y"]
 [ext_resource type="PackedScene" uid="uid://b6c46f6vhwb5h" path="res://ui/ui_credit.tscn" id="3_rux4g"]
+[ext_resource type="PackedScene" uid="uid://cvjsod2mctjkk" path="res://ui/ui_music_display.tscn" id="4_3nh15"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rux4g"]
 bg_color = Color(0.129412, 0.266667, 0.380392, 0.8)
@@ -83,6 +84,9 @@ text = "Resume Game"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
+
+[node name="BoxContainer" parent="PanelContainer/MarginContainer/Columns/CenterDiv" instance=ExtResource("4_3nh15")]
+layout_mode = 2
 
 [node name="Credit" parent="PanelContainer/MarginContainer/Columns" instance=ExtResource("3_rux4g")]
 layout_mode = 2

@@ -23,9 +23,11 @@ this is a game where u play as furry guy and u block other furry guys
 
 ## tools
 
-| tool        | purpose                        |
-| ----------- | ------------------------------ |
-| Godot 4.4   | game engine                    |
-| TrenchBroom | level design                   |
-| Blender 4.4 | view model (first person arms) |
-| Aseprite    | sprites                        |
+| tool                                                | purpose                        |
+| --------------------------------------------------- | ------------------------------ |
+| Godot 4.4                                           | game engine                    |
+| TrenchBroom                                         | level design                   |
+| Blender 4.4                                         | view model (first person arms) |
+| Aseprite                                            | sprites                        |
+| "Neundo, soundminer, RX7, and a variety of plugins" | sound effects                  |
+| ?                                                   | music                          |

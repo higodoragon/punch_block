@@ -1,25 +1,35 @@
 # RABBIT
 
-- [x] music (how?)
-  - how = node in global scene
+## final steps
+
 - get final music OGGs from dated
+- get final versions of levels
+- add all levels to level select
+- help with uploading
+
+## other steps
+
 - list tools
   - dated (music)
   - hawk (sfx)
-- help with uploading
 - gore, gibs
+  - "do_damage on the health component"
   - blood particle spray
   - head phys sprite
-- add all levels to level select
 - enemy spawn fx
+  - "the code that handles activating enemies is on character base"
 - goon AOE stun effect
+
+- [x] music (how?)
+  - how = node in global scene
 
 # ui
 
 - [x] resume button
 - [x] mouse sens
 - [x] volume
-- music volume slider
+- [x] music volume slider
+- [x] music display ("now playing:")
 - NO - rebinding / remapping
 - [x] level select
 - [x] credit(s)
