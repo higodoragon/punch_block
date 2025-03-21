@@ -6,7 +6,7 @@
 [RABBIT] - add gibbing animation
 [DONE] - make brute sprites
 [DONE] - triggers, counters
-- health regen by kill
+[DONE] - health regen by kill
 - make textures!!!
 - implement audio / levels if given them
 

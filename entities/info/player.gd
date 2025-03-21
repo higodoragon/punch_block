@@ -32,9 +32,9 @@ var sfx_footstep = global.sfx_player_footsteps_concrete
 @onready var bracelet: MeshInstance3D = $ViewmodelHead/Viewmodel/Armature/Skeleton3D/Cylinder
 @onready var bracelet_material: StandardMaterial3D
 
-const magic_max: int = 60 * 60
+var magic_max: int = 60 * 60
+var magic_super_max: int = magic_max * 2
 var magic: int = magic_max
-
 
 var power_max: int = 60 * 4
 var power: int = power_max
@@ -152,9 +152,6 @@ func view_direction() -> Vector3:
 func on_parry_frametime():
 	return block_time < parry_frametime
 
-func refill_power( time: float ):
-	magic += time * 60
-
 func do_input_handiling():
 	if Input.is_action_pressed("action_block"):
 		block_buffer = 20
@@ -232,7 +229,7 @@ func do_block_damage( attack: Attack, attack_result : AttackResult ):
 			block_time = parry_frametime - 10
 			did_parry = true
 			
-			# parries spend 15 magic
+			# parries spend magic
 			if block_amount <= 0:
 				magic -= 60 * 5
 				magic = max( magic, 0 )
@@ -316,7 +313,9 @@ func do_punch():
 				attack.is_silent = true
 				var attack_result = victim.health.do_damage(attack)
 				if attack_result.did_kill:
-					refill_power(15)
+					var add_value = victim.health.max_health / 4
+					magic = min( magic + ( add_value * 600 ), magic_super_max )
+					health.health = min( health.health + add_value, health.max_health )
 					continue
 				
 			enemies_position_average += victim.global_position
