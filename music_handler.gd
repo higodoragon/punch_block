@@ -1,7 +1,12 @@
 extends Node
 class_name MusicHandler
 
-@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var _audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+var current_song: MusicInfo
 
-func play_music(what):
-	pass
+signal music_changed(track: MusicInfo)
+
+func play_music(info: MusicInfo):
+	_audio_stream_player.stream = info.stream
+	_audio_stream_player.play()
+	music_changed.emit(info)
