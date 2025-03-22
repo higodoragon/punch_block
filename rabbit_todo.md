@@ -28,9 +28,9 @@
 - [ ] make sure materials are grouped properly in each map (water in a fountain should be a separate func_detail than the concrete of the fountain)
 - [ ] health and magic -> progress bars
 - [ ] layed overcharge bar for magic
-- [ ] implement new footsteps from Hawk
+- [x] implement new footsteps from Hawk
 - [ ] volume mixing pass
-- [ ] sniper beep should be heard from further away
+- [x] sniper beep should be heard from further away
 
 ### big tasks
 

@@ -9,6 +9,17 @@
 [DONE] - health regen by kill
 [DONE] - implement audio / levels if given them
 
+- trigger_nextlevel
+- trigger_multiple
+- skybox
+- title screen, intermission screen
+- enviroments ( fog / color )
+
+low:
+- enemy spawn fx
+- enemy gibbing fx
+- goon stun fx
+
 [DONE] - redesing the sniper: weak / one hit kill, stays stationary, treat like turret
 [RABBIT] - blood explosion animation
 ??? - 3nd pass new viewmodel
