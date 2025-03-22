@@ -33,6 +33,7 @@
   - [ ] taking damage indicator
   - [ ] footsteps too loud
   - [ ] nerf alleys ending
+- [ ] make metal containers have metal sound
 
 ---
 
