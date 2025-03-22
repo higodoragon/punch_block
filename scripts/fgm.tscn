@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://svqhx0m7opdp"]
+
+[ext_resource type="Script" uid="uid://cb3rehcfbgk26" path="res://addons/func_godot/src/map/func_godot_map.gd" id="1_bk8w5"]
+[ext_resource type="Resource" uid="uid://0jjaisoht0tr" path="res://func_godot/funcgodot_map_settings.tres" id="2_bb58g"]
+
+[node name="Fgm" type="Node3D"]
+script = ExtResource("1_bk8w5")
+map_settings = ExtResource("2_bb58g")
+block_until_complete = true
+metadata/_custom_type_script = "uid://cb3rehcfbgk26"

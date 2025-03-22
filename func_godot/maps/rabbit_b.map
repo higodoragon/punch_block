@@ -2026,7 +2026,6 @@
 {
 "classname" "info_player_start"
 "origin" "0 -224 32"
-"angle" "85"
 }
 // entity 65
 {
