@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_8htu4")
 map = "uid://cflijbdafb36n"
-title = "Warehouse"
+title = "Werehouse"
 author = "tetrisk"
 music = ExtResource("1_gjup6")
 metadata/_custom_type_script = "uid://c584v8jufsvu6"
