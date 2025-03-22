@@ -58,13 +58,17 @@ func do_melee():
 func do_block_reaction( inflictor : Node3D, is_parry : bool ):
 	var radious = 10
 	if is_parry:
-		radious = 20
+		radious = 200
 		
 	for e in global.enemy_list:
 		if e == null:
 			continue
 
-		if not ai.line_of_sight_result( global_position, e.global_position ):
+		if not is_parry and not e is EnemyGoon:
+			continue
+
+		var distance = global_position.distance_to( e.global_position )
+		if distance < radious and not ai.line_of_sight_result( global_position, e.global_position ):
 			global.stun( e )
 
 func _physics_process( delta : float ):
