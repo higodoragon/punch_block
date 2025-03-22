@@ -51,6 +51,11 @@ func target_line_of_sight_result():
 	else:
 		return null
 
+func set_target( new_target ):
+	parent.audio.play( parent.sfx_alert )
+	target = new_target
+	parent.state.set_state( parent.state_active )	
+
 func _physics_process( delta : float ):
 	if target != null and global.check( target, "health" ) and target.health.dead:
 		target = null
@@ -63,10 +68,7 @@ func _physics_process( delta : float ):
 		if global.player != null and not global.player.health.dead:
 			var lfs_result = line_of_sight_result( parent.global_position, global.player.global_position )
 			if not lfs_result:
-				# idle until you find the player
-				parent.audio.play( parent.sfx_alert )
-				target = global.player
-				parent.state.set_state( parent.state_active )
+				set_target( global.player )
 		return
 
 	if stun_time > 0:

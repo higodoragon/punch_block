@@ -51,3 +51,6 @@ func _func_godot_apply_properties( properties : Dictionary ):
 func do_target_activate( activator : Node3D ):
 	if start_disabled:
 		enable_thing()
+	else:
+		if global.check( self, "ai" ):
+			self.ai.set_target( global.player )
