@@ -1262,6 +1262,7 @@
 {
 "classname" "trigger_once"
 "target" "SUPER_BABABUYE"
+"message" "FUCK YOU"
 // brush 0
 {
 ( 104 -728 0 ) ( 104 -727 0 ) ( 104 -728 1 ) special/clip [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 2 2

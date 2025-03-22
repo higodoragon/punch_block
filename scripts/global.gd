@@ -190,6 +190,9 @@ func targetname_activate( targetname, activator ):
 		if node == null:
 			continue
 
+		if node == activator:
+			continue
+
 		if "do_target_activate" in node:
 			node.do_target_activate( activator )
 

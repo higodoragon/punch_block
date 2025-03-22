@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://cflijbdafb36n"
+path="res://.godot/imported/tetrisk_c.map-b44b74c36c10b397221634d762cf7a21.tres"
+
+[deps]
+
+source_file="res://func_godot/maps/tetrisk_c.map"
+dest_files=["res://.godot/imported/tetrisk_c.map-b44b74c36c10b397221634d762cf7a21.tres"]
+
+[params]
+

@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://4ogj12rbx2ty"
+path="res://.godot/imported/tetrisk_a.map-22eb6b6c116c06dcd7626494fc561575.tres"
+
+[deps]
+
+source_file="res://func_godot/maps/tetrisk_a.map"
+dest_files=["res://.godot/imported/tetrisk_a.map-22eb6b6c116c06dcd7626494fc561575.tres"]
+
+[params]
+

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Level" load_steps=3 format=3 uid="uid://c2ddmmaccb6e"]
+
+[ext_resource type="Resource" uid="uid://bb1iif5mvddh2" path="res://audio/music/music_pull_no_punches.tres" id="1_gjup6"]
+[ext_resource type="Script" uid="uid://c584v8jufsvu6" path="res://levels/level.gd" id="2_8htu4"]
+
+[resource]
+script = ExtResource("2_8htu4")
+map = "uid://cflijbdafb36n"
+title = "Werehouse"
+author = "tetrisk"
+music = ExtResource("1_gjup6")
+metadata/_custom_type_script = "uid://c584v8jufsvu6"

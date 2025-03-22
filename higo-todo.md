@@ -7,7 +7,20 @@
 [DONE] - make brute sprites
 [DONE] - triggers, counters
 [DONE] - health regen by kill
-- implement audio / levels if given them
+[DONE] - implement audio / levels if given them
+
+- trigger_nextlevel
+- trigger_multiple
+- goons dons't stun non goons without parry
+- skybox
+- title screen, intermission screen
+- enviroments ( fog / color )
+
+low:
+- enemy spawn fx
+- enemy gibbing fx
+- goon stun fx
+- new create texture
 
 [DONE] - redesing the sniper: weak / one hit kill, stays stationary, treat like turret
 [RABBIT] - blood explosion animation

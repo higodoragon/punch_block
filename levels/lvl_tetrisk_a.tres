@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="Level" load_steps=2 format=3 uid="uid://de3uq40d4ganq"]
+[gd_resource type="Resource" script_class="Level" load_steps=3 format=3 uid="uid://bv8v1vh1quy2x"]
 
+[ext_resource type="Resource" path="res://audio/music/music_streetwise_kobold.tres" id="1_h3wfk"]
 [ext_resource type="Script" uid="uid://c584v8jufsvu6" path="res://levels/level.gd" id="1_u16jq"]
 
 [resource]
 script = ExtResource("1_u16jq")
-map = "uid://1oircv1mvkeo"
+map = "uid://4ogj12rbx2ty"
 title = "Streets"
 author = "tetrisk"
+music = ExtResource("1_h3wfk")
 metadata/_custom_type_script = "uid://c584v8jufsvu6"
