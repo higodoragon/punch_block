@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="AudioSettings" load_steps=7 format=3 uid="uid://bp3dk4y8vxq8o"]
+
+[ext_resource type="Script" uid="uid://d1cihyw7tq44v" path="res://components/audio_settings.gd" id="1_884m4"]
+[ext_resource type="AudioStream" uid="uid://b38a7akykoi2e" path="res://audio/goon/alert/alert_01.wav" id="2_aarei"]
+[ext_resource type="AudioStream" uid="uid://dvx4xjnqv788o" path="res://audio/goon/alert/alert_02.wav" id="3_yne4w"]
+[ext_resource type="AudioStream" uid="uid://b3ejhixia4a48" path="res://audio/goon/alert/alert_03.wav" id="4_0xt0q"]
+[ext_resource type="AudioStream" uid="uid://fqwj4y6gj0n1" path="res://audio/goon/alert/alert_04.wav" id="5_q5baa"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_b6atk"]
+streams_count = 4
+stream_0/stream = ExtResource("2_aarei")
+stream_1/stream = ExtResource("3_yne4w")
+stream_2/stream = ExtResource("4_0xt0q")
+stream_3/stream = ExtResource("5_q5baa")
+
+[resource]
+script = ExtResource("1_884m4")
+stream = SubResource("AudioStreamRandomizer_b6atk")
+channel = 0
+limit = 5
+volume_db = 1.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://d1cihyw7tq44v"

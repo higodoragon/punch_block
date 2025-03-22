@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="AudioSettings" load_steps=7 format=3 uid="uid://breolgqw2vix6"]
+
+[ext_resource type="Script" uid="uid://d1cihyw7tq44v" path="res://components/audio_settings.gd" id="1_cis4y"]
+[ext_resource type="AudioStream" uid="uid://dglr7nnbx6l2i" path="res://audio/quilin/death/death_01.wav" id="2_i4dsm"]
+[ext_resource type="AudioStream" uid="uid://bauhe1gp5j4mj" path="res://audio/quilin/death/death_02.wav" id="3_n27xg"]
+[ext_resource type="AudioStream" uid="uid://dmttgnaps2hpw" path="res://audio/quilin/death/death_03.wav" id="4_w56wv"]
+[ext_resource type="AudioStream" uid="uid://clf8l0vh5v3yf" path="res://audio/quilin/death/death_04.wav" id="5_mgli0"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_f6282"]
+streams_count = 4
+stream_0/stream = ExtResource("2_i4dsm")
+stream_1/stream = ExtResource("3_n27xg")
+stream_2/stream = ExtResource("4_w56wv")
+stream_3/stream = ExtResource("5_mgli0")
+
+[resource]
+script = ExtResource("1_cis4y")
+stream = SubResource("AudioStreamRandomizer_f6282")
+channel = 0
+limit = 5
+volume_db = -4.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://d1cihyw7tq44v"

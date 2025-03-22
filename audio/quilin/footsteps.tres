@@ -1,0 +1,92 @@
+[gd_resource type="Resource" script_class="AudioSettings" load_steps=37 format=3 uid="uid://c108fq0kv1b8j"]
+
+[ext_resource type="Script" uid="uid://d1cihyw7tq44v" path="res://components/audio_settings.gd" id="1_4q60u"]
+[ext_resource type="AudioStream" uid="uid://dejfwe46fc1h5" path="res://audio/quilin/footsteps/concrete_01.wav" id="2_bv0ol"]
+[ext_resource type="AudioStream" uid="uid://g5bo1ljube7d" path="res://audio/quilin/footsteps/concrete_02.wav" id="3_how31"]
+[ext_resource type="AudioStream" uid="uid://kmxccc1f1g6y" path="res://audio/quilin/footsteps/concrete_03.wav" id="4_l6lic"]
+[ext_resource type="AudioStream" uid="uid://bvkvg6fc364b6" path="res://audio/quilin/footsteps/concrete_04.wav" id="5_av5t5"]
+[ext_resource type="AudioStream" uid="uid://jr854yv08k3g" path="res://audio/quilin/footsteps/concrete_05.wav" id="6_nk18i"]
+[ext_resource type="AudioStream" uid="uid://djn7du6ljtiy7" path="res://audio/quilin/footsteps/concrete_06.wav" id="7_mj58j"]
+[ext_resource type="AudioStream" uid="uid://d28rfbwbkw6cc" path="res://audio/quilin/footsteps/grass_01.wav" id="8_oqke5"]
+[ext_resource type="AudioStream" uid="uid://dr1q3ou0fwgik" path="res://audio/quilin/footsteps/grass_02.wav" id="9_wdr42"]
+[ext_resource type="AudioStream" uid="uid://i8m000d4xu8m" path="res://audio/quilin/footsteps/grass_03.wav" id="10_k8j4w"]
+[ext_resource type="AudioStream" uid="uid://dfkogyw5u7bp6" path="res://audio/quilin/footsteps/grass_04.wav" id="11_xahun"]
+[ext_resource type="AudioStream" uid="uid://b48ca5a3eepwp" path="res://audio/quilin/footsteps/grass_05.wav" id="12_acrtt"]
+[ext_resource type="AudioStream" uid="uid://c5v3bccs6bed" path="res://audio/quilin/footsteps/grass_06.wav" id="13_bec6u"]
+[ext_resource type="AudioStream" uid="uid://b74sht0tab547" path="res://audio/quilin/footsteps/gravel_01.wav" id="14_vbmsq"]
+[ext_resource type="AudioStream" uid="uid://d4i50x11pyjs5" path="res://audio/quilin/footsteps/gravel_02.wav" id="15_dhngl"]
+[ext_resource type="AudioStream" uid="uid://c8dnmgbdd0ftr" path="res://audio/quilin/footsteps/gravel_03.wav" id="16_bol7c"]
+[ext_resource type="AudioStream" uid="uid://b0234bhs15q0f" path="res://audio/quilin/footsteps/gravel_04.wav" id="17_earf7"]
+[ext_resource type="AudioStream" uid="uid://qtme8o3i7tn5" path="res://audio/quilin/footsteps/gravel_05.wav" id="18_081se"]
+[ext_resource type="AudioStream" uid="uid://bpfoq6dj88yr2" path="res://audio/quilin/footsteps/gravel_06.wav" id="19_j0xpj"]
+[ext_resource type="AudioStream" uid="uid://c3felevysa2rg" path="res://audio/quilin/footsteps/metal_01.wav" id="20_fo1fq"]
+[ext_resource type="AudioStream" uid="uid://dhk3gg7suv1ou" path="res://audio/quilin/footsteps/metal_02.wav" id="21_idchx"]
+[ext_resource type="AudioStream" uid="uid://ch73w07xmie5l" path="res://audio/quilin/footsteps/metal_03.wav" id="22_av24m"]
+[ext_resource type="AudioStream" uid="uid://dg6362mtxtovq" path="res://audio/quilin/footsteps/metal_04.wav" id="23_fl5gs"]
+[ext_resource type="AudioStream" uid="uid://lhkmijk0urv0" path="res://audio/quilin/footsteps/metal_05.wav" id="24_6tqql"]
+[ext_resource type="AudioStream" uid="uid://qfv2re6yh8ib" path="res://audio/quilin/footsteps/metal_06.wav" id="25_c3wno"]
+[ext_resource type="AudioStream" uid="uid://ditxfbqbey2gl" path="res://audio/quilin/footsteps/water_01.wav" id="26_jhq34"]
+[ext_resource type="AudioStream" uid="uid://cvesmoabhfahk" path="res://audio/quilin/footsteps/water_02.wav" id="27_061gd"]
+[ext_resource type="AudioStream" uid="uid://gryyjyrjywt7" path="res://audio/quilin/footsteps/water_03.wav" id="28_72tcr"]
+[ext_resource type="AudioStream" uid="uid://csej4gb3wrdrv" path="res://audio/quilin/footsteps/water_04.wav" id="29_ckhs6"]
+[ext_resource type="AudioStream" uid="uid://c8jeo0kttlkrp" path="res://audio/quilin/footsteps/water_05.wav" id="30_wjlli"]
+[ext_resource type="AudioStream" uid="uid://c5j4xcakmp3x5" path="res://audio/quilin/footsteps/water_06.wav" id="31_ubjvw"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_oqjsd"]
+streams_count = 6
+stream_0/stream = ExtResource("2_bv0ol")
+stream_1/stream = ExtResource("3_how31")
+stream_2/stream = ExtResource("4_l6lic")
+stream_3/stream = ExtResource("5_av5t5")
+stream_4/stream = ExtResource("6_nk18i")
+stream_5/stream = ExtResource("7_mj58j")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jvbjx"]
+streams_count = 6
+stream_0/stream = ExtResource("8_oqke5")
+stream_1/stream = ExtResource("9_wdr42")
+stream_2/stream = ExtResource("10_k8j4w")
+stream_3/stream = ExtResource("11_xahun")
+stream_4/stream = ExtResource("12_acrtt")
+stream_5/stream = ExtResource("13_bec6u")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_loh0g"]
+streams_count = 6
+stream_0/stream = ExtResource("14_vbmsq")
+stream_1/stream = ExtResource("15_dhngl")
+stream_2/stream = ExtResource("16_bol7c")
+stream_3/stream = ExtResource("17_earf7")
+stream_4/stream = ExtResource("18_081se")
+stream_5/stream = ExtResource("19_j0xpj")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vnhkk"]
+streams_count = 6
+stream_0/stream = ExtResource("20_fo1fq")
+stream_1/stream = ExtResource("21_idchx")
+stream_2/stream = ExtResource("22_av24m")
+stream_3/stream = ExtResource("23_fl5gs")
+stream_4/stream = ExtResource("24_6tqql")
+stream_5/stream = ExtResource("25_c3wno")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tjmiu"]
+streams_count = 6
+stream_0/stream = ExtResource("26_jhq34")
+stream_1/stream = ExtResource("27_061gd")
+stream_2/stream = ExtResource("28_72tcr")
+stream_3/stream = ExtResource("29_ckhs6")
+stream_4/stream = ExtResource("30_wjlli")
+stream_5/stream = ExtResource("31_ubjvw")
+
+[resource]
+script = ExtResource("1_4q60u")
+stream = SubResource("AudioStreamRandomizer_oqjsd")
+stream_gravel = SubResource("AudioStreamRandomizer_loh0g")
+stream_water = SubResource("AudioStreamRandomizer_tjmiu")
+stream_grass = SubResource("AudioStreamRandomizer_jvbjx")
+stream_metal = SubResource("AudioStreamRandomizer_vnhkk")
+channel = 0
+limit = 5
+volume_db = 1.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://d1cihyw7tq44v"

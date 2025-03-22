@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="AudioSettings" load_steps=7 format=3 uid="uid://d1goh3thl150r"]
+
+[ext_resource type="Script" uid="uid://d1cihyw7tq44v" path="res://components/audio_settings.gd" id="1_tewsx"]
+[ext_resource type="AudioStream" uid="uid://dimipjpbo3amp" path="res://audio/sniper/death/death_01.wav" id="2_tewsx"]
+[ext_resource type="AudioStream" uid="uid://bojfynquta6xl" path="res://audio/sniper/death/death_02.wav" id="3_u8sml"]
+[ext_resource type="AudioStream" uid="uid://bmf8qbcafupew" path="res://audio/sniper/death/death_03.wav" id="4_wb1c1"]
+[ext_resource type="AudioStream" uid="uid://db7kvf4bbmxr1" path="res://audio/sniper/death/death_04.wav" id="5_swvqw"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yvqmp"]
+streams_count = 4
+stream_0/stream = ExtResource("2_tewsx")
+stream_1/stream = ExtResource("3_u8sml")
+stream_2/stream = ExtResource("4_wb1c1")
+stream_3/stream = ExtResource("5_swvqw")
+
+[resource]
+script = ExtResource("1_tewsx")
+stream = SubResource("AudioStreamRandomizer_yvqmp")
+channel = 0
+limit = 5
+volume_db = 1.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://d1cihyw7tq44v"

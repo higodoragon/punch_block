@@ -1,12 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://4ltf35eaj48d"]
+[gd_scene load_steps=6 format=3 uid="uid://4ltf35eaj48d"]
 
 [ext_resource type="Texture2D" uid="uid://bimqx2yl8imjd" path="res://assets/projectile.png" id="1_hhwor"]
 [ext_resource type="Script" uid="uid://dc8hrgluv2t6d" path="res://entities/projectile.gd" id="1_kxi4n"]
+[ext_resource type="Resource" uid="uid://3pf0b68lcn3r" path="res://audio/quilin/attack_explosion.tres" id="2_yif27"]
 [ext_resource type="PackedScene" uid="uid://ddemxbua6ylaj" path="res://components/audio_manager_component.tscn" id="3_27it7"]
 [ext_resource type="Script" uid="uid://bcnyim8n3lsil" path="res://components/state_machine_component.gd" id="3_jnjrb"]
 
 [node name="Projectile" type="Node3D"]
 script = ExtResource("1_kxi4n")
+sfx_impact = ExtResource("2_yif27")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 pixel_size = 0.125

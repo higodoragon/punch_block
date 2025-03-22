@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="AudioSettings" load_steps=7 format=3 uid="uid://dav7608ar77jg"]
+
+[ext_resource type="Script" uid="uid://d1cihyw7tq44v" path="res://components/audio_settings.gd" id="1_sqokd"]
+[ext_resource type="AudioStream" uid="uid://cs3wq2363apup" path="res://audio/quilin/alert/alert_01.wav" id="2_xxjcj"]
+[ext_resource type="AudioStream" uid="uid://dfpsb0cxdykgm" path="res://audio/quilin/alert/alert_02.wav" id="3_qijrb"]
+[ext_resource type="AudioStream" uid="uid://ca41c7ux2mtfo" path="res://audio/quilin/alert/alert_03.wav" id="4_o1g5a"]
+[ext_resource type="AudioStream" uid="uid://d3er48ke1acrc" path="res://audio/quilin/alert/alert_04.wav" id="5_wrn8e"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_uu6pd"]
+streams_count = 4
+stream_0/stream = ExtResource("2_xxjcj")
+stream_1/stream = ExtResource("3_qijrb")
+stream_2/stream = ExtResource("4_o1g5a")
+stream_3/stream = ExtResource("5_wrn8e")
+
+[resource]
+script = ExtResource("1_sqokd")
+stream = SubResource("AudioStreamRandomizer_uu6pd")
+channel = 0
+limit = 5
+volume_db = -16.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://d1cihyw7tq44v"

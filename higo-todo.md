@@ -7,9 +7,9 @@
 [DONE] - make brute sprites
 [DONE] - triggers, counters
 [DONE] - health regen by kill
-- make textures!!!
 - implement audio / levels if given them
 
 [DONE] - redesing the sniper: weak / one hit kill, stays stationary, treat like turret
 [RABBIT] - blood explosion animation
 ??? - 3nd pass new viewmodel
+??? - make textures!!!

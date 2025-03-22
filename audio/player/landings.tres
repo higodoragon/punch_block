@@ -1,0 +1,60 @@
+[gd_resource type="Resource" script_class="AudioSettings" load_steps=22 format=3 uid="uid://k22dthnquwby"]
+
+[ext_resource type="Script" uid="uid://d1cihyw7tq44v" path="res://components/audio_settings.gd" id="1_aaxaj"]
+[ext_resource type="AudioStream" uid="uid://bt5v1x6ife26p" path="res://audio/player/landings/concrete_01.wav" id="2_wohx7"]
+[ext_resource type="AudioStream" uid="uid://dwi3ykhhcg151" path="res://audio/player/landings/concrete_02.wav" id="3_3wpmg"]
+[ext_resource type="AudioStream" uid="uid://mek1jx0huluj" path="res://audio/player/landings/concrete_03.wav" id="4_6kc2q"]
+[ext_resource type="AudioStream" uid="uid://b8vxon03ncw5r" path="res://audio/player/landings/concrete_04.wav" id="5_txaqk"]
+[ext_resource type="AudioStream" uid="uid://c2bhl8x0a7ry5" path="res://audio/player/landings/grass_01.wav" id="6_vt8fl"]
+[ext_resource type="AudioStream" uid="uid://dxr00olc88fn" path="res://audio/player/landings/grass_02.wav" id="7_cj0lj"]
+[ext_resource type="AudioStream" uid="uid://ctan1k6lftwvq" path="res://audio/player/landings/grass_03.wav" id="8_y25ok"]
+[ext_resource type="AudioStream" uid="uid://cwuntsraoe4vg" path="res://audio/player/landings/grass_04.wav" id="9_31erl"]
+[ext_resource type="AudioStream" uid="uid://cqj7copf73g6o" path="res://audio/player/landings/gravel_01.wav" id="10_dbce0"]
+[ext_resource type="AudioStream" uid="uid://ddf45huvdbcl5" path="res://audio/player/landings/gravel_02.wav" id="11_swc2k"]
+[ext_resource type="AudioStream" uid="uid://3rpxqj7nemvp" path="res://audio/player/landings/gravel_03.wav" id="12_pmsuu"]
+[ext_resource type="AudioStream" uid="uid://de2furxixs5gq" path="res://audio/player/landings/gravel_04.wav" id="13_28egy"]
+[ext_resource type="AudioStream" uid="uid://40tt78yov1uo" path="res://audio/player/landings/water_01.wav" id="14_jp61s"]
+[ext_resource type="AudioStream" uid="uid://vrgwhorp4f10" path="res://audio/player/landings/water_02.wav" id="15_4hj5g"]
+[ext_resource type="AudioStream" uid="uid://bpf0kdkodpl0y" path="res://audio/player/landings/water_03.wav" id="16_0irla"]
+[ext_resource type="AudioStream" uid="uid://ch6uwvu2aue1h" path="res://audio/player/landings/water_04.wav" id="17_t0io8"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wdetk"]
+streams_count = 4
+stream_0/stream = ExtResource("2_wohx7")
+stream_1/stream = ExtResource("3_3wpmg")
+stream_2/stream = ExtResource("4_6kc2q")
+stream_3/stream = ExtResource("5_txaqk")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5waov"]
+streams_count = 4
+stream_0/stream = ExtResource("6_vt8fl")
+stream_1/stream = ExtResource("7_cj0lj")
+stream_2/stream = ExtResource("8_y25ok")
+stream_3/stream = ExtResource("9_31erl")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_73rin"]
+streams_count = 4
+stream_0/stream = ExtResource("10_dbce0")
+stream_1/stream = ExtResource("11_swc2k")
+stream_2/stream = ExtResource("12_pmsuu")
+stream_3/stream = ExtResource("13_28egy")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lam18"]
+streams_count = 4
+stream_0/stream = ExtResource("14_jp61s")
+stream_1/stream = ExtResource("15_4hj5g")
+stream_2/stream = ExtResource("16_0irla")
+stream_3/stream = ExtResource("17_t0io8")
+
+[resource]
+script = ExtResource("1_aaxaj")
+stream = SubResource("AudioStreamRandomizer_wdetk")
+stream_gravel = SubResource("AudioStreamRandomizer_73rin")
+stream_water = SubResource("AudioStreamRandomizer_lam18")
+stream_grass = SubResource("AudioStreamRandomizer_5waov")
+channel = 0
+limit = 5
+volume_db = 1.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://d1cihyw7tq44v"

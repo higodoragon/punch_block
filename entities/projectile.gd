@@ -5,6 +5,8 @@ class_name Projectile
 @onready var audio : AudioManagerComponent = $AudioManagerComponent
 @onready var sprite : Sprite3D = $Sprite3D
 
+@export var sfx_impact : AudioSettings
+
 var attack : Attack
 var velocity : Vector3
 var lifetime : int = 60 * 4
@@ -80,6 +82,7 @@ func _physics_process( delta: float ) -> void:
 			do_hit()
 
 func do_hit():
+	global.audio_play_at( sfx_impact, global_position )
 	state.set_state( state_hit )
 
 func do_block_reaction( attacker : Node3D, is_parry : bool ):

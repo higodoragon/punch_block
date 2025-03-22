@@ -22,6 +22,7 @@ var state_active := [
 
 var state_attack := [
 	{ sticky_call = "do_attack_active" },
+	{ call = "do_attack_sound" },
 	{ delay = 20, frame = 3 },
 	{ delay = 1, frame = 4 },
 	{ sticky_call = "" },
@@ -49,6 +50,9 @@ func do_active():
 func do_attack_active():
 	if ai.target:
 		velocity += ai.generic_walk_direction() * speed
+
+func do_attack_sound():
+	audio.play( sfx_attack )
 
 func do_attack():
 	if ai.target:

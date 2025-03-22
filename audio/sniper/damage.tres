@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="AudioSettings" load_steps=7 format=3 uid="uid://ct6e6dwtyto8"]
+
+[ext_resource type="Script" uid="uid://d1cihyw7tq44v" path="res://components/audio_settings.gd" id="1_ydm48"]
+[ext_resource type="AudioStream" uid="uid://b5e6snf84l63q" path="res://audio/sniper/damage/damage_01.wav" id="2_ydm48"]
+[ext_resource type="AudioStream" uid="uid://dlv7hxs2o0d40" path="res://audio/sniper/damage/damage_02.wav" id="3_56vcx"]
+[ext_resource type="AudioStream" uid="uid://qb7n5tote3oj" path="res://audio/sniper/damage/damage_03.wav" id="4_vffxy"]
+[ext_resource type="AudioStream" uid="uid://x3xb3uh7qmwk" path="res://audio/sniper/damage/damage_04.wav" id="5_u8h8n"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_igq5g"]
+streams_count = 4
+stream_0/stream = ExtResource("2_ydm48")
+stream_1/stream = ExtResource("3_56vcx")
+stream_2/stream = ExtResource("4_vffxy")
+stream_3/stream = ExtResource("5_u8h8n")
+
+[resource]
+script = ExtResource("1_ydm48")
+stream = SubResource("AudioStreamRandomizer_igq5g")
+channel = 0
+limit = 5
+volume_db = 1.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://d1cihyw7tq44v"

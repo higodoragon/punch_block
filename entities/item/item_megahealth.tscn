@@ -1,10 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdck2dmtvshqj"]
+[gd_scene load_steps=3 format=3 uid="uid://bdck2dmtvshqj"]
 
 [ext_resource type="Script" uid="uid://bx33oxuu61n7y" path="res://entities/item/item_megahealth.gd" id="1_gb7wf"]
 [ext_resource type="PackedScene" uid="uid://1c2yklmymlri" path="res://components/pickup_component.tscn" id="1_ow8mi"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tbl61"]
-load_path = "res://.godot/imported/foods.png-8bf47b68ed707e67ec35865df08be7e9.ctex"
 
 [node name="MegaHealth" type="Node3D"]
 script = ExtResource("1_gb7wf")
@@ -17,6 +14,5 @@ offset = Vector2(-8, 0)
 pixel_size = 0.125
 billboard = 2
 texture_filter = 0
-texture = SubResource("CompressedTexture2D_tbl61")
 hframes = 3
 frame = 2

@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="AudioSettings" load_steps=7 format=3 uid="uid://bwr1nyg4ebj4u"]
+
+[ext_resource type="Script" uid="uid://d1cihyw7tq44v" path="res://components/audio_settings.gd" id="1_rjc4g"]
+[ext_resource type="AudioStream" uid="uid://dnua7tqbny4ct" path="res://audio/player/damage/damage_01.wav" id="2_xk03k"]
+[ext_resource type="AudioStream" uid="uid://dj5jusabm61up" path="res://audio/player/damage/damage_02.wav" id="3_jm087"]
+[ext_resource type="AudioStream" uid="uid://tv82bycamqb5" path="res://audio/player/damage/damage_03.wav" id="4_o4bqh"]
+[ext_resource type="AudioStream" uid="uid://sfs0howw138m" path="res://audio/player/damage/damage_04.wav" id="5_wyacn"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wna5l"]
+streams_count = 4
+stream_0/stream = ExtResource("2_xk03k")
+stream_1/stream = ExtResource("3_jm087")
+stream_2/stream = ExtResource("4_o4bqh")
+stream_3/stream = ExtResource("5_wyacn")
+
+[resource]
+script = ExtResource("1_rjc4g")
+stream = SubResource("AudioStreamRandomizer_wna5l")
+channel = 0
+limit = 5
+volume_db = 1000.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://d1cihyw7tq44v"

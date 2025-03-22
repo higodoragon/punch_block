@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="AudioSettings" load_steps=7 format=3 uid="uid://cix4buyr3dtq0"]
+
+[ext_resource type="Script" uid="uid://d1cihyw7tq44v" path="res://components/audio_settings.gd" id="1_ia1ad"]
+[ext_resource type="AudioStream" uid="uid://0ysldn6wohvu" path="res://audio/sniper/attack/attack_01.wav" id="2_giv38"]
+[ext_resource type="AudioStream" uid="uid://coejo02fuolcb" path="res://audio/sniper/attack/attack_02.wav" id="3_6e2cv"]
+[ext_resource type="AudioStream" uid="uid://bwhcharjr3p43" path="res://audio/sniper/attack/attack_03.wav" id="4_ks35x"]
+[ext_resource type="AudioStream" uid="uid://bvcaq8d2cmjab" path="res://audio/sniper/attack/attack_04.wav" id="5_pe02w"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_87l6x"]
+streams_count = 4
+stream_0/stream = ExtResource("2_giv38")
+stream_1/stream = ExtResource("3_6e2cv")
+stream_2/stream = ExtResource("4_ks35x")
+stream_3/stream = ExtResource("5_pe02w")
+
+[resource]
+script = ExtResource("1_ia1ad")
+stream = SubResource("AudioStreamRandomizer_87l6x")
+channel = 0
+limit = 5
+volume_db = 1.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://d1cihyw7tq44v"

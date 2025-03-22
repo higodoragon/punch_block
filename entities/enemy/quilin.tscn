@@ -1,12 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://c17t8jv6ljq3k"]
+[gd_scene load_steps=16 format=3 uid="uid://c17t8jv6ljq3k"]
 
 [ext_resource type="Script" uid="uid://cpmiws4fu01ys" path="res://entities/enemy/quilin.gd" id="1_gabge"]
 [ext_resource type="Texture2D" uid="uid://dbhalxnx74jlt" path="res://assets/quilin.png" id="2_4w4sd"]
+[ext_resource type="Resource" uid="uid://c108fq0kv1b8j" path="res://audio/quilin/footsteps.tres" id="2_070q2"]
 [ext_resource type="PackedScene" uid="uid://ccvm8eicw8t4d" path="res://components/common_physics_component.tscn" id="3_070q2"]
+[ext_resource type="Resource" uid="uid://ba12rax2k8suo" path="res://audio/quilin/damage.tres" id="3_ctuxw"]
 [ext_resource type="PackedScene" uid="uid://cdbvouq7r8gic" path="res://components/ai_component.tscn" id="3_otsnb"]
+[ext_resource type="Resource" uid="uid://xjoaoacl6jb1" path="res://audio/quilin/attack.tres" id="4_61lk5"]
 [ext_resource type="PackedScene" uid="uid://ddemxbua6ylaj" path="res://components/audio_manager_component.tscn" id="4_hid43"]
+[ext_resource type="Resource" uid="uid://dav7608ar77jg" path="res://audio/quilin/alert.tres" id="5_djlx7"]
 [ext_resource type="PackedScene" uid="uid://bkmxotoqgn5rn" path="res://components/state_machine_component.tscn" id="5_xiami"]
 [ext_resource type="PackedScene" uid="uid://d16mvtftr8jl7" path="res://components/health_component.tscn" id="6_1lxin"]
+[ext_resource type="Resource" uid="uid://breolgqw2vix6" path="res://audio/quilin/death.tres" id="6_ltrni"]
 [ext_resource type="PackedScene" uid="uid://lm36snfl5obu" path="res://components/hitbox_component.tscn" id="7_ctuxw"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ailji"]
@@ -24,8 +29,14 @@ floor_snap_length = 0.0
 script = ExtResource("1_gabge")
 speed = 0.75
 gravity = 0.2
+footstep_frequency = 2.0
 infight_group = 2
 pain_time = 20
+sfx_footsteps = ExtResource("2_070q2")
+sfx_damage = ExtResource("3_ctuxw")
+sfx_attack = ExtResource("4_61lk5")
+sfx_alert = ExtResource("5_djlx7")
+sfx_death = ExtResource("6_ltrni")
 metadata/_custom_type_script = "uid://88pbfyfqnxlk"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
