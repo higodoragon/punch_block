@@ -42,6 +42,7 @@ func _ready():
 	process_cmdargs()
 	console_defs()
 	MaterialReferences.compile_material_references()
+	music_handler.play_music(load('res://audio/music/music_no_one_steals.tres'))
 
 func _process( _delta: float ) -> void:
 	pause_process()
