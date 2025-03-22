@@ -32,8 +32,13 @@ var state_attack_real := [
 ]
 
 var state_attack := [
+	{ delay = 10, frame = 4 },
 	{ call = "do_beep" },
-	{ delay = 60, frame = 4 },
+	{ delay = 20, frame = 4 },
+	{ call = "do_beep" },
+	{ delay = 20, frame = 4 },
+	{ call = "do_beep" },
+	{ delay = 20, frame = 4 },
 	{ goto = state_attack_real },
 ]
 
