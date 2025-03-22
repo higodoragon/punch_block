@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d3jyiof1ueqcm"]
+[gd_scene load_steps=14 format=3 uid="uid://d3jyiof1ueqcm"]
 
 [ext_resource type="Script" uid="uid://b0fmjkm4tkt7d" path="res://scripts/global.gd" id="1_bux5h"]
 [ext_resource type="PackedScene" uid="uid://ddemxbua6ylaj" path="res://components/audio_manager_component.tscn" id="2_lqipe"]
@@ -10,12 +10,13 @@
 [ext_resource type="Resource" path="res://levels/lvl_rabbit_a.tres" id="5_1nvry"]
 [ext_resource type="Resource" uid="uid://bbld2c7hmnamk" path="res://scripts/gibber/gib_sprite_assoc_all.tres" id="5_p31br"]
 [ext_resource type="Resource" path="res://levels/lvl_rabbit_b.tres" id="6_jxs33"]
-[ext_resource type="Resource" path="res://levels/lvl_tetrisk_a.tres" id="7_ggeaj"]
-[ext_resource type="Resource" path="res://levels/lvl_tetrisk_b.tres" id="8_rll33"]
+[ext_resource type="Resource" uid="uid://c2ddmmaccb6e" path="res://levels/lvl_tetrisk_c.tres" id="6_pw06x"]
+[ext_resource type="Resource" uid="uid://bv8v1vh1quy2x" path="res://levels/lvl_tetrisk_a.tres" id="7_ggeaj"]
+[ext_resource type="Resource" uid="uid://bxqo7uvn4tamo" path="res://levels/lvl_tetrisk_b.tres" id="8_rll33"]
 
 [node name="Global" type="Node"]
 script = ExtResource("1_bux5h")
-level_order = Array[ExtResource("2_pw06x")]([ExtResource("3_sxrh4"), ExtResource("7_ggeaj"), ExtResource("8_rll33"), ExtResource("6_jxs33"), ExtResource("5_1nvry")])
+level_order = Array[ExtResource("2_pw06x")]([ExtResource("3_sxrh4"), ExtResource("7_ggeaj"), ExtResource("8_rll33"), ExtResource("5_1nvry"), ExtResource("6_jxs33"), ExtResource("6_pw06x")])
 
 [node name="Menu" parent="." instance=ExtResource("3_bvdm8")]
 visible = false

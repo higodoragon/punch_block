@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="Level" load_steps=3 format=3 uid="uid://crvjl0v8hbfbe"]
+[gd_resource type="Resource" script_class="Level" load_steps=3 format=3 uid="uid://bxqo7uvn4tamo"]
 
 [ext_resource type="Resource" uid="uid://bqxcca418xeml" path="res://audio/music/music_industrial_justice.tres" id="1_5pqus"]
 [ext_resource type="Script" uid="uid://c584v8jufsvu6" path="res://levels/level.gd" id="2_pc5g7"]
 
 [resource]
 script = ExtResource("2_pc5g7")
-map = "uid://chov8nxwkjokv"
+map = "uid://bcxlb53pomt3j"
 title = "Factory"
 author = "tetrisk"
 music = ExtResource("1_5pqus")
