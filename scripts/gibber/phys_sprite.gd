@@ -41,11 +41,11 @@ func _despawn():
 	
 
 func _on_body_entered(_body):
-	printt('body entered', _body, _bounces)
-
 	if _bounces > 0:
 		_bounces -= 1
 		$ParticlesBloodExplosion.emitting = true
+	else:
+		contact_monitor = false
 
 # func _process(_delta):
 # 	var cam := get_viewport().get_camera_3d()
