@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MusicInfo" load_steps=3 format=3 uid="uid://ditctw0yafsp1"]
+
+[ext_resource type="Script" uid="uid://qsa11uqybhs4" path="res://audio/music/music_info.gd" id="1_762rb"]
+[ext_resource type="AudioStream" uid="uid://dcocnrdolgglt" path="res://audio/music/No One Steals My Brother…And Lives.ogg" id="2_762rb"]
+
+[resource]
+script = ExtResource("1_762rb")
+stream = ExtResource("2_762rb")
+title = "No One Steals My Brother…And Lives"
+metadata/_custom_type_script = "uid://qsa11uqybhs4"

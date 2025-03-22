@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dcocnrdolgglt"
+path="res://.godot/imported/No One Steals My Brother…And Lives.ogg-a8d7a07059c0821f15e03cd82edfd5a5.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/music/No One Steals My Brother…And Lives.ogg"
+dest_files=["res://.godot/imported/No One Steals My Brother…And Lives.ogg-a8d7a07059c0821f15e03cd82edfd5a5.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

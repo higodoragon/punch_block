@@ -19,6 +19,8 @@
 - [ ] content warnings (cartoon pixelated blood, gore, and violence)
 - [ ] "Submissions should include a 1-minute video showcasing gameplay."
 - [ ] get final music OGGs from Dated (see design gDoc)
+  - [x] 3 main tracks
+  - [ ] small loops (title, intermission, ending?)
   - i converted from WAV to OGG using ffmpeg
 - [ ] assign each level a song
 - [ ] get final versions of levels
