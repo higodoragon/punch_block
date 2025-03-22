@@ -76,7 +76,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/background = SubResource("StyleBoxFlat_w6e0u")
 theme_override_styles/fill = SubResource("StyleBoxFlat_1rfya")
-step = 1.0
+step = 0.1
 allow_greater = true
 show_percentage = false
 
