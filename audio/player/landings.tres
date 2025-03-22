@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AudioSettings" load_steps=22 format=3 uid="uid://k22dthnquwby"]
+[gd_resource type="Resource" script_class="AudioSettings" load_steps=22 format=3 uid="uid://w1qke7d355e3"]
 
 [ext_resource type="Script" uid="uid://d1cihyw7tq44v" path="res://components/audio_settings.gd" id="1_aaxaj"]
 [ext_resource type="AudioStream" uid="uid://bt5v1x6ife26p" path="res://audio/player/landings/concrete_01.wav" id="2_wohx7"]

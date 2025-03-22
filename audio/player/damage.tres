@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AudioSettings" load_steps=7 format=3 uid="uid://bwr1nyg4ebj4u"]
+[gd_resource type="Resource" script_class="AudioSettings" load_steps=7 format=3 uid="uid://ccnte0yvkmlmw"]
 
 [ext_resource type="Script" uid="uid://d1cihyw7tq44v" path="res://components/audio_settings.gd" id="1_rjc4g"]
 [ext_resource type="AudioStream" uid="uid://dnua7tqbny4ct" path="res://audio/player/damage/damage_01.wav" id="2_xk03k"]
