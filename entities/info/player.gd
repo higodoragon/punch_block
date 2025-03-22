@@ -238,11 +238,6 @@ func do_block_damage( attack: Attack, attack_result : AttackResult ):
 			block_time = parry_frametime - 10
 			did_parry = true
 			
-			# parries spend magic
-			# if block_amount <= 0:
-			# 	magic -= 60 * 5
-			# 	magic = max( magic, 0 )
-
 			var parry_audio = audio.play( sfx_parry )
 			parry_audio.process_mode = Node.PROCESS_MODE_ALWAYS
 			parry_audio.pitch_scale += parrycombo_amount * 0.05
@@ -313,18 +308,21 @@ func do_punch():
 			var victim = collider.parent
 			
 			if is_punching:
-				var attack = Attack.new()
-				attack.agressor = self
-				attack.inflictor = null
-				attack.damage = 1
-				attack.knockback_power = 5
-				attack.knockback_position = position
-				attack.is_silent = true
-				var attack_result = victim.health.do_damage(attack)
-				if attack_result.did_kill:
-					var add_value = victim.health.max_health * hp_steal_mult
-					magic = min( magic + ( add_value * 600 ), magic_super_max )
-					health.health = min( health.health + add_value, health.max_health )
+				if global.check( victim, "health" ):
+					var attack = Attack.new()
+					attack.agressor = self
+					attack.inflictor = null
+					attack.damage = 1
+					attack.knockback_power = 5
+					attack.knockback_position = position
+					attack.is_silent = true
+					var attack_result = victim.health.do_damage(attack)
+					if attack_result.did_kill:
+						var add_value = victim.health.max_health * hp_steal_mult
+						magic = min( magic + ( add_value * 600 ), magic_super_max )
+						health.health = min( health.health + add_value, health.max_health )
+				else:
+					global.kill( victim, self )
 				
 			enemies_position_average += victim.global_position
 			enemies_hit += 1

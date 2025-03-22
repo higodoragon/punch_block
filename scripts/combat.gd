@@ -62,11 +62,11 @@ func hitscan_bullet( agressor : Node3D, position : Vector3, direction : Vector3,
 
 	if object_is_hitbox( hit_object ):
 		var hitbox = hit_object
-		attack.knockback_position = position
-		hitbox.parent.health.do_damage( attack )
-		return
-	else:
-		return
+		if global.check( hitbox.parent, "health" ):
+			attack.knockback_position = position
+			hitbox.parent.health.do_damage( attack )
+		else:
+			global.kill( hitbox.parent, agressor )
 
 const projectile_scene = preload( "res://entities/projectile.tscn" )
 

@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="FuncGodotFGDModelPointClass" load_steps=4 format=3 uid="uid://tir11qxkndlr"]
+
+[ext_resource type="Resource" uid="uid://ct4thwqqjw5ry" path="res://func_godot/fgd/baseclass_fgd.tres" id="1_7j2jq"]
+[ext_resource type="Script" uid="uid://cjsxe506teagi" path="res://addons/func_godot/src/fgd/func_godot_fgd_model_point_class.gd" id="1_8i0vy"]
+[ext_resource type="PackedScene" uid="uid://bm8gqs3nti13l" path="res://entities/func/button.tscn" id="2_2w1gv"]
+
+[resource]
+script = ExtResource("1_8i0vy")
+target_map_editor = 0
+models_sub_folder = ""
+scale_expression = ""
+generate_size_property = false
+generate_gd_ignore_file = false
+scene_file = ExtResource("2_2w1gv")
+apply_rotation_on_map_build = true
+apply_scale_on_map_build = true
+classname = "func_button"
+description = "it's not a func hahaha"
+func_godot_internal = false
+base_classes = Array[Resource]([ExtResource("1_7j2jq")])
+class_properties = {}
+class_property_descriptions = {}
+auto_apply_to_matching_node_properties = false
+meta_properties = {
+"color": Color(0.8, 0.8, 0.8, 1),
+"size": AABB(-8, -8, -8, 8, 8, 8)
+}
+node_class = ""
+name_property = ""
+metadata/_custom_type_script = "uid://cjsxe506teagi"
