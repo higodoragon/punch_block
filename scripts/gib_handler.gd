@@ -33,16 +33,17 @@ func spawn_gibs(enemy: CharacterBase, killer):
 	head_inst.global_position = enemy.global_position + Vector3(0, head_inst.assoc.y_adjustment, 0)
 
 	head_inst.body_entered.connect(head_inst._on_body_entered)
-	head_inst._despawn_timer.timeout.connect( head_inst._despawn )
+	head_inst._despawn_timer.timeout.connect(head_inst._despawn)
 
 	head_inst._sprite.texture = head_inst.assoc.texture
 	head_inst._sprite.region_rect = head_inst.assoc.head_rect
 	# head_inst.apply_central_impulse( Vector3( randf_range( -4, 4 ), randf_range( 10, 15 ), randf_range( -4, 4 ) ) )
 	head_inst.apply_central_impulse((head_inst.global_position - killer_pos) * 10.0)
-	head_inst._despawn_timer.start(4.0)	
+	head_inst.apply_torque_impulse(((head_inst.global_position - killer_pos).normalized() * 1.2) * [-1, 1].pick_random())
+	head_inst._despawn_timer.start(4.0)
 
 	# gore gibs; meat
-	var gore_pos = enemy.global_position + Vector3( 0, 1.5, 0 )
+	var gore_pos = enemy.global_position + Vector3(0, 1.5, 0)
 	var gore_amount_min = 0
 	var gore_amount_max := 3 if enemy is not EnemyBrute else 9
 	var rand_gore_amount = randi_range(gore_amount_min, gore_amount_max)
@@ -56,9 +57,9 @@ func spawn_gibs(enemy: CharacterBase, killer):
 			gore_inst._sprite.region_enabled = false
 			gore_inst._sprite.hframes = GORE_FRAMES
 			gore_inst._sprite.frame = randi_range(0, GORE_FRAMES - 1)
-			gore_inst.apply_central_impulse( Vector3( randf_range( -4, 4 ), randf_range( 2, 5 ), randf_range( -4, 4 ) ) )
+			gore_inst.apply_central_impulse(Vector3(randf_range(-4, 4), randf_range(2, 5), randf_range(-4, 4)))
 			var rand = randf_range(0.1, 10.0)
-			gore_inst.apply_torque( Vector3( rand / 2, rand / 2, rand / 2 ) )
+			gore_inst.apply_torque(Vector3(rand / 2, rand / 2, rand / 2))
 			gore_inst._despawn_timer.start(2.0)
 
 	# blood explosion
