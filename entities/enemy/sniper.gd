@@ -88,6 +88,7 @@ func do_active():
 func do_beep():
 	if ai.target:
 		var audio_player = audio.play( sfx_warning )
+		audio_player.attenuation_model = AudioStreamPlayer3D.ATTENUATION_DISABLED
 
 func do_attack_real():
 	if ai.target:
