@@ -4,6 +4,7 @@
 
 ### highest fuckin' priority
 
+- [ ] NAME THE GAME
 - maps
   - [ ] rabbit_tutorial
   - [x] rabbit_a
@@ -21,22 +22,22 @@
 - [ ] content warnings (cartoon pixelated blood, gore, and violence)
 - [ ] "Submissions should include a 1-minute video showcasing gameplay."
   - i converted from WAV to OGG using ffmpeg
-- [ ] help with uploading to itch
+- [ ] upload to itch
 - [ ] clean up README (desc, game title, etc)
 - [ ] convert README.md to HTML for itch
 - [ ] make sure materials are grouped properly in each map (water in a fountain should be a separate func_detail than the concrete of the fountain)
 - [ ] volume mixing pass
-- [ ] make level1.map match my tutorial tracks
 - [ ] REPLACE MARIO JUMP SOUND!
-- [ ] remove magic overcharge
 - playtest feedback
   - [ ] taking damage indicator
-  - [ ] footsteps too loud
-  - [ ] nerf alleys ending
-- [ ] make metal containers have metal sound
+  - [x] footsteps too loud
+  - [-] nerf alleys ending
 
 ---
 
+- [-] make level1.map match my tutorial tracks
+- [x] remove magic overcharge
+- PROBABLY NO make metal containers have metal sound
 - [-] fix gravel sfx
   - i need to remember to group things into GEO or DETAIL
 - NO fix portrait after healing
