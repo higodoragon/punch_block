@@ -15,6 +15,6 @@ func _func_godot_apply_properties( properties : Dictionary ):
 	global.funcgodot_common_defs( self, properties )
 	body_entered.connect( _on_Area_body_entered )
 	
-	if activate_targetname.is_empty():
-		queue_free()
-		return
+	# if activate_targetname.is_empty():
+	# 	queue_free()
+	# 	return

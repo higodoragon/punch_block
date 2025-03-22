@@ -239,9 +239,9 @@ func do_block_damage( attack: Attack, attack_result : AttackResult ):
 			did_parry = true
 			
 			# parries spend magic
-			if block_amount <= 0:
-				magic -= 60 * 5
-				magic = max( magic, 0 )
+			# if block_amount <= 0:
+			# 	magic -= 60 * 5
+			# 	magic = max( magic, 0 )
 
 			var parry_audio = audio.play( sfx_parry )
 			parry_audio.process_mode = Node.PROCESS_MODE_ALWAYS
