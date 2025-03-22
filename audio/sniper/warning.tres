@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="AudioSettings" load_steps=6 format=3 uid="uid://d3cngxbac52iu"]
+
+[ext_resource type="Script" uid="uid://d1cihyw7tq44v" path="res://components/audio_settings.gd" id="1_88ifh"]
+[ext_resource type="AudioStream" uid="uid://c3q8qp5608gj3" path="res://audio/sniper/warning/warning_01.wav" id="2_je5f3"]
+[ext_resource type="AudioStream" uid="uid://cttowbsfwpehs" path="res://audio/sniper/warning/warning_02.wav" id="3_88ifh"]
+[ext_resource type="AudioStream" uid="uid://b8p2ghske80xl" path="res://audio/sniper/warning/warning_03.wav" id="4_ukp24"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yvqmp"]
+streams_count = 3
+stream_0/stream = ExtResource("2_je5f3")
+stream_1/stream = ExtResource("3_88ifh")
+stream_2/stream = ExtResource("4_ukp24")
+
+[resource]
+script = ExtResource("1_88ifh")
+stream = SubResource("AudioStreamRandomizer_yvqmp")
+channel = 0
+limit = 5
+volume_db = 1.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://d1cihyw7tq44v"

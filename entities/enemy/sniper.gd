@@ -12,6 +12,8 @@ class_name EnemySniper
 @onready var laser_head = $LaserHead
 @onready var laser_material = $LaserHead/LaserMesh.get_active_material( 0 )
 
+@export var sfx_warning : AudioSettings
+
 var state_idle := [
 	{ delay = -1, frame = 0 },
 ]
@@ -30,13 +32,8 @@ var state_attack_real := [
 ]
 
 var state_attack := [
-	{ delay = 10, frame = 4 },
 	{ call = "do_beep" },
-	{ delay = 20, frame = 4 },
-	{ call = "do_beep" },
-	{ delay = 20, frame = 4 },
-	{ call = "do_beep" },
-	{ delay = 20, frame = 4 },
+	{ delay = 60, frame = 4 },
 	{ goto = state_attack_real },
 ]
 
@@ -85,7 +82,7 @@ func do_active():
 
 func do_beep():
 	if ai.target:
-		audio.play( global.sfx_sniper_beep )
+		var audio_player = audio.play( sfx_warning )
 
 func do_attack_real():
 	if ai.target:
@@ -95,3 +92,7 @@ func do_attack_real():
 		attack.knockback_power = ai.attack_knockback
 		combat.hitscan_bullet( self, global_position, ai.target_direction(), attack )
 		ai.set_attack_delay()
+		
+		var audio_player = audio.play( sfx_attack )
+		audio_player.process_mode = Node.PROCESS_MODE_ALWAYS # plays though frezee frame
+		audio_player.attenuation_model = AudioStreamPlayer3D.ATTENUATION_DISABLED

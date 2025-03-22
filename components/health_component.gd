@@ -46,15 +46,8 @@ func do_damage( attack : Attack ) -> AttackResult:
 
 	if global.check( parent, "ai" ) and parent.ai.stun_time <= 0 and global.check( parent, "state" ):
 		global.stun( parent, -1, true )
-	
-	if not attack.is_silent and global.check( parent, "audio" ):
-		if global.check( parent, "sfx_hurt" ):
-			parent.audio.play( parent.sfx_hurt )
-		else:
-			parent.audio.play( global.sfx_generic_hurt )
 
 	health -= attack.damage
-	
 	iframes = iframes_amount
 	
 	if health <= 0 and not dead:
@@ -64,5 +57,7 @@ func do_damage( attack : Attack ) -> AttackResult:
 			global.kill( parent, attack.agressor )
 		else:
 			global.kill( parent )
+	else:
+		parent.audio.play( parent.sfx_damage )
 	
 	return attack_result

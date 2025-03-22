@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="AudioSettings" load_steps=7 format=3 uid="uid://b65lnvi4tg2y0"]
+
+[ext_resource type="Script" uid="uid://d1cihyw7tq44v" path="res://components/audio_settings.gd" id="1_mbeow"]
+[ext_resource type="AudioStream" uid="uid://c508g215qe5l0" path="res://audio/goon/death/death_01.wav" id="2_hrqyg"]
+[ext_resource type="AudioStream" uid="uid://m0v4d5hev5sx" path="res://audio/goon/death/death_02.wav" id="3_fikiu"]
+[ext_resource type="AudioStream" uid="uid://byyyc1k2oaly" path="res://audio/goon/death/death_03.wav" id="4_t76w6"]
+[ext_resource type="AudioStream" uid="uid://bs60mgkofomks" path="res://audio/goon/death/death_04.wav" id="5_24a2a"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yvqmp"]
+streams_count = 4
+stream_0/stream = ExtResource("2_hrqyg")
+stream_1/stream = ExtResource("3_fikiu")
+stream_2/stream = ExtResource("4_t76w6")
+stream_3/stream = ExtResource("5_24a2a")
+
+[resource]
+script = ExtResource("1_mbeow")
+stream = SubResource("AudioStreamRandomizer_yvqmp")
+channel = 0
+limit = 5
+volume_db = 1.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://d1cihyw7tq44v"

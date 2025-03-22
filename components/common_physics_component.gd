@@ -6,16 +6,6 @@ class_name CommonPhysicsComponent
 @onready var step_cast: ShapeCast3D = $StepCast
 @onready var step_ray: RayCast3D = $StepRay
 
-@export_group('Material SFX')
-@export var fs_concrete: AudioSettings = preload('res://audio/fs_concrete.tres')
-@export var fs_grass: AudioSettings = preload('res://audio/fs_grass.tres')
-@export var fs_gravel: AudioSettings = preload('res://audio/fs_gravel.tres')
-@export var fs_water: AudioSettings = preload('res://audio/fs_water.tres')
-@export var landing_concrete: AudioSettings = preload('res://audio/land_concrete.tres')
-@export var landing_grass: AudioSettings = preload('res://audio/land_grass.tres')
-@export var landing_gravel: AudioSettings = preload('res://audio/land_gravel.tres')
-@export var landing_water: AudioSettings = preload('res://audio/land_water.tres')
-
 var on_ground_prev: bool = true
 var on_ground: bool = true
 var on_ground_force: bool = false
@@ -32,7 +22,6 @@ enum MATSFX {
 	FOOTSTEPS,
 	LANDING,
 }
-
 
 func _ready():
 	await get_parent().ready
@@ -183,26 +172,27 @@ func play_material_sound(foley_type: int):
 	# 	child_mesh.get_active_material(0)
 		
 	var ref = get_ref_from_mat( relevant_material )
-	var sound_set = []
-
-	if not ref:
-		sound_set = [fs_concrete, landing_concrete]
-	else:
-		match ref.material_kind:
-			ref.MATERIAL_KIND.CONCRETE:
-				sound_set = [fs_concrete, landing_concrete]
-			ref.MATERIAL_KIND.GRASS:
-				sound_set = [fs_grass, landing_grass]
-			ref.MATERIAL_KIND.GRAVEL:
-				sound_set = [fs_gravel, landing_gravel]
-			ref.MATERIAL_KIND.WATER:
-				sound_set = [fs_water, landing_water]
-
+	var audio_settings : AudioSettings
 	match foley_type:
 		MATSFX.FOOTSTEPS:
-			parent.audio.play(sound_set[0])
+			audio_settings = parent.sfx_footsteps
 		MATSFX.LANDING:
-			parent.audio.play(sound_set[1])
+			audio_settings = parent.sfx_landings
+	
+	var audio_player : AudioStreamPlayer3D = parent.audio.play( audio_settings )
+	
+	if ref:
+		match ref.material_kind:
+			ref.MATERIAL_KIND.CONCRETE:
+				audio_player.stream = audio_settings.stream
+			ref.MATERIAL_KIND.GRASS:
+				audio_player.stream = audio_settings.stream_grass
+			ref.MATERIAL_KIND.GRAVEL:
+				audio_player.stream = audio_settings.stream_gravel
+			ref.MATERIAL_KIND.WATER:
+				audio_player.stream = audio_settings.stream_water
+	
+		audio_player.play()
 
 
 ## find the MaterialTextureReference that is linked to the StandardMaterial3D

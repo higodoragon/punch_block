@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AudioSettings" load_steps=3 format=3 uid="uid://bg5qsd5cocirc"]
+
+[ext_resource type="Script" uid="uid://d1cihyw7tq44v" path="res://components/audio_settings.gd" id="1_g7j8x"]
+[ext_resource type="AudioStream" uid="uid://ccw47dhfhustl" path="res://audio/player/PLACEHOLDER_PARRY.wav" id="2_ivdwj"]
+
+[resource]
+script = ExtResource("1_g7j8x")
+stream = ExtResource("2_ivdwj")
+channel = 0
+limit = 1
+volume_db = -32.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://d1cihyw7tq44v"

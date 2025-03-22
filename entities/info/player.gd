@@ -24,13 +24,16 @@ var view_step_offset: float = 0
 @export var view_step_smooth: float = 20
 
 var target: Node3D
-var sfx_footstep = global.sfx_player_footsteps_concrete
 
 # ANIMATION vars
 @onready var viewmodel: Node3D = $ViewmodelHead
 @onready var viewmodel_animation: AnimationPlayer = $ViewmodelHead/Viewmodel/AnimationPlayer
 @onready var bracelet: MeshInstance3D = $ViewmodelHead/Viewmodel/Armature/Skeleton3D/Cylinder
 @onready var bracelet_material: StandardMaterial3D
+
+@export var sfx_parry : AudioSettings
+@export var sfx_block : AudioSettings
+@export var sfx_jump : AudioSettings
 
 var magic_max: int = 60 * 60
 var magic_super_max: int = magic_max * 2
@@ -239,7 +242,7 @@ func do_block_damage( attack: Attack, attack_result : AttackResult ):
 				magic -= 60 * 5
 				magic = max( magic, 0 )
 
-			var parry_audio = audio.play( global.sfx_player_parry )
+			var parry_audio = audio.play( sfx_parry )
 			parry_audio.process_mode = Node.PROCESS_MODE_ALWAYS
 			parry_audio.pitch_scale += parrycombo_amount * 0.05
 
@@ -251,7 +254,7 @@ func do_block_damage( attack: Attack, attack_result : AttackResult ):
 			parrycombo_time = 0
 			parrycombo_amount = 0
 			
-			var block_audio = audio.play( global.sfx_player_block )
+			var block_audio = audio.play( sfx_block )
 			block_audio.process_mode = Node.PROCESS_MODE_ALWAYS
 
 			# the parry / super block animation was so fun
@@ -335,7 +338,7 @@ func do_punch():
 
 	if is_punching:
 		if enemies_hit > 0:
-			global.audio_play_at(global.sfx_generic_hurt, enemies_position_average)
+			global.audio_play_at( sfx_attack, enemies_position_average )
 		
 		elif did_hit_world:
 			# TODO: world hit effect
@@ -364,7 +367,7 @@ func do_move():
 		jump_cayote_time = jump_cayote_base
 	
 	if jump_buffer_time and jump_cayote_time:
-		audio.play(global.sfx_player_jump)
+		audio.play( sfx_jump )
 		velocity.y = jump_power
 		jump_cayote_time = 0
 		jump_buffer_time = 0

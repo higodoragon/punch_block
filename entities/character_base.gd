@@ -9,6 +9,13 @@ class_name CharacterBase extends CharacterBody3D
 @export var stun_time : int = 120
 @export var pain_time : int = 30
 
+@export var sfx_footsteps: AudioSettings = preload('res://audio/player/footsteps.tres')
+@export var sfx_landings: AudioSettings = preload('res://audio/player/landings.tres')
+@export var sfx_damage: AudioSettings = preload('res://audio/goon/damage.tres')
+@export var sfx_attack: AudioSettings = preload('res://audio/goon/attack.tres')
+@export var sfx_alert: AudioSettings = preload('res://audio/goon/alert.tres')
+@export var sfx_death: AudioSettings = preload('res://audio/goon/death.tres')
+
 var step_height_up : float = 1.1
 var step_height_down : float = 1.1
 

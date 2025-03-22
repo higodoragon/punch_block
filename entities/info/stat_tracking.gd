@@ -8,8 +8,6 @@ extends Node
 
 func _ready():
 	await player.ready
-
-	health_bar.setup(health.health_updated, health.health, health.max_health)
-	magic_bar.setup(player.magic_updated, player.magic, player.magic_max)
-
+	health_bar.setup( health.health_updated, health.health, health.max_health )
+	magic_bar.setup( player.magic_updated, player.magic, player.magic_max )
 	queue_free()

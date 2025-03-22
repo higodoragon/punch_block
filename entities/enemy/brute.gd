@@ -80,6 +80,7 @@ func do_melee():
 	if ai.target:
 		if ai.in_melee_range():
 			hit( ai.melee_damage )
+			audio.play( sfx_attack )
 		ai.set_melee_delay()
 
 func do_attack_sticky():
@@ -95,6 +96,7 @@ func do_attack_sticky():
 					ai.target.velocity.y = 0
 				ai.target.velocity.y += 20	
 				state.set_state( state_attack_hit )
+				audio.play( sfx_attack )
 							
 			# sets both to avoid them activating melee
 			# right after hitting the player
@@ -142,6 +144,8 @@ func do_attack_sticky():
 					
 					if global.check( victim, "health" ):
 						victim.health.do_damage( attack )
+					
+					audio.play( sfx_attack )
 
 			# friction is changed while charing
 			velocity.x =+ ai.target_direction().x * 48

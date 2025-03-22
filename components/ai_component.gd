@@ -64,6 +64,7 @@ func _physics_process( delta : float ):
 			var lfs_result = line_of_sight_result( parent.global_position, global.player.global_position )
 			if not lfs_result:
 				# idle until you find the player
+				parent.audio.play( parent.sfx_alert )
 				target = global.player
 				parent.state.set_state( parent.state_active )
 		return
@@ -158,8 +159,10 @@ func check_and_set_attack_states():
 		
 	return false
 
-func generic_melee():
+func generic_melee() -> AttackResult:
 	if in_melee_range():
+		parent.audio.play( parent.sfx_attack )
+		
 		var attack := Attack.new()
 		attack.damage = melee_damage
 		attack.knockback_power = melee_knockback
@@ -167,4 +170,6 @@ func generic_melee():
 		attack.agressor = parent
 		attack.inflictor = null
 		attack.parry_reaction = true
-		target.health.do_damage( attack )
+		return target.health.do_damage( attack )
+	
+	return null
