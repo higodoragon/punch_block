@@ -95,6 +95,7 @@ func console_defs():
 	Console.add_command("reload", reload_stage)
 	Console.add_command("print_targetnames", targetname_print)
 	Console.add_command("escape", on_escape_toggle)
+
 func console_map(map_name: String):
 	if map_name == "list":
 		console_map_list()
