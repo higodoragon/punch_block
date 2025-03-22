@@ -5169,32 +5169,37 @@
 // entity 69
 {
 "classname" "enemy_goon"
-"origin" "3408 1072 256"
+"origin" "4112 1296 608"
 "targetname" "roofguys"
+"angle" "180"
 }
 // entity 70
 {
 "classname" "enemy_goon"
-"origin" "3408 1168 256"
+"origin" "4112 1200 608"
 "targetname" "roofguys"
+"angle" "180"
 }
 // entity 71
 {
 "classname" "enemy_goon"
-"origin" "3408 1264 256"
+"origin" "4112 1104 608"
 "targetname" "roofguys"
+"angle" "180"
 }
 // entity 72
 {
 "classname" "enemy_goon"
-"origin" "3408 1360 256"
+"origin" "4112 1008 608"
 "targetname" "roofguys"
+"angle" "180"
 }
 // entity 73
 {
 "classname" "enemy_goon"
-"origin" "3408 1456 256"
+"origin" "4112 912 608"
 "targetname" "roofguys"
+"angle" "180"
 }
 // entity 74
 {

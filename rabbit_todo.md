@@ -5,15 +5,16 @@
 ### highest fuckin' priority
 
 - [ ] NAME THE GAME
-- [ ] tutorial / tutorializing how to play
+- [ ] PRESS <KEY> TO RESTART
+- [ ] game should start with menu showing
+
+---
+
+- [x] tutorial / tutorializing how to play
   - controls
   - how to block
   - goon AOE group-stunning
   - punching restores MP lets you block
-- [ ] PRESS <KEY> TO RESTART
-
----
-
 - [x] maps
   - [x] rabbit_tutorial
     - add a button
@@ -28,7 +29,6 @@
 - [ ] upload to itch
 - [ ] clean up README (desc, game title, etc)
 - [ ] convert README.md to HTML for itch
-- [ ] make sure materials are grouped properly in each map (water in a fountain should be a separate func_detail than the concrete of the fountain)
 - [ ] REPLACE MARIO JUMP SOUND!
 - playtest feedback
   - a
@@ -44,6 +44,7 @@
 
 ---
 
+- [x] make sure materials are grouped properly in each map (water in a fountain should be a separate func_detail than the concrete of the fountain)
 - [x] volume mixing pass
 - [x] content warnings (cartoon pixelated blood, gore, and violence)
 - [-] make level1.map match my tutorial tracks
