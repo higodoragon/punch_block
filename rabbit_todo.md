@@ -38,6 +38,7 @@
 
 ---
 
+- [x] reimplement head velocity away from player
 - [x] implement portrait
 - [x] make sure music loops properly
 - [x] list tools
