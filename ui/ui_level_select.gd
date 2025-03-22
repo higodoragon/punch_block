@@ -10,17 +10,10 @@ func _ready():
 	for level in global.level_order:
 		var inst = preview_scene.instantiate() as UiLevelPreview
 		box.add_child(inst)
-		inst.button.pressed.connect(load_level.bind(level))
+		inst.button.pressed.connect( global.load_level.bind( level ))
 		print(level.title)
 		print(inst)
 		print(level.author)
 		inst.label_author.text = 'by %s' % level.author
 		inst.label_title.text = '%02d - %s' % [idx + 1, level.title]
 		idx += 1
-
-
-func load_level(level: Level):
-	if level.music:
-		global.music_handler.play_music(level.music)
-	global.load_stage(level.map)
-	global.pause_active = false

@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="FuncGodotFGDPointClass" load_steps=4 format=3 uid="uid://biy1yccuk7wey"]
+
+[ext_resource type="Resource" uid="uid://ct4thwqqjw5ry" path="res://func_godot/fgd/baseclass_fgd.tres" id="1_l0trt"]
+[ext_resource type="PackedScene" uid="uid://deyltfur8s7d3" path="res://entities/trigger/nextlevel.tscn" id="2_l0trt"]
+[ext_resource type="Script" uid="uid://dlk74iekfdbb4" path="res://addons/func_godot/src/fgd/func_godot_fgd_point_class.gd" id="3_00ekm"]
+
+[resource]
+script = ExtResource("3_00ekm")
+scene_file = ExtResource("2_l0trt")
+apply_rotation_on_map_build = true
+apply_scale_on_map_build = true
+classname = "trigger_nextlevel"
+description = "goes to the next level in the map select list"
+func_godot_internal = false
+base_classes = Array[Resource]([ExtResource("1_l0trt")])
+class_properties = {
+"total": 0.0
+}
+class_property_descriptions = {}
+auto_apply_to_matching_node_properties = false
+meta_properties = {
+"color": Color(0.8, 0.8, 0.8, 1),
+"size": AABB(-8, -8, -8, 8, 8, 8)
+}
+node_class = ""
+name_property = ""
+metadata/_custom_type_script = "uid://dlk74iekfdbb4"

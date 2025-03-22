@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FuncGodotFGDFile" load_steps=17 format=3 uid="uid://bjh5ibcguq5nc"]
+[gd_resource type="Resource" script_class="FuncGodotFGDFile" load_steps=18 format=3 uid="uid://bjh5ibcguq5nc"]
 
 [ext_resource type="Resource" uid="uid://ct4thwqqjw5ry" path="res://func_godot/fgd/baseclass_fgd.tres" id="1_2bmnh"]
 [ext_resource type="Resource" uid="uid://b2r6r6v6ukisp" path="res://func_godot/fgd/worldspawn_fgd.tres" id="2_pcg20"]
@@ -15,6 +15,7 @@
 [ext_resource type="Resource" uid="uid://dtorbkdf5ovnx" path="res://func_godot/fgd/enemy_sniper_fgd.tres" id="13_a18a7"]
 [ext_resource type="Resource" uid="uid://d0hp188ki8tsp" path="res://func_godot/fgd/trigger_counter.tres" id="14_pcg20"]
 [ext_resource type="Resource" uid="uid://b2uvh0bw37tf6" path="res://func_godot/fgd/trigger_once.tres" id="15_h3m70"]
+[ext_resource type="Resource" uid="uid://biy1yccuk7wey" path="res://func_godot/fgd/trigger_nextlevel.tres" id="15_rwjsq"]
 
 [sub_resource type="Resource" id="Resource_pcg20"]
 metadata/__load_path__ = "res://func_godot/fgd/enemy_marine_fgd.tres"
@@ -25,4 +26,4 @@ export_file = false
 target_map_editor = 1
 fgd_name = "FuncGodot"
 base_fgd_files = Array[Resource]([])
-entity_definitions = Array[Resource]([ExtResource("1_2bmnh"), ExtResource("2_pcg20"), ExtResource("3_h3m70"), ExtResource("4_rwjsq"), ExtResource("5_i4h63"), ExtResource("6_mciiy"), ExtResource("7_6f3jg"), ExtResource("8_c4gxh"), ExtResource("9_gea0m"), ExtResource("10_qu3kg"), SubResource("Resource_pcg20"), ExtResource("12_5l6ss"), ExtResource("13_a18a7"), ExtResource("14_pcg20"), ExtResource("15_h3m70")])
+entity_definitions = Array[Resource]([ExtResource("1_2bmnh"), ExtResource("2_pcg20"), ExtResource("3_h3m70"), ExtResource("4_rwjsq"), ExtResource("5_i4h63"), ExtResource("6_mciiy"), ExtResource("7_6f3jg"), ExtResource("8_c4gxh"), ExtResource("9_gea0m"), ExtResource("10_qu3kg"), SubResource("Resource_pcg20"), ExtResource("12_5l6ss"), ExtResource("13_a18a7"), ExtResource("14_pcg20"), ExtResource("15_h3m70"), ExtResource("15_rwjsq")])

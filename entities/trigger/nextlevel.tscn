@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://deyltfur8s7d3"]
+
+[ext_resource type="Script" uid="uid://ddjvy6mobgfem" path="res://entities/trigger/nextlevel.gd" id="1_1ao4i"]
+
+[node name="Nextlevel" type="Node3D"]
+script = ExtResource("1_1ao4i")

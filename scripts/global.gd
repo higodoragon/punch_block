@@ -117,7 +117,6 @@ func console_map_list():
 			if not str( file ).ends_with(".map"):
 				continue
 			Console.print_line( " - %s" % file )
-
 	else:
 		Console.print_line( "coudn't open map directiory \"%s\"" % map_dir_path )
 	pass
@@ -219,6 +218,23 @@ func message_player( message : String, time : int = 120 ):
 		player.hud_message.text = str( "[center]", message, "[/center]" )
 
 	message_time = time
+
+func load_next_level():
+	var current_map_file = stage.global_map_file
+	var next_level : Level
+	for i in level_order.size():
+		var level = level_order[i]
+		if level.map == current_map_file:
+			next_level = level_order[i + 1]
+			break
+	
+	load_level( next_level )
+
+func load_level(level: Level):
+	if level.music:
+		global.music_handler.play_music(level.music)
+	global.load_stage(level.map)
+	global.pause_active = false
 
 func load_stage( path : StringName ):
 	stage_path = path
