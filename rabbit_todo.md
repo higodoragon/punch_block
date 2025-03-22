@@ -6,8 +6,9 @@
 
 - maps
   - [ ] rabbit_tutorial
-  - [ ] rabbit_a
-  - [ ] rabbit_b
+  - [x] rabbit_a
+  - [x] rabbit_b
+  - [ ] clean up tetrisk's maps
 - [ ] tutorial / tutorializing how to play
   - controls
   - how to block
@@ -19,31 +20,35 @@
 
 - [ ] content warnings (cartoon pixelated blood, gore, and violence)
 - [ ] "Submissions should include a 1-minute video showcasing gameplay."
-- [ ] get final music OGGs from Dated (see design gDoc)
-  - [x] 3 main tracks
-  - [ ] small loops (title, intermission, ending?)
   - i converted from WAV to OGG using ffmpeg
-- [ ] assign each level a song
-- [ ] get final versions of levels
-- [ ] add all levels to level select
 - [ ] help with uploading to itch
 - [ ] clean up README (desc, game title, etc)
 - [ ] convert README.md to HTML for itch
 - [ ] make sure materials are grouped properly in each map (water in a fountain should be a separate func_detail than the concrete of the fountain)
-- [ ] health and magic -> progress bars
-- [ ] layed overcharge bar for magic
-- [x] implement new footsteps from Hawk
 - [ ] volume mixing pass
-- [x] sniper beep should be heard from further away
 - [ ] make level1.map match my tutorial tracks
-- [ ] fix portrait after healing
-- [ ] taking damage indicator
 - [ ] REPLACE MARIO JUMP SOUND!
-- [-] fix gravel sfx
-  - i need to remember to group things into GEO or DETAIL
+- [ ] remove magic overcharge
 - playtest feedback
+  - [ ] taking damage indicator
   - [ ] footsteps too loud
   - [ ] nerf alleys ending
+
+---
+
+- [-] fix gravel sfx
+  - i need to remember to group things into GEO or DETAIL
+- NO fix portrait after healing
+- NO layed overcharge bar for magic
+- [x] health and magic -> progress bars
+- [x] get final versions of tetrisk's levels
+- [x] add all levels to level select
+- [x] assign each level a song
+- [x] implement new footsteps from Hawk
+- [x] sniper beep should be heard from further away
+- [x] get final music OGGs from Dated (see design gDoc)
+  - [x] 3 main tracks
+  - [x] small loops (title, intermission, ending?)
 
 ### big tasks
 
