@@ -5,18 +5,21 @@
 ### highest fuckin' priority
 
 - [ ] NAME THE GAME
-- maps
-  - [ ] rabbit_tutorial
-    - add a button
-  - [x] rabbit_a
-  - [x] rabbit_b
-  - [ ] clean up tetrisk's maps
 - [ ] tutorial / tutorializing how to play
   - controls
   - how to block
   - goon AOE group-stunning
   - punching restores MP lets you block
 - [ ] PRESS <KEY> TO RESTART
+
+---
+
+- [x] maps
+  - [x] rabbit_tutorial
+    - add a button
+  - [x] rabbit_a
+  - [x] rabbit_b
+  - [x] clean up tetrisk's maps
 
 ### small tasks
 
@@ -33,11 +36,11 @@
     - [x] footsteps too loud
     - [-] nerf alleys ending
   - b
-    - fix tutorial door going wrong way
-    - make tutorial grunt at end easier to get
+    - [x] fix tutorial door going wrong way
+    - [-] make tutorial grunt at end easier to get
     - clip brush to pipes in Factory
-    - rename factory to Foundry ?
-    - hook up enemy spawns
+    - NO rename factory to Foundry ?
+    - [x] hook up enemy spawns in factory
 
 ---
 
