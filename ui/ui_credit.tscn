@@ -175,7 +175,13 @@ textures
 
 font
 
-[ul][url=https://int10h.org/oldschool-pc-fonts/fontlist/font?ibm_bios-2y]https://int10h.org/oldschool-pc-fonts/fontlist/font?ibm_bios-2y[/url][/ul]"
+[ul][url=https://int10h.org/oldschool-pc-fonts/fontlist/font?ibm_bios-2y]https://int10h.org/oldschool-pc-fonts/fontlist/font?ibm_bios-2y[/url]
+[/ul]
+
+skies
+
+[ul][url=https://godotshaders.com/shader/starry-sky/]https://godotshaders.com/shader/starry-sky/[/url]
+[url=https://www.doomworld.com/forum/topic/92795-meks-box-o-skies-v3-look-up-in-the-sky-more-skies/]https://www.doomworld.com/forum/topic/92795-meks-box-o-skies-v3-look-up-in-the-sky-more-skies/[/url][/ul]"
 fit_content = true
 script = ExtResource("3_a27xa")
 markdown_text = "note for tetrisk's maps:
@@ -192,7 +198,12 @@ textures
 
 font
 
-- [https://int10h.org/oldschool-pc-fonts/fontlist/font?ibm_bios-2y](https://int10h.org/oldschool-pc-fonts/fontlist/font?ibm_bios-2y)"
+- [https://int10h.org/oldschool-pc-fonts/fontlist/font?ibm_bios-2y](https://int10h.org/oldschool-pc-fonts/fontlist/font?ibm_bios-2y)
+
+skies
+
+- [https://godotshaders.com/shader/starry-sky/](https://godotshaders.com/shader/starry-sky/)
+- [https://www.doomworld.com/forum/topic/92795-meks-box-o-skies-v3-look-up-in-the-sky-more-skies/](https://www.doomworld.com/forum/topic/92795-meks-box-o-skies-v3-look-up-in-the-sky-more-skies/)"
 h1 = SubResource("Resource_42ejm")
 h2 = SubResource("Resource_px0h6")
 h3 = SubResource("Resource_osqoe")

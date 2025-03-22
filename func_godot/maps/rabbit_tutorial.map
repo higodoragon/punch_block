@@ -2450,7 +2450,7 @@
 // entity 87
 {
 "classname" "enemy_goon"
-"origin" "-16 816 -48"
+"origin" "-80 752 -48"
 "angle" "180"
 }
 // entity 88

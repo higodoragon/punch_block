@@ -7,6 +7,7 @@
 - [ ] NAME THE GAME
 - maps
   - [ ] rabbit_tutorial
+    - add a button
   - [x] rabbit_a
   - [x] rabbit_b
   - [ ] clean up tetrisk's maps
@@ -19,22 +20,29 @@
 
 ### small tasks
 
-- [ ] content warnings (cartoon pixelated blood, gore, and violence)
 - [ ] "Submissions should include a 1-minute video showcasing gameplay."
   - i converted from WAV to OGG using ffmpeg
 - [ ] upload to itch
 - [ ] clean up README (desc, game title, etc)
 - [ ] convert README.md to HTML for itch
 - [ ] make sure materials are grouped properly in each map (water in a fountain should be a separate func_detail than the concrete of the fountain)
-- [ ] volume mixing pass
 - [ ] REPLACE MARIO JUMP SOUND!
 - playtest feedback
-  - [ ] taking damage indicator
-  - [x] footsteps too loud
-  - [-] nerf alleys ending
+  - a
+    - [ ] taking damage indicator
+    - [x] footsteps too loud
+    - [-] nerf alleys ending
+  - b
+    - fix tutorial door going wrong way
+    - make tutorial grunt at end easier to get
+    - clip brush to pipes in Factory
+    - rename factory to Foundry ?
+    - hook up enemy spawns
 
 ---
 
+- [x] volume mixing pass
+- [x] content warnings (cartoon pixelated blood, gore, and violence)
 - [-] make level1.map match my tutorial tracks
 - [x] remove magic overcharge
 - PROBABLY NO make metal containers have metal sound

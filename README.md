@@ -36,6 +36,11 @@ font
 
 - [https://int10h.org/oldschool-pc-fonts/fontlist/font?ibm_bios-2y](https://int10h.org/oldschool-pc-fonts/fontlist/font?ibm_bios-2y)
 
+skies
+
+- [https://godotshaders.com/shader/starry-sky/](https://godotshaders.com/shader/starry-sky/)
+- [https://www.doomworld.com/forum/topic/92795-meks-box-o-skies-v3-look-up-in-the-sky-more-skies/](https://www.doomworld.com/forum/topic/92795-meks-box-o-skies-v3-look-up-in-the-sky-more-skies/)
+
 ## tools we used
 
 | tool                                                | purpose                        |
