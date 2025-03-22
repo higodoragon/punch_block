@@ -9,6 +9,7 @@ var stage: Node3D
 var stage_path: String
 var stage_textures := "res://func_godot/gamedir/textures/"
 var stage_external := ""
+var stage_time : int = 0
 
 var player: CharacterBase
 var player_position: Vector3 = Vector3.ZERO
@@ -30,6 +31,8 @@ var cheats: bool = false
 var freezeframe: int = 0
 
 var enemy_list: Array = []
+var enemy_count : int = 0
+var enemy_count_killed : int = 0
 
 signal paused(way: bool)
 
@@ -61,6 +64,8 @@ func _physics_process(delta: float) -> void:
 
 	if message_time <= 0 and player != null:
 		player.hud_message.text = ""
+	
+	stage_time += 1
 
 func _input(event: InputEvent):
 	if focus_failed and event is InputEventMouseButton and event.button_index == 1:
@@ -258,6 +263,10 @@ func _clear_stage_real():
 	
 	enemy_list.clear()
 	targets.clear()
+	
+	enemy_count = 0
+	enemy_count_killed = 0
+	stage_time = 0
 
 func load_stage(path: StringName):
 	stage_path = path
@@ -286,13 +295,12 @@ func _load_stage_real():
 	stage.verify_and_build()
 	stage_container.add_child(stage)
 	
-	
 	# keep random behavior consistent between levels, restarts and such
 	seed("A_COOL_SEED".hash())
 
 	# add environment
 	var world_environment := WorldEnvironment.new()
-	world_environment.environment = preload("res://default_environment.tres")
+	world_environment.environment = preload("res://environment_outside.tres")
 	stage.add_child(world_environment)
 	
 	# add player
@@ -361,6 +369,9 @@ func damage( victim : Node, attack : Attack ) -> AttackResult:
 		return attack_result
 
 func kill(victim: Node, killer: Node = null):
+	if check(victim, "ai"):
+		enemy_count_killed += 1
+	
 	if check(victim, "sfx_death"):
 		global.audio_play_at(victim.sfx_death, victim.global_position)
 	

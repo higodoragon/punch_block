@@ -139,6 +139,7 @@ func common_physics(delta):
 	if parent.position.y < -500:
 		if parent is Player:
 			# ops... sorry about that
+			global.message_player( "sorry we didn't had the time to fix this :3" )
 			parent.global_position = global.player_position
 			parent.global_rotation.y = global.player_rotation.y
 			parent.camera.global_rotation.x = global.player_rotation.x

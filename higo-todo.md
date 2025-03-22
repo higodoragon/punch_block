@@ -9,12 +9,15 @@
 [DONE] - health regen by kill
 [DONE] - implement audio / levels if given them
 
-- trigger_nextlevel
-- trigger_multiple
-- goons dons't stun non goons without parry
-- skybox
+[DONE] - trigger_nextlevel
+[DONE] - goons dons't stun non goons without parry
+[DONE] - skybox
 - title screen, intermission screen
-- enviroments ( fog / color )
+[DONE] - enviroments ( fog / color )
+
+- title screen is skybox rotationing + title + press enter to play!
+- intermission screen
+- intermission is skybox rotating + consept art
 
 low:
 - enemy spawn fx

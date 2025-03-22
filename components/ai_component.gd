@@ -93,7 +93,9 @@ func _physics_process( delta : float ):
 			melee_delay -= 1
 
 func start_ai():
+	# if it has enemy ai, it's a enemy!
 	global.enemy_list.append( parent )
+	global.enemy_count += 1
 	
 	# important mechanics
 	if global.check( parent, "sprite" ):
