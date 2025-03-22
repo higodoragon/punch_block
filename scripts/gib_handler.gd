@@ -38,7 +38,7 @@ func spawn_gibs(enemy: CharacterBase, killer):
 	head_inst._sprite.texture = head_inst.assoc.texture
 	head_inst._sprite.region_rect = head_inst.assoc.head_rect
 	# head_inst.apply_central_impulse( Vector3( randf_range( -4, 4 ), randf_range( 10, 15 ), randf_range( -4, 4 ) ) )
-	head_inst.apply_central_impulse((head_inst.global_position - killer_pos) * 10.0)
+	head_inst.apply_central_impulse((head_inst.global_position - killer_pos) * 20.0)
 	head_inst.apply_torque_impulse(((head_inst.global_position - killer_pos).normalized() * 1.2) * [-1, 1].pick_random())
 	head_inst._despawn_timer.start(4.0)
 

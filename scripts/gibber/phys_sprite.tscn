@@ -1,14 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://dg6k6r0xyqeqa"]
+[gd_scene load_steps=5 format=3 uid="uid://dg6k6r0xyqeqa"]
 
 [ext_resource type="Script" uid="uid://c54or2jqgj1df" path="res://scripts/gibber/phys_sprite.gd" id="1_u7vgr"]
 [ext_resource type="PackedScene" uid="uid://b67bnw5kuoqpy" path="res://scripts/gibber/particles_blood_explosion.tscn" id="2_ksrow"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u7vgr"]
+bounce = 0.25
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qu7ys"]
 
 [node name="PhysSprite" type="RigidBody3D"]
 collision_layer = 0
 collision_mask = 7
-mass = 1.2
+mass = 2.5
+physics_material_override = SubResource("PhysicsMaterial_u7vgr")
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_u7vgr")
