@@ -12,6 +12,7 @@
   - controls
   - how to block
   - goon AOE group-stunning
+  - punching restores MP lets you block
 - [ ] PRESS <KEY> TO RESTART
 
 ### small tasks
@@ -36,6 +37,13 @@
 - [x] sniper beep should be heard from further away
 - [ ] make level1.map match my tutorial tracks
 - [ ] fix portrait after healing
+- [ ] taking damage indicator
+- [ ] REPLACE MARIO JUMP SOUND!
+- [-] fix gravel sfx
+  - i need to remember to group things into GEO or DETAIL
+- playtest feedback
+  - [ ] footsteps too loud
+  - [ ] nerf alleys ending
 
 ### big tasks
 

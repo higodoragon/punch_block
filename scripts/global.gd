@@ -221,11 +221,11 @@ func message_player(message: String, time: int = 120):
 	message_time = time
 
 func load_next_level():
-	var current_map_file = stage.global_map_file
+	var current_map_file = stage.local_map_file
 	var next_level: Level
 	for i in level_order.size():
 		var level = level_order[i]
-		if level.map == current_map_file:
+		if get_res_from_uid(level.map) == current_map_file:
 			next_level = level_order[i + 1]
 			break
 	
@@ -256,10 +256,8 @@ func _load_stage_real():
 	
 	stage = preload("res://scripts/fgm.tscn").instantiate()
 	printt(stage, stage_container, stage_path)
-	stage_container.add_child(stage)
 	if 'uid' in stage_path:
-		var res_id = ResourceLoader.get_resource_uid(stage_path)
-		var id_path = ResourceUID.get_id_path(res_id)
+		var id_path = get_res_from_uid(stage_path)
 		print('LOADING MAP FROM UID %s' % id_path)
 		
 		stage.local_map_file = id_path
@@ -270,6 +268,7 @@ func _load_stage_real():
 	stage.map_settings.base_texture_dir = stage_textures
 	print(stage.map_settings.base_texture_dir)
 	stage.verify_and_build()
+	stage_container.add_child(stage)
 	
 	
 	# keep random behavior consistent between levels, restarts and such
@@ -407,3 +406,9 @@ func audio_play_at(sfx: AudioSettings, global_position: Vector3):
 	var audio_player = audio.play(sfx)
 	audio_player.global_position = global_position
 	return audio_player
+
+
+func get_res_from_uid(uid):
+	var res_id = ResourceLoader.get_resource_uid(uid)
+	var id_path = ResourceUID.get_id_path(res_id)
+	return id_path

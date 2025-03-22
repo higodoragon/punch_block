@@ -45,7 +45,7 @@ func _on_body_entered(_body):
 		_bounces -= 1
 		$ParticlesBloodExplosion.emitting = true
 	else:
-		contact_monitor = false
+		set_deferred('contact_monitor', false)
 
 # func _process(_delta):
 # 	var cam := get_viewport().get_camera_3d()

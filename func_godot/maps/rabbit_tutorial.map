@@ -883,7 +883,7 @@
 // entity 23
 {
 "classname" "trigger_once"
-"message" "[color=RED]RIGHT CLICK[/color] to block"
+"message" "hold [color=RED]RIGHT CLICK[/color] to block"
 "angle" "90"
 // brush 0
 {
@@ -2389,17 +2389,11 @@
 }
 // entity 84
 {
-"classname" "info_player_start"
-"origin" "-2160 3184 -168"
-"angle" "270"
-}
-// entity 85
-{
 "classname" "enemy_quilin"
 "origin" "-1616 2848 -128"
 "angle" "270"
 }
-// entity 86
+// entity 85
 {
 "classname" "func_detail"
 // brush 0
@@ -2439,7 +2433,7 @@
 ( -448 1216 -128 ) ( -448 1216 -127 ) ( -448 1217 -128 ) special/skip [ 0 -1.0000000000000002 0 0 ] [ 0 0 1.0000000000000002 0 ] 90 2 2
 }
 }
-// entity 87
+// entity 86
 {
 "classname" "func_detail"
 // brush 0
@@ -2470,31 +2464,31 @@
 ( -1400 728 -128 ) ( -1232 560 -112 ) ( -1400 728 -112 ) dev/gray2_32x [ -0.7071067811865475 0.7071067811865477 0 10.666687 ] [ 0 0 -1.0000000000000002 0 ] 270 2.1213198 2
 }
 }
-// entity 88
+// entity 87
 {
 "classname" "enemy_quilin"
 "origin" "-176 912 -128"
 "angle" "180"
 }
-// entity 89
+// entity 88
 {
 "classname" "enemy_goon"
 "origin" "-80 976 -48"
 "angle" "180"
 }
-// entity 90
+// entity 89
 {
 "classname" "enemy_goon"
 "origin" "-48 896 -48"
 "angle" "180"
 }
-// entity 91
+// entity 90
 {
 "classname" "enemy_goon"
 "origin" "-16 816 -48"
 "angle" "180"
 }
-// entity 92
+// entity 91
 {
 "classname" "func_detail"
 // brush 0
@@ -2534,7 +2528,7 @@
 ( -512 1248 -64 ) ( -512 1376 -64 ) ( -512 1376 -128 ) dev/gray2_32x [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 2 2
 }
 }
-// entity 93
+// entity 92
 {
 "classname" "trigger_once"
 "message" "[color=RED]W A S D[/color] to move"
@@ -2548,7 +2542,7 @@
 ( -2112 3216 -240 ) ( -2112 3216 -239 ) ( -2112 3217 -240 ) special/skip [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 2 2
 }
 }
-// entity 94
+// entity 93
 {
 "classname" "func_detail"
 // brush 0
@@ -2570,7 +2564,7 @@
 ( -336 576 -64 ) ( -336 576 -63 ) ( -336 577 -64 ) dev/gray2_32x [ 0 -1 0 0 ] [ 0 0 -1 0 ] 270 2 2
 }
 }
-// entity 95
+// entity 94
 {
 "classname" "func_detail_illusionary"
 "angle" "90"
@@ -2584,7 +2578,7 @@
 ( 176 -782 48 ) ( 176 -782 49 ) ( 176 -781 48 ) dev/EXIT [ 3.0616169978683836e-16 1.0000000000000002 0 7 ] [ 0 0 -1.0000000000000002 0 ] 270 2 2
 }
 }
-// entity 96
+// entity 95
 {
 "classname" "trigger_once"
 "target" "_NEXTLEVEL"
@@ -2598,13 +2592,13 @@
 ( 256 -640 -64 ) ( 256 -640 -63 ) ( 256 -639 -64 ) special/skip [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 2 2
 }
 }
-// entity 97
+// entity 96
 {
 "classname" "trigger_nextlevel"
 "origin" "168 -680 72"
 "targetname" "_NEXTLEVEL"
 }
-// entity 98
+// entity 97
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -2613,7 +2607,7 @@
 "_tb_linked_group_id" "{96e4aeab-4c36-425a-a08a-688c3ad3f711}"
 "_tb_transformation" "1 0 0 0 0 1 0 -192 0 0 1 64 0 0 0 1"
 }
-// entity 99
+// entity 98
 {
 "classname" "func_detail"
 "angle" "0"
@@ -2691,7 +2685,7 @@
 ( -2112 2784 -128 ) ( -2112 2784 -127 ) ( -2112 2785 -128 ) dev/ground_16 [ 2.4492935982947064e-16 1 0 72 ] [ 0 0 -1 -40 ] 270 2 2
 }
 }
-// entity 100
+// entity 99
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -2699,7 +2693,7 @@
 "_tb_id" "34"
 "_tb_linked_group_id" "{96e4aeab-4c36-425a-a08a-688c3ad3f711}"
 }
-// entity 101
+// entity 100
 {
 "classname" "func_detail"
 "angle" "0"
@@ -2777,7 +2771,7 @@
 ( -2112 2976 -192 ) ( -2112 2976 -191 ) ( -2112 2977 -192 ) dev/ground_16 [ 2.4492935982947064e-16 1 0 -24 ] [ 0 0 -1 -72 ] 0 2 2
 }
 }
-// entity 102
+// entity 101
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -2786,7 +2780,7 @@
 "_tb_linked_group_id" "{96e4aeab-4c36-425a-a08a-688c3ad3f711}"
 "_tb_transformation" "-1 -1.2246467991473532e-16 0 -4320 1.2246467991473532e-16 -1 0 5376 0 0 1 63.99999999999997 0 0 0 1"
 }
-// entity 103
+// entity 102
 {
 "classname" "func_detail"
 "angle" "180"
@@ -2863,4 +2857,10 @@
 ( -2208 2432 -128 ) ( -2208 2432 -144 ) ( -2080 2432 -144 ) special/skip [ -1 2.4492935982947064e-16 0 0 ] [ 0 0 -1 -1.9106445 ] 167.24121 2 2
 ( -2112 2496 -160 ) ( -2112 2495 -160 ) ( -2112 2496 -159 ) dev/ground_16 [ 3.67394039744206e-16 1 0 -112 ] [ 0 0 -1 -56 ] 270 2 2
 }
+}
+// entity 103
+{
+"classname" "info_player_start"
+"origin" "-2160 3184 -168"
+"angle" "270"
 }
