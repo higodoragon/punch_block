@@ -336,17 +336,20 @@ func set_mouse_mode(mode: int):
 	mouse_mode = mode
 
 func kill(victim: Node, killer: Node = null):
-	global.audio_play_at(victim.sfx_death, victim.global_position)
+	if check(victim, "sfx_death"):
+		global.audio_play_at(victim.sfx_death, victim.global_position)
 	
 	if check(victim, "health"):
 		victim.health.dead = true
-		if victim.name != 'Player':
+		if not victim is Player:
 			gib_handler.spawn_gibs(victim, killer)
-
 
 	if check(victim, "activate_targetname") and not victim.activate_targetname.is_empty():
 		targetname_activate(victim.activate_targetname, killer)
-	
+
+	if check(victim, "message") and not victim.message.is_empty():
+		message_player( victim.message )
+
 	if check(victim, "do_die"):
 		victim.do_die(killer)
 	else:

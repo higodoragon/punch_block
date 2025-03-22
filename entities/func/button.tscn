@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://bm8gqs3nti13l"]
+
+[ext_resource type="Script" uid="uid://suol65vkojr2" path="res://entities/func/button.gd" id="1_4ha3l"]
+[ext_resource type="PackedScene" uid="uid://fxt31h5kylws" path="res://assets/raw/button.blend" id="1_cjkhi"]
+[ext_resource type="PackedScene" uid="uid://lm36snfl5obu" path="res://components/hitbox_component.tscn" id="2_4ha3l"]
+[ext_resource type="PackedScene" uid="uid://d16mvtftr8jl7" path="res://components/health_component.tscn" id="4_gk8nn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cjkhi"]
+size = Vector3(1, 1, 0.616638)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gk8nn"]
+size = Vector3(1.67564, 1.65336, 0.906952)
+
+[node name="Button" type="StaticBody3D"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+script = ExtResource("1_4ha3l")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.262543)
+shape = SubResource("BoxShape3D_cjkhi")
+
+[node name="button" parent="." instance=ExtResource("1_cjkhi")]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, 0, 0)
+
+[node name="Cylinder" parent="button" index="0"]
+transform = Transform3D(0.5, 0, -8.35187e-23, 0, 0.5, 0, -8.35187e-23, 0, 0.5, 0, 0, 0)
+
+[node name="HitboxComponent" parent="." instance=ExtResource("2_4ha3l")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00487638, 0.0375099, -0.3853)
+shape = SubResource("BoxShape3D_gk8nn")
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_gk8nn")]
+max_health = 1.0
+
+[editable path="button"]

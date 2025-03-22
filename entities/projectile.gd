@@ -69,7 +69,7 @@ func _physics_process( delta: float ) -> void:
 		var collided = result[0].collider
 		if combat.object_is_hitbox( collided ):
 			var victim = collided.parent
-
+			
 			var is_close_enough = attack.agressor != null and attack.agressor.global_position.distance_to( victim.global_position ) < 4
 			if is_close_enough and attack.infight_group == victim.infight_group and victim.infight_group != 0:
 				#ignore members of the same species
