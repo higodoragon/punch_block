@@ -233,15 +233,16 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -385.0
-offset_top = -141.0
+offset_top = -190.0
 offset_right = 385.0
-offset_bottom = -47.0
+offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 8
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Interface/HUD/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="HudBarHP" parent="Interface/HUD/VBoxContainer/HBoxContainer" instance=ExtResource("4_ion2h")]
 layout_mode = 2
@@ -250,7 +251,6 @@ title = "HP"
 
 [node name="Portrait" parent="Interface/HUD/VBoxContainer/HBoxContainer" node_paths=PackedStringArray("player") instance=ExtResource("4_gcvfo")]
 layout_mode = 2
-size_flags_horizontal = 6
 player = NodePath("../../../../..")
 
 [node name="HudBarMP" parent="Interface/HUD/VBoxContainer/HBoxContainer" instance=ExtResource("4_ion2h")]
