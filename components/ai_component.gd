@@ -172,6 +172,6 @@ func generic_melee() -> AttackResult:
 		attack.agressor = parent
 		attack.inflictor = null
 		attack.parry_reaction = true
-		return target.health.do_damage( attack )
+		return global.damage( target, attack )
 	
 	return null

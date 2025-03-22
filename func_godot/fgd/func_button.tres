@@ -8,7 +8,7 @@
 script = ExtResource("1_8i0vy")
 target_map_editor = 0
 models_sub_folder = ""
-scale_expression = ""
+scale_expression = "0.5"
 generate_size_property = false
 generate_gd_ignore_file = false
 scene_file = ExtResource("2_2w1gv")
@@ -23,7 +23,8 @@ class_property_descriptions = {}
 auto_apply_to_matching_node_properties = false
 meta_properties = {
 "color": Color(0.8, 0.8, 0.8, 1),
-"size": AABB(-8, -8, -8, 8, 8, 8)
+"size": AABB(-8, -8, -8, 8, 8, 8),
+"studio": "\"func_button.glb\""
 }
 node_class = ""
 name_property = ""

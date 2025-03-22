@@ -274,8 +274,7 @@ func do_block_damage( attack: Attack, attack_result : AttackResult ):
 	else:
 		# attack like normal
 		attack.ignore_blocking = true
-		health.do_damage(attack)
-		return attack_result
+		return health.do_damage( attack )
 
 func do_punch():
 	hud_crosshair.rotation_degrees = 0
@@ -315,7 +314,7 @@ func do_punch():
 					attack.knockback_power = 5
 					attack.knockback_position = position
 					attack.is_silent = true
-					var attack_result = victim.health.do_damage(attack)
+					var attack_result = global.damage( victim, attack )
 					if attack_result.did_kill:
 						var add_value = victim.health.max_health * hp_steal_mult
 						magic = min( magic + ( add_value * 600 ), magic_max )

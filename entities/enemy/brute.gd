@@ -142,8 +142,7 @@ func do_attack_sticky():
 					attack.knockback_power = 0
 					attack.knockback_position = global_position
 					
-					if global.check( victim, "health" ):
-						victim.health.do_damage( attack )
+					global.damage( victim, attack )
 					
 					audio.play( sfx_attack )
 
@@ -161,7 +160,7 @@ func hit( hit_damage: float ) -> AttackResult:
 	attack.damage = hit_damage
 	attack.knockback_power = 0
 	attack.knockback_position = global_position
-	return ai.target.health.do_damage( attack )
+	return global.damage( ai.target, attack )
 
 func do_block_reaction( inflictor: Node3D, is_parry : bool ):
 	state.set_state(state_stun)

@@ -351,6 +351,15 @@ func set_mouse_mode(mode: int):
 	Input.set_mouse_mode(mode)
 	mouse_mode = mode
 
+func damage( victim : Node, attack : Attack ) -> AttackResult:
+	if global.check( victim, "health" ):
+		return victim.health.do_damage( attack )
+	else:
+		var attack_result = AttackResult.new()
+		attack_result.did_kill = true
+		global.kill( victim )
+		return attack_result
+
 func kill(victim: Node, killer: Node = null):
 	if check(victim, "sfx_death"):
 		global.audio_play_at(victim.sfx_death, victim.global_position)

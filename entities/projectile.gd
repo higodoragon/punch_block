@@ -77,7 +77,7 @@ func _physics_process( delta: float ) -> void:
 
 			do_hit()
 			attack.knockback_position = victim.global_position + -self.velocity
-			victim.health.do_damage( attack )
+			global.damage( victim, attack )
 		else:
 			do_hit()
 
