@@ -20,23 +20,28 @@ this is a game where u play as furry guy and u block other furry guys
 | rabbit, [hare.itch.io](hare.itch.io)                                                                    | programming, level design, 3d modelling |
 | dateddelvings, [https://www.youtube.com/@dateddelvings1695](https://www.youtube.com/@dateddelvings1695) | music                                   |
 
-### assets
+note for tetrisk's maps:
+
+- tetrisk made the level geometry
+- rabbit placed the enemies
+
+### assets not made by us
 
 textures
 
-- https://opengameart.org/content/free-urban-textures-buildings-apartments-shop-fronts
-- https://opengameart.org/content/urban-jungle
+- [https://opengameart.org/content/free-urban-textures-buildings-apartments-shop-fronts](https://opengameart.org/content/free-urban-textures-buildings-apartments-shop-fronts)
+- [https://opengameart.org/content/urban-jungle](https://opengameart.org/content/urban-jungle)
 
 font
 
-- https://int10h.org/oldschool-pc-fonts/fontlist/font?ibm_bios-2y
+- [https://int10h.org/oldschool-pc-fonts/fontlist/font?ibm_bios-2y](https://int10h.org/oldschool-pc-fonts/fontlist/font?ibm_bios-2y)
 
-## tools
+## tools we used
 
 | tool                                                | purpose                        |
 | --------------------------------------------------- | ------------------------------ |
 | Godot 4.4                                           | game engine                    |
-| TrenchBroom                                         | level design                   |
+| TrenchBroom 2025.1                                  | level design                   |
 | Blender 4.4                                         | view model (first person arms) |
 | Aseprite                                            | sprites                        |
 | "Neundo, soundminer, RX7, and a variety of plugins" | sound effects                  |
