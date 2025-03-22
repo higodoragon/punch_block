@@ -7,7 +7,7 @@ var message : String = ""
 func _on_Area_body_entered( body : Node ) -> void:
 	if body == global.player:
 		global.targetname_activate( activate_targetname, body )
-		if message:
+		if not message.is_empty():
 			global.message_player( message )
 		queue_free()
 

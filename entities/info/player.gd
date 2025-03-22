@@ -325,15 +325,12 @@ func do_punch():
 					var add_value = victim.health.max_health * hp_steal_mult
 					magic = min( magic + ( add_value * 600 ), magic_super_max )
 					health.health = min( health.health + add_value, health.max_health )
-					continue
 				
 			enemies_position_average += victim.global_position
 			enemies_hit += 1
-			continue
 		else:
 			did_hit_world = true
 			# TODO: get more info
-			continue
 
 	enemies_position_average /= enemies_hit
 
