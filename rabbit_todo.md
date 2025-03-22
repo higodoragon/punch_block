@@ -17,7 +17,7 @@
   - punching restores MP lets you block
 - [x] maps
   - [x] rabbit_tutorial
-    - add a button
+	- add a button
   - [x] rabbit_a
   - [x] rabbit_b
   - [x] clean up tetrisk's maps
@@ -32,15 +32,15 @@
 - [ ] REPLACE MARIO JUMP SOUND!
 - playtest feedback
   - a
-    - [ ] taking damage indicator
-    - [x] footsteps too loud
-    - [-] nerf alleys ending
+	- [ ] taking damage indicator
+	- [x] footsteps too loud
+	- [-] nerf alleys ending
   - b
-    - [x] fix tutorial door going wrong way
-    - [-] make tutorial grunt at end easier to get
-    - clip brush to pipes in Factory
-    - NO rename factory to Foundry ?
-    - [x] hook up enemy spawns in factory
+	- [x] fix tutorial door going wrong way
+	- [-] make tutorial grunt at end easier to get
+	- clip brush to pipes in Factory
+	- NO rename factory to Foundry ?
+	- [x] hook up enemy spawns in factory
 
 ---
 
