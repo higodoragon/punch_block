@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="MusicInfo" load_steps=3 format=3 uid="uid://bqxcca418xeml"]
 
 [ext_resource type="Script" uid="uid://qsa11uqybhs4" path="res://audio/music/music_info.gd" id="1_en72h"]
-[ext_resource type="AudioStream" uid="uid://c4nlkrah7s266" path="res://audio/music/Industrial Justice.ogg" id="2_p5lmk"]
+[ext_resource type="AudioStream" uid="uid://dpld57iaeej10" path="res://audio/music/Industrial Justice (Final).ogg" id="2_p5lmk"]
 
 [resource]
 script = ExtResource("1_en72h")
