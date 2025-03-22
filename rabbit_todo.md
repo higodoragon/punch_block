@@ -12,6 +12,7 @@
   - controls
   - how to block
   - goon AOE group-stunning
+- [ ] PRESS <KEY> TO RESTART
 
 ### small tasks
 
@@ -31,6 +32,8 @@
 - [ ] implement new footsteps from Hawk
 - [ ] volume mixing pass
 - [ ] sniper beep should be heard from further away
+- [ ] make level1.map match my tutorial tracks
+- [ ] fix portrait after healing
 
 ### big tasks
 

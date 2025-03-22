@@ -2778,6 +2778,6 @@
 "classname" "trigger_counter"
 "origin" "-904 -1816 72"
 "targetname" "exit.counter"
-"target" "exit.counter"
 "total" "7"
+"target" "exit.door"
 }
