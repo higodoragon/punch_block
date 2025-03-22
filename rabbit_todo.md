@@ -27,7 +27,6 @@
 - [ ] convert README.md to HTML for itch
 - [ ] make sure materials are grouped properly in each map (water in a fountain should be a separate func_detail than the concrete of the fountain)
 - [ ] health and magic -> progress bars
-- [ ] implement portrait
 - [ ] layed overcharge bar for magic
 - [ ] implement new footsteps from Hawk
 
@@ -39,6 +38,7 @@
 
 ---
 
+- [x] implement portrait
 - [x] make sure music loops properly
 - [x] list tools
   - [x] dated (music)
