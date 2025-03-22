@@ -1267,10 +1267,11 @@
 // entity 25
 {
 "classname" "func_button"
-"origin" "448 -800 24"
+"origin" "432 -768 24"
 "target" "SUPER_BABABUYE"
 "message" "PRESSED"
 "scale" "1"
+"angle" "90"
 }
 // entity 26
 {

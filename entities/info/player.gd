@@ -37,7 +37,6 @@ var target: Node3D
 @export var sfx_jump : AudioSettings
 
 var magic_max: int = 60 * 60
-var magic_super_max: int = magic_max * 2
 var magic: int = magic_max:
 	set(val):
 		magic = val
@@ -319,7 +318,7 @@ func do_punch():
 					var attack_result = victim.health.do_damage(attack)
 					if attack_result.did_kill:
 						var add_value = victim.health.max_health * hp_steal_mult
-						magic = min( magic + ( add_value * 600 ), magic_super_max )
+						magic = min( magic + ( add_value * 600 ), magic_max )
 						health.health = min( health.health + add_value, health.max_health )
 				else:
 					global.kill( victim, self )

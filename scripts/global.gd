@@ -222,20 +222,41 @@ func message_player(message: String, time: int = 120):
 
 func load_next_level():
 	var current_map_file = stage.local_map_file
-	var next_level: Level
+	var next_level : Level
+	var current_level_index : int
 	for i in level_order.size():
 		var level = level_order[i]
-		if get_res_from_uid(level.map) == current_map_file:
-			next_level = level_order[i + 1]
+		if get_res_from_uid( level.map ) == current_map_file:
+			current_level_index = i
 			break
 	
-	load_level(next_level)
+	if current_level_index == -1:
+		print( "current map not found in level list!!" )
+		reload_stage()
+		return
+	
+	if current_level_index + 1 < level_order.size():
+		load_level( level_order[ current_level_index + 1 ] )
+	else:
+		print( "you finished the game!!" )
+		clear_stage()
+		return
 
 func load_level(level: Level):
 	if level.music:
 		global.music_handler.play_music(level.music)
 	global.load_stage(level.map)
 	global.pause_active = false
+
+func clear_stage():
+	_clear_stage_real.call_deferred()
+
+func _clear_stage_real():
+	if stage != null:
+		stage.free()
+	
+	enemy_list.clear()
+	targets.clear()
 
 func load_stage(path: StringName):
 	stage_path = path
@@ -246,13 +267,7 @@ func reload_stage():
 		_load_stage_real.call_deferred()
 
 func _load_stage_real():
-	# load new level
-	if stage != null:
-		stage.free()
-	
-	enemy_list.clear()
-	targets.clear()
-
+	_clear_stage_real()
 	
 	stage = preload("res://scripts/fgm.tscn").instantiate()
 	printt(stage, stage_container, stage_path)
