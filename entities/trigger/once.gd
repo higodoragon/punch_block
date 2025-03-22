@@ -8,7 +8,7 @@ func _on_Area_body_entered( body : Node ) -> void:
 	if body == global.player:
 		global.targetname_activate( activate_targetname, body )
 		if not message.is_empty():
-			global.message_player( message )
+			global.message_player( message, 240 )
 		queue_free()
 
 func _func_godot_apply_properties( properties : Dictionary ):

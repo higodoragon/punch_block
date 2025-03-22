@@ -20,7 +20,7 @@ func do_target_activate( activator : Node3D ):
 		if not message.is_empty():
 			global.message_player( message )
 		else:
-			global.message_player( "sequakence complete!" )
+			global.message_player( "Sequence complete!" )
 		queue_free()
 	else:
 		global.message_player( str( "only ", total - count, " left to go..." ) )
