@@ -22,6 +22,7 @@ var jump_buffer_time: int = 0
 var jump_cayote_time: int = 0
 var view_step_offset: float = 0
 @export var view_step_smooth: float = 20
+@export var hp_steal_mult := 0.2
 
 var target: Node3D
 
@@ -321,7 +322,7 @@ func do_punch():
 				attack.is_silent = true
 				var attack_result = victim.health.do_damage(attack)
 				if attack_result.did_kill:
-					var add_value = victim.health.max_health / 4
+					var add_value = victim.health.max_health * hp_steal_mult
 					magic = min( magic + ( add_value * 600 ), magic_super_max )
 					health.health = min( health.health + add_value, health.max_health )
 					continue

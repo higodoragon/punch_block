@@ -6,7 +6,7 @@ class_name HealthComponent
 @export var max_health : float = 10
 var health : float:
 	set(val):
-		health = val
+		health = clampf(val, 0.0, max_health)
 		health_updated.emit(health)
 
 @export var iframes_amount : int = 0
