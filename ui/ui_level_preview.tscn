@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://daheefd8hu4c4"]
+[gd_scene load_steps=3 format=3 uid="uid://daheefd8hu4c4"]
 
 [ext_resource type="Script" uid="uid://bs1bas24ogjur" path="res://ui/ui_level_preview.gd" id="1_ekol7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ekol7"]
 
 [node name="PanelContainer" type="PanelContainer"]
 anchors_preset = 15
@@ -8,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ekol7")
 script = ExtResource("1_ekol7")
 
 [node name="Button" type="Button" parent="."]
@@ -22,11 +25,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 16
 
 [node name="LabelTitle" type="Label" parent="Button/BoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.33
 text = "level name"
 
 [node name="LabelAuthor" type="Label" parent="Button/BoxContainer"]

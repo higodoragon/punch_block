@@ -29,6 +29,8 @@
 - [ ] health and magic -> progress bars
 - [ ] layed overcharge bar for magic
 - [ ] implement new footsteps from Hawk
+- [ ] volume mixing pass
+- [ ] sniper beep should be heard from further away
 
 ### big tasks
 

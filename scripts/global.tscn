@@ -15,7 +15,7 @@
 
 [node name="Global" type="Node"]
 script = ExtResource("1_bux5h")
-level_order = Array[ExtResource("2_pw06x")]([ExtResource("3_sxrh4"), ExtResource("5_1nvry"), ExtResource("6_jxs33"), ExtResource("7_ggeaj"), ExtResource("8_rll33")])
+level_order = Array[ExtResource("2_pw06x")]([ExtResource("3_sxrh4"), ExtResource("7_ggeaj"), ExtResource("8_rll33"), ExtResource("6_jxs33"), ExtResource("5_1nvry")])
 
 [node name="Menu" parent="." instance=ExtResource("3_bvdm8")]
 visible = false
