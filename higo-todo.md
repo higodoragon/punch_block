@@ -15,15 +15,20 @@
 - title screen, intermission screen
 [DONE] - enviroments ( fog / color )
 
+- implement new sounds
+- fix statusface
 - title screen is skybox rotationing + title + press enter to play!
 - intermission screen
 - intermission is skybox rotating + consept art
+- clips to the empity lava buckets level 2 ( avoid brute seeing you )
+- clips to pipes in level 2
 
 low:
+- make sure every song play only twice
 - enemy spawn fx
-- enemy gibbing fx
 - goon stun fx
 - new create texture
+- better hit fxs
 
 [DONE] - redesing the sniper: weak / one hit kill, stays stationary, treat like turret
 [RABBIT] - blood explosion animation

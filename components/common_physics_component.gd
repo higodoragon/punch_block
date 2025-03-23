@@ -183,16 +183,15 @@ func play_material_sound(foley_type: int):
 	var audio_player : AudioStreamPlayer3D = parent.audio.play( audio_settings )
 	
 	if ref:
-		match ref.material_kind:
-			ref.MATERIAL_KIND.CONCRETE:
-				audio_player.stream = audio_settings.stream
-			ref.MATERIAL_KIND.GRASS:
-				audio_player.stream = audio_settings.stream_grass
-			ref.MATERIAL_KIND.GRAVEL:
-				audio_player.stream = audio_settings.stream_gravel
-			ref.MATERIAL_KIND.WATER:
-				audio_player.stream = audio_settings.stream_water
-	
+		if audio_settings.stream_grass != null and ref.material_kind == ref.MATERIAL_KIND.GRASS:
+			audio_player.stream = audio_settings.stream_grass
+		elif audio_settings.stream_gravel != null and ref.material_kind == ref.MATERIAL_KIND.GRAVEL:
+			audio_player.stream = audio_settings.stream_gravel
+		elif audio_settings.stream_water != null and ref.material_kind == ref.MATERIAL_KIND.WATER:
+			audio_player.stream = audio_settings.stream_water
+		else:
+			audio_player.stream = audio_settings.stream	
+		
 		audio_player.play()
 
 

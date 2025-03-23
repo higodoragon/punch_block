@@ -1,14 +1,22 @@
-[gd_resource type="Resource" script_class="AudioSettings" load_steps=3 format=3 uid="uid://bg5qsd5cocirc"]
+[gd_resource type="Resource" script_class="AudioSettings" load_steps=6 format=3 uid="uid://bg5qsd5cocirc"]
 
 [ext_resource type="Script" uid="uid://d1cihyw7tq44v" path="res://components/audio_settings.gd" id="1_g7j8x"]
-[ext_resource type="AudioStream" uid="uid://ccw47dhfhustl" path="res://audio/player/PLACEHOLDER_PARRY.wav" id="2_ivdwj"]
+[ext_resource type="AudioStream" uid="uid://b7hlcvga2oibc" path="res://audio/player/parry/parry_01.wav" id="2_y5u21"]
+[ext_resource type="AudioStream" uid="uid://cg1begtt2w71o" path="res://audio/player/parry/parry_02.wav" id="3_xg30k"]
+[ext_resource type="AudioStream" uid="uid://brh72y7x2ua72" path="res://audio/player/parry/parry_03.wav" id="4_2kws0"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_evhp5"]
+streams_count = 3
+stream_0/stream = ExtResource("2_y5u21")
+stream_1/stream = ExtResource("3_xg30k")
+stream_2/stream = ExtResource("4_2kws0")
 
 [resource]
 script = ExtResource("1_g7j8x")
-stream = ExtResource("2_ivdwj")
+stream = SubResource("AudioStreamRandomizer_evhp5")
 channel = 0
 limit = 1
-volume_db = -16.0
+volume_db = 1.0
 pitch_scale = 1.0
 pitch_randomness = 0.0
 metadata/_custom_type_script = "uid://d1cihyw7tq44v"

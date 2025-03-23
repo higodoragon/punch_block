@@ -6,14 +6,14 @@
 
 - [ ] NAME THE GAME
   - steam suggestions
-    - Punchopolis
-    - Streets of Beasts
-    - Streets of BEAsTS <-
+	- Punchopolis
+	- Streets of Beasts
+	- Streets of BEAsTS <-
 - [ ] PRESS <KEY> TO RESTART
 - [ ] game should start with menu showing / title screen
 - [ ] intermission scene
   - wait for input, show stats
-    - kills, time
+	- kills, time
 
 ---
 
@@ -24,7 +24,7 @@
   - punching restores MP lets you block
 - [x] maps
   - [x] rabbit_tutorial
-    - add a button
+	- add a button
   - [x] rabbit_a
   - [x] rabbit_b
   - [x] clean up tetrisk's maps

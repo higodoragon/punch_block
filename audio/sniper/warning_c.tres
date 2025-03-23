@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AudioSettings" load_steps=3 format=3 uid="uid://bxnqsjgir8a0b"]
+
+[ext_resource type="Script" uid="uid://d1cihyw7tq44v" path="res://components/audio_settings.gd" id="1_2vj0n"]
+[ext_resource type="AudioStream" uid="uid://dtnoeepijncdm" path="res://audio/sniper/warning/warning_03.wav" id="2_2vj0n"]
+
+[resource]
+script = ExtResource("1_2vj0n")
+stream = ExtResource("2_2vj0n")
+channel = 0
+limit = 5
+volume_db = 1.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://d1cihyw7tq44v"

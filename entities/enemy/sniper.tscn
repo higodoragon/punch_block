@@ -1,12 +1,14 @@
-[gd_scene load_steps=18 format=3 uid="uid://b4d3dgctiwcc3"]
+[gd_scene load_steps=20 format=3 uid="uid://b4d3dgctiwcc3"]
 
 [ext_resource type="Script" uid="uid://1i3wvbvc2lct" path="res://entities/enemy/sniper.gd" id="1_gl24o"]
 [ext_resource type="Texture2D" uid="uid://djh2pmes24m5b" path="res://assets/sniper.png" id="2_k4ue4"]
-[ext_resource type="Resource" uid="uid://d3cngxbac52iu" path="res://audio/sniper/warning.tres" id="2_x16ur"]
+[ext_resource type="Resource" uid="uid://d3cngxbac52iu" path="res://audio/sniper/warning_a.tres" id="2_x16ur"]
+[ext_resource type="Resource" uid="uid://bo57xbqrfn7iy" path="res://audio/sniper/warning_b.tres" id="3_18bqp"]
 [ext_resource type="Resource" uid="uid://ct6e6dwtyto8" path="res://audio/sniper/damage.tres" id="3_jdehj"]
 [ext_resource type="PackedScene" uid="uid://d16mvtftr8jl7" path="res://components/health_component.tscn" id="3_wgxjb"]
 [ext_resource type="Resource" uid="uid://cix4buyr3dtq0" path="res://audio/sniper/attack.tres" id="4_18bqp"]
 [ext_resource type="PackedScene" uid="uid://bkmxotoqgn5rn" path="res://components/state_machine_component.tscn" id="4_gl24o"]
+[ext_resource type="Resource" uid="uid://bxnqsjgir8a0b" path="res://audio/sniper/warning_c.tres" id="4_ics0m"]
 [ext_resource type="PackedScene" uid="uid://lm36snfl5obu" path="res://components/hitbox_component.tscn" id="4_j8i2r"]
 [ext_resource type="PackedScene" uid="uid://ccvm8eicw8t4d" path="res://components/common_physics_component.tscn" id="5_20ct0"]
 [ext_resource type="Resource" uid="uid://d1p2wa41vqvan" path="res://audio/sniper/alert.tres" id="5_ics0m"]
@@ -35,7 +37,9 @@ radius = 0.897461
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_gl24o")
-sfx_warning = ExtResource("2_x16ur")
+sfx_warning_a = ExtResource("2_x16ur")
+sfx_warning_b = ExtResource("3_18bqp")
+sfx_warning_c = ExtResource("4_ics0m")
 speed = 0.5
 stun_time = 60
 pain_time = -1

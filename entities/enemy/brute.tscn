@@ -1,10 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://bh1qcramhhi6d"]
+[gd_scene load_steps=16 format=3 uid="uid://bh1qcramhhi6d"]
 
 [ext_resource type="Script" uid="uid://c1ctyn7i666i4" path="res://entities/enemy/brute.gd" id="1_q1iuu"]
+[ext_resource type="Resource" uid="uid://dptlejrb4mll2" path="res://audio/brute/footsteps.tres" id="2_e3dwx"]
 [ext_resource type="Texture2D" uid="uid://bhkrdrd3g3dnk" path="res://assets/brute.png" id="2_q1iuu"]
 [ext_resource type="PackedScene" uid="uid://cdbvouq7r8gic" path="res://components/ai_component.tscn" id="3_0ifsd"]
+[ext_resource type="Resource" uid="uid://78dk8ophac6w" path="res://audio/brute/damage.tres" id="3_4r2rf"]
+[ext_resource type="Resource" uid="uid://dttwdf7f6hj4k" path="res://audio/brute/attack.tres" id="4_ryh87"]
 [ext_resource type="PackedScene" uid="uid://ccvm8eicw8t4d" path="res://components/common_physics_component.tscn" id="4_u5a1y"]
 [ext_resource type="PackedScene" uid="uid://ddemxbua6ylaj" path="res://components/audio_manager_component.tscn" id="5_7lx1j"]
+[ext_resource type="Resource" uid="uid://do1oqdao7wpfn" path="res://audio/brute/alert.tres" id="5_dtmy5"]
+[ext_resource type="Resource" uid="uid://ckh018ja63q0i" path="res://audio/brute/death.tres" id="6_aubcw"]
 [ext_resource type="PackedScene" uid="uid://bkmxotoqgn5rn" path="res://components/state_machine_component.tscn" id="6_e3dwx"]
 [ext_resource type="PackedScene" uid="uid://d16mvtftr8jl7" path="res://components/health_component.tscn" id="7_4r2rf"]
 [ext_resource type="PackedScene" uid="uid://lm36snfl5obu" path="res://components/hitbox_component.tscn" id="8_ryh87"]
@@ -26,6 +31,11 @@ script = ExtResource("1_q1iuu")
 speed = 0.5
 gravity = 0.75
 pain_time = -1
+sfx_footsteps = ExtResource("2_e3dwx")
+sfx_damage = ExtResource("3_4r2rf")
+sfx_attack = ExtResource("4_ryh87")
+sfx_alert = ExtResource("5_dtmy5")
+sfx_death = ExtResource("6_aubcw")
 metadata/_custom_type_script = "uid://88pbfyfqnxlk"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

@@ -12,7 +12,9 @@ class_name EnemySniper
 @onready var laser_head = $LaserHead
 @onready var laser_material = $LaserHead/LaserMesh.get_active_material( 0 )
 
-@export var sfx_warning : AudioSettings
+@export var sfx_warning_a : AudioSettings
+@export var sfx_warning_b : AudioSettings
+@export var sfx_warning_c : AudioSettings
 
 var state_idle := [
 	{ delay = -1, frame = 0 },
@@ -33,11 +35,11 @@ var state_attack_real := [
 
 var state_attack := [
 	{ delay = 10, frame = 4 },
-	{ call = "do_beep" },
+	{ call = "do_beep_a" },
 	{ delay = 20, frame = 4 },
-	{ call = "do_beep" },
+	{ call = "do_beep_b" },
 	{ delay = 20, frame = 4 },
-	{ call = "do_beep" },
+	{ call = "do_beep_c" },
 	{ delay = 20, frame = 4 },
 	{ goto = state_attack_real },
 ]
@@ -85,10 +87,17 @@ func do_active():
 		velocity += ai.generic_walk_direction() * speed
 		ai.check_and_set_attack_states()
 
-func do_beep():
-	if ai.target:
-		var audio_player = audio.play( sfx_warning )
-		audio_player.attenuation_model = AudioStreamPlayer3D.ATTENUATION_DISABLED
+func do_beep_a():
+	var audio_player = audio.play( sfx_warning_a )
+	audio_player.attenuation_model = AudioStreamPlayer3D.ATTENUATION_DISABLED
+
+func do_beep_b():
+	var audio_player = audio.play( sfx_warning_b )
+	audio_player.attenuation_model = AudioStreamPlayer3D.ATTENUATION_DISABLED
+	
+func do_beep_c():
+	var audio_player = audio.play( sfx_warning_c )
+	audio_player.attenuation_model = AudioStreamPlayer3D.ATTENUATION_DISABLED
 
 func do_attack_real():
 	if ai.target:

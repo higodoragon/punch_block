@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="AudioSettings" load_steps=7 format=3 uid="uid://ccnte0yvkmlmw"]
 
 [ext_resource type="Script" uid="uid://d1cihyw7tq44v" path="res://components/audio_settings.gd" id="1_rjc4g"]
-[ext_resource type="AudioStream" uid="uid://dnua7tqbny4ct" path="res://audio/player/damage/damage_01.wav" id="2_xk03k"]
-[ext_resource type="AudioStream" uid="uid://dj5jusabm61up" path="res://audio/player/damage/damage_02.wav" id="3_jm087"]
-[ext_resource type="AudioStream" uid="uid://tv82bycamqb5" path="res://audio/player/damage/damage_03.wav" id="4_o4bqh"]
-[ext_resource type="AudioStream" uid="uid://sfs0howw138m" path="res://audio/player/damage/damage_04.wav" id="5_wyacn"]
+[ext_resource type="AudioStream" uid="uid://dlltk2hbak6t8" path="res://audio/player/damage/damage_01.wav" id="2_xk03k"]
+[ext_resource type="AudioStream" uid="uid://b4xd0hundrxhd" path="res://audio/player/damage/damage_02.wav" id="3_jm087"]
+[ext_resource type="AudioStream" uid="uid://bvtcqu7c4jkg4" path="res://audio/player/damage/damage_03.wav" id="4_o4bqh"]
+[ext_resource type="AudioStream" uid="uid://dy3dcnarswsgd" path="res://audio/player/damage/damage_04.wav" id="5_wyacn"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wna5l"]
 streams_count = 4

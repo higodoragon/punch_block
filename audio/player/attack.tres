@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="AudioSettings" load_steps=7 format=3 uid="uid://e2u3ectmram6"]
 
 [ext_resource type="Script" uid="uid://d1cihyw7tq44v" path="res://components/audio_settings.gd" id="1_e4j8b"]
-[ext_resource type="AudioStream" uid="uid://bykbskyr3xmic" path="res://audio/player/attack/attack_basic_01.wav" id="2_f78s2"]
-[ext_resource type="AudioStream" uid="uid://w4bybjkobqra" path="res://audio/player/attack/attack_basic_02.wav" id="3_w1xvd"]
-[ext_resource type="AudioStream" uid="uid://cacsypro40802" path="res://audio/player/attack/attack_basic_03.wav" id="4_apf0i"]
-[ext_resource type="AudioStream" uid="uid://cvxx8rbfq2fcr" path="res://audio/player/attack/attack_basic_04.wav" id="5_ew3g7"]
+[ext_resource type="AudioStream" uid="uid://decg3sly3rl2e" path="res://audio/player/attack/attack_01.wav" id="2_f78s2"]
+[ext_resource type="AudioStream" uid="uid://clyfqcx5rxkuw" path="res://audio/player/attack/attack_02.wav" id="3_w1xvd"]
+[ext_resource type="AudioStream" uid="uid://cqaw1nq3jf8b6" path="res://audio/player/attack/attack_03.wav" id="4_apf0i"]
+[ext_resource type="AudioStream" uid="uid://bnbkehgvf7cob" path="res://audio/player/attack/attack_04.wav" id="5_ew3g7"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8st4d"]
 streams_count = 4

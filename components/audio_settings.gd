@@ -14,6 +14,6 @@ enum CHANNELS {
 @export var stream_metal : AudioStream
 @export var channel : CHANNELS = CHANNELS.NONE
 @export var limit : int = 5
-@export var volume_db : float = 1.0
+@export var volume_db : float = 0.0
 @export var pitch_scale : float = 1.0
 @export var pitch_randomness : float = 0

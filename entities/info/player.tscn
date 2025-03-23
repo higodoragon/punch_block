@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://mdes4hst2fpb"]
+[gd_scene load_steps=36 format=3 uid="uid://mdes4hst2fpb"]
 
 [ext_resource type="Script" uid="uid://ylp6vydxbh2w" path="res://entities/info/player.gd" id="1_merdl"]
 [ext_resource type="Resource" uid="uid://bg5qsd5cocirc" path="res://audio/player/parry.tres" id="2_526oe"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://bfywh64wdf4dl" path="res://entities/info/stat_tracking.gd" id="5_vtr80"]
 [ext_resource type="Resource" uid="uid://e2u3ectmram6" path="res://audio/player/attack.tres" id="6_bx727"]
 [ext_resource type="Script" uid="uid://d0sin64i4v3op" path="res://addons/markdownlabel/header_formats/h2_format.gd" id="6_vtr80"]
+[ext_resource type="Resource" uid="uid://s7df1yfhqddl" path="res://audio/player/death.tres" id="7_bx727"]
 [ext_resource type="Script" uid="uid://dlok0dv1tq2bf" path="res://addons/markdownlabel/header_formats/h3_format.gd" id="7_gcvfo"]
 [ext_resource type="Script" uid="uid://bayuh2vafablg" path="res://addons/markdownlabel/header_formats/h4_format.gd" id="8_y5jtf"]
 [ext_resource type="Script" uid="uid://dfr1w7u3jgni3" path="res://addons/markdownlabel/header_formats/h5_format.gd" id="9_526oe"]
@@ -114,6 +115,7 @@ sfx_jump = ExtResource("4_4flry")
 speed = 1.5
 sfx_damage = ExtResource("5_q7rql")
 sfx_attack = ExtResource("6_bx727")
+sfx_death = ExtResource("7_bx727")
 metadata/_custom_type_script = "uid://88pbfyfqnxlk"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

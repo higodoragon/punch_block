@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AudioSettings" load_steps=3 format=3 uid="uid://s7df1yfhqddl"]
+
+[ext_resource type="Script" uid="uid://d1cihyw7tq44v" path="res://components/audio_settings.gd" id="1_l6uvu"]
+[ext_resource type="AudioStream" uid="uid://cfrdra6k2lmhm" path="res://audio/player/death.wav" id="2_hg4k4"]
+
+[resource]
+script = ExtResource("1_l6uvu")
+stream = ExtResource("2_hg4k4")
+channel = 0
+limit = 5
+volume_db = 16.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://d1cihyw7tq44v"

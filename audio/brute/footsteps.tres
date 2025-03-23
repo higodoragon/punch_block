@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="AudioSettings" load_steps=9 format=3 uid="uid://dptlejrb4mll2"]
+
+[ext_resource type="Script" uid="uid://d1cihyw7tq44v" path="res://components/audio_settings.gd" id="1_yiiji"]
+[ext_resource type="AudioStream" uid="uid://dfj0ywhniwky0" path="res://audio/brute/footsteps/concrete_01.wav" id="2_a6lrl"]
+[ext_resource type="AudioStream" uid="uid://ffmg6w1pd0r7" path="res://audio/brute/footsteps/concrete_02.wav" id="3_chhn8"]
+[ext_resource type="AudioStream" uid="uid://dy0gsb7k213qf" path="res://audio/brute/footsteps/concrete_03.wav" id="4_ostmk"]
+[ext_resource type="AudioStream" uid="uid://b5ox0sl82yuw1" path="res://audio/brute/footsteps/concrete_04.wav" id="5_qtr87"]
+[ext_resource type="AudioStream" uid="uid://dsclgt4ykb5sn" path="res://audio/brute/footsteps/concrete_05.wav" id="6_qvuxl"]
+[ext_resource type="AudioStream" uid="uid://dqd232gtnrqfn" path="res://audio/brute/footsteps/concrete_06.wav" id="7_43rla"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_oqjsd"]
+streams_count = 6
+stream_0/stream = ExtResource("2_a6lrl")
+stream_1/stream = ExtResource("3_chhn8")
+stream_2/stream = ExtResource("4_ostmk")
+stream_3/stream = ExtResource("5_qtr87")
+stream_4/stream = ExtResource("6_qvuxl")
+stream_5/stream = ExtResource("7_43rla")
+
+[resource]
+script = ExtResource("1_yiiji")
+stream = SubResource("AudioStreamRandomizer_oqjsd")
+channel = 0
+limit = 5
+volume_db = -8.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://d1cihyw7tq44v"

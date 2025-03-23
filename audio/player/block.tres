@@ -1,14 +1,22 @@
-[gd_resource type="Resource" script_class="AudioSettings" load_steps=3 format=3 uid="uid://dmkalxggrhrpp"]
+[gd_resource type="Resource" script_class="AudioSettings" load_steps=6 format=3 uid="uid://dmkalxggrhrpp"]
 
 [ext_resource type="Script" uid="uid://d1cihyw7tq44v" path="res://components/audio_settings.gd" id="1_dmwhn"]
-[ext_resource type="AudioStream" uid="uid://6f0otgblddt1" path="res://audio/player/PLACEHOLDER_BLOCK.wav" id="2_dmwhn"]
+[ext_resource type="AudioStream" uid="uid://bbk6wsscehvic" path="res://audio/player/block/block_01.wav" id="2_mfvjn"]
+[ext_resource type="AudioStream" uid="uid://boo88hhpfl8fy" path="res://audio/player/block/block_02.wav" id="3_wg6fd"]
+[ext_resource type="AudioStream" uid="uid://b7i3i2ciafh8r" path="res://audio/player/block/block_03.wav" id="4_rlkvf"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_o1tb4"]
+streams_count = 3
+stream_0/stream = ExtResource("2_mfvjn")
+stream_1/stream = ExtResource("3_wg6fd")
+stream_2/stream = ExtResource("4_rlkvf")
 
 [resource]
 script = ExtResource("1_dmwhn")
-stream = ExtResource("2_dmwhn")
+stream = SubResource("AudioStreamRandomizer_o1tb4")
 channel = 0
 limit = 1
-volume_db = -16.0
+volume_db = 1.0
 pitch_scale = 1.0
 pitch_randomness = 0.0
 metadata/_custom_type_script = "uid://d1cihyw7tq44v"

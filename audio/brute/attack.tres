@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="AudioSettings" load_steps=7 format=3 uid="uid://dttwdf7f6hj4k"]
+
+[ext_resource type="Script" uid="uid://d1cihyw7tq44v" path="res://components/audio_settings.gd" id="1_8i7a7"]
+[ext_resource type="AudioStream" uid="uid://drd06dt7d7m1d" path="res://audio/brute/attack/attack_01.wav" id="2_8i7a7"]
+[ext_resource type="AudioStream" uid="uid://d3maw2xp4bvf7" path="res://audio/brute/attack/attack_02.wav" id="3_e408j"]
+[ext_resource type="AudioStream" uid="uid://qo480ebauu6m" path="res://audio/brute/attack/attack_03.wav" id="4_dnayb"]
+[ext_resource type="AudioStream" uid="uid://cao4vjgwmu4oo" path="res://audio/brute/attack/attack_04.wav" id="5_hwxsp"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_we2k2"]
+streams_count = 4
+stream_0/stream = ExtResource("2_8i7a7")
+stream_1/stream = ExtResource("3_e408j")
+stream_2/stream = ExtResource("4_dnayb")
+stream_3/stream = ExtResource("5_hwxsp")
+
+[resource]
+script = ExtResource("1_8i7a7")
+stream = SubResource("AudioStreamRandomizer_we2k2")
+channel = 0
+limit = 5
+volume_db = -8.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://d1cihyw7tq44v"
