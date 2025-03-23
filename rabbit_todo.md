@@ -9,8 +9,10 @@
 
 ## remaining steps
 
-- [ ] upload 4 builds to itch
-- [ ] final playthrough test on itch build
+- [-] upload 4 builds to itch
+- [x] final playthrough test on itch build
+- [x] link to jam and submit
+  - it's fucking done
 
 ---
 
