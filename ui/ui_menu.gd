@@ -54,3 +54,12 @@ func _if_dirty():
 func _on_resumed():
 	global.pause_active = false
 	global.mouse_update()
+
+
+
+func _on_loading_started():
+	visible = false
+
+
+func _on_loading_finished():
+	visible = global.pause_active

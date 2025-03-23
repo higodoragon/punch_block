@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://tw1ipaasl42y"]
+[gd_scene load_steps=4 format=3 uid="uid://tw1ipaasl42y"]
 
 [ext_resource type="Script" uid="uid://dmo1tb6btnij4" path="res://ui/ui_loading.gd" id="1_v18eu"]
+
+[sub_resource type="Gradient" id="Gradient_v18eu"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0svk0"]
+gradient = SubResource("Gradient_v18eu")
 
 [node name="LoadingUi" type="Control"]
 layout_mode = 3
@@ -11,6 +16,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_v18eu")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_0svk0")
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -18,9 +33,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
+offset_left = -44.0
 offset_top = -8.0
-offset_right = 20.0
+offset_right = 44.0
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -28,3 +43,11 @@ text = "NOW LOADING"
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 304.0
+offset_top = 396.0
+offset_right = 839.0
+offset_bottom = 495.0
