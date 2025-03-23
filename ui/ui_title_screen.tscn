@@ -1,78 +1,37 @@
-[gd_scene load_steps=7 format=3 uid="uid://cykmadwg5otcu"]
+[gd_scene load_steps=4 format=3 uid="uid://cykmadwg5otcu"]
 
 [ext_resource type="Script" uid="uid://bstjyclmr5154" path="res://ui/ui_title_screen.gd" id="1_62w0s"]
 [ext_resource type="Texture2D" uid="uid://cc2pui4va85uo" path="res://assets/title.png" id="2_4s1sd"]
 [ext_resource type="Environment" uid="uid://dg2uvq3syaww4" path="res://intermission/env_intermission.tres" id="3_8ngj3"]
 
-[sub_resource type="Gradient" id="Gradient_4s1sd"]
-interpolation_color_space = 2
-colors = PackedColorArray(0.22995, 0.466244, 0.417318, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_8ngj3"]
-gradient = SubResource("Gradient_4s1sd")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_62w0s"]
-viewport_path = NodePath("SubViewport")
-
-[node name="UiTitleScreen" type="Control"]
+[node name="Node3D" type="Node3D"]
 process_mode = 3
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 script = ExtResource("1_62w0s")
 
-[node name="TextureRect2" type="TextureRect" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture2D_8ngj3")
-
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("ViewportTexture_62w0s")
-stretch_mode = 5
-
-[node name="SubViewport" type="SubViewport" parent="."]
-size = Vector2i(960, 540)
-
-[node name="Node3D" type="Node3D" parent="SubViewport"]
+[node name="TitleParent" type="Node3D" parent="."]
 unique_name_in_owner = true
 
-[node name="TitleParent" type="Node3D" parent="SubViewport/Node3D"]
-unique_name_in_owner = true
-
-[node name="Sprite3D" type="Sprite3D" parent="SubViewport/Node3D/TitleParent"]
+[node name="Sprite3D" type="Sprite3D" parent="TitleParent"]
 double_sided = false
+texture_filter = 0
 texture = ExtResource("2_4s1sd")
 
-[node name="Sprite3D2" type="Sprite3D" parent="SubViewport/Node3D/TitleParent"]
+[node name="Sprite3D2" type="Sprite3D" parent="TitleParent"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 double_sided = false
+texture_filter = 0
 texture = ExtResource("2_4s1sd")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewport/Node3D"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("3_8ngj3")
 
-[node name="Camera3D" type="Camera3D" parent="SubViewport/Node3D"]
+[node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.34344)
 
-[node name="Button" type="Button" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Label" parent="CanvasLayer"]
 unique_name_in_owner = true
-layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -84,10 +43,12 @@ offset_right = 126.0
 offset_bottom = -29.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_type_variation = &"HeaderLarge"
 text = "PRESS ANY KEY TO START"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-layout_mode = 1
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5

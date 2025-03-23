@@ -6,6 +6,8 @@ extends Node
 @onready var gib_handler: GibHandler = $GibHandler
 
 var intermission: Node3D
+var title_menu : Node3D
+
 var stage: Node3D
 var stage_path: String
 var stage_textures := "res://func_godot/gamedir/textures/"
@@ -87,10 +89,6 @@ func _input(event: InputEvent):
 	if console_is_visible != console_is_visible_old:
 		mouse_update()
 
-	if pause_pressed() and not console_is_visible:
-		pause_active = not pause_active
-		mouse_update()
-	
 	if Input.is_action_just_pressed("debug_togglefullscreen"):
 		if DisplayServer.window_get_mode() != DisplayServer.WINDOW_MODE_FULLSCREEN:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
@@ -98,12 +96,21 @@ func _input(event: InputEvent):
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		return
 
-	if Input.is_action_just_pressed("debug_reloadstage"):
-		reload_stage()
-		return
-	
-	if player:
-		player.do_input_handiling()
+	if not title_menu:
+		if pause_pressed() and not console_is_visible:
+			pause_active = not pause_active
+			mouse_update()
+		
+		if Input.is_action_just_pressed("debug_reloadstage"):
+			reload_stage()
+			return
+		
+		if player:
+			player.do_input_handiling()
+	else:
+		if ( not pause_active and event.is_pressed() ) or ( pause_active and pause_pressed() ):
+			pause_active = not pause_active
+			mouse_update()
 
 func console_defs():
 	Console.add_command("map", console_map, ["map name"])
@@ -271,6 +278,7 @@ func load_next_level():
 
 	print( "you finished the game!!" )
 	clear_stage()
+	title_open()
 
 func load_level( level: Level ):
 	load_stage( level.map )
@@ -286,6 +294,13 @@ func _clear_stage_real():
 	enemy_list.clear()
 	targets.clear()
 
+func _clear_others_real():
+	if title_menu != null:
+		title_menu.free()
+
+	if intermission != null:
+		intermission.free()
+
 func load_stage(path: StringName):
 	stage_path = path
 	_load_stage_real.call_deferred()
@@ -296,9 +311,7 @@ func reload_stage():
 
 func _load_stage_real():
 	_clear_stage_real()
-
-	if intermission != null:
-		intermission.free()
+	_clear_others_real()
 
 	# restart stats
 	enemy_count = 0
@@ -347,6 +360,15 @@ func boot_to_intermission():
 	
 	intermission = preload("res://intermission/intermission.tscn").instantiate()
 	stage_container.add_child( intermission )
+	set_mouse_mode( Input.MOUSE_MODE_VISIBLE )
+
+func title_open():
+	clear_stage()
+	_clear_others_real()
+	
+	title_menu = preload("res://ui/ui_title_screen.tscn").instantiate()
+	stage_container.add_child( title_menu )
+	set_mouse_mode( Input.MOUSE_MODE_VISIBLE )
 
 #
 # pause / focus recover stuff
