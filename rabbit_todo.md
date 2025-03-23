@@ -10,12 +10,17 @@
 ## remaining steps
 
 - [ ] upload to itch
+  - [ ] add Steam as author
 - [ ] convert README.md to HTML for itch
-- [ ] style the itch page (CSS)
 - from Steam
   - cover art
   - brother art
   - clip factory a lil
+
+---
+
+- [-] style the itch page (CSS)
+  - apparently you can't use CSS ahaha
 
 ### small tasks
 
