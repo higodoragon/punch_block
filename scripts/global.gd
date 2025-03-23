@@ -389,7 +389,7 @@ func get_mouse_sugested_state() -> int:
 	return Input.MOUSE_MODE_VISIBLE
 
 func pause_pressed():
-	return Input.is_action_just_pressed("ui_mainmenu") or (OS.get_name() != "Web" and Input.is_action_just_pressed("ui_cancel"))
+	return Input.is_action_just_pressed("ui_mainmenu") or ( OS.get_name() != "Web" and Input.is_action_just_pressed("ui_cancel") )
 
 var console_is_visible_old := false
 var console_is_visible := false

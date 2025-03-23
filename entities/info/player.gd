@@ -398,5 +398,6 @@ func _physics_process(delta: float) -> void:
 
 
 func ring_flash(way: bool):
+	return
 	bracelet_material.emission_enabled = way
 	bracelet_material.shading_mode = BaseMaterial3D.SHADING_MODE_PER_VERTEX if way else BaseMaterial3D.SHADING_MODE_UNSHADED
