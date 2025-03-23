@@ -88,6 +88,8 @@ func door_update():
 	global_position = lerp( initial_position, target_position, move_amount )
 
 func door_open():
+	if global.door_sfx != null:
+		global.audio_play_at( global.door_sfx, global_position )
 	is_opening = true
 	is_active = true
 	wait_time = base_wait_time

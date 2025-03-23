@@ -150,6 +150,11 @@ func _process(delta: float):
 	hud_debug_action.text = str(action_delay)
 	viewmodel_move_to_camera()
 
+	if health.dead:
+		hud_message.text = "[center][color=YELLOW]YOU GOT BEAsTED![/color]\nPRESS [color=RED]\"LEFT CLICK\"[/color] or [color=RED]\"F5\"[/color] to retry![/center]"
+		if Input.is_action_just_pressed("action_punch"):
+			global.reload_stage()
+
 func viewmodel_play_animation(animation: StringName):
 	viewmodel_animation.stop()
 	viewmodel_animation.play(animation)
@@ -347,7 +352,7 @@ func do_punch():
 	if action_delay > 0:
 		action_delay -= 1
 
-func do_die(killer = null):
+func do_die( killer = null ):
 	viewmodel_play_animation("die")
 	if killer != null:
 		target = killer

@@ -1280,6 +1280,15 @@
 }
 // entity 27
 {
+"classname" "func_button"
+"origin" "496 -768 24"
+"target" "SUPER_BABABUYE"
+"message" "PRESSED"
+"scale" "1"
+"angle" "90"
+}
+// entity 28
+{
 "classname" "func_group"
 "_tb_type" "_tb_layer"
 "_tb_name" "old"

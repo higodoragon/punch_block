@@ -17,6 +17,8 @@ var player_rotation: Vector3 = Vector3.ZERO
 var mouse_mode: int = Input.MOUSE_MODE_CAPTURED
 @export var mouse_sensitivity: float = 3
 @export var level_order: Array[Level]
+@export var button_sfx : AudioSettings
+@export var door_sfx : AudioSettings
 
 var player_active: bool = false
 var pause_active: bool = false:
@@ -33,6 +35,9 @@ var freezeframe: int = 0
 var enemy_list: Array = []
 var enemy_count : int = 0
 var enemy_count_killed : int = 0
+
+var intermission_time : String
+var intermission_kills : String
 
 signal paused(way: bool)
 
@@ -154,6 +159,26 @@ func process_cmdargs():
 			print("textures are being sourced from: ", arg_array[1])
 			stage_textures = arg_array[1]
 			continue
+
+func update_stage_stats():
+	var msecs : int = global.stage_time % 60
+	var secs : int = floor( global.stage_time / 60 ) % 60
+	var mins : int = floor( ( global.stage_time / 60 ) / 60 )
+
+	var draw_msecs := str( msecs )
+	if msecs < 10:
+		draw_msecs = "0" + draw_msecs
+
+	var draw_secs := str( secs )
+	if secs < 10:
+		draw_secs = "0" + draw_secs
+
+	var draw_mins := str( mins )
+	if mins < 10:
+		draw_mins = "0" + draw_mins
+	
+	global.intermission_time = str( "TIME: ", draw_mins, ":", draw_secs, ".", draw_msecs )
+	global.intermission_kills = str( "KILLS: ", global.enemy_count_killed / global.enemy_count * 100, "%" )
 
 #
 # stage loading

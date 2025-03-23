@@ -7,6 +7,7 @@ func _func_godot_apply_properties( properties : Dictionary ):
 	global.funcgodot_common_defs( self, properties )
 	
 func do_target_activate( activator : Node3D ):
-	print( str( "KILLS: ", global.enemy_count_killed / global.enemy_count * 100, "%" ) )
-	print( str( "TIME: ", global.stage_time / 60 ) )
+	global.update_stage_stats()
+	print( global.intermission_time )
+	print( global.intermission_kills )
 	global.load_next_level()
