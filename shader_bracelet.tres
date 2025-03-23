@@ -1,0 +1,50 @@
+[gd_resource type="VisualShader" load_steps=5 format=3 uid="uid://5efdjdpuputp"]
+
+[ext_resource type="Texture2D" uid="uid://1be4tc06j34y" path="res://assets/raw/viewmodel_texture.png" id="1_gmgvy"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_y8ufa"]
+texture = ExtResource("1_gmgvy")
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_evvtt"]
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, Vector3(0.2, 0.2, 0.2)]
+op_type = 3
+
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_od7ft"]
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform sampler2D tex_frg_2;
+
+
+
+void fragment() {
+// Texture2D:2
+	vec4 n_out2p0 = texture(tex_frg_2, UV);
+
+
+// ColorConstant:4
+	vec4 n_out4p0 = vec4(1.000000, 1.000000, 1.000000, 1.000000);
+
+
+// Mix:3
+	vec3 n_in3p2 = vec3(0.20000, 0.20000, 0.20000);
+	vec3 n_out3p0 = mix(vec3(n_out2p0.xyz), vec3(n_out4p0.xyz), n_in3p2);
+
+
+// Output:0
+	ALBEDO = n_out3p0;
+
+
+}
+"
+graph_offset = Vector2(-216.202, 17.9668)
+nodes/fragment/0/position = Vector2(580, 160)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_y8ufa")
+nodes/fragment/2/position = Vector2(-160, 120)
+nodes/fragment/3/node = SubResource("VisualShaderNodeMix_evvtt")
+nodes/fragment/3/position = Vector2(120, 320)
+nodes/fragment/4/node = SubResource("VisualShaderNodeColorConstant_od7ft")
+nodes/fragment/4/position = Vector2(-140, 440)
+nodes/fragment/connections = PackedInt32Array(2, 0, 3, 0, 4, 0, 3, 1, 3, 0, 0, 0)

@@ -30,11 +30,11 @@ var target: Node3D
 @onready var viewmodel: Node3D = $ViewmodelHead
 @onready var viewmodel_animation: AnimationPlayer = $ViewmodelHead/Viewmodel/AnimationPlayer
 @onready var bracelet: MeshInstance3D = $ViewmodelHead/Viewmodel/Armature/Skeleton3D/Cylinder
-@onready var bracelet_material: StandardMaterial3D
+@onready var bracelet_material: ShaderMaterial
 
-@export var sfx_parry : AudioSettings
-@export var sfx_block : AudioSettings
-@export var sfx_jump : AudioSettings
+@export var sfx_parry: AudioSettings
+@export var sfx_block: AudioSettings
+@export var sfx_jump: AudioSettings
 
 var magic_max: int = 60 * 60
 var magic: int = magic_max:
@@ -43,6 +43,8 @@ var magic: int = magic_max:
 		magic_updated.emit(magic)
 
 signal magic_updated(val)
+
+var ring_shader = preload('res://shader_material_ring.tres')
 
 var power_max: int = 60 * 4
 var power: int = power_max
@@ -84,11 +86,10 @@ func _ready():
 	viewmodel_play_animation("idle")
 	
 	# i'm ugly and i'm proud
-	bracelet_material = bracelet.get_active_material(0)
-	bracelet.mesh.surface_set_material(0, bracelet_material.duplicate())
-	bracelet_material = bracelet.get_active_material(0)
-	bracelet_material.emission = Color.WHITE
-
+	# bracelet.mesh.surface_set_material(0, bracelet_material.duplicate())
+	bracelet.mesh.surface_set_material(0, ring_shader)
+	bracelet_material = bracelet.mesh.surface_get_material(0)
+	
 
 func viewmodel_move_to_camera():
 	viewmodel.global_position = camera.global_position
@@ -141,7 +142,7 @@ func _process(delta: float):
 	ring_flash(parry_active)
 
 	if parry_active:
-		hud_debug_block.text = "SUPER BLOCK"
+		hud_debug_block.text = "SUPERBLOCK"
 	elif block_active:
 		hud_debug_block.text = "Blocking"
 	else:
@@ -151,7 +152,7 @@ func _process(delta: float):
 	viewmodel_move_to_camera()
 
 	if health.dead:
-		hud_message.text = "[center][color=YELLOW]YOU GOT BEAsTED![/color]\nPRESS [color=RED]\"LEFT CLICK\"[/color] or [color=RED]\"F5\"[/color] to retry![/center]"
+		hud_message.text = "[center][color = YELLOW]YOUGOTBEAsTED![/ color] \nPRESS [color=RED]\"LEFT CLICK\"[/color] or [color=RED]\"F5\"[/color] to retry![/center]"
 		if Input.is_action_just_pressed("action_punch"):
 			global.reload_stage()
 
@@ -217,7 +218,7 @@ func do_block():
 		elif magic > magic_max:
 			magic -= 1
 
-func do_block_damage( attack: Attack, attack_result : AttackResult ):
+func do_block_damage(attack: Attack, attack_result: AttackResult):
 	var diff = global_position - attack.knockback_position
 	var angle_from_attack = atan2(diff.x, diff.z)
 	var angle_from_view = rotation.y
@@ -242,7 +243,7 @@ func do_block_damage( attack: Attack, attack_result : AttackResult ):
 			block_time = parry_frametime - 10
 			did_parry = true
 			
-			var parry_audio = audio.play( sfx_parry )
+			var parry_audio = audio.play(sfx_parry)
 			parry_audio.process_mode = Node.PROCESS_MODE_ALWAYS
 			parry_audio.pitch_scale += parrycombo_amount * 0.05
 
@@ -254,7 +255,7 @@ func do_block_damage( attack: Attack, attack_result : AttackResult ):
 			parrycombo_time = 0
 			parrycombo_amount = 0
 			
-			var block_audio = audio.play( sfx_block )
+			var block_audio = audio.play(sfx_block)
 			block_audio.process_mode = Node.PROCESS_MODE_ALWAYS
 
 			# the parry / super block animation was so fun
@@ -279,7 +280,7 @@ func do_block_damage( attack: Attack, attack_result : AttackResult ):
 	else:
 		# attack like normal
 		attack.ignore_blocking = true
-		return health.do_damage( attack )
+		return health.do_damage(attack)
 
 func do_punch():
 	hud_crosshair.rotation_degrees = 0
@@ -311,7 +312,7 @@ func do_punch():
 			var victim = collider.parent
 			
 			if is_punching:
-				if global.check( victim, "health" ):
+				if global.check(victim, "health"):
 					var attack = Attack.new()
 					attack.agressor = self
 					attack.inflictor = null
@@ -319,13 +320,13 @@ func do_punch():
 					attack.knockback_power = 5
 					attack.knockback_position = position
 					attack.is_silent = true
-					var attack_result = global.damage( victim, attack )
+					var attack_result = global.damage(victim, attack)
 					if attack_result.did_kill:
 						var add_value = victim.health.max_health * hp_steal_mult
-						magic = min( magic + ( add_value * 600 ), magic_max )
-						health.health = min( health.health + add_value, health.max_health )
+						magic = min(magic + (add_value * 600), magic_max)
+						health.health = min(health.health + add_value, health.max_health)
 				else:
-					global.kill( victim, self )
+					global.kill(victim, self)
 				
 			enemies_position_average += victim.global_position
 			enemies_hit += 1
@@ -337,7 +338,7 @@ func do_punch():
 
 	if is_punching:
 		if enemies_hit > 0:
-			global.audio_play_at( sfx_attack, enemies_position_average )
+			global.audio_play_at(sfx_attack, enemies_position_average)
 		
 		elif did_hit_world:
 			# TODO: world hit effect
@@ -352,9 +353,9 @@ func do_punch():
 	if action_delay > 0:
 		action_delay -= 1
 
-func do_die( killer = null ):
+func do_die(killer = null):
 	viewmodel_play_animation("die")
-	audio.play( sfx_death )
+	audio.play(sfx_death)
 	if killer != null:
 		target = killer
 
@@ -367,7 +368,7 @@ func do_move():
 		jump_cayote_time = jump_cayote_base
 	
 	if jump_buffer_time and jump_cayote_time:
-		audio.play( sfx_jump )
+		audio.play(sfx_jump)
 		velocity.y = jump_power
 		jump_cayote_time = 0
 		jump_buffer_time = 0
@@ -398,6 +399,9 @@ func _physics_process(delta: float) -> void:
 
 
 func ring_flash(way: bool):
+	bracelet_material.set('shader_parameter/mix_amount', 1.0 if way else 0.0)
+
+	# bracelet_material.emission_energy_multiplier = 1.0 if way else 0.0
 	return
-	bracelet_material.emission_enabled = way
-	bracelet_material.shading_mode = BaseMaterial3D.SHADING_MODE_PER_VERTEX if way else BaseMaterial3D.SHADING_MODE_UNSHADED
+	# bracelet_material.emission_enabled = way
+	# bracelet_material.shading_mode = BaseMaterial3D.SHADING_MODE_PER_VERTEX if way else BaseMaterial3D.SHADING_MODE_UNSHADED
