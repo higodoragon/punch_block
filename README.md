@@ -5,13 +5,13 @@
 - made for [Furry Game Jam #1](https://itch.io/jam/furries)
 - theme: **BLOCKED**
 - [source code](https://github.com/higodoragon/punch_block)
+- [gameplay preview - youtube](https://www.youtube.com/watch?v=ECQXOU5eBkE)
 
 # description
 
-A furry fast-paced cyber-fantasy FPS & beat-em-up with a doomed kobold ready to send criminal hell-spawn back to their homes! 
+A furry fast-paced cyber-fantasy FPS & beat-em-up with a doomed kobold ready to send criminal hell-spawn back to their homes!
 
 In this game, you play as a kobold going through the city and fighting through it level by level. There are several enemy types that you'll have to deal with by punching them and blocking their attacks.
-
 
 # credit
 
