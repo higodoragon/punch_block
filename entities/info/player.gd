@@ -354,6 +354,7 @@ func do_punch():
 
 func do_die( killer = null ):
 	viewmodel_play_animation("die")
+	audio.play( sfx_death )
 	if killer != null:
 		target = killer
 

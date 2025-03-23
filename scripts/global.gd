@@ -397,7 +397,7 @@ func kill(victim: Node, killer: Node = null):
 	if check(victim, "ai"):
 		enemy_count_killed += 1
 	
-	if check(victim, "sfx_death"):
+	if not check(victim, "do_die") and check(victim, "sfx_death"):
 		global.audio_play_at(victim.sfx_death, victim.global_position)
 	
 	if check(victim, "health"):
