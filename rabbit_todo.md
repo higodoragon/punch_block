@@ -2,7 +2,7 @@
 
 ## remaining steps
 
-- stylized 3d model or sprite/image of title
+- [x] stylized 3d model or sprite/image of title
 - itch: cover image
 - itch: screenshots
 - itch: gameplay video
