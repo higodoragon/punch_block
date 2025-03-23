@@ -2,7 +2,7 @@
 
 # web export issues
 
-- SUPER lag on first gib/gore
+- [-] SUPER lag on first gib/gore
 - 1 sec lag on EVERY block
 - add "ENTER to PAUSE" hint
 
