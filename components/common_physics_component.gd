@@ -30,7 +30,6 @@ func is_on_ground():
 	return on_ground_force or parent.is_on_floor()
 
 func snap_to_stair(delta: float):
-	
 	var global_position_pre: Vector3 = parent.global_position
 	step_cast.shape = collision.shape
 	step_cast.global_position = parent.global_position
@@ -73,7 +72,7 @@ func snap_to_stair(delta: float):
 		return
 	
 	# avoids snaping to the same floor
-	if abs( step_height ) < 0.01:
+	if abs(step_height) < 0.01:
 		return
 
 	# known issues:
@@ -106,7 +105,7 @@ func common_physics(delta):
 
 	if global.check(parent, "audio"):
 		if is_on_ground():
-			footstep_amount += (( parent.velocity * Vector3(1, 0, 1)) * delta).distance_to( Vector3.ZERO )
+			footstep_amount += ((parent.velocity * Vector3(1, 0, 1)) * delta).distance_to(Vector3.ZERO)
 		
 		if on_ground and not on_ground_prev:
 			# yes it's landing
@@ -121,7 +120,7 @@ func common_physics(delta):
 				pass
 
 		if footstep_amount > parent.footstep_frequency:
-			footstep_amount = fmod( footstep_amount, parent.footstep_frequency )
+			footstep_amount = fmod(footstep_amount, parent.footstep_frequency)
 			play_material_sound(MATSFX.FOOTSTEPS)
 
 	# gravity
@@ -139,7 +138,7 @@ func common_physics(delta):
 	if parent.position.y < -500:
 		if parent is Player:
 			# ops... sorry about that
-			global.message_player( "sorry we didn't had the time to fix this :3" )
+			global.message_player("sorry we didn't had the time to fix this :3")
 			parent.global_position = global.player_position
 			parent.global_rotation.y = global.player_rotation.y
 			parent.camera.global_rotation.x = global.player_rotation.x
@@ -151,17 +150,18 @@ func common_physics(delta):
 ## And a child mesh instance
 ## which has multiple Surfaces in its Mesh resource
 func play_material_sound(foley_type: int):
-
 	var global_position_pre: Vector3 = parent.global_position
 	step_cast.shape = collision.shape
-	step_cast.global_position = parent.global_position + Vector3( 0, 1, 0 )
-	step_cast.target_position = Vector3( 0, -2, 0 )
+	step_cast.global_position = parent.global_position + Vector3(0, 1, 0)
+	step_cast.target_position = Vector3(0, -2, 0)
 	step_cast.force_shapecast_update()
 	var col = step_cast.get_collider(0)
 
 	if col == null:
 		return
 	
+	if col.get_child(0) is not MeshInstance3D:
+		return
 	var child_mesh: MeshInstance3D = col.get_child(0) # 0 is always the mesh instance
 	var relevant_material: StandardMaterial3D
 
@@ -172,15 +172,15 @@ func play_material_sound(foley_type: int):
 	# for surf in child_mesh.mesh.get_surface_count():
 	# 	child_mesh.get_active_material(0)
 		
-	var ref = get_ref_from_mat( relevant_material )
-	var audio_settings : AudioSettings
+	var ref = get_ref_from_mat(relevant_material)
+	var audio_settings: AudioSettings
 	match foley_type:
 		MATSFX.FOOTSTEPS:
 			audio_settings = parent.sfx_footsteps
 		MATSFX.LANDING:
 			audio_settings = parent.sfx_landings
 	
-	var audio_player : AudioStreamPlayer3D = parent.audio.play( audio_settings )
+	var audio_player: AudioStreamPlayer3D = parent.audio.play(audio_settings)
 	audio_player.stop()
 	
 	if ref:
@@ -191,7 +191,7 @@ func play_material_sound(foley_type: int):
 		elif audio_settings.stream_water != null and ref.material_kind == ref.MATERIAL_KIND.WATER:
 			audio_player.stream = audio_settings.stream_water
 		else:
-			audio_player.stream = audio_settings.stream	
+			audio_player.stream = audio_settings.stream
 	
 	if parent == global.player:
 		audio_player.volume_db += -16
@@ -200,6 +200,8 @@ func play_material_sound(foley_type: int):
 
 ## find the MaterialTextureReference that is linked to the StandardMaterial3D
 func get_ref_from_mat(mat: StandardMaterial3D) -> MaterialTextureReference:
+	# if mat == null:
+	# 	return null
 	for ref in MaterialReferences.refs:
 		if ref.material_file == mat:
 			return ref
