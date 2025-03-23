@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Level" load_steps=3 format=3 uid="uid://c2sjin2shyn6k"]
 
-[ext_resource type="Resource" uid="uid://bb1iif5mvddh2" path="res://audio/music/music_pull_no_punches.tres" id="1_g821i"]
+[ext_resource type="Resource" uid="uid://bqxcca418xeml" path="res://audio/music/music_industrial_justice.tres" id="1_c0orn"]
 [ext_resource type="Script" uid="uid://c584v8jufsvu6" path="res://levels/level.gd" id="1_ruuwb"]
 
 [resource]
@@ -8,5 +8,5 @@ script = ExtResource("1_ruuwb")
 map = "uid://c6xje28i3etgs"
 title = "Alleys"
 author = "rabbit"
-music = ExtResource("1_g821i")
+music = ExtResource("1_c0orn")
 metadata/_custom_type_script = "uid://c584v8jufsvu6"

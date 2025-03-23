@@ -30,6 +30,7 @@ floor_snap_length = 0.0
 script = ExtResource("1_q1iuu")
 speed = 0.5
 gravity = 0.75
+footstep_frequency = 3.5
 pain_time = -1
 sfx_footsteps = ExtResource("2_e3dwx")
 sfx_damage = ExtResource("3_4r2rf")

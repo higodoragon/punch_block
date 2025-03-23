@@ -181,6 +181,7 @@ func play_material_sound(foley_type: int):
 			audio_settings = parent.sfx_landings
 	
 	var audio_player : AudioStreamPlayer3D = parent.audio.play( audio_settings )
+	audio_player.stop()
 	
 	if ref:
 		if audio_settings.stream_grass != null and ref.material_kind == ref.MATERIAL_KIND.GRASS:
@@ -191,9 +192,11 @@ func play_material_sound(foley_type: int):
 			audio_player.stream = audio_settings.stream_water
 		else:
 			audio_player.stream = audio_settings.stream	
+	
+	if parent == global.player:
+		audio_player.volume_db += -16
 		
-		audio_player.play()
-
+	audio_player.play()
 
 ## find the MaterialTextureReference that is linked to the StandardMaterial3D
 func get_ref_from_mat(mat: StandardMaterial3D) -> MaterialTextureReference:

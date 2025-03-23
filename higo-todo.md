@@ -15,11 +15,14 @@
 - title screen, intermission screen
 [DONE] - enviroments ( fog / color )
 
-- implement new sounds
+- implement ambience
+[DONE] - fix the brute charging + footsteps frequencity
+[DONE] - implement new sounds
 - fix statusface
-- title screen is skybox rotationing + title + press enter to play!
-- intermission screen
-- intermission is skybox rotating + consept art
+[RABBIT] - title screen is skybox rotationing + title + press enter to play!
+[DONEISH] - intermission screen
+- intermission screen story text
+[DONE] - intermission is skybox rotating + consept art
 - clips to the empity lava buckets level 2 ( avoid brute seeing you )
 - clips to pipes in level 2
 

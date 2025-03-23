@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Level" load_steps=3 format=3 uid="uid://bv8v1vh1quy2x"]
 
-[ext_resource type="Resource" path="res://audio/music/music_streetwise_kobold.tres" id="1_h3wfk"]
+[ext_resource type="Resource" uid="uid://bb1iif5mvddh2" path="res://audio/music/music_pull_no_punches.tres" id="1_h3wfk"]
 [ext_resource type="Script" uid="uid://c584v8jufsvu6" path="res://levels/level.gd" id="1_u16jq"]
 
 [resource]

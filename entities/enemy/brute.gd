@@ -14,6 +14,7 @@ var real_friction : float
 var old_collision_mask : int = collision_mask
 var old_collision_layer : int = collision_layer
 var wall_delay : int = 0
+var real_footstep_frequency : int
 
 var state_idle := [
 	{ delay = -1, frame = 0 },
@@ -64,6 +65,7 @@ var state_pain := [
 ]
 
 func _ready() -> void:
+	real_footstep_frequency = footstep_frequency
 	real_friction = friction
 	ai.start_ai()
 
@@ -131,6 +133,9 @@ func do_attack_sticky():
 			for r in result:
 				var victim = r.collider.parent
 				if victim != ai.target and victim.velocity.y <= 0:
+					if victim is EnemyBrute and victim.state.current_array == state_attack_charge:
+						continue
+					
 					global.stun( victim, 60, true )
 					victim.velocity.y = 18
 					victim.velocity.x = 0
@@ -168,10 +173,12 @@ func do_block_reaction( inflictor: Node3D, is_parry : bool ):
 func _physics_process( delta: float ):
 	if state.current_array == state_attack_charge:
 		# clip though enemies
+		footstep_frequency = 5
 		collision_mask = 1
 		collision_layer = 0
 		friction = 0.5
 	else:
+		footstep_frequency = real_footstep_frequency
 		friction = real_friction
 		collision_mask = old_collision_mask
 		collision_layer = old_collision_layer
