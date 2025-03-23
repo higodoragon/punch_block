@@ -10,14 +10,18 @@
 ## remaining steps
 
 - [ ] upload 4 builds to itch
-  - [x] add Steam as author
+- [ ] final playthrough test on itch build
+
+---
+
+- [x] add Steam as author
 - [x] convert README.md to HTML for itch
 - from Steam
   - [x] cover art
-  - brother art
-  - clip factory a lil
-- make github public
-- proofread outro text
+  - [x] brother art
+  - [x] clip factory a lil
+- [x] make github public
+- [x] proofread outro text
 
 ---
 

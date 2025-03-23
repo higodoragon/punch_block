@@ -153,7 +153,7 @@ func _process(delta: float):
 	viewmodel_move_to_camera()
 
 	if health.dead:
-		hud_message.text = "[center][color = YELLOW]YOUGOTBEAsTED![/ color] \nPRESS [color=RED]\"LEFT CLICK\"[/color] or [color=RED]\"F5\"[/color] to retry![/center]"
+		hud_message.text = "[center][color=YELLOW]YOU GOT BEAsTED![/color] \nPRESS [color=RED]\"LEFT CLICK\"[/color] or [color=RED]\"F5\"[/color] to retry![/center]"
 		if Input.is_action_just_pressed("action_punch"):
 			global.reload_stage()
 
