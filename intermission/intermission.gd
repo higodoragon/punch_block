@@ -55,6 +55,7 @@ func _physics_process(delta: float) -> void:
 		finale_state += 1
 	
 	if not is_last_level and finale_state == 1:
+		queue_free()
 		global.load_next_level()
 		return
 	
@@ -67,5 +68,6 @@ func _physics_process(delta: float) -> void:
 		ending_t.visible = false
 
 	elif is_last_level and finale_state == 3:
+		queue_free()
 		global.load_next_level()
 		return
