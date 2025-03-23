@@ -1,0 +1,98 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2chnwxb5hbyf"]
+
+[ext_resource type="Sky" uid="uid://bc4rd5onhjrjd" path="res://sky.tres" id="1_562sb"]
+[ext_resource type="Script" uid="uid://cfs3867yfwg3l" path="res://intermission/intermission.gd" id="1_rqrmq"]
+[ext_resource type="Theme" uid="uid://6tmn5s4u30k0" path="res://theme.tres" id="3_b0epg"]
+
+[sub_resource type="Environment" id="Environment_mimuf"]
+background_mode = 2
+background_color = Color(0.5, 0.5, 0.5, 1)
+sky = ExtResource("1_562sb")
+ambient_light_source = 2
+ambient_light_color = Color(0.8514, 0.7524, 0.99, 1)
+reflected_light_source = 1
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.0470588, 0.00392157, 0.160784, 1)
+fog_density = 1.0
+fog_sky_affect = 0.0
+fog_depth_begin = 0.0
+fog_depth_end = 140.0
+
+[node name="Intermission" type="Node3D"]
+script = ExtResource("1_rqrmq")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mimuf")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.766044, -0.642788, 0, 0.642788, 0.766044, 0, 0, 0)
+fov = 90.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TimeLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.5
+offset_top = -65.5
+offset_right = 220.5
+offset_bottom = -36.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_b0epg")
+theme_type_variation = &"HeaderLarge"
+text = "TIME:"
+
+[node name="KillsLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.5
+offset_top = 30.5
+offset_right = 220.5
+offset_bottom = 59.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_b0epg")
+theme_type_variation = &"HeaderLarge"
+text = "KILLS:"
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -193.0
+offset_right = 577.0
+offset_bottom = -164.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_b0epg")
+theme_type_variation = &"HeaderLarge"
+text = "[LEVELNAME] SURVIVED!"
+horizontal_alignment = 1
+
+[node name="NextLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = 159.0
+offset_right = 577.0
+offset_bottom = 188.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_b0epg")
+theme_type_variation = &"HeaderLarge"
+text = "[LEFT CLICK] FOR MORE GIBBING"
+horizontal_alignment = 1

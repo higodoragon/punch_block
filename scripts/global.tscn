@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c20rv6dvmqg07" path="res://scripts/music_handler.tscn" id="3_mkksr"]
 [ext_resource type="Resource" uid="uid://40s7uopd5a5c" path="res://levels/lvl_rabbit_tutorial.tres" id="3_sxrh4"]
 [ext_resource type="Script" uid="uid://clbp4u2c1w0s7" path="res://scripts/gib_handler.gd" id="4_i7w57"]
-[ext_resource type="Resource" uid="uid://bwhcilmq5ldwb" path="res://levels/lvl_rabbit_a.tres" id="5_1nvry"]
+[ext_resource type="Resource" path="res://levels/lvl_rabbit_a.tres" id="5_1nvry"]
 [ext_resource type="Resource" uid="uid://bbld2c7hmnamk" path="res://scripts/gibber/gib_sprite_assoc_all.tres" id="5_p31br"]
 [ext_resource type="Resource" uid="uid://c2sjin2shyn6k" path="res://levels/lvl_rabbit_b.tres" id="6_jxs33"]
 [ext_resource type="Resource" uid="uid://c2ddmmaccb6e" path="res://levels/lvl_tetrisk_c.tres" id="6_pw06x"]

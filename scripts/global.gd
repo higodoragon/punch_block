@@ -39,6 +39,8 @@ var enemy_count_killed : int = 0
 var intermission_time : String
 var intermission_kills : String
 
+var current_level : Level = null
+
 signal paused(way: bool)
 
 #
@@ -177,8 +179,10 @@ func update_stage_stats():
 	if mins < 10:
 		draw_mins = "0" + draw_mins
 	
+	var kill_per = int( float( global.enemy_count_killed ) / float( global.enemy_count ) * 100 )
+	
 	global.intermission_time = str( "TIME: ", draw_mins, ":", draw_secs, ".", draw_msecs )
-	global.intermission_kills = str( "KILLS: ", global.enemy_count_killed / global.enemy_count * 100, "%" )
+	global.intermission_kills = str( "KILLS: ", global.enemy_count_killed, " / ", global.enemy_count, "%" )
 
 #
 # stage loading
@@ -251,6 +255,14 @@ func message_player(message: String, time: int = 120):
 
 	message_time = time
 
+func get_level_from_map( map_path : String ):
+	for i in level_order.size():
+		var level = level_order[ i ]
+		if get_res_from_uid( level.map ) == map_path:
+			return level
+	
+	return null
+
 func load_next_level():
 	var current_map_file = stage.local_map_file
 	var next_level : Level
@@ -268,18 +280,17 @@ func load_next_level():
 	
 	if current_level_index + 1 < level_order.size():
 		load_level( level_order[ current_level_index + 1 ] )
-	else:
-		print( "you finished the game!!" )
-		clear_stage()
 		return
 
-func load_level(level: Level):
-	if level.music:
-		global.music_handler.play_music(level.music)
-	global.load_stage(level.map)
-	global.pause_active = false
+	print( "you finished the game!!" )
+	clear_stage()
 
+func load_level( level: Level ):
+	load_stage( level.map )
+	pause_active = false
+	
 func clear_stage():
+	current_level = null
 	_clear_stage_real.call_deferred()
 
 func _clear_stage_real():
@@ -333,6 +344,11 @@ func _load_stage_real():
 	stage.add_child(player)
 	player.global_position = player_position
 	player.global_rotation = player_rotation
+	
+	current_level = get_level_from_map( stage_path )
+	if current_level != null:
+		if current_level.music:
+			music_handler.play_music( current_level.music )
 #
 # pause / focus recover stuff
 
@@ -470,7 +486,6 @@ func audio_play_at(sfx: AudioSettings, global_position: Vector3):
 	var audio_player = audio.play(sfx)
 	audio_player.global_position = global_position
 	return audio_player
-
 
 func get_res_from_uid(uid):
 	var res_id = ResourceLoader.get_resource_uid(uid)
