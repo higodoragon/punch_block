@@ -9,13 +9,15 @@
 
 ## remaining steps
 
-- [ ] upload to itch
-  - [ ] add Steam as author
-- [ ] convert README.md to HTML for itch
+- [ ] upload 4 builds to itch
+  - [x] add Steam as author
+- [x] convert README.md to HTML for itch
 - from Steam
-  - cover art
+  - [x] cover art
   - brother art
   - clip factory a lil
+- make github public
+- proofread outro text
 
 ---
 
