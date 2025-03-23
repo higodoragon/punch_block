@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d3jyiof1ueqcm"]
+[gd_scene load_steps=19 format=3 uid="uid://d3jyiof1ueqcm"]
 
 [ext_resource type="Script" uid="uid://b0fmjkm4tkt7d" path="res://scripts/global.gd" id="1_bux5h"]
 [ext_resource type="PackedScene" uid="uid://ddemxbua6ylaj" path="res://components/audio_manager_component.tscn" id="2_lqipe"]
@@ -16,6 +16,8 @@
 [ext_resource type="Resource" uid="uid://cwcdt7drmu51f" path="res://audio/interactables/button.tres" id="9_lljc6"]
 [ext_resource type="Resource" uid="uid://bqbt8g5ag7q3o" path="res://audio/interactables/door.tres" id="10_1nvry"]
 [ext_resource type="Resource" uid="uid://ditctw0yafsp1" path="res://audio/music/music_no_one_steals.tres" id="11_jxs33"]
+[ext_resource type="Script" uid="uid://6goly5meyw33" path="res://scripts/particle_prerun.gd" id="17_ggeaj"]
+[ext_resource type="PackedScene" uid="uid://b67bnw5kuoqpy" path="res://scripts/gibber/particles_blood_explosion.tscn" id="18_rll33"]
 
 [node name="Global" type="Node"]
 process_mode = 3
@@ -37,3 +39,8 @@ gib_assoc_all = ExtResource("5_p31br")
 
 [node name="StageContainer" type="Node3D" parent="."]
 process_mode = 1
+
+[node name="ParticlePrerun" type="Node3D" parent="."]
+script = ExtResource("17_ggeaj")
+
+[node name="ParticlesBloodExplosion" parent="ParticlePrerun" instance=ExtResource("18_rll33")]
