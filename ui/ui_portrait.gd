@@ -14,5 +14,12 @@ func _ready():
 
 
 func update_portrait(current_hp: float):
-	var frame = round((_alive_frames - current_hp / _slice_size) + .5)
-	sprite.frame = frame if current_hp > 0.0 else _death_frame
+	var frame = round((_alive_frames - current_hp / _slice_size) + .5 )
+	
+	if player.health.health >= player.health.max_health:
+		frame = 0
+	
+	if player.health.dead:
+		frame = _death_frame
+	
+	sprite.frame = frame

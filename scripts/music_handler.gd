@@ -11,3 +11,6 @@ func play_music(info: MusicInfo):
 		_audio_stream_player.stream = info.stream
 		_audio_stream_player.play()
 		music_changed.emit(info)
+
+func stop_music():
+	_audio_stream_player.stop()

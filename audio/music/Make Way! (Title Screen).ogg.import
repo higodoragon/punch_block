@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bd4tow55jj63t"
+path="res://.godot/imported/Make Way! (Title Screen).ogg-57432dc72db7db246704f49df8c7bd82.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/music/Make Way! (Title Screen).ogg"
+dest_files=["res://.godot/imported/Make Way! (Title Screen).ogg-57432dc72db7db246704f49df8c7bd82.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

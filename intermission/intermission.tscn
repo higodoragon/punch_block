@@ -25,7 +25,6 @@ fov = 90.0
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Stats" type="Control" parent="CanvasLayer"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -146,6 +145,7 @@ text = "PRESS THE CONTINUE BUTTON TO CONTINUE :3"
 horizontal_alignment = 1
 
 [node name="Ending" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -185,7 +185,16 @@ theme_override_font_sizes/mono_font_size = 32
 theme_override_font_sizes/normal_font_size = 32
 theme_override_font_sizes/bold_font_size = 32
 bbcode_enabled = true
-text = "after killing thousounds, being a one kobold army
-that took over the city"
+text = "after killing a hundred demons with nothing but my fists, risking my life over and over again, i finally found them 
+
+i get inside the dim room and see him tied on a chair, all betten up by those bastards, i never saw him as bad as this, yet, i never felt this happy to see him. looks like the demon that was guarding him escaped out of fear for my fists, but that didn't matter. 
+
+nothing else matted, even if hurt, he was alive.
+after getting him out of that chair i couldnt help but hug him.
+
+my brother is alive!
+
+
+- THE END -"
 horizontal_alignment = 1
 vertical_alignment = 1

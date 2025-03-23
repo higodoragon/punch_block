@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://d3jyiof1ueqcm"]
+[gd_scene load_steps=24 format=3 uid="uid://d3jyiof1ueqcm"]
 
 [ext_resource type="Script" uid="uid://b0fmjkm4tkt7d" path="res://scripts/global.gd" id="1_bux5h"]
 [ext_resource type="PackedScene" uid="uid://ddemxbua6ylaj" path="res://components/audio_manager_component.tscn" id="2_lqipe"]
@@ -18,6 +18,7 @@
 [ext_resource type="Resource" uid="uid://ditctw0yafsp1" path="res://audio/music/music_no_one_steals.tres" id="11_jxs33"]
 [ext_resource type="AudioStream" uid="uid://be5o4yjpn7kdr" path="res://audio/ambience/city.wav" id="11_uxql3"]
 [ext_resource type="AudioStream" uid="uid://cql0xylef717i" path="res://audio/ambience/factory.wav" id="12_nrutj"]
+[ext_resource type="Resource" uid="uid://cg3xeei1f758i" path="res://audio/music/make_way.tres" id="14_nrutj"]
 [ext_resource type="Script" uid="uid://6goly5meyw33" path="res://scripts/particle_prerun.gd" id="17_ggeaj"]
 [ext_resource type="PackedScene" uid="uid://b67bnw5kuoqpy" path="res://scripts/gibber/particles_blood_explosion.tscn" id="18_rll33"]
 
@@ -38,6 +39,7 @@ door_sfx = ExtResource("10_1nvry")
 ambience_city = ExtResource("11_uxql3")
 ambience_factory = ExtResource("12_nrutj")
 intermission_music = ExtResource("11_jxs33")
+title_music = ExtResource("14_nrutj")
 
 [node name="MusicHandler" parent="." instance=ExtResource("3_mkksr")]
 

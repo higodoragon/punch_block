@@ -13,6 +13,9 @@ var is_last_level : bool = false
 var is_finale : bool = false
 
 func _ready() -> void:
+	ending.visible = false
+	stats.visible = true
+
 	var msecs : int = global.stage_time % 60
 	var secs : int = floor( global.stage_time / 60 ) % 60
 	var mins : int = floor( ( global.stage_time / 60 ) / 60 )
@@ -44,7 +47,7 @@ func _ready() -> void:
 		is_last_level = true
 
 func do_finale():
-	ending.text = "you finished the game! the STREETS OF BEAsTs challanges you for a speedrun! beat the game in 1 minute! ;3"
+	#global.music_handler.stop_music()
 	ending.visible = true
 	stats.visible = false
 	is_finale = true

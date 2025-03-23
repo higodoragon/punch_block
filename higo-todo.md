@@ -12,20 +12,20 @@
 [DONE] - trigger_nextlevel
 [DONE] - goons dons't stun non goons without parry
 [DONE] - skybox
-- title screen, intermission screen
+[DONE] - title screen, intermission screen
 [DONE] - enviroments ( fog / color )
 
-- focus screen
-- implement ambience
+[DONE] - focus screen
+[DONE] - implement ambience
 [DONE] - fix the brute charging + footsteps frequencity
 [DONE] - implement new sounds
-- fix statusface
+[DONE] - fix statusface
 [RABBIT] - title screen is skybox rotationing + title + press enter to play!
 [DONEISH] - intermission screen
-- intermission screen story text
+[DONE] - intermission screen story text
 [DONE] - intermission is skybox rotating + consept art
-- clips to the empity lava buckets level 2 ( avoid brute seeing you )
-- clips to pipes in level 2
+[DONE] - clips to the empity lava buckets level 2 ( avoid brute seeing you )
+[RABBIT] - clips to pipes in level 2
 
 low:
 - make sure every song play only twice

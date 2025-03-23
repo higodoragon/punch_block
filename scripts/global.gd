@@ -49,6 +49,7 @@ var intermission_kills : String
 var current_level : Level = null
 
 @export var intermission_music : MusicInfo
+@export var title_music : MusicInfo
 
 signal paused(way: bool)
 
@@ -61,7 +62,6 @@ func _ready():
 	process_cmdargs()
 	console_defs()
 	MaterialReferences.compile_material_references()
-	music_handler.play_music( intermission_music )
 
 func _process(_delta: float) -> void:
 	pause_process()
@@ -388,6 +388,7 @@ func title_open():
 	stage_container.add_child( title_menu )
 	set_mouse_mode( Input.MOUSE_MODE_VISIBLE )
 
+	music_handler.play_music( title_music )
 #
 # pause / focus recover stuff
 
