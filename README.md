@@ -6,9 +6,11 @@
 - theme: **BLOCKED**
 - [source code](https://github.com/higodoragon/punch_block)
 
-this is a game where u play as furry guy and u block other furry guys
+# description
 
-## credit
+In this game, you play as a kobold going through the city and fighting through it level by level. There are several enemy types that you'll have to deal with by punching them and blocking their attacks.
+
+# credit
 
 ### custom-made stuff
 
