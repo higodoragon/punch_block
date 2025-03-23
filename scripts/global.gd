@@ -244,22 +244,24 @@ func get_level_from_map( map_path : String ):
 	
 	return null
 
-func load_next_level():
-	var current_level_index : int = -1
-	# find level id
-	
-	if level_order.is_empty():
-		push_error( "level order is empty!!!" )
-		return
-	
+func get_level_index():
 	for i in level_order.size():
 		var level = level_order[i]
 		if current_level == level:
-			current_level_index = i
-			break
+			return i
 	
+	return -1
+
+func load_next_level():
+	# find level id
+	var current_level_index : int = get_level_index()
+
 	if current_level_index + 1 < level_order.size():
 		load_level( level_order[ current_level_index + 1 ] )
+		return
+
+	if level_order.is_empty():
+		push_error( "level order is empty!!!" )
 		return
 
 	if current_level_index == -1:
@@ -294,6 +296,9 @@ func reload_stage():
 
 func _load_stage_real():
 	_clear_stage_real()
+
+	if intermission != null:
+		intermission.free()
 
 	# restart stats
 	enemy_count = 0
@@ -340,7 +345,7 @@ func boot_to_intermission():
 	clear_stage()
 	music_handler.play_music( intermission_music )
 	
-	var intermission = preload("res://intermission/intermission.tscn").instantiate()
+	intermission = preload("res://intermission/intermission.tscn").instantiate()
 	stage_container.add_child( intermission )
 
 #

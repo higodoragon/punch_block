@@ -16,39 +16,103 @@ fov = 90.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="TimeLabel" type="Label" parent="CanvasLayer"]
+[node name="Ending" type="RichTextLabel" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/bold_italics_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/mono_font_size = 32
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+bbcode_enabled = true
+text = "TEST 1 2 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Stats" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TimeBaseLabel" type="Label" parent="CanvasLayer/Stats"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -220.5
-offset_top = -65.5
-offset_right = 220.5
-offset_bottom = -36.5
+offset_left = -150.0
+offset_top = -78.5
+offset_right = 150.0
+offset_bottom = -49.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_b0epg")
+theme_type_variation = &"HeaderLarge"
+text = "TIME :"
+
+[node name="TimeLabel" type="Label" parent="CanvasLayer/Stats"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -78.5
+offset_right = 150.0
+offset_bottom = -49.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_b0epg")
 theme_type_variation = &"HeaderLarge"
 text = "TIME:"
+horizontal_alignment = 2
 
-[node name="KillsLabel" type="Label" parent="CanvasLayer"]
+[node name="KillsBaseLabel" type="Label" parent="CanvasLayer/Stats"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -220.5
-offset_top = 30.5
-offset_right = 220.5
-offset_bottom = 59.5
+offset_left = -150.0
+offset_top = 49.5
+offset_right = 150.0
+offset_bottom = 78.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_b0epg")
+theme_type_variation = &"HeaderLarge"
+text = "KILLS :"
+
+[node name="KillsLabel" type="Label" parent="CanvasLayer/Stats"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = 49.5
+offset_right = 150.0
+offset_bottom = 78.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_b0epg")
 theme_type_variation = &"HeaderLarge"
 text = "KILLS:"
+horizontal_alignment = 2
 
-[node name="TitleLabel" type="Label" parent="CanvasLayer"]
+[node name="TitleLabel" type="Label" parent="CanvasLayer/Stats"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -65,7 +129,8 @@ theme_type_variation = &"HeaderLarge"
 text = "[LEVELNAME] SURVIVED!"
 horizontal_alignment = 1
 
-[node name="NextLabel" type="Label" parent="CanvasLayer"]
+[node name="NextLabel" type="RichTextLabel" parent="CanvasLayer/Stats"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -79,5 +144,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_b0epg")
 theme_type_variation = &"HeaderLarge"
-text = "[LEFT CLICK] FOR MORE GIBBING"
+theme_override_font_sizes/bold_italics_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/mono_font_size = 32
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+bbcode_enabled = true
+text = "PRESS THE CONTINUE BUTTON TO CONTINUE :3"
 horizontal_alignment = 1
