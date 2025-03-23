@@ -2,15 +2,26 @@
 
 ## remaining steps
 
+- [x] stylized 3d model or sprite/image of title
+- itch: cover image
+- [x] itch: screenshots
+- itch: gameplay video
+
+### small tasks
+
+- [ ] "Submissions should include a 1-minute video showcasing gameplay."
+  - i converted from WAV to OGG using ffmpeg
+- [ ] upload to itch
+- [ ] convert README.md to HTML for itch
+- [ ] style the itch page (CSS)
+
 ### highest fuckin' priority
 
-- [ ] game should start with menu showing / title screen
-- [ ] intermission scene
+- [x] intermission scene
   - wait for input, show stats
   - kills, time
-
----
-
+- [x] game should start with menu showing / title screen
+  - [x] add content warning TO THE TITLE SCREEn
 - [x] PRESS <KEY> TO RESTART
 - [x] NAME THE GAME
   - steam suggestions
@@ -29,16 +40,10 @@
   - [x] rabbit_b
   - [x] clean up tetrisk's maps
 
-### small tasks
+# done
 
-- [ ] "Submissions should include a 1-minute video showcasing gameplay."
-  - i converted from WAV to OGG using ffmpeg
-- [ ] upload to itch
-- [ ] convert README.md to HTML for itch
-- [ ] loading ui
-
----
-
+- [-] loading ui
+  - CANT GET IT WORKING, NO TIME :(
 - playtest feedback
   - a
   - [ ] taking damage indicator

@@ -1,13 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://cykmadwg5otcu"]
+[gd_scene load_steps=7 format=3 uid="uid://cykmadwg5otcu"]
 
 [ext_resource type="Script" uid="uid://bstjyclmr5154" path="res://ui/ui_title_screen.gd" id="1_62w0s"]
+[ext_resource type="Texture2D" uid="uid://cc2pui4va85uo" path="res://assets/title.png" id="2_4s1sd"]
+[ext_resource type="Environment" uid="uid://dg2uvq3syaww4" path="res://intermission/env_intermission.tres" id="3_8ngj3"]
+
+[sub_resource type="Gradient" id="Gradient_4s1sd"]
+interpolation_color_space = 2
+colors = PackedColorArray(0.22995, 0.466244, 0.417318, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8ngj3"]
+gradient = SubResource("Gradient_4s1sd")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_62w0s"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="BoxMesh" id="BoxMesh_62w0s"]
-
 [node name="UiTitleScreen" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,35 +26,49 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_62w0s")
 
+[node name="TextureRect2" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_8ngj3")
+
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -256.0
-offset_top = -256.0
-offset_right = 256.0
-offset_bottom = 256.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("ViewportTexture_62w0s")
+stretch_mode = 5
 
 [node name="SubViewport" type="SubViewport" parent="."]
-transparent_bg = true
-
-[node name="Camera3D" type="Camera3D" parent="SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.69668)
+size = Vector2i(960, 540)
 
 [node name="Node3D" type="Node3D" parent="SubViewport"]
 unique_name_in_owner = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewport/Node3D"]
-mesh = SubResource("BoxMesh_62w0s")
+[node name="TitleParent" type="Node3D" parent="SubViewport/Node3D"]
+unique_name_in_owner = true
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport"]
-transform = Transform3D(0.759022, 0.217472, -0.61367, 1.49012e-08, 0.942564, 0.334026, 0.651064, -0.253533, 0.715427, 0, 1.5499, 2.77035)
+[node name="Sprite3D" type="Sprite3D" parent="SubViewport/Node3D/TitleParent"]
+double_sided = false
+texture = ExtResource("2_4s1sd")
+
+[node name="Sprite3D2" type="Sprite3D" parent="SubViewport/Node3D/TitleParent"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+double_sided = false
+texture = ExtResource("2_4s1sd")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewport/Node3D"]
+environment = ExtResource("3_8ngj3")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.34344)
 
 [node name="Button" type="Button" parent="."]
 unique_name_in_owner = true
@@ -61,3 +85,17 @@ offset_bottom = -29.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "PRESS ANY KEY TO START"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -402.0
+offset_top = 14.0
+offset_right = 402.0
+offset_bottom = 62.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[center]⚠ content warnings for: cartoonish pixelated [color=red]blood, gore, and violence[/color] ⚠[/center]"

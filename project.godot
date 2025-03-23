@@ -10,8 +10,9 @@ config_version=5
 
 [application]
 
-config/name="PUNCH BLOCK ( working title )"
-config/description="a furry fast-paced cyber-fantasy FPS & beat-em-up with a dommed kobold ready to send back criminal hell spawn back to their homes! block enemies to steal their powers and style on thems"
+config/name="STREETS of BEAsTS"
+config/description="A furry fast-paced cyber-fantasy FPS & beat-em-up with a doomed kobold ready to send criminal hell-spawn back to their homes! 
+"
 config/version="DEV"
 run/main_scene="uid://b2iudv7qnucc6"
 run/disable_stderr=true

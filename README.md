@@ -8,7 +8,10 @@
 
 # description
 
+A furry fast-paced cyber-fantasy FPS & beat-em-up with a doomed kobold ready to send criminal hell-spawn back to their homes! 
+
 In this game, you play as a kobold going through the city and fighting through it level by level. There are several enemy types that you'll have to deal with by punching them and blocking their attacks.
+
 
 # credit
 
