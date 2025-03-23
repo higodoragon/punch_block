@@ -35,6 +35,7 @@
   - i converted from WAV to OGG using ffmpeg
 - [ ] upload to itch
 - [ ] convert README.md to HTML for itch
+- [ ] loading ui
 
 ---
 

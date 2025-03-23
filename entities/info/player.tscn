@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://mdes4hst2fpb"]
+[gd_scene load_steps=23 format=3 uid="uid://mdes4hst2fpb"]
 
 [ext_resource type="Script" uid="uid://ylp6vydxbh2w" path="res://entities/info/player.gd" id="1_merdl"]
 [ext_resource type="Resource" uid="uid://bg5qsd5cocirc" path="res://audio/player/parry.tres" id="2_526oe"]
@@ -7,22 +7,15 @@
 [ext_resource type="Resource" uid="uid://dmkalxggrhrpp" path="res://audio/player/block.tres" id="3_4flry"]
 [ext_resource type="Texture2D" uid="uid://ctatlt4v5fyf8" path="res://assets/crosshair.png" id="3_otayu"]
 [ext_resource type="PackedScene" uid="uid://lm36snfl5obu" path="res://components/hitbox_component.tscn" id="3_ug0ox"]
-[ext_resource type="Script" uid="uid://dbap0gqox0ty1" path="res://addons/markdownlabel/markdownlabel.gd" id="4_0smle"]
 [ext_resource type="Resource" uid="uid://dhw5r5jb3malg" path="res://audio/player/jump.tres" id="4_4flry"]
 [ext_resource type="PackedScene" uid="uid://jqb8joeyqwd7" path="res://ui/ui_portrait.tscn" id="4_gcvfo"]
 [ext_resource type="PackedScene" uid="uid://bfra4wer7rye8" path="res://ui/ui_hud_bar.tscn" id="4_ion2h"]
 [ext_resource type="PackedScene" uid="uid://ddemxbua6ylaj" path="res://components/audio_manager_component.tscn" id="4_ug0ox"]
-[ext_resource type="Script" uid="uid://dcx7crs23nf4" path="res://addons/markdownlabel/header_formats/h1_format.gd" id="5_ion2h"]
 [ext_resource type="Resource" uid="uid://ccnte0yvkmlmw" path="res://audio/player/damage.tres" id="5_q7rql"]
 [ext_resource type="PackedScene" uid="uid://ccvm8eicw8t4d" path="res://components/common_physics_component.tscn" id="5_quc4t"]
 [ext_resource type="Script" uid="uid://bfywh64wdf4dl" path="res://entities/info/stat_tracking.gd" id="5_vtr80"]
 [ext_resource type="Resource" uid="uid://e2u3ectmram6" path="res://audio/player/attack.tres" id="6_bx727"]
-[ext_resource type="Script" uid="uid://d0sin64i4v3op" path="res://addons/markdownlabel/header_formats/h2_format.gd" id="6_vtr80"]
 [ext_resource type="Resource" uid="uid://s7df1yfhqddl" path="res://audio/player/death.tres" id="7_bx727"]
-[ext_resource type="Script" uid="uid://dlok0dv1tq2bf" path="res://addons/markdownlabel/header_formats/h3_format.gd" id="7_gcvfo"]
-[ext_resource type="Script" uid="uid://bayuh2vafablg" path="res://addons/markdownlabel/header_formats/h4_format.gd" id="8_y5jtf"]
-[ext_resource type="Script" uid="uid://dfr1w7u3jgni3" path="res://addons/markdownlabel/header_formats/h5_format.gd" id="9_526oe"]
-[ext_resource type="Script" uid="uid://bsi6dexoofpe6" path="res://addons/markdownlabel/header_formats/h6_format.gd" id="10_4flry"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_merdl"]
 height = 2.1
@@ -40,66 +33,6 @@ border_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vtr80"]
 bg_color = Color(1, 1, 0, 1)
 border_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Resource" id="Resource_2i1rc"]
-resource_local_to_scene = true
-script = ExtResource("5_ion2h")
-font_size = 2.285
-is_bold = false
-is_italic = false
-is_underlined = false
-override_font_color = false
-font_color = Color(1, 1, 1, 1)
-
-[sub_resource type="Resource" id="Resource_q7rql"]
-resource_local_to_scene = true
-script = ExtResource("6_vtr80")
-font_size = 1.714
-is_bold = false
-is_italic = false
-is_underlined = false
-override_font_color = false
-font_color = Color(1, 1, 1, 1)
-
-[sub_resource type="Resource" id="Resource_bx727"]
-resource_local_to_scene = true
-script = ExtResource("7_gcvfo")
-font_size = 1.428
-is_bold = false
-is_italic = false
-is_underlined = false
-override_font_color = false
-font_color = Color(1, 1, 1, 1)
-
-[sub_resource type="Resource" id="Resource_x11um"]
-resource_local_to_scene = true
-script = ExtResource("8_y5jtf")
-font_size = 1.142
-is_bold = false
-is_italic = false
-is_underlined = false
-override_font_color = false
-font_color = Color(1, 1, 1, 1)
-
-[sub_resource type="Resource" id="Resource_wttgb"]
-resource_local_to_scene = true
-script = ExtResource("9_526oe")
-font_size = 1.0
-is_bold = false
-is_italic = false
-is_underlined = false
-override_font_color = false
-font_color = Color(1, 1, 1, 1)
-
-[sub_resource type="Resource" id="Resource_sfwig"]
-resource_local_to_scene = true
-script = ExtResource("10_4flry")
-font_size = 0.857
-is_bold = false
-is_italic = false
-is_underlined = false
-override_font_color = false
-font_color = Color(1, 1, 1, 1)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_tdjdb"]
 height = 2.1
@@ -291,16 +224,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_ion2h")
 bbcode_enabled = true
-script = ExtResource("4_0smle")
-automatic_links = false
-assume_https_links = false
-h1 = SubResource("Resource_2i1rc")
-h2 = SubResource("Resource_q7rql")
-h3 = SubResource("Resource_bx727")
-h4 = SubResource("Resource_x11um")
-h5 = SubResource("Resource_wttgb")
-h6 = SubResource("Resource_sfwig")
-metadata/_custom_type_script = "uid://dbap0gqox0ty1"
 
 [node name="CommonPhysicsComponent" parent="." instance=ExtResource("5_quc4t")]
 
