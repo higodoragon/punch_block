@@ -7,14 +7,17 @@ extends Node3D
 @onready var next_label = $CanvasLayer/Stats/NextLabel
 @onready var camera = $Camera3D
 @onready var ending = $CanvasLayer/Ending
-
+@onready var ending_g = $CanvasLayer/Ending/Gradiant
+@onready var ending_t = $CanvasLayer/Ending/Text
 var level : Level
 var is_last_level : bool = false
-var is_finale : bool = false
+
+var finale_state : int = 0
 
 func _ready() -> void:
 	ending.visible = false
 	stats.visible = true
+	finale_state = 0
 
 	var msecs : int = global.stage_time % 60
 	var secs : int = floor( global.stage_time / 60 ) % 60
@@ -46,16 +49,23 @@ func _ready() -> void:
 		next_label.text = "PRESS [color=RED]LEFT CLICK[/color] TO END THE GIBBING!"
 		is_last_level = true
 
-func do_finale():
-	#global.music_handler.stop_music()
-	ending.visible = true
-	stats.visible = false
-	is_finale = true
-
 func _physics_process(delta: float) -> void:
 	camera.global_rotation.y += 0.02 * delta
 	if Input.is_action_just_pressed("action_punch"):
-		if ( not is_last_level ) or ( is_last_level and is_finale ):
-			global.load_next_level()
-		else:
-			do_finale()
+		finale_state += 1
+	
+	if not is_last_level and finale_state == 1:
+		global.load_next_level()
+		return
+	
+	elif is_last_level and finale_state == 1:
+		ending.visible = true
+		stats.visible = false
+
+	elif is_last_level and finale_state == 2:
+		ending_g.visible = false
+		ending_t.visible = false
+
+	elif is_last_level and finale_state == 3:
+		global.load_next_level()
+		return
