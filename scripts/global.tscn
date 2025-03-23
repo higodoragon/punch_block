@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d3jyiof1ueqcm"]
+[gd_scene load_steps=17 format=3 uid="uid://d3jyiof1ueqcm"]
 
 [ext_resource type="Script" uid="uid://b0fmjkm4tkt7d" path="res://scripts/global.gd" id="1_bux5h"]
 [ext_resource type="PackedScene" uid="uid://ddemxbua6ylaj" path="res://components/audio_manager_component.tscn" id="2_lqipe"]
@@ -15,6 +15,7 @@
 [ext_resource type="Resource" uid="uid://bxqo7uvn4tamo" path="res://levels/lvl_tetrisk_b.tres" id="8_rll33"]
 [ext_resource type="Resource" uid="uid://cwcdt7drmu51f" path="res://audio/interactables/button.tres" id="9_lljc6"]
 [ext_resource type="Resource" uid="uid://bqbt8g5ag7q3o" path="res://audio/interactables/door.tres" id="10_1nvry"]
+[ext_resource type="PackedScene" uid="uid://cykmadwg5otcu" path="res://ui/ui_title_screen.tscn" id="11_1nvry"]
 
 [node name="Global" type="Node"]
 script = ExtResource("1_bux5h")
@@ -23,7 +24,10 @@ button_sfx = ExtResource("9_lljc6")
 door_sfx = ExtResource("10_1nvry")
 
 [node name="Menu" parent="." instance=ExtResource("3_bvdm8")]
-visible = false
+
+[node name="UiTitleScreen" parent="." node_paths=PackedStringArray("menu") instance=ExtResource("11_1nvry")]
+process_mode = 3
+menu = NodePath("../Menu")
 
 [node name="MusicHandler" parent="." instance=ExtResource("3_mkksr")]
 

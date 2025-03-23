@@ -8,7 +8,7 @@ class_name UiMenu
 var _dirty = false
 
 func _ready():
-	visible = false
+	visible = global.pause_active
 
 	global.paused.connect(_pause_toggled)
 	# mouse sens

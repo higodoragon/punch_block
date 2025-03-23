@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://cykmadwg5otcu"]
+
+[ext_resource type="Script" uid="uid://bstjyclmr5154" path="res://ui/ui_title_screen.gd" id="1_62w0s"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_62w0s"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="BoxMesh" id="BoxMesh_62w0s"]
+
+[node name="UiTitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_62w0s")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -256.0
+offset_right = 256.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_62w0s")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.93309)
+
+[node name="Node3D" type="Node3D" parent="SubViewport"]
+unique_name_in_owner = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewport/Node3D"]
+mesh = SubResource("BoxMesh_62w0s")
+
+[node name="Button" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -126.0
+offset_top = -91.0
+offset_right = 126.0
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "PRESS ANY KEY TO START"

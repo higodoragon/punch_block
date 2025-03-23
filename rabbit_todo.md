@@ -4,19 +4,19 @@
 
 ### highest fuckin' priority
 
-- [ ] NAME THE GAME
-  - steam suggestions
-	- Punchopolis
-	- Streets of Beasts
-	- Streets of BEAsTS <-
-- [ ] PRESS <KEY> TO RESTART
 - [ ] game should start with menu showing / title screen
 - [ ] intermission scene
   - wait for input, show stats
-	- kills, time
+  - kills, time
 
 ---
 
+- [x] PRESS <KEY> TO RESTART
+- [x] NAME THE GAME
+  - steam suggestions
+  - Punchopolis
+  - Streets of Beasts
+  - Streets of BEAsTS <-
 - [x] tutorial / tutorializing how to play
   - controls
   - how to block
@@ -24,7 +24,7 @@
   - punching restores MP lets you block
 - [x] maps
   - [x] rabbit_tutorial
-	- add a button
+  - add a button
   - [x] rabbit_a
   - [x] rabbit_b
   - [x] clean up tetrisk's maps
@@ -34,9 +34,10 @@
 - [ ] "Submissions should include a 1-minute video showcasing gameplay."
   - i converted from WAV to OGG using ffmpeg
 - [ ] upload to itch
-- [ ] clean up README (desc, game title, etc)
 - [ ] convert README.md to HTML for itch
-- [ ] REPLACE MARIO JUMP SOUND!
+
+---
+
 - playtest feedback
   - a
   - [ ] taking damage indicator
@@ -48,9 +49,8 @@
   - clip brush to pipes in Factory
   - NO rename factory to Foundry ?
   - [x] hook up enemy spawns in factory
-
----
-
+- [x] REPLACE MARIO JUMP SOUND!
+- [x] clean up README (desc, game title, etc)
 - [x] clip boxes near L button in factory
 - [x] make sure materials are grouped properly in each map (water in a fountain should be a separate func_detail than the concrete of the fountain)
 - [x] volume mixing pass
@@ -77,8 +77,8 @@
 - [ ] enemy spawn fx
   - "the code that handles activating enemies is on character base"
 - [ ] goon AOE stun visual effect
-- [ ] button sounds
-- [ ] door sounds
+- [x] button sounds
+- [x] door sounds
 
 ---
 
