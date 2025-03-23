@@ -7,7 +7,4 @@ func _func_godot_apply_properties( properties : Dictionary ):
 	global.funcgodot_common_defs( self, properties )
 	
 func do_target_activate( activator : Node3D ):
-	global.update_stage_stats()
-	print( global.intermission_time )
-	print( global.intermission_kills )
-	global.load_next_level()
+	global.boot_to_intermission()

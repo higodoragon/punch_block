@@ -5,6 +5,7 @@ extends Node
 @onready var music_handler: MusicHandler = $MusicHandler
 @onready var gib_handler: GibHandler = $GibHandler
 
+var intermission: Node3D
 var stage: Node3D
 var stage_path: String
 var stage_textures := "res://func_godot/gamedir/textures/"
@@ -41,6 +42,8 @@ var intermission_kills : String
 
 var current_level : Level = null
 
+@export var intermission_music : MusicInfo
+
 signal paused(way: bool)
 
 #
@@ -52,7 +55,7 @@ func _ready():
 	process_cmdargs()
 	console_defs()
 	MaterialReferences.compile_material_references()
-	music_handler.play_music(load('res://audio/music/music_no_one_steals.tres'))
+	music_handler.play_music( intermission_music )
 
 func _process(_delta: float) -> void:
 	pause_process()
@@ -162,28 +165,6 @@ func process_cmdargs():
 			stage_textures = arg_array[1]
 			continue
 
-func update_stage_stats():
-	var msecs : int = global.stage_time % 60
-	var secs : int = floor( global.stage_time / 60 ) % 60
-	var mins : int = floor( ( global.stage_time / 60 ) / 60 )
-
-	var draw_msecs := str( msecs )
-	if msecs < 10:
-		draw_msecs = "0" + draw_msecs
-
-	var draw_secs := str( secs )
-	if secs < 10:
-		draw_secs = "0" + draw_secs
-
-	var draw_mins := str( mins )
-	if mins < 10:
-		draw_mins = "0" + draw_mins
-	
-	var kill_per = int( float( global.enemy_count_killed ) / float( global.enemy_count ) * 100 )
-	
-	global.intermission_time = str( "TIME: ", draw_mins, ":", draw_secs, ".", draw_msecs )
-	global.intermission_kills = str( "KILLS: ", global.enemy_count_killed, " / ", global.enemy_count, "%" )
-
 #
 # stage loading
 
@@ -264,22 +245,26 @@ func get_level_from_map( map_path : String ):
 	return null
 
 func load_next_level():
-	var current_map_file = stage.local_map_file
-	var next_level : Level
-	var current_level_index : int
+	var current_level_index : int = -1
+	# find level id
+	
+	if level_order.is_empty():
+		push_error( "level order is empty!!!" )
+		return
+	
 	for i in level_order.size():
 		var level = level_order[i]
-		if get_res_from_uid( level.map ) == current_map_file:
+		if current_level == level:
 			current_level_index = i
 			break
 	
-	if current_level_index == -1:
-		print( "current map not found in level list!!" )
-		reload_stage()
-		return
-	
 	if current_level_index + 1 < level_order.size():
 		load_level( level_order[ current_level_index + 1 ] )
+		return
+
+	if current_level_index == -1:
+		print( "current map not found in level list!! booting to first level in the list" )
+		load_level( level_order[0] )
 		return
 
 	print( "you finished the game!!" )
@@ -290,7 +275,6 @@ func load_level( level: Level ):
 	pause_active = false
 	
 func clear_stage():
-	current_level = null
 	_clear_stage_real.call_deferred()
 
 func _clear_stage_real():
@@ -299,10 +283,6 @@ func _clear_stage_real():
 	
 	enemy_list.clear()
 	targets.clear()
-	
-	enemy_count = 0
-	enemy_count_killed = 0
-	stage_time = 0
 
 func load_stage(path: StringName):
 	stage_path = path
@@ -314,9 +294,14 @@ func reload_stage():
 
 func _load_stage_real():
 	_clear_stage_real()
+
+	# restart stats
+	enemy_count = 0
+	enemy_count_killed = 0
+	stage_time = 0
 	
 	stage = preload("res://scripts/fgm.tscn").instantiate()
-	printt(stage, stage_container, stage_path)
+	#printt(stage, stage_container, stage_path)
 	if 'uid' in stage_path:
 		var id_path = get_res_from_uid(stage_path)
 		print('LOADING MAP FROM UID %s' % id_path)
@@ -345,10 +330,19 @@ func _load_stage_real():
 	player.global_position = player_position
 	player.global_rotation = player_rotation
 	
-	current_level = get_level_from_map( stage_path )
+	current_level = get_level_from_map( stage.local_map_file )
+	print( current_level )
 	if current_level != null:
 		if current_level.music:
 			music_handler.play_music( current_level.music )
+
+func boot_to_intermission():
+	clear_stage()
+	music_handler.play_music( intermission_music )
+	
+	var intermission = preload("res://intermission/intermission.tscn").instantiate()
+	stage_container.add_child( intermission )
+
 #
 # pause / focus recover stuff
 

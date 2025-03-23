@@ -26,7 +26,7 @@ script = ExtResource("1_rqrmq")
 environment = SubResource("Environment_mimuf")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.766044, -0.642788, 0, 0.642788, 0.766044, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.939693, -0.34202, 0, 0.34202, 0.939693, 0, 0, 0)
 fov = 90.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
