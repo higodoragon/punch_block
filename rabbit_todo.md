@@ -1,19 +1,24 @@
 # RABBIT
 
+# web export issues
+
+- SUPER lag on first gib/gore
+- 1 sec lag on EVERY block
+- add "ENTER to PAUSE" hint
+
 ## remaining steps
+
+- [ ] upload to itch
+- [ ] convert README.md to HTML for itch
+- [ ] style the itch page (CSS)
+
+### small tasks
 
 - [x] stylized 3d model or sprite/image of title
 - itch: cover image
 - [x] itch: screenshots
 - [x] itch: gameplay video
-
-### small tasks
-
-- [ ] "Submissions should include a 1-minute video showcasing gameplay."
-  - i converted from WAV to OGG using ffmpeg
-- [ ] upload to itch
-- [ ] convert README.md to HTML for itch
-- [ ] style the itch page (CSS)
+- [x] "Submissions should include a 1-minute video showcasing gameplay."
 
 ### highest fuckin' priority
 
@@ -75,6 +80,7 @@
 - [x] implement new footsteps from Hawk
 - [x] sniper beep should be heard from further away
 - [x] get final music OGGs from Dated (see design gDoc)
+  - i converted from WAV to OGG using ffmpeg
   - [x] 3 main tracks
   - [x] small loops (title, intermission, ending?)
 

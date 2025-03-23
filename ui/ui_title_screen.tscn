@@ -59,4 +59,4 @@ offset_bottom = 62.0
 grow_horizontal = 2
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
-text = "[center]⚠ content warnings for: cartoonish pixelated [color=red]blood, gore, and violence[/color] ⚠[/center]"
+text = "[center]content warnings for: cartoonish pixelated [color=red]blood, gore, and violence[/color][/center]"
