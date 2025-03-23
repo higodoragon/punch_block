@@ -5,7 +5,7 @@
 - [x] stylized 3d model or sprite/image of title
 - itch: cover image
 - [x] itch: screenshots
-- itch: gameplay video
+- [x] itch: gameplay video
 
 ### small tasks
 
