@@ -1,29 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2chnwxb5hbyf"]
+[gd_scene load_steps=4 format=3 uid="uid://b2chnwxb5hbyf"]
 
-[ext_resource type="Sky" uid="uid://bc4rd5onhjrjd" path="res://sky.tres" id="1_562sb"]
 [ext_resource type="Script" uid="uid://cfs3867yfwg3l" path="res://intermission/intermission.gd" id="1_rqrmq"]
+[ext_resource type="Environment" uid="uid://dg2uvq3syaww4" path="res://intermission/env_intermission.tres" id="2_rqrmq"]
 [ext_resource type="Theme" uid="uid://6tmn5s4u30k0" path="res://theme.tres" id="3_b0epg"]
-
-[sub_resource type="Environment" id="Environment_mimuf"]
-background_mode = 2
-background_color = Color(0.5, 0.5, 0.5, 1)
-sky = ExtResource("1_562sb")
-ambient_light_source = 2
-ambient_light_color = Color(0.8514, 0.7524, 0.99, 1)
-reflected_light_source = 1
-fog_enabled = true
-fog_mode = 1
-fog_light_color = Color(0.0470588, 0.00392157, 0.160784, 1)
-fog_density = 1.0
-fog_sky_affect = 0.0
-fog_depth_begin = 0.0
-fog_depth_end = 140.0
 
 [node name="Intermission" type="Node3D"]
 script = ExtResource("1_rqrmq")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_mimuf")
+environment = ExtResource("2_rqrmq")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.939693, -0.34202, 0, 0.34202, 0.939693, 0, 0, 0)
