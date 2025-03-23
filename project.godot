@@ -158,4 +158,4 @@ shading/overrides/force_vertex_shading=true
 shading/overrides/force_lambert_over_burley=true
 textures/default_filters/anisotropic_filtering_level=4
 2d/snap/snap_2d_transforms_to_pixel=true
-environment/defaults/default_environment="uid://bbpibdciq47ca"
+environment/defaults/default_environment="uid://bvj3wubik3fvk"
