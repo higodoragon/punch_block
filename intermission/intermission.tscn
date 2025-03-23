@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2chnwxb5hbyf"]
+[gd_scene load_steps=7 format=3 uid="uid://b2chnwxb5hbyf"]
 
 [ext_resource type="Script" uid="uid://cfs3867yfwg3l" path="res://intermission/intermission.gd" id="1_rqrmq"]
 [ext_resource type="Environment" uid="uid://dg2uvq3syaww4" path="res://intermission/env_intermission.tres" id="2_rqrmq"]
 [ext_resource type="Theme" uid="uid://6tmn5s4u30k0" path="res://theme.tres" id="3_b0epg"]
+[ext_resource type="Texture2D" uid="uid://cetlr68gtywh" path="res://assets/raw/kobold_save.png" id="4_b0epg"]
+
+[sub_resource type="Gradient" id="Gradient_c2mt0"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 0.313726)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ytvp6"]
+gradient = SubResource("Gradient_c2mt0")
 
 [node name="Intermission" type="Node3D"]
 script = ExtResource("1_rqrmq")
@@ -16,24 +24,8 @@ fov = 90.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Ending" type="RichTextLabel" parent="CanvasLayer"]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/bold_italics_font_size = 32
-theme_override_font_sizes/italics_font_size = 32
-theme_override_font_sizes/mono_font_size = 32
-theme_override_font_sizes/normal_font_size = 32
-theme_override_font_sizes/bold_font_size = 32
-bbcode_enabled = true
-text = "TEST 1 2 3"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Stats" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -152,3 +144,48 @@ theme_override_font_sizes/bold_font_size = 32
 bbcode_enabled = true
 text = "PRESS THE CONTINUE BUTTON TO CONTINUE :3"
 horizontal_alignment = 1
+
+[node name="Ending" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Drawing" type="TextureRect" parent="CanvasLayer/Ending"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_b0epg")
+expand_mode = 2
+
+[node name="Gradiant" type="TextureRect" parent="CanvasLayer/Ending"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_ytvp6")
+
+[node name="Text" type="RichTextLabel" parent="CanvasLayer/Ending"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/bold_italics_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/mono_font_size = 32
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+bbcode_enabled = true
+text = "after killing thousounds, being a one kobold army
+that took over the city"
+horizontal_alignment = 1
+vertical_alignment = 1
