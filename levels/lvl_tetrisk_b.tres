@@ -9,4 +9,5 @@ map = "uid://bcxlb53pomt3j"
 title = "Factory"
 author = "tetrisk"
 music = ExtResource("1_5pqus")
+ambience_id = 1
 metadata/_custom_type_script = "uid://c584v8jufsvu6"

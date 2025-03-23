@@ -4,6 +4,7 @@ extends Node
 @onready var stage_container: Node3D = $StageContainer
 @onready var music_handler: MusicHandler = $MusicHandler
 @onready var gib_handler: GibHandler = $GibHandler
+@onready var focus_warning : Control = $FocusWarning
 
 var intermission: Node3D
 var title_menu : Node3D
@@ -22,6 +23,9 @@ var mouse_mode: int = Input.MOUSE_MODE_CAPTURED
 @export var level_order: Array[Level]
 @export var button_sfx : AudioSettings
 @export var door_sfx : AudioSettings
+
+@export var ambience_city : AudioStream
+@export var ambience_factory : AudioStream
 
 var player_active: bool = false
 var pause_active: bool = false:
@@ -351,8 +355,22 @@ func _load_stage_real():
 	current_level = get_level_from_map( stage.local_map_file )
 	print( current_level )
 	if current_level != null:
+		# play music
 		if current_level.music:
 			music_handler.play_music( current_level.music )
+
+		# play ambient
+		var ambience_player : AudioStreamPlayer = AudioStreamPlayer.new()
+		stage.add_child( ambience_player )
+		
+		if current_level.ambience_id != 0:
+			ambience_player.stream = ambience_factory
+		else:
+			ambience_player.stream = ambience_city
+		
+		ambience_player.volume_db = -20
+		ambience_player.bus = 'Effects'
+		ambience_player.play()
 
 func boot_to_intermission():
 	clear_stage()
@@ -397,9 +415,12 @@ var console_is_visible := false
 func pause_process():
 	focus_failed = Input.mouse_mode != mouse_mode
 
-	if focus_failed:
-		print("FOCUS FAILED")
-
+	if OS.get_name() == "Web":
+		focus_warning.visible = focus_failed
+		if global.player != null:
+			global.player.interface.visible = not focus_failed
+		
+	
 	if focus_try:
 		if focus_failed:
 			mouse_update()

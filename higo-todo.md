@@ -15,6 +15,7 @@
 - title screen, intermission screen
 [DONE] - enviroments ( fog / color )
 
+- focus screen
 - implement ambience
 [DONE] - fix the brute charging + footsteps frequencity
 [DONE] - implement new sounds

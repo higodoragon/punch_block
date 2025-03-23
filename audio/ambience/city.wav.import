@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://be5o4yjpn7kdr"
-path="res://.godot/imported/ambience_city.wav-731c4722c0370905bc3df1a0655672db.sample"
+path="res://.godot/imported/city.wav-a32bedd0f7bba4c64055e6a830848120.sample"
 
 [deps]
 
-source_file="res://audio/ambience/ambience_city.wav"
-dest_files=["res://.godot/imported/ambience_city.wav-731c4722c0370905bc3df1a0655672db.sample"]
+source_file="res://audio/ambience/city.wav"
+dest_files=["res://.godot/imported/city.wav-a32bedd0f7bba4c64055e6a830848120.sample"]
 
 [params]
 

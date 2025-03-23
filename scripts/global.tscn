@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d3jyiof1ueqcm"]
+[gd_scene load_steps=23 format=3 uid="uid://d3jyiof1ueqcm"]
 
 [ext_resource type="Script" uid="uid://b0fmjkm4tkt7d" path="res://scripts/global.gd" id="1_bux5h"]
 [ext_resource type="PackedScene" uid="uid://ddemxbua6ylaj" path="res://components/audio_manager_component.tscn" id="2_lqipe"]
@@ -16,8 +16,18 @@
 [ext_resource type="Resource" uid="uid://cwcdt7drmu51f" path="res://audio/interactables/button.tres" id="9_lljc6"]
 [ext_resource type="Resource" uid="uid://bqbt8g5ag7q3o" path="res://audio/interactables/door.tres" id="10_1nvry"]
 [ext_resource type="Resource" uid="uid://ditctw0yafsp1" path="res://audio/music/music_no_one_steals.tres" id="11_jxs33"]
+[ext_resource type="AudioStream" uid="uid://be5o4yjpn7kdr" path="res://audio/ambience/city.wav" id="11_uxql3"]
+[ext_resource type="AudioStream" uid="uid://cql0xylef717i" path="res://audio/ambience/factory.wav" id="12_nrutj"]
 [ext_resource type="Script" uid="uid://6goly5meyw33" path="res://scripts/particle_prerun.gd" id="17_ggeaj"]
 [ext_resource type="PackedScene" uid="uid://b67bnw5kuoqpy" path="res://scripts/gibber/particles_blood_explosion.tscn" id="18_rll33"]
+
+[sub_resource type="Gradient" id="Gradient_ggeaj"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0.0666667)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rll33"]
+gradient = SubResource("Gradient_ggeaj")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
 
 [node name="Global" type="Node"]
 process_mode = 3
@@ -25,9 +35,9 @@ script = ExtResource("1_bux5h")
 level_order = Array[ExtResource("2_pw06x")]([ExtResource("3_sxrh4"), ExtResource("7_ggeaj"), ExtResource("8_rll33"), ExtResource("5_1nvry"), ExtResource("6_jxs33"), ExtResource("6_pw06x")])
 button_sfx = ExtResource("9_lljc6")
 door_sfx = ExtResource("10_1nvry")
+ambience_city = ExtResource("11_uxql3")
+ambience_factory = ExtResource("12_nrutj")
 intermission_music = ExtResource("11_jxs33")
-
-[node name="Menu" parent="." instance=ExtResource("3_bvdm8")]
 
 [node name="MusicHandler" parent="." instance=ExtResource("3_mkksr")]
 
@@ -44,3 +54,46 @@ process_mode = 1
 script = ExtResource("17_ggeaj")
 
 [node name="ParticlesBloodExplosion" parent="ParticlePrerun" instance=ExtResource("18_rll33")]
+
+[node name="Menu" parent="." instance=ExtResource("3_bvdm8")]
+visible = false
+
+[node name="FocusWarning" type="Control" parent="."]
+visible = false
+top_level = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="FocusWarning"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_rll33")
+
+[node name="Label" type="RichTextLabel" parent="FocusWarning"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/bold_italics_font_size = 48
+theme_override_font_sizes/italics_font_size = 48
+theme_override_font_sizes/mono_font_size = 48
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "GAME UNFOCUSED!
+
+CLICK THE ON THE GAME SCREEN AND [color=Yellow]PAUSE[/color] WITH [color=Red]ENTER[/color]
+
+NOTE: chromium can be a little unstable with games that grab the mouse."
+horizontal_alignment = 1
+vertical_alignment = 1

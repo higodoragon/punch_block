@@ -7,6 +7,7 @@ class_name Player extends CharacterBase
 
 @onready var camera: Camera3D = $Camera3D
 @onready var collision: CollisionShape3D = $CollisionShape3D
+@onready var interface: CanvasLayer = $Interface
 @onready var hud: Control = $Interface/HUD
 @onready var hud_crosshair: TextureRect = $Interface/HUD/Crosshair
 @onready var hud_health: Label = $Interface/HUD/HealthLabel

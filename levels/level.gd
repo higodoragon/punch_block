@@ -5,3 +5,4 @@ class_name Level
 @export var title: String
 @export var author: String
 @export var music: MusicInfo
+@export var ambience_id : int = 0
