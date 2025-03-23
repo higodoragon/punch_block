@@ -134,6 +134,9 @@ func common_physics(delta):
 	
 	snap_to_stair(delta)
 	parent.move_and_slide()
+	
+	if parent is Player:
+		parent.viewmodel_move_to_camera()
 
 	if parent.position.y < -500:
 		if parent is Player:

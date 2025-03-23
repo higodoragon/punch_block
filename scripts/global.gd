@@ -19,6 +19,10 @@ var player: CharacterBase
 var player_position: Vector3 = Vector3.ZERO
 var player_rotation: Vector3 = Vector3.ZERO
 var mouse_mode: int = Input.MOUSE_MODE_CAPTURED
+
+var title_first_click : bool = false
+var title_initial_delay : int = 60
+
 @export var mouse_sensitivity: float = 3
 @export var level_order: Array[Level]
 @export var button_sfx : AudioSettings
@@ -32,6 +36,7 @@ var pause_active: bool = false:
 	set(val):
 		pause_active = val
 		paused.emit(val)
+
 var focus_try: bool = false
 var focus_failed: bool = false
 
