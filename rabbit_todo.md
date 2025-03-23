@@ -5,8 +5,15 @@
 ### highest fuckin' priority
 
 - [ ] NAME THE GAME
+  - steam suggestions
+    - Punchopolis
+    - Streets of Beasts
+    - Streets of BEAsTS <-
 - [ ] PRESS <KEY> TO RESTART
-- [ ] game should start with menu showing
+- [ ] game should start with menu showing / title screen
+- [ ] intermission scene
+  - wait for input, show stats
+    - kills, time
 
 ---
 
@@ -17,7 +24,7 @@
   - punching restores MP lets you block
 - [x] maps
   - [x] rabbit_tutorial
-	- add a button
+    - add a button
   - [x] rabbit_a
   - [x] rabbit_b
   - [x] clean up tetrisk's maps
@@ -32,18 +39,19 @@
 - [ ] REPLACE MARIO JUMP SOUND!
 - playtest feedback
   - a
-	- [ ] taking damage indicator
-	- [x] footsteps too loud
-	- [-] nerf alleys ending
+  - [ ] taking damage indicator
+  - [x] footsteps too loud
+  - [-] nerf alleys ending
   - b
-	- [x] fix tutorial door going wrong way
-	- [-] make tutorial grunt at end easier to get
-	- clip brush to pipes in Factory
-	- NO rename factory to Foundry ?
-	- [x] hook up enemy spawns in factory
+  - [x] fix tutorial door going wrong way
+  - [-] make tutorial grunt at end easier to get
+  - clip brush to pipes in Factory
+  - NO rename factory to Foundry ?
+  - [x] hook up enemy spawns in factory
 
 ---
 
+- [x] clip boxes near L button in factory
 - [x] make sure materials are grouped properly in each map (water in a fountain should be a separate func_detail than the concrete of the fountain)
 - [x] volume mixing pass
 - [x] content warnings (cartoon pixelated blood, gore, and violence)
@@ -69,6 +77,8 @@
 - [ ] enemy spawn fx
   - "the code that handles activating enemies is on character base"
 - [ ] goon AOE stun visual effect
+- [ ] button sounds
+- [ ] door sounds
 
 ---
 
