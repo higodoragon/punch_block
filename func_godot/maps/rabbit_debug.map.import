@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://dydgt7wsdid68"
+path="res://.godot/imported/rabbit_debug.map-07356aa48efbb4160faf700bdb813db0.tres"
+
+[deps]
+
+source_file="res://func_godot/maps/rabbit_debug.map"
+dest_files=["res://.godot/imported/rabbit_debug.map-07356aa48efbb4160faf700bdb813db0.tres"]
+
+[params]
+

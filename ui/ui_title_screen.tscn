@@ -35,13 +35,16 @@ texture = SubResource("ViewportTexture_62w0s")
 transparent_bg = true
 
 [node name="Camera3D" type="Camera3D" parent="SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.93309)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.69668)
 
 [node name="Node3D" type="Node3D" parent="SubViewport"]
 unique_name_in_owner = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewport/Node3D"]
 mesh = SubResource("BoxMesh_62w0s")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport"]
+transform = Transform3D(0.759022, 0.217472, -0.61367, 1.49012e-08, 0.942564, 0.334026, 0.651064, -0.253533, 0.715427, 0, 1.5499, 2.77035)
 
 [node name="Button" type="Button" parent="."]
 unique_name_in_owner = true
