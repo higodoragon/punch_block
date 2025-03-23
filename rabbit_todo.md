@@ -3,14 +3,19 @@
 # web export issues
 
 - [-] SUPER lag on first gib/gore
-- 1 sec lag on EVERY block
-- add "ENTER to PAUSE" hint
+- [x] 1 sec lag on EVERY block
+  - had to write my own shader DX
+- [x] add "ENTER to PAUSE" hint
 
 ## remaining steps
 
 - [ ] upload to itch
 - [ ] convert README.md to HTML for itch
 - [ ] style the itch page (CSS)
+- from Steam
+  - cover art
+  - brother art
+  - clip factory a lil
 
 ### small tasks
 
