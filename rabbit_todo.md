@@ -8,6 +8,7 @@
 - [ ] intermission scene
   - wait for input, show stats
   - kills, time
+- add content warning TO THE TITLE SCREEn
 
 ---
 
