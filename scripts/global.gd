@@ -18,10 +18,12 @@ var stage_time : int = 0
 var player: CharacterBase
 var player_position: Vector3 = Vector3.ZERO
 var player_rotation: Vector3 = Vector3.ZERO
-var mouse_mode: int = Input.MOUSE_MODE_CAPTURED
+
+var mouse_mode: Input.MouseMode = Input.MOUSE_MODE_VISIBLE
 
 var title_first_click : bool = false
 var title_initial_delay : int = 60
+var focus_failed_time : int = 0
 
 @export var mouse_sensitivity: float = 3
 @export var level_order: Array[Level]
@@ -62,19 +64,24 @@ signal paused(way: bool)
 # preload sounds
 
 func _ready():
+	Console.console_opened.connect( console_opened )
+	Console.console_closed.connect( console_closed )
+	
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	stage_container.process_mode = Node.PROCESS_MODE_PAUSABLE
+	
 	process_cmdargs()
 	console_defs()
+	
 	MaterialReferences.compile_material_references()
 
 func _process(_delta: float) -> void:
-	pause_process()
-
 	# HUD DISPLAY
 	if player != null:
 		player.hud.visible = not pause_active
 		player.viewmodel_move_to_camera()
+
+	pause_process()
 
 func _physics_process(delta: float) -> void:
 	if freezeframe > 0:
@@ -83,7 +90,7 @@ func _physics_process(delta: float) -> void:
 	if message_time > 0:
 		message_time -= 1
 
-	if message_time <= 0 and player != null:
+	if player != null and message_time <= 0:
 		player.hud_message.text = ""
 	
 	stage_time += 1
@@ -91,12 +98,6 @@ func _physics_process(delta: float) -> void:
 func _input(event: InputEvent):
 	if focus_failed and event is InputEventMouseButton and event.button_index == 1:
 		focus_try = true
-	
-	console_is_visible_old = console_is_visible
-	console_is_visible = Console.is_visible()
-	
-	if console_is_visible != console_is_visible_old:
-		mouse_update()
 
 	if Input.is_action_just_pressed("debug_togglefullscreen"):
 		if DisplayServer.window_get_mode() != DisplayServer.WINDOW_MODE_FULLSCREEN:
@@ -105,21 +106,35 @@ func _input(event: InputEvent):
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		return
 
-	if not title_menu:
-		if pause_pressed() and not console_is_visible:
-			pause_active = not pause_active
+	if Console.is_visible():
+		return
+
+	if intermission:
+		# intermission disables pauses
+		if pause_active != false:
+			pause_active = false
 			mouse_update()
-		
-		if Input.is_action_just_pressed("debug_reloadstage"):
-			reload_stage()
-			return
-		
-		if player:
-			player.do_input_handiling()
-	else:
+	elif title_menu:
+		# title menu pause behavior
 		if ( not pause_active and event.is_pressed() ) or ( pause_active and pause_pressed() ):
 			pause_active = not pause_active
 			mouse_update()
+	else:
+		# normal pause behavior
+		if pause_pressed():
+			pause_active = not pause_active
+			mouse_update()
+		
+	if stage:
+		if Input.is_action_just_pressed("debug_reloadstage"):
+			reload_stage()
+			return
+
+func console_opened():
+	mouse_update()
+
+func console_closed():
+	mouse_update()
 
 func console_defs():
 	Console.add_command("map", console_map, ["map name"])
@@ -332,7 +347,6 @@ func _load_stage_real():
 	if 'uid' in stage_path:
 		var id_path = get_res_from_uid(stage_path)
 		print('LOADING MAP FROM UID %s' % id_path)
-		
 		stage.local_map_file = id_path
 	else:
 		print('NOT LOADING MAP FROM UID')
@@ -350,12 +364,6 @@ func _load_stage_real():
 	var world_environment := WorldEnvironment.new()
 	world_environment.environment = preload("res://environment_outside.tres")
 	stage.add_child(world_environment)
-	
-	# add player
-	player = preload("res://entities/info/player.tscn").instantiate()
-	stage.add_child(player)
-	player.global_position = player_position
-	player.global_rotation = player_rotation
 	
 	current_level = get_level_from_map( stage.local_map_file )
 	print( current_level )
@@ -375,15 +383,23 @@ func _load_stage_real():
 		
 		ambience_player.volume_db = -20
 		ambience_player.bus = 'Effects'
+		ambience_player.process_mode = Node.PROCESS_MODE_ALWAYS
 		ambience_player.play()
+
+	# add player
+	player = preload("res://entities/info/player.tscn").instantiate()
+	stage.add_child( player )
+	player.global_position = global.player_position
+	player.global_rotation = global.player_rotation
+	player.reset_physics_interpolation()
+	global.mouse_update()
 
 func boot_to_intermission():
 	clear_stage()
 	music_handler.play_music( intermission_music )
-	
 	intermission = preload("res://intermission/intermission.tscn").instantiate()
 	stage_container.add_child( intermission )
-	set_mouse_mode( Input.MOUSE_MODE_VISIBLE )
+	mouse_update()
 
 func title_open():
 	clear_stage()
@@ -391,25 +407,36 @@ func title_open():
 	
 	title_menu = preload("res://ui/ui_title_screen.tscn").instantiate()
 	stage_container.add_child( title_menu )
-	set_mouse_mode( Input.MOUSE_MODE_VISIBLE )
-
 	music_handler.play_music( title_music )
+	mouse_update()
 #
 # pause / focus recover stuff
 
 func mouse_update():
-	set_mouse_mode(get_mouse_sugested_state())
+	set_mouse_mode( get_mouse_sugested_state() )
 
-func get_mouse_sugested_state() -> int:
+func get_mouse_sugested_state() -> Input.MouseMode:
 	if Console.is_visible():
+		print("console_visible")
+		return Input.MOUSE_MODE_VISIBLE
+
+	if title_menu != null:
+		print("title_menu")
+		return Input.MOUSE_MODE_VISIBLE
+
+	if intermission != null:
+		print("intermission")
 		return Input.MOUSE_MODE_VISIBLE
 
 	if pause_active:
+		print("paused")
 		return Input.MOUSE_MODE_VISIBLE
 
 	if player != null:
+		print("controlling character")
 		return Input.MOUSE_MODE_CAPTURED
 
+	print("default")
 	return Input.MOUSE_MODE_VISIBLE
 
 func pause_pressed():
@@ -421,22 +448,25 @@ var console_is_visible := false
 func pause_process():
 	focus_failed = Input.mouse_mode != mouse_mode
 
+	if focus_failed:
+		focus_failed_time += 1
+	else:
+		focus_failed_time = 0
+
+	var focus_failed_warning = focus_failed_time > 5
+
 	if OS.get_name() == "Web":
-		focus_warning.visible = focus_failed
+		focus_warning.visible = focus_failed_warning
 		if global.player != null:
-			global.player.interface.visible = not focus_failed
+			global.player.hud.visible = global.player.hud.visible and not focus_failed_warning
 		
-	
 	if focus_try:
 		if focus_failed:
 			mouse_update()
 		else:
 			focus_try = false
 
-	if focus_failed or pause_active or Console.is_visible() or freezeframe > 0:
-		get_tree().paused = true
-	else:
-		get_tree().paused = false
+	get_tree().paused = ( focus_failed or pause_active or Console.is_visible() or freezeframe > 0 )
 
 #
 # random useful funcs
@@ -444,8 +474,8 @@ func pause_process():
 func check(parent: Node, component_name: String):
 	return (component_name in parent and component_name != null)
 
-func set_mouse_mode(mode: int):
-	Input.set_mouse_mode(mode)
+func set_mouse_mode( mode: int ):
+	Input.mouse_mode = mode
 	mouse_mode = mode
 
 func damage( victim : Node, attack : Attack ) -> AttackResult:

@@ -32,6 +32,8 @@ fill_to = Vector2(0, 0)
 
 [node name="Global" type="Node"]
 process_mode = 3
+process_priority = -2
+process_physics_priority = -2
 script = ExtResource("1_bux5h")
 level_order = Array[ExtResource("2_pw06x")]([ExtResource("3_sxrh4"), ExtResource("7_ggeaj"), ExtResource("8_rll33"), ExtResource("5_1nvry"), ExtResource("6_jxs33"), ExtResource("6_pw06x")])
 button_sfx = ExtResource("9_lljc6")

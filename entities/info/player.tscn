@@ -38,6 +38,9 @@ border_color = Color(0, 0, 0, 1)
 height = 2.1
 
 [node name="Player" type="CharacterBody3D"]
+process_priority = -1
+process_physics_priority = -1
+top_level = true
 collision_layer = 4
 collision_mask = 11
 floor_constant_speed = true
@@ -64,6 +67,7 @@ top_level = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
+process_mode = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
 current = true
 fov = 90.0
@@ -80,6 +84,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 
 [node name="Crosshair" type="TextureRect" parent="Interface/HUD"]
 layout_mode = 1
@@ -224,6 +229,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_ion2h")
 bbcode_enabled = true
+scroll_active = false
+shortcut_keys_enabled = false
+horizontal_alignment = 1
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
 
 [node name="CommonPhysicsComponent" parent="." instance=ExtResource("5_quc4t")]
 

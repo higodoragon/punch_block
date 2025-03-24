@@ -81,7 +81,6 @@ var punch_buffer: int = 0
 var punch_animation: int = 0
 
 func _ready():
-	global.mouse_update()
 	# animation stuff
 	viewmodel_animation.animation_finished.connect(viewmodel_finished_animation)
 	viewmodel_play_animation("idle")
@@ -90,12 +89,10 @@ func _ready():
 	# bracelet.mesh.surface_set_material(0, bracelet_material.duplicate())
 	bracelet.mesh.surface_set_material(0, ring_shader)
 	bracelet_material = bracelet.mesh.surface_get_material(0)
-	
 
 func viewmodel_move_to_camera():
 	viewmodel.global_position = camera.global_position
 	viewmodel.global_rotation = camera.global_rotation
-	pass
 	
 func viewmodel_finished_animation(animation_name: String):
 	if animation_name == "die":
@@ -108,54 +105,6 @@ func viewmodel_finished_animation(animation_name: String):
 		return
 	
 	viewmodel_play_animation("idle")
-	
-func _input(event: InputEvent) -> void:
-	if health.dead:
-		return
-
-	if event is InputEventMouseMotion:
-		if not Input.mouse_mode == Input.MOUSE_MODE_CAPTURED: return
-		var mouse_look: Vector2 = - event.relative * global.mouse_sensitivity * 0.1
-		rotation_degrees.y += mouse_look.x
-		camera.rotation_degrees.x += mouse_look.y
-		# godot bugs visuals when rotation.x is 90 degres
-		camera.rotation_degrees.x = clampf(camera.rotation_degrees.x, -89.9, 89.9)
-
-func _process(delta: float):
-	# stair smoothing
-	view_step_offset = lerp(view_step_offset, 0.0, delta * 20)
-	camera.position.y = max(view_height + view_step_offset, -1)
-	
-	# death animation
-	if health.dead:
-		if view_height > 0.25:
-			view_height = max(view_height - (delta * 1.5), 0.25)
-
-		if target != null:
-			var look_rotation: Vector3 = global.look_at_return(self, target.global_position)
-			camera.rotation.x = lerp_angle(camera.rotation.x, look_rotation.x, delta * 8)
-			rotation.y = lerp_angle(rotation.y, look_rotation.y, delta * 8)
-
-	# HUD DISPLAY
-	hud_health.text = str(int(health.health / health.max_health * 100), "%")
-	hud_power.text = str(int(float(magic) / float(magic_max) * 100), "%")
-	
-	ring_flash(parry_active)
-
-	if parry_active:
-		hud_debug_block.text = "SUPERBLOCK"
-	elif block_active:
-		hud_debug_block.text = "Blocking"
-	else:
-		hud_debug_block.text = ""
-
-	hud_debug_action.text = str(action_delay)
-	viewmodel_move_to_camera()
-
-	if health.dead:
-		hud_message.text = "[center][color=YELLOW]YOU GOT BEAsTED![/color] \nPRESS [color=RED]\"LEFT CLICK\"[/color] or [color=RED]\"F5\"[/color] to retry![/center]"
-		if Input.is_action_just_pressed("action_punch"):
-			global.reload_stage()
 
 func viewmodel_play_animation(animation: StringName):
 	viewmodel_animation.stop()
@@ -167,18 +116,23 @@ func view_direction() -> Vector3:
 func on_parry_frametime():
 	return block_time < parry_frametime
 
-func do_input_handiling():
+func _input( event: InputEvent ):
+	if health.dead:
+		return
+	
 	if Input.is_action_pressed("action_block"):
 		block_buffer = 20
 
 	if Input.is_action_just_pressed("action_punch"):
 		punch_buffer = 20
 
-	if block_buffer > 0:
-		block_buffer -= 1
-
-	if punch_buffer > 0:
-		punch_buffer -= 1
+	if event is InputEventMouseMotion:
+		if not Input.mouse_mode == Input.MOUSE_MODE_CAPTURED: return
+		var mouse_look: Vector2 = - event.relative * global.mouse_sensitivity * 0.1
+		rotation_degrees.y += mouse_look.x
+		camera.rotation_degrees.x += mouse_look.y
+		# godot bugs visuals when rotation.x is 90 degres
+		camera.rotation_degrees.x = clampf(camera.rotation_degrees.x, -89.9, 89.9)
 
 func do_block():
 	if magic > 0 and block_buffer > 0 and action_delay <= 0 and not block_active and not block_input:
@@ -388,15 +342,55 @@ func do_move():
 		jump_buffer_time -= 1
 
 func _physics_process(delta: float) -> void:
-	if health.dead:
-		physics.common_physics(delta)
-		return
-
-	do_punch()
-	do_block()
-	do_move()
+	if not health.dead:
+		do_punch()
+		do_block()
+		do_move()
 
 	physics.common_physics(delta)
+
+	# stair smoothing
+	view_step_offset = lerp( view_step_offset, 0.0, delta * 20 )
+	camera.position.y = max(view_height + view_step_offset, -1)
+	
+	# death animation
+	if health.dead:
+		if view_height > 0.25:
+			view_height = max(view_height - (delta * 1.5), 0.25)
+
+		if target != null:
+			var look_rotation: Vector3 = global.look_at_return(self, target.global_position)
+			camera.rotation.x = lerp_angle(camera.rotation.x, look_rotation.x, delta * 8)
+			rotation.y = lerp_angle(rotation.y, look_rotation.y, delta * 8)
+
+	# HUD DISPLAY
+	hud_health.text = str(int(health.health / health.max_health * 100), "%")
+	hud_power.text = str(int(float(magic) / float(magic_max) * 100), "%")
+	
+	ring_flash(parry_active)
+
+	if health.dead:
+		hud_message.text = "[center][color=YELLOW]YOU GOT BEAsTED![/color] \nPRESS [color=RED]\"LEFT CLICK\"[/color] or [color=RED]\"F5\"[/color] to retry![/center]"
+		if Input.is_action_just_pressed("action_punch"):
+			global.reload_stage()
+
+	# TIMERS
+	if block_buffer > 0:
+		block_buffer -= 1
+
+	if punch_buffer > 0:
+		punch_buffer -= 1
+
+	viewmodel_move_to_camera()
+
+	#if parry_active:
+	#	hud_debug_block.text = "SUPERBLOCK"
+	#elif block_active:
+	#	hud_debug_block.text = "Blocking"
+	#else:
+	#	hud_debug_block.text = ""
+
+	#hud_debug_action.text = str(action_delay)
 
 
 func ring_flash(way: bool):
