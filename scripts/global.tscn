@@ -20,7 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://cql0xylef717i" path="res://audio/ambience/factory.wav" id="12_nrutj"]
 [ext_resource type="Resource" uid="uid://cg3xeei1f758i" path="res://audio/music/make_way.tres" id="14_nrutj"]
 [ext_resource type="Script" uid="uid://6goly5meyw33" path="res://scripts/particle_prerun.gd" id="17_ggeaj"]
-[ext_resource type="PackedScene" uid="uid://b67bnw5kuoqpy" path="res://scripts/gibber/particles_blood_explosion.tscn" id="18_rll33"]
+[ext_resource type="PackedScene" uid="uid://b67bnw5kuoqpy" path="res://scripts/gibber/blood_explosion_particles.tscn" id="18_rll33"]
 
 [sub_resource type="Gradient" id="Gradient_ggeaj"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0.0666667)

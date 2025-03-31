@@ -53,14 +53,14 @@ texture = ExtResource("2_q1iuu")
 hframes = 11
 
 [node name="AIComponent" parent="." instance=ExtResource("3_0ifsd")]
-melee_range = 6.0
-melee_activation_range = 4.5
-melee_damage = 2.0
+melee_range = 5.0
+melee_activation_range = 5.0
+melee_damage = 2.5
 melee_knockback = 50.0
 melee_delay_amount = 60
-melee_delay_randomness = 30
-attack_damage = 4.0
-attack_knockback = 100.0
+melee_delay_randomness = 60
+attack_damage = 2.5
+attack_knockback = 0.0
 attack_delay_amount = 240
 attack_delay_randomness = 60
 
@@ -71,7 +71,7 @@ sprite = NodePath("../Sprite3D")
 
 [node name="HealthComponent" parent="." instance=ExtResource("7_4r2rf")]
 max_health = 8.0
-knockback_multiplier = 0.1
+knockback_multiplier = 0.0
 
 [node name="AudioManagerComponent" parent="." instance=ExtResource("5_7lx1j")]
 

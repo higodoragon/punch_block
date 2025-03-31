@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkjyuqym6io5c"]
+
+[ext_resource type="Texture2D" uid="uid://blenlnuv7hdls" path="res://assets/gore_explosion.png" id="1_8vqg3"]
+[ext_resource type="Script" uid="uid://cq15bj81mm67b" path="res://scripts/gibber/blood_explosion_sprite.gd" id="2_150j6"]
+
+[node name="BloodExplosionSprite" type="Sprite3D"]
+pixel_size = 0.2
+billboard = 1
+texture_filter = 0
+texture = ExtResource("1_8vqg3")
+hframes = 6
+script = ExtResource("2_150j6")

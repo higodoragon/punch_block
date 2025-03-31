@@ -52,24 +52,24 @@ func do_melee_active():
 
 func do_melee():
 	if ai.target:
-		ai.generic_melee()
-		ai.set_melee_delay()
+		var attack_result : AttackResult = ai.generic_melee()
+		if attack_result != null and attack_result.was_blocked:
+			var radious = 10
+			if attack_result.was_parried:
+				radious = 200
+				
+			for e in global.enemy_list:
+				if e == null:
+					continue
 
-func do_block_reaction( inflictor : Node3D, is_parry : bool ):
-	var radious = 10
-	if is_parry:
-		radious = 200
+				if not attack_result.was_parried and not e is EnemyGoon:
+					continue
+
+				var distance = global_position.distance_to( e.global_position )
+				if distance < radious and not ai.line_of_sight_result( global_position, e.global_position ):
+					global.stun( e )
 		
-	for e in global.enemy_list:
-		if e == null:
-			continue
-
-		if not is_parry and not e is EnemyGoon:
-			continue
-
-		var distance = global_position.distance_to( e.global_position )
-		if distance < radious and not ai.line_of_sight_result( global_position, e.global_position ):
-			global.stun( e )
+		ai.set_melee_delay()
 
 func _physics_process( delta : float ):
 	physics.common_physics( delta )

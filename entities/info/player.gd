@@ -221,13 +221,6 @@ func do_block_damage(attack: Attack, attack_result: AttackResult):
 
 		# juicy freeze frame		
 		global.freezeframe = 10
-			
-		if attack.parry_reaction:
-			if attack.inflictor != null and global.check(attack.inflictor, "do_block_reaction"):
-				attack.inflictor.do_block_reaction(self, did_parry)
-		
-			elif attack.agressor != null and global.check(attack.agressor, "do_block_reaction"):
-				attack.agressor.do_block_reaction(self, did_parry)
 		
 		attack_result.was_blocked = true
 		attack_result.was_parried = on_parry_frametime()

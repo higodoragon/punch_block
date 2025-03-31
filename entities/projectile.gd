@@ -23,13 +23,6 @@ var state_hit : Array = [
 	{ destroy = true },
 ]
 
-var state_hit_parry : Array = [
-	{ delay = 4, frame = 1 },
-	{ delay = 4, frame = 2 },
-	{ delay = 4, frame = 3 },
-	{ destroy = true },
-]
-
 var shape_query : PhysicsShapeQueryParameters3D
 var shape : SphereShape3D
 
@@ -65,7 +58,7 @@ func _physics_process( delta: float ) -> void:
 
 	var result = get_world_3d().direct_space_state.intersect_shape( shape_query, 1 )
 	if result:
-		
+
 		var collided = result[0].collider
 		if combat.object_is_hitbox( collided ):
 			var victim = collided.parent
@@ -74,16 +67,17 @@ func _physics_process( delta: float ) -> void:
 			if is_close_enough and attack.infight_group == victim.infight_group and victim.infight_group != 0:
 				#ignore members of the same species
 				return
-
+			
 			do_hit()
+
 			attack.knockback_position = victim.global_position + -self.velocity
-			global.damage( victim, attack )
+			var attack_result : AttackResult = global.damage( victim, attack )
+
+			if attack_result.was_blocked:
+				queue_free()
 		else:
 			do_hit()
 
 func do_hit():
 	global.audio_play_at( sfx_impact, global_position )
 	state.set_state( state_hit )
-
-func do_block_reaction( attacker : Node3D, is_parry : bool ):
-	queue_free()
