@@ -50,6 +50,9 @@ var ring_shader = preload('res://shader_material_ring.tres')
 var power_max: int = 60 * 4
 var power: int = power_max
 
+# MOVE vars
+var bunny_hops : int = 0
+
 # BLOCK vars
 var action_delay: int = 0
 
@@ -307,32 +310,90 @@ func do_die(killer = null):
 	if killer != null:
 		target = killer
 
-func do_move():
-	# jump
-	if Input.is_action_just_pressed("move_jump"):
-		jump_buffer_time = jump_buffer_base
-	
-	if physics.is_on_ground():
-		jump_cayote_time = jump_cayote_base
-	
-	if jump_buffer_time and jump_cayote_time:
-		audio.play(sfx_jump)
-		velocity.y = jump_power
-		jump_cayote_time = 0
-		jump_buffer_time = 0
+var on_ground_prev : bool = false
+var on_ground : bool = false
+var on_slide : bool = false
+var on_slide_recovery : int = 0
+var velocity_prev : Vector3 = Vector3.ZERO
+var global_rotation_prev : Vector3 = Vector3.ZERO
 
+func do_move():
 	# horizotal movement
 	var input_dir: Vector2 = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	var direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+
+	# jump
+	on_ground_prev = on_ground
+	on_ground = physics.is_on_ground()
+
+	if Input.is_action_just_pressed("move_jump"):
+		jump_buffer_time = jump_buffer_base
 	
-	velocity.x += direction.x * speed
-	velocity.z += direction.z * speed
+	if on_ground:
+		jump_cayote_time = jump_cayote_base
+
+	var current_horizontal_speed = Vector3.ZERO.distance_to( Vector3( velocity.x, 0, velocity.z ) )
+
+	if bunny_hops > 0 and Input.is_action_pressed("move_jump"):
+		on_slide = true
+	else:
+		if on_slide:
+			on_slide_recovery = 10
+		
+		on_slide = false
+
+	if bunny_hops > 1 or on_slide or on_slide_recovery > 0:
+		speed = 0
+		friction = 1
+	else:
+		speed = 1.5
+		friction = 0.9
+	
+	if on_ground and on_slide:
+		# sliding
+		var slide_speed = Vector3.ZERO.distance_to( Vector3( velocity.x, 0, velocity.z ) )
+		if on_ground_prev:
+			slide_speed *= 0.995
+		
+		if not on_ground_prev:
+			# adds vertical speed on ground collision
+			slide_speed = Vector3.ZERO.distance_to( Vector3( velocity.x, abs( velocity_prev.y ) / 2, velocity.z ) )
+		
+		var slide_velocity = global.angle_to_direction( global_rotation.y ) * slide_speed
+		velocity.x = slide_velocity.x
+		velocity.z = slide_velocity.z
+	else:
+		# not sliding
+		velocity.x += direction.x * speed
+		velocity.z += direction.z * speed
+
+	if jump_cayote_time:
+		if jump_buffer_time:
+			if on_slide_recovery:
+				on_slide_recovery = 0
+			bunny_hops += 1
+			print( bunny_hops )
+			
+			audio.play(sfx_jump)
+			velocity.y = jump_power
+			
+			jump_cayote_time = 0
+			jump_buffer_time = 0
+		else:
+			if not on_slide and not on_slide_recovery:
+				bunny_hops = 0
+
+	if on_slide_recovery:
+		on_slide_recovery -= 1
 
 	if jump_cayote_time:
 		jump_cayote_time -= 1
 
 	if jump_buffer_time:
 		jump_buffer_time -= 1
+
+	velocity_prev = velocity
+	global_rotation_prev = global_rotation
 
 func _physics_process(delta: float) -> void:
 	if not health.dead:
