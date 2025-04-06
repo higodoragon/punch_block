@@ -1,3 +1,30 @@
+// post_jam //
+- rebind menu / invert mouse options
+[DONISH] - balance brute again
+- make punching more responsive
+- make running out of magic less punishing ( you can still block but not parry and it only soaks up some damage )
+- checkpoint system
+- maybe a new enemy ( granade throwing, the granades explode on contact, and fizzle on block, and are redirected on parry )
+- rooftops level
+- water airport level
+- final boss level, being a fight agaist a fast moving dragon.
+- polish ending scene
+- slide / movement mechanic
+
+low:
+- teach the jump height before the first sniper on tutorial ( make the first jump a ledge? )
+- better friendly fire tutorial/puzzle before the sniper room on map5
+- damage indicator
+- better transitions between game states ( title, stage, intermission )
+- more art for enemies and the playable character for banners and presetation
+- more stylized UI
+- goon stun fx
+- bullet particle on sniper block
+- new create texture
+- better hit fxs
+- redo viewmodel??
+
+// old and done //
 [DONE] - add action bar ( depletes when over-using shield or standing around )
 [DONE] - recovers on killing enemy or parrying ( parry incrisses deminishes on over-use )
 [DONE] - door / func_godot trigger and target system
@@ -28,13 +55,6 @@
 [RABBIT] - clips to pipes in level 2
 
 low:
-- make sure every song play only twice
-- enemy spawn fx
-- goon stun fx
-- new create texture
-- better hit fxs
-
+[DONE] - make sure every song play only twice
 [DONE] - redesing the sniper: weak / one hit kill, stays stationary, treat like turret
-[RABBIT] - blood explosion animation
-??? - 3nd pass new viewmodel
-??? - make textures!!!
+[DONE] [RABBIT] - blood explosion animation
